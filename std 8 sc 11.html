@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - પ્રકરણ ૧૧</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૧૧ : વિદ્યુત પ્રવાહની રાસાયણિક અસરો</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 50</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">50</span></p>
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા</div>
+
+<script>
+    const rawQuestions = [
+        { q: "જે પદાર્થો પોતાનામાંથી વિદ્યુત પ્રવાહ પસાર થવા દે છે તેને શું કહેવાય?", ans: "વિદ્યુતના સુવાહક પદાર્થો", distractors: ["અવાહક પદાર્થો", "અર્ધવાહક પદાર્થો", "ચુંબકીય પદાર્થો"] },
+        { q: "લાકડું, રબર અને પ્લાસ્ટિક એ વિદ્યુતના કેવા પદાર્થો છે?", ans: "અવાહક / મંદવાહક પદાર્થો", distractors: ["સુવાહક પદાર્થો", "અર્ધવાહક પદાર્થો", "અતિવાહક પદાર્થો"] },
+        { q: "શું પ્રવાહી પદાર્થો વિદ્યુતનું વહન કરી શકે છે?", ans: "હા, કેટલાક પ્રવાહી સુવાહક હોય છે", distractors: ["ના, ક્યારેય નહીં", "માત્ર ગરમ પ્રવાહી જ વહન કરે છે", "માત્ર રંગીન પ્રવાહી વહન કરે છે"] },
+        { q: "લીંબુનો રસ અને વિનેગર (સરકો) એ વિદ્યુતના કેવા છે?", ans: "સુવાહક", distractors: ["અવાહક", "અર્ધવાહક", "અતિવાહક"] },
+        { q: "નિસ્યંદિત પાણી (Distilled Water / શુદ્ધ પાણી) વિદ્યુતનું કેવું છે?", ans: "અવાહક છે", distractors: ["સુવાહક છે", "અર્ધવાહક છે", "અતિવાહક છે"] },
+        { q: "નિસ્યંદિત પાણીમાંથી વિદ્યુત પ્રવાહ પસાર કરવા માટે તેમાં શું ઉમેરવામાં આવે છે?", ans: "થોડું મીઠું, એસિડ કે બેઝ", distractors: ["ખાંડ", "રેતી", "તેલ"] },
+        { q: "નળ, હેન્ડપંપ કે કૂવાનું પાણી વિદ્યુતનું કેવું હોય છે?", ans: "સુવાહક - કારણ કે તેમાં કુદરતી ક્ષારો ઓગળેલા હોય છે", distractors: ["અવાહક - કારણ કે તે શુદ્ધ હોય છે", "અર્ધવાહક", "માત્ર ગરમ થાય ત્યારે સુવાહક"] },
+        { q: "જ્યારે દ્રાવણમાં વિદ્યુત પ્રવાહ ખૂબ જ નિર્બળ (નબળો) હોય, ત્યારે સામાન્ય બલ્બ પ્રકાશતો નથી, તો તેની જગ્યાએ શાનો ઉપયોગ થાય છે?", ans: "LED નો", distractors: ["મોટા બલ્બનો", "હીટરનો", "મોટરનો"] },
+        { q: "LED નું પૂરું નામ શું છે?", ans: "લાઈટ એમિટિંગ ડાયોડ / Light Emitting Diode", distractors: ["લો એનર્જી ડિવાઇસ", "લાઈટ એનર્જી ડાયોડ", "લેસર એમિટિંગ ડાયોડ"] },
+        { q: "LED માં રહેલા બે તાર (લેડ્સ) માંથી લાંબો તાર બેટરીના કયા છેડા સાથે જોડવામાં આવે છે?", ans: "ધન ધ્રુવ / Positive terminal સાથે", distractors: ["ઋણ ધ્રુવ / Negative terminal સાથે", "કોઈપણ છેડા સાથે", "બંને છેડા સાથે"] },
+        { q: "LED નો ટૂંકો તાર બેટરીના કયા છેડા સાથે જોડાય છે?", ans: "ઋણ ધ્રુવ / Negative terminal સાથે", distractors: ["ધન ધ્રુવ સાથે", "સ્વિચ સાથે", "જમીન સાથે"] },
+        { q: "નિર્બળ વિદ્યુત પ્રવાહની ચકાસણી માટે LED સિવાય બીજો કયો માર્ગ વાપરી શકાય?", ans: "ચુંબકીય સોય / હોકાયંત્રના આવર્તનની રીત", distractors: ["થર્મોમીટરની રીત", "બેરોમીટરની રીત", "લેક્ટોમીટરની રીત"] },
+        { q: "વિદ્યુત દ્રાવણમાંથી વિદ્યુત પ્રવાહ પસાર થવાથી કઈ અસર જોવા મળે છે?", ans: "વિદ્યુત પ્રવાહની રાસાયણિક અસર", distractors: ["ચુંબકીય અસર", "ઉષ્મીય અસર", "ભૌતિક અસર"] },
+        { q: "પાણીમાંથી વિદ્યુત પ્રવાહ પસાર કરતા કયા બે વાયુઓના પરપોટા ઉત્પન્ન થાય છે?", ans: "ઓક્સિજન અને હાઇડ્રોજન", distractors: ["કાર્બન ડાયોક્સાઈડ અને ઓક્સિજન", "નાઈટ્રોજન અને હાઈડ્રોજન", "હિલિયમ અને ઓક્સિજન"] },
+        { q: "સને ૧૮૦૦ માં પાણીમાંથી વિદ્યુત પ્રવાહ પસાર કરવાનો પ્રયોગ સૌપ્રથમ કયા વૈજ્ઞાનિકે દર્શાવ્યો હતો?", ans: "વિલિયમ નિકોલ્સન", distractors: ["થોમસ એડિસન", "લુઈ પાશ્ચર", "આલ્બર્ટ આઈન્સ્ટાઈન"] },
+        { q: "બેટરીના ધન છેડા (એનોડ) પર કયો વાયુ મુક્ત થાય છે?", ans: "ઓક્સિજન વાયુ", distractors: ["હાઇડ્રોજન વાયુ", "નાઈટ્રોજન વાયુ", "કાર્બન ડાયોક્સાઈડ"] },
+        { q: "બેટરીના ઋણ છેડા (કેથોડ) પર કયો વાયુ મુક્ત થાય છે?", ans: "હાઇડ્રોજન વાયુ", distractors: ["ઓક્સિજન વાયુ", "નાઈટ્રોજન વાયુ", "કાર્બન ડાયોક્સાઈડ"] },
+        { q: "બટાકાના ટુકડામાંથી થોડો સમય વિદ્યુત પ્રવાહ પસાર કરતા ધન ધ્રુવ પાસે કેવો રંગ જોવા મળે છે?", ans: "લીલાશ પડતો ભૂરો રંગ", distractors: ["લાલ રંગ", "પીળો રંગ", "કાળો રંગ"] },
+        { q: "પ્રવાહી દ્રાવણના રંગમાં ફેરફાર થવો એ વિદ્યુત પ્રવાહની કઈ અસર દર્શાવે છે?", ans: "રાસાયણિક અસર", distractors: ["ઉષ્મીય અસર", "ચુંબકીય અસર", "યાંત્રિક અસર"] },
+        { q: "વિદ્યુત વહન દ્વારા કોઈ પદાર્થ પર જરૂરી ધાતુનું પડ ચઢાવવાની પ્રક્રિયાને શું કહે છે?", ans: "ઇલેક્ટ્રોપ્લેટિંગ / ઢોળ ચઢાવવાની પ્રક્રિયા", distractors: ["ગેલ્વેનાઈઝેશન", "શુદ્ધિકરણ", "સ્ફટિકીકરણ"] },
+        { q: "ઇલેક્ટ્રોપ્લેટિંગ એ વિદ્યુત પ્રવાહની કઈ અસરનો સૌથી સામાન્ય ઉપયોગ છે?", ans: "રાસાયણિક અસર", distractors: ["ઉષ્મીય અસર", "ચુંબકીય અસર", "ગુરુત્વાકર્ષણ અસર"] },
+        { q: "જે ધાતુ પર ઢોળ ચઢાવવાનો હોય (જેમ કે લોખંડની ચમચી) તેને બેટરીના કયા ધ્રુવ સાથે જોડવામાં આવે છે?", ans: "ઋણ ધ્રુવ / કેથોડ સાથે", distractors: ["ધન ધ્રુવ / એનોડ સાથે", "બંને ધ્રુવ સાથે", "અર્થિંગ સાથે"] },
+        { q: "જે ધાતુનો ઢોળ ચઢાવવાનો હોય (જેમ કે તાંબુ કે ચાંદી) તેને બેટરીના કયા ધ્રુવ સાથે જોડવામાં આવે છે?", ans: "ધન ધ્રુવ / એનોડ સાથે", distractors: ["ઋણ ધ્રુવ / કેથોડ સાથે", "બંને ધ્રુવ સાથે", "અર્થિંગ સાથે"] },
+        { q: "તાંબા (Copper) નો ઢોળ ચઢાવવા માટે દ્રાવણ (Electrolyte) તરીકે શાનો ઉપયોગ થાય છે?", ans: "કોપર સલ્ફેટનું દ્રાવણ", distractors: ["સોડિયમ ક્લોરાઈડ", "ઝીંક સલ્ફેટ", "મેગ્નેશિયમ સલ્ફેટ"] },
+        { q: "કોપર સલ્ફેટના દ્રાવણને વધુ વાહક બનાવવા માટે તેમાં શું ઉમેરવામાં આવે છે?", ans: "મંદ સલ્ફ્યુરિક એસિડનાં થોડાં ટીપાં", distractors: ["ખાંડ", "તેલ", "શુદ્ધ પાણી"] },
+        { q: "સાયકલના હેન્ડલ, કારના બમ્પર અને નળને ચમકદાર બનાવવા કઈ ધાતુનો ઢોળ ચઢાવવામાં આવે છે?", ans: "ક્રોમિયમ ધાતુનો", distractors: ["લોખંડનો", "તાંબાનો", "એલ્યુમિનિયમનો"] },
+        { q: "ક્રોમિયમ ધાતુનો ઉપયોગ શા માટે કરવામાં આવે છે?", ans: "કારણ કે તે ચળકાટ ધરાવે છે, તેને કાટ લાગતો નથી અને ઉજરડા પડવા દેતું નથી", distractors: ["કારણ કે તે ખૂબ સસ્તી છે", "કારણ કે તે નરમ છે", "કારણ કે તે વિદ્યુતની અવાહક છે"] },
+        { q: "સસ્તા આભૂષણો (ઘરેણાં) પર સોની કઈ ધાતુનો ઢોળ ચઢાવે છે?", ans: "સોના અથવા ચાંદીનો", distractors: ["ક્રોમિયમનો", "લોખંડનો", "ઝીંકનો"] },
+        { q: "ખાદ્ય પદાર્થો ભરવાના લોખંડના ડબ્બાઓ (ટીન) પર શાનો ઢોળ ચઢાવવામાં આવે છે?", ans: "કલાઈ / ટીન નો", distractors: ["ક્રોમિયમનો", "સોનાનો", "તાંબાનો"] },
+        { q: "પુલ અને વાહનોમાં વપરાતા લોખંડને મજબૂત બનાવવા અને કાટથી બચાવવા તેના પર કઈ ધાતુનું આવરણ ચઢાવવામાં આવે છે?", ans: "ઝીંક / Zinc", distractors: ["ક્રોમિયમ", "ટીન", "ચાંદી"] },
+        { q: "સામાન્ય બલ્બ પ્રકાશવા માટે વિદ્યુત પ્રવાહની કઈ અસર જવાબદાર છે?", ans: "ઉષ્મીય અસર / Heating effect", distractors: ["રાસાયણિક અસર", "ચુંબકીય અસર", "યાંત્રિક અસર"] },
+        { q: "જ્યારે વિદ્યુત પ્રવાહ ખૂબ નિર્બળ હોય ત્યારે બલ્બનો ફિલામેન્ટ પૂરતો ગરમ ન થવાથી શું થાય છે?", ans: "બલ્બ પ્રકાશતો નથી", distractors: ["બલ્બ ફૂટી જાય છે", "બલ્બ વધુ પ્રકાશ આપે છે", "બલ્બનો રંગ બદલાય છે"] },
+        { q: "નિર્બળ વિદ્યુત પ્રવાહ પસાર થતો હોય ત્યારે તેની જાણકારી મેળવવા માચિસની ડબ્બીમાં કયું સાધન મૂકીને ટેસ્ટર બનાવાય છે?", ans: "ચુંબકીય સોય / હોકાયંત્ર", distractors: ["નાનો બલ્બ", "હીટર", "મોટર"] },
+        { q: "ચુંબકીય સોયવાળું ટેસ્ટર વિદ્યુત પ્રવાહની કઈ અસરના સિદ્ધાંત પર કામ કરે છે?", ans: "ચુંબકીય અસર", distractors: ["રાસાયણિક અસર", "ઉષ્મીય અસર", "યાંત્રિક અસર"] },
+        { q: "વિદ્યુત પ્રવાહ પસાર થવાથી ચુંબકીય સોય શું દર્શાવે છે?", ans: "કોણાવર્તન / Deflection", distractors: ["પ્રકાશ", "ગરમી", "અવાજ"] },
+        { q: "કોઈપણ પ્રવાહી વિદ્યુતનું વહન કરે છે કે નહીં, તે ચકાસવા માટે વપરાતા સાધનને શું કહેવાય છે?", ans: "ટેસ્ટર", distractors: ["જનરેટર", "મોટર", "બેટરી"] },
+        { q: "ખાંડનું પાણી (Sugar solution) વિદ્યુતનું કેવું છે?", ans: "અવાહક / મંદવાહક", distractors: ["સુવાહક", "અતિવાહક", "અર્ધવાહક"] },
+        { q: "મધ અથવા વનસ્પતિ તેલમાંથી વિદ્યુત પસાર કરતા શું જોવા મળે છે?", ans: "તે અવાહક હોવાથી પ્રવાહ પસાર થતો નથી", distractors: ["પ્રવાહ સરળતાથી પસાર થાય છે", "તે ગરમ થઈ જાય છે", "તેનો રંગ બદલાય છે"] },
+        { q: "દરિયાનું પાણી એ નળના પાણી કરતાં વિદ્યુતનું કેવું વાહક છે?", ans: "વધુ સારું સુવાહક, કારણ કે તેમાં ક્ષારોનું પ્રમાણ વધુ હોય છે", distractors: ["ઓછું સુવાહક", "અવાહક", "બંને સમાન વાહક છે"] },
+        { q: "વરસાદનું પાણી (Rainwater) વાતાવરણમાંથી જમીન પર આવે ત્યારે તે સુવાહક કેમ બની જાય છે?", ans: "કારણ કે હવામાં રહેલા પ્રદૂષકો ભળવાથી તે એસિડિક બને છે", distractors: ["કારણ કે તે ઠંડુ હોય છે", "કારણ કે તે વાદળમાંથી આવે છે", "કારણ કે તેમાં મીઠું ભળે છે"] },
+        { q: "ઇલેક્ટ્રોપ્લેટિંગ પ્રક્રિયામાં કયા ધ્રુવ પર રાખેલી ધાતુની પટ્ટીનું વજન ઘટે છે?", ans: "ધન ધ્રુવ / એનોડ પરની, કારણ કે ધાતુ દ્રાવણમાં ભળે છે", distractors: ["ઋણ ધ્રુવ પરની", "બંને ધ્રુવ પરની", "કોઈની નહિ"] },
+        { q: "ઇલેક્ટ્રોપ્લેટિંગમાં કયા ધ્રુવ પર રાખેલી વસ્તુ પર ઢોળ ચઢે છે અને તેનું વજન વધે છે?", ans: "ઋણ ધ્રુવ / કેથોડ પર", distractors: ["ધન ધ્રુવ / એનોડ પર", "બંને ધ્રુવ પર", "જમીન સાથે જોડાયેલા છેડા પર"] },
+        { q: "અશુદ્ધ તાંબામાંથી શુદ્ધ તાંબુ મેળવવાની પ્રક્રિયામાં શુદ્ધ તાંબાની પાતળી પટ્ટી બેટરીના કયા છેડા સાથે રખાય છે?", ans: "ઋણ ધ્રુવ / કેથોડ સાથે", distractors: ["ધન ધ્રુવ / એનોડ સાથે", "કોઈપણ છેડા સાથે", "બંને છેડા સાથે"] },
+        { q: "સાયકલના હેન્ડલ અને કારના પાર્ટ્સ આખા ક્રોમિયમ ધાતુમાંથી જ કેમ નથી બનાવવામાં આવતા?", ans: "કારણ કે ક્રોમિયમ ખૂબ મોંઘી ધાતુ છે", distractors: ["કારણ કે ક્રોમિયમ વજનદાર છે", "કારણ કે ક્રોમિયમ તૂટી જાય છે", "કારણ કે ક્રોમિયમ કાળું પડી જાય છે"] },
+        { q: "લોખંડને કાટ લાગતું અટકાવવા તેના પર ઝીંક (Zinc) ધાતુનો ઢોળ ચઢાવવાની ક્રિયાને શું કહેવાય છે?", ans: "ગેલ્વેનાઈઝેશન", distractors: ["ઇલેક્ટ્રોપ્લેટિંગ", "શુદ્ધિકરણ", "વલ્કેનાઈઝેશન"] },
+        { q: "ખાદ્ય પદાર્થ ભરવા માટે લોખંડ પર કલાઈ (ટિન) નો ઢોળ કેમ ચઢાવવામાં આવે છે?", ans: "ટિન એ લોખંડ કરતા ઓછું ક્રિયાશીલ હોવાથી ખોરાક બગડતો અટકાવે છે", distractors: ["ટિન લોખંડને મજબૂત બનાવે છે", "ટિન સુંદર દેખાય છે", "ટિન સસ્તું છે"] },
+        { q: "ઇલેક્ટ્રોપ્લેટિંગના કારખાનાઓમાંથી નીકળતા વપરાયેલા અને નકામા રસાયણોનો નિકાલ ક્યાં કરવો જોઈએ?", ans: "પ્રદૂષણ નિયંત્રણ બોર્ડની ગાઈડલાઈન મુજબ કચરા નિકાલ પ્લાન્ટમાં", distractors: ["નદીમાં", "ખુલ્લા મેદાનમાં", "ગટરમાં"] },
+        { q: "ભીના હાથે વિદ્યુતના સ્વિચ બોર્ડને શા માટે ન અડકવું જોઈએ?", ans: "સામાન્ય પાણી વિદ્યુતનું સુવાહક હોવાથી શૉક લાગી શકે છે", distractors: ["સ્વિચ બગડી જાય છે", "હાથ કાળા થઈ જાય છે", "બોર્ડ તૂટી જાય છે"] },
+        { q: "આગ લાગી હોય ત્યારે ફાયરમેન પાણીનો છંટકાવ કરતા પહેલાં તે વિસ્તારનો કયો પુરવઠો બંધ કરાવે છે?", ans: "મુખ્ય વિદ્યુત પુરવઠો / Main light switch", distractors: ["પાણીનો પુરવઠો", "ગેસનો પુરવઠો", "ટેલિફોન લાઈન"] },
+        { q: "જો નિસ્યંદિત પાણી (Distilled water) માં મીઠું ઓગાળવામાં આવે, તો તે દ્રાવણ કેવું બનશે?", ans: "વિદ્યુતનું સુવાહક", distractors: ["અવાહક", "અર્ધવાહક", "અતિવાહક"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+        userAnswersData.push({ question: questions[currentIdx].q, selected: selectedOpt, correct: correctOpt, isRight: isCorrect });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) optBtn.dataset.isCorrect = "true";
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => { if(optBtn.dataset.isCorrect === "true") optBtn.classList.add("correct"); });
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) loadQuestion();
+        else showResult();
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            summaryHTML += `<div class="summary-item"><p class="summary-q">${index + 1}. ${data.question}</p><p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+            if (!data.isRight) summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            summaryHTML += `</div>`;
+        });
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyan Sadhna Science Quiz - By Ritesh Saraiya</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .container { background: white; width: 100%; max-width: 450px; border-radius: 30px; padding: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 4px solid #f1c40f; }
+        .header-box { background: #f1f2f6; padding: 15px; border-radius: 20px; margin-bottom: 25px; border-bottom: 5px solid #f1c40f; }
+        h1 { color: #1e3799; margin: 0; font-size: 24px; }
+        .dev-name { color: #e67e22; font-weight: bold; font-size: 18px; display: block; margin-top: 5px; }
+        .form-group { text-align: left; margin-bottom: 18px; }
+        label { font-weight: bold; color: #0c2461; display: block; margin-bottom: 8px; font-size: 15px; }
+        select, input { width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        .btn-start { width: 100%; padding: 18px; background: #f1c40f; color: #0c2461; border: none; border-radius: 50px; font-size: 22px; font-weight: bold; cursor: pointer; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .btn-start:hover { background: #e67e22; color: white; transform: scale(1.03); }
+        .footer { margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 20px; border: 1px solid #dee2e6; }
+        #numGroup, #paperGroup { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-box">
+        <h1>જ્ઞાન સાધના વિજ્ઞાન ક્વિઝ</h1>
+        <span class="dev-name">Developed by: Ritesh Saraiya</span>
+    </div>
+
+    <div class="form-group">
+        <label>🎯 ક્વિઝનો પ્રકાર પસંદ કરો:</label>
+        <select id="mode" onchange="toggle()">
+            <option value="chapter">📚 પ્રકરણ મુજબ ક્વિઝ</option>
+            <option value="mixed">🔀 મિક્સ ક્વિઝ (પ્રેક્ટિસ)</option>
+            <option value="paper">📄 ઓરિજનલ પેપર</option>
+        </select>
+    </div>
+
+    <div id="chapGroup" class="form-group">
+        <label>📖 પ્રકરણ પસંદ કરો:</label>
+        <select id="selFile">
+            <option value="std_8_sci_ch_1.html">પાઠ ૧: પાક ઉત્પાદન</option>
+            <option value="std_8_sci_ch_2.html">પાઠ ૨: સૂક્ષ્મજીવો</option>
+            <option value="std_8_sci_ch_3.html">પાઠ ૩: કોલસો અને પેટ્રોલિયમ</option>
+            <option value="std_8_sci_ch_4.html">પાઠ ૪: દહન અને જ્યોત</option>
+            <option value="std_8_sci_ch_5.html">પાઠ ૫: વનસ્પતિ સંરક્ષણ</option>
+            <option value="std_8_sci_ch_6.html">પાઠ ૬: પ્રાણીઓમાં પ્રજનન</option>
+            <option value="std_8_sci_ch_7.html">પાઠ ૭: તરુણાવસ્થા તરફ</option>
+            <option value="std_8_sci_ch_8.html">પાઠ ૮: બળ અને દબાણ</option>
+            <option value="std_8_sci_ch_9.html">પાઠ ૯: ઘર્ષણ</option>
+            <option value="std_8_sc_10.html">પાઠ ૧૦: ધ્વનિ</option>
+            <option value="std_8_sc_11.html">પાઠ ૧૧: વિદ્યુત અસરો</option>
+            <option value="std_8_sc_12.html">પાઠ ૧૨: કુદરતી ઘટનાઓ</option>
+            <option value="std_8_sc_13.html">પાઠ ૧૩: પ્રકાશ</option>
+        </select>
+    </div>
+
+    <div id="paperGroup" class="form-group">
+        <label>📄 પેપર પસંદ કરો:</label>
+        <select id="selPaper">
+            <option value="original.html">ઓરિજનલ પેપર</option>
+        </select>
+    </div>
+
+    <div id="numGroup" class="form-group">
+        <label>🔢 પ્રશ્નોની સંખ્યા:</label>
+        <input type="number" id="qNum" value="25" min="1" max="260">
+    </div>
+
+    <button class="btn-start" onclick="go()">ક્વિઝ શરૂ કરો ➔</button>
+
+    <div class="footer">
+        <div class="school-name">Primary School Naikiwad Vanzana</div>
+        <small>Navsari, Gujarat</small>
+    </div>
+</div>
+
+<script>
+    function toggle() {
+        let m = document.getElementById("mode").value;
+        document.getElementById("chapGroup").style.display = (m=="chapter")?"block":"none";
+        document.getElementById("numGroup").style.display = (m=="mixed")?"block":"none";
+        document.getElementById("paperGroup").style.display = (m=="paper")?"block":"none";
+    }
+
+    function go() {
+        let m = document.getElementById("mode").value;
+        let url = "";
+        if(m=="mixed") {
+            url = "mixed.html?qcount=" + document.getElementById("qNum").value;
+        } else if(m=="paper") {
+            url = "original.html";
+        } else {
+            url = document.getElementById("selFile").value;
+        }
+        window.location.href = url;
+    }
+</script>
+
+</body>
+</html>

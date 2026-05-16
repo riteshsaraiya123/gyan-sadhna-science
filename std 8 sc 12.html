@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - પ્રકરણ ૧૨</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૧૨ : કેટલીક કુદરતી ઘટનાઓ</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 30</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">30</span></p>
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા</div>
+
+<script>
+    const rawQuestions = [
+        { q: "ઘર્ષણ દ્વારા ઉત્પન્ન થતા વીજભારને કેવો વીજભાર કહે છે?", ans: "સ્થિર વીજભાર", distractors: ["ગતિશીલ વીજભાર", "ચુંબકીય વીજભાર", "રાસાયણિક વીજભાર"] },
+        { q: "કાચના સળિયાને રેશમના ટુકડા સાથે ઘસવાથી કાચના સળિયા પર કયો વીજભાર ઉત્પન્ન થાય છે?", ans: "ધન વીજભાર", distractors: ["ઋણ વીજભાર", "તટસ્થ વીજભાર", "ચુંબકીય વીજભાર"] },
+        { q: "પ્લાસ્ટિકની સ્ટ્રો કે ફૂટપટ્ટીને પોલિથીન (કે કોરા વાળ) સાથે ઘસવાથી તેના પર કયો વીજભાર ઉત્પન્ન થાય છે?", ans: "ઋણ વીજભાર", distractors: ["ધન વીજભાર", "તટસ્થ વીજભાર", "સ્થિર વીજભાર નહીં"] },
+        { q: "સમાન (સજાતીય) વીજભારો વચ્ચે કયું બળ લાગે છે?", ans: "અપાકર્ષણ", distractors: ["આકર્ષણ", "ગુરુત્વાકર્ષણ", "ઘર્ષણ"] },
+        { q: "અસમાન (વિજાતીય) વીજભારો વચ્ચે કયું બળ લાગે છે?", ans: "આકર્ષણ", distractors: ["અપાકર્ષણ", "ચુંબકીય બળ", "સ્થિર બળ"] },
+        { q: "પદાર્થ પર વીજભાર છે કે નહિ તે જાણવા માટે કયા સાધનનો ઉપયોગ થાય છે?", ans: "ઇલેક્ટ્રોસ્કોપ", distractors: ["માઈક્રોસ્કોપ", "ટેલિસ્કોપ", "સ્ટેથોસ્કોપ"] },
+        { q: "વીજભારિત પદાર્થ પરથી વીજભારને પૃથ્વી (જમીન) માં વહન કરાવવાની પ્રક્રિયાને શું કહે છે?", ans: "અર્થિંગ / Earthing", distractors: ["લાઇટનિંગ", "શોર્ટ સર્કિટ", "વીજ પ્રવાહ"] },
+        { q: "ઘરોમાં ઇલેક્ટ્રિકલ વાયરિંગમાં અર્થિંગ શા માટે આપવામાં આવે છે?", ans: "વિદ્યુત શૉકથી બચાવવા માટે", distractors: ["વીજળીનું બિલ ઘટાડવા", "બલ્બ વધુ પ્રકાશિત કરવા", "સાધનો સુંદર દેખાડવા"] },
+        { q: "વાદળોમાં વીજભારના મોટા પાયે એકઠા થવાથી કઈ કુદરતી ઘટના સર્જાય છે?", ans: "વીજળી", distractors: ["ભૂકંપ", "વાવાઝોડું", "સુનામી"] },
+        { q: "ગાજવીજ સાથેના તોફાન વખતે વાદળોની ઉપરની ધાર તરફ કયો વીજભાર જમા થાય છે?", ans: "ધન વીજભાર", distractors: ["ઋણ વીજભાર", "તટસ્થ વીજભાર", "ચુંબકીય વીજભાર"] },
+        { q: "વાદળોની નીચેની ધાર તરફ સામાન્ય રીતે કયો વીજભાર જમા થાય છે?", ans: "ઋણ વીજભાર", distractors: ["ધન વીજભાર", "તટસ્થ વીજભાર", "કોઈ વીજભાર નહીં"] },
+        { q: "જમીન પર સામાન્ય રીતે કયો વીજભાર જમા થયેલો હોય છે?", ans: "ધન વીજભાર", distractors: ["ઋણ વીજભાર", "તટસ્થ વીજભાર", "કોઈ વીજભાર નહીં"] },
+        { q: "ધન અને ઋણ વીજભાર મળવાથી પ્રકાશનો તેજસ્વી શેરડો દેખાય છે અને ધ્વનિ ઉત્પન્ન થાય છે, તેને વિજ્ઞાનની ભાષામાં શું કહેવાય?", ans: "વિદ્યુતભાર વિભારણ / Electric discharge", distractors: ["વિદ્યુત પ્રવાહ", "શોર્ટ સર્કિટ", "રાસાયણિક પ્રક્રિયા"] },
+        { q: "વીજળી પડવાની ઘટનાથી બચવા અને ઇમારતોના રક્ષણ માટે કયું સાધન લગાવવામાં આવે છે?", ans: "વીજળીનું વાહક / તડિત રક્ષક / Lightning Conductor", distractors: ["ઇલેક્ટ્રોસ્કોપ", "ટ્રાન્સફોર્મર", "ઇન્વર્ટર"] },
+        { q: "તડિત રક્ષક (Lightning Conductor) નો ઉપરનો છેડો ક્યાં રાખવામાં આવે છે?", ans: "ઇમારતની ટોચ પર હવામાં", distractors: ["જમીનની અંદર", "ઇમારતના ભોંયરામાં", "પાણીની ટાંકીમાં"] },
+        { q: "તડિત રક્ષકનો બીજો છેડો ક્યાં જોડવામાં આવે છે?", ans: "જમીનમાં ઊંડે સુધી દાટવામાં આવે છે", distractors: ["ઇમારતની છત પર", "વાયરિંગ સાથે", "પાણીની પાઇપ સાથે"] },
+        { q: "ગાજવીજ વખતે ક્યાં આશ્રય લેવો સૌથી સુરક્ષિત છે?", ans: "મકાન કે ઇમારતની અંદર", distractors: ["ખુલ્લા મેદાનમાં", "મોટા વૃક્ષ નીચે", "પાણીમાં"] },
+        { q: "ગાજવીજ વખતે કાર કે બસમાં મુસાફરી કરતા હોવ તો શું કરવું જોઈએ?", ans: "વાહનના બારી-બારણાં બંધ રાખવા જોઈએ", distractors: ["વાહનમાંથી બહાર નીકળવું જોઈએ", "વાહનની છત પર બેસવું જોઈએ", "બારીઓ ખુલ્લી રાખવી જોઈએ"] },
+        { q: "ખુલ્લા મેદાનમાં ગાજવીજ વખતે કેવી સ્થિતિમાં બેસવું જોઈએ?", ans: "ઉભડક પગે બેસી, માથું ઢીંચણ પર રાખી બે હાથ વચ્ચે દબાવી દેવું", distractors: ["જમીન પર સીધા સૂઈ જવું", "વૃક્ષ નીચે ઊભા રહેવું", "દોડવા માંડવું"] },
+        { q: "ગાજવીજ વખતે કઈ વસ્તુનો ઉપયોગ ટાળવો જોઈએ?", ans: "લેન્ડલાઈન ફોન, વાયરવાળા સાધનો અને છત્રી", distractors: ["મોબાઈલ ફોન", "પ્લાસ્ટિકની ખુરશી", "લાકડાનું ટેબલ"] },
+        { q: "પૃથ્વીના અચાનક ધ્રુજવા કે કાંપવાની ઘટનાને શું કહે છે?", ans: "ભૂકંપ", distractors: ["જ્વાળામુખી", "સુનામી", "વાવાઝોડું"] },
+        { q: "ભૂકંપ શાના કારણે આવે છે?", ans: "પૃથ્વીના પોપડાની પ્લેટ્સની હિલચાલ/ઘર્ષણને કારણે", distractors: ["વાદળોના અથડાવાથી", "ભારે વરસાદથી", "સૂર્યની ગરમીથી"] },
+        { q: "પૃથ્વીનું સૌથી બહારનું પડ કયા નામે ઓળખાય છે?", ans: "પોપડો / Crust", distractors: ["મેન્ટલ / Mantle", "કોર / Core", "કેન્દ્ર"] },
+        { q: "પૃથ્વીનો પોપડો સળંગ નથી પણ ટુકડાઓમાં વિભાજિત છે, આ ટુકડાઓને શું કહેવાય છે?", ans: "પ્લેટ્સ / ટેકટોનિક પ્લેટ્સ", distractors: ["પથ્થરો", "ખડકો", "દીવાલો"] },
+        { q: "પ્લેટોની સીમાઓ (Boundaries) જ્યાં ભૂકંપ આવવાની શક્યતા સૌથી વધુ હોય તેને શું કહે છે?", ans: "ફોલ્ટ ઝોન અથવા સિસ્મિક ઝોન / Seismic Zone", distractors: ["ડેન્જર ઝોન", "સેફ ઝોન", "ગ્રીન ઝોન"] },
+        { q: "ભારતના કયા વિસ્તારો અતિભયજનક ભૂકંપ ઝોનમાં આવે છે?", ans: "કાશ્મીર, કચ્છનું રણ, રાજસ્થાન અને ઉત્તર-પૂર્વ ભારત", distractors: ["દક્ષિણ ભારત", "મધ્ય પ્રદેશ", "ગોવા"] },
+        { q: "ભૂકંપની તીવ્રતા (વિનાશકતા) માપવાના એકમને શું કહે છે?", ans: "રિક્ટર સ્કેલ / Richter Scale", distractors: ["કેલ્વિન સ્કેલ", "સેલ્સિયસ સ્કેલ", "ડેસિબેલ સ્કેલ"] },
+        { q: "વિનાશક ભૂકંપની તીવ્રતા રિક્ટર સ્કેલ પર સામાન્ય રીતે કેટલી હોય છે?", ans: "૭ થી વધુ", distractors: ["૨ થી ૩", "૪ થી ૫", "૦ થી ૧"] },
+        { q: "પૃથ્વીની સપાટી પર આવતા ભૂકંપના તરંગોને વિજ્ઞાનની ભાષામાં કયા તરંગો કહે છે?", ans: "સિસ્મિક તરંગો / Seismic waves", distractors: ["ધ્વનિ તરંગો", "પ્રકાશ તરંગો", "રેડિયો તરંગો"] },
+        { q: "સિસ્મિક તરંગો નોંધવા (રેકોર્ડ કરવા) માટે કયા સાધનનો ઉપયોગ થાય છે?", ans: "સિસ્મોગ્રાફ / Seismograph", distractors: ["બેરોમીટર", "થર્મોમીટર", "ઇલેક્ટ્રોસ્કોપ"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+        userAnswersData.push({ question: questions[currentIdx].q, selected: selectedOpt, correct: correctOpt, isRight: isCorrect });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) optBtn.dataset.isCorrect = "true";
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => { if(optBtn.dataset.isCorrect === "true") optBtn.classList.add("correct"); });
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) loadQuestion();
+        else showResult();
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            summaryHTML += `<div class="summary-item"><p class="summary-q">${index + 1}. ${data.question}</p><p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+            if (!data.isRight) summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            summaryHTML += `</div>`;
+        });
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+</body>
+</html>

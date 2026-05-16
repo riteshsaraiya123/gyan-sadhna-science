@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ઓરિજિનલ પેપર્સ (૨૦૨૩-૨૦૨૫)</title>
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a29bfe;
+            --success: #00b894;
+            --danger: #ff7675;
+            --bg: #fdfbfb;
+            --text: #2d3436;
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; color: var(--text); }
+        .quiz-container { background: white; width: 100%; max-width: 550px; border-radius: 30px; padding: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); border: 1px solid #f1f2f6; }
+        .header { text-align: center; margin-bottom: 20px; border-bottom: 2px solid #f1f2f6; padding-bottom: 15px; }
+        .header h1 { font-size: 22px; color: var(--primary); margin: 0; }
+        .header p { font-size: 14px; margin: 5px 0 0; color: #636e72; font-weight: 600; }
+        .stats { display: flex; justify-content: space-between; font-weight: bold; font-size: 15px; margin-bottom: 10px; color: var(--primary); }
+        .progress-bar { width: 100%; height: 8px; background: #eee; border-radius: 10px; margin-bottom: 20px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(to right, var(--secondary), var(--primary)); width: 0%; transition: 0.5s; }
+        .question { font-size: 18px; font-weight: 700; line-height: 1.5; margin-bottom: 20px; min-height: 60px; color: #2d3436; }
+        .option { display: block; width: 100%; padding: 14px; margin: 10px 0; border: 2px solid #f1f2f6; border-radius: 15px; background: #fff; cursor: pointer; text-align: left; font-size: 16px; font-weight: 600; transition: 0.3s; box-sizing: border-box; color: #444; }
+        .option:hover { border-color: var(--secondary); background: #fcfcfd; transform: translateY(-1px); }
+        .correct { background: #55efc4 !important; color: #000 !important; border-color: #00b894 !important; }
+        .wrong { background: #ffeaa7 !important; color: #d63031 !important; border-color: #ff7675 !important; }
+        .feedback { margin-top: 15px; padding: 15px; border-radius: 12px; background: #eef2ff; display: none; font-weight: bold; font-size: 15px; border-left: 5px solid var(--primary); }
+        .btn { width: 100%; padding: 16px; margin-top: 20px; border: none; border-radius: 18px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .next-btn { background: var(--primary); color: white; display: none; box-shadow: 0 8px 15px rgba(108, 92, 231, 0.3); }
+        .next-btn:hover { background: #5a4bcf; }
+        .score-board { text-align: center; display: none; }
+        .summary-box { text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; background: #f9f9fb; border-radius: 20px; border: 1px solid #eee; margin-top: 20px; }
+        .summary-item { padding: 12px; border-bottom: 1px solid #f1f2f6; font-size: 15px; }
+        input[type="number"] { width: 100%; padding: 14px; border-radius: 15px; border: 2px solid #e0e0e0; font-size: 16px; margin-bottom: 15px; box-sizing: border-box; outline: none; }
+        input[type="number"]:focus { border-color: var(--primary); }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <div class="header">
+        <h1>જ્ઞાન સાધના ઓરિજિનલ પેપર્સ</h1>
+        <p>Developed by: Ritesh Saraiya<br>Primary School Naikiwad Vanzana</p>
+    </div>
+
+    <!-- Setup Box -->
+    <div id="setup-box">
+        <label style="display:block; font-weight:bold; margin-bottom:10px; color:#555; font-size:16px;">તમારે કેટલા પ્રશ્નોની ક્વિઝ આપવી છે? (૫ થી ૬૦):</label>
+        <input type="number" id="qCountInput" value="20" min="5" max="60">
+        <p style="font-size:13px; color:#ff7675; font-weight:bold; margin-top:-5px; margin-bottom:20px;">*ત્રણેય વર્ષ (2023, 2024, 2025) ના કુલ 60 ઓરિજિનલ પ્રશ્નો ઉપલબ્ધ છે.</p>
+        <button class="btn" style="background:var(--success); color:#1a5c31; box-shadow: 0 8px 15px rgba(85,239,196,0.4);" onclick="startQuiz()">ક્વિઝ શરૂ કરો ➔</button>
+    </div>
+
+    <!-- Quiz Box -->
+    <div id="quiz-box" style="display:none;">
+        <div class="stats"><span id="qCountText">લોડ થઈ રહ્યું છે...</span><span id="scoreText">સ્કોર: 0</span></div>
+        <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+        <div class="question" id="questionText">પ્રશ્ન લોડ થઈ રહ્યો છે...</div>
+        <div id="optionsContainer"></div>
+        <div id="feedbackBox" class="feedback"></div>
+        <button id="nextBtn" class="btn next-btn" onclick="loadNext()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <!-- Score Box -->
+    <div id="scoreBox" class="score-board">
+        <h2 style="color: var(--primary); font-size:26px;">ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div style="font-size: 38px; font-weight: 800; margin: 15px 0;"><span id="finalScore">0</span> / <span id="totalQ">0</span></div>
+        <h3 style="text-align: left; margin-top:20px; font-size:18px; color:#555;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+        <button class="btn" style="background: var(--primary); color: white; margin-top:25px;" onclick="window.location.reload()">ફરીથી રમો ↻</button>
+        <button class="btn" style="background: #e0e0e0; color: #333; margin-top:10px;" onclick="window.location.href='index.html'">મુખ્ય મેનુ 🏠</button>
+    </div>
+</div>
+
+<script>
+    let limit = 20;
+    let questions = [];
+    let history = [];
+    let cur = 0;
+    let score = 0;
+
+    // સંપૂર્ણ ૬૦ પ્રશ્નોનો ડેટાબેઝ (૨૦૨૩, ૨૦૨૪, ૨૦૨૫)
+    const db = [
+        // 2023 (20 Questions)
+        { q: "કૃત્રિમ ખાતર માટે શું સાચું છે?", ans: "અકાર્બનિક ક્ષાર છે તેનાથી જમીનને સેન્દ્રિય પદાર્થો પ્રાપ્ત થતા નથી.", ds: ["તે કાર્બનિક પદાર્થ છે", "તે જમીનને હ્યુમસ આપે છે", "તે ખેતરમાં બને છે"], y: "2023" },
+        { q: "કઈ સક્રિય અધાતુનો પાણીમાં સંગ્રહ કરવામાં આવે છે?", ans: "ફોસ્ફરસ", ds: ["સોડિયમ", "મેગ્નેશિયમ", "સલ્ફર"], y: "2023" },
+        { q: "ગ્લોબલ વૉર્મિંગ માટે સૌથી વધુ જવાબદાર વાયુ કયો છે?", ans: "કાર્બન ડાયોક્સાઈડ", ds: ["ઓક્સિજન", "નાઈટ્રોજન", "આર્ગોન"], y: "2023" },
+        { q: "મધુપ્રમેહ (ડાયાબિટીસ) માટે જવાબદાર ગ્રંથિ કઈ છે?", ans: "સ્વાદુપિંડ", ds: ["યકૃત", "થાઈરોઈડ", "એડ્રિનલ"], y: "2023" },
+        { q: "બાથરૂમના નળ અને સાયકલનાં હેન્ડલ પર કઈ ધાતુનું પ્લેટિંગ કરવામાં આવે છે?", ans: "ક્રોમિયમ", ds: ["તાંબુ", "ઝિંક", "લોખંડ"], y: "2023" },
+        { q: "આંખની રચનામાં આંખનો કયો ભાગ પ્રકાશના પ્રમાણનું નિયંત્રણ કરે છે?", ans: "કનીનિકા (આઈરિસ)", ds: ["કીકી", "કોર્નિયા", "રેટિના"], y: "2023" },
+        { q: "'ધ ક્યોટો પ્રોટોકોલ' શું છે?", ans: "ગ્રીન હાઉસ વાયુઓનું ઉત્સર્જન ઘટાડવાનો કરાર", ds: ["પાણી બચાવવાનો કરાર", "જંગલો વધારવાનો કરાર", "પ્લાસ્ટિક મુક્ત વિશ્વનો કરાર"], y: "2023" },
+        { q: "કયું ઉદાહરણ રવીપાકનું નથી?", ans: "સોયાબીન", ds: ["ઘઉં", "ચણા", "વટાણા"], y: "2023" },
+        { q: "ડામરની ગોળી શેમાંથી બને છે?", ans: "કોલટાર", ds: ["કોક", "કોલગેસ", "પેટ્રોલિયમ"], y: "2023" },
+        { q: "કયા પુસ્તકમાં બધાં નાશઃપ્રાય પ્રાણીઓ અને વનસ્પતિઓનો રેકોર્ડ રાખવામાં આવે છે?", ans: "રેડ ડેટા બુક", ds: ["ગ્રીન ડેટા બુક", "બ્લેક ડેટા બુક", "યલો ડેટા બુક"], y: "2023" },
+        { q: "'કલિકાસર્જન દ્વારા નવો સજીવ ઉત્પન્ન થાય છે'- આ વિધાન માટે બંધબેસતો વિકલ્પ કયો?", ans: "હાઇડ્રા", ds: ["અમીબા", "દેડકો", "ગાય"], y: "2023" },
+        { q: "વિવિધ અંતઃસ્ત્રાવોના ઉત્પાદનનું નિયંત્રણ કઈ ગ્રંથિ દ્વારા થાય છે?", ans: "પિટ્યુટરી ગ્રંથિ", ds: ["એડ્રિનલ ગ્રંથિ", "થાઈરોઈડ ગ્રંથિ", "સ્વાદુપિંડ"], y: "2023" },
+        { q: "મનુષ્યના કાન માટે શ્રાવ્ય આવૃત્તિની પહોંચ મર્યાદા કઈ?", ans: "20 Hz થી 20,000 Hz", ds: ["0 Hz થી 20 Hz", "20,000 Hz થી વધુ", "100 Hz થી 1000 Hz"], y: "2023" },
+        { q: "ગુણક પ્રતિબિંબો રચવાના સિદ્ધાંતનો ઉપયોગ કરી કયું સાધન બનાવવામાં આવે છે?", ans: "કેલિડોસ્કોપ", ds: ["પેરિસ્કોપ", "ટેલિસ્કોપ", "માઈક્રોસ્કોપ"], y: "2023" },
+        { q: "શિમ્બી કુળની વનસ્પતિમાં નાઈટ્રોજન સ્થાપનમાં કોણ મદદ કરે છે?", ans: "રાઈઝોબિયમ", ds: ["લેક્ટોબેસિલસ", "યીસ્ટ", "વાયરસ"], y: "2023" },
+        { q: "નીચેના પૈકી કયો ધાતુનો ગુણધર્મ નથી?", ans: "ઉષ્મા તથા વિદ્યુતના અવાહક છે.", ds: ["તે રણકાર ઉત્પન્ન કરે છે", "તેને ખેંચીને તાર બનાવી શકાય", "તે ચળકાટ ધરાવે છે"], y: "2023" },
+        { q: "કોષકેન્દ્રમાં દોરી જેવી સમાન સંરચનાઓ કયા નામથી ઓળખાય છે?", ans: "રંગસૂત્ર", ds: ["કોષરસ", "રસધાની", "કોષદીવાલ"], y: "2023" },
+        { q: "કોઈ સપાટીને _____ બનાવીને ઘર્ષણ વધારી શકાય છે.", ans: "ખરબચડી", ds: ["લીસી", "તેલી", "ચળકતી"], y: "2023" },
+        { q: "પૂલ તથા વાહનોમાં વપરાતા લોખંડ પર શેનું આવરણ ચડાવવામાં આવે છે?", ans: "ઝિંક", ds: ["તાંબુ", "ક્રોમિયમ", "એલ્યુમિનિયમ"], y: "2023" },
+        { q: "મેઘધનુષ્ય _____ દર્શાવતી એક કુદરતી ઘટના છે.", ans: "પ્રકાશનું વિભાજન", ds: ["પ્રકાશનું પરાવર્તન", "પ્રકાશનું વક્રીભવન", "પ્રકાશનું શોષણ"], y: "2023" },
+
+        // 2024 (20 Questions)
+        { q: "મેલેરિયા રોગ કયા સૂક્ષ્મજીવથી થાય છે?", ans: "પ્રજીવ", ds: ["બેક્ટેરિયા", "વાયરસ", "ફૂગ"], y: "2024" },
+        { q: "પેટ્રોલિયમનું કયું ઘટક રંગો બનાવવા ઉપયોગી છે?", ans: "બિટુમીન", ds: ["પેરાફિન મીણ", "કેરોસીન", "ડીઝલ"], y: "2024" },
+        { q: "સ્ટ્રોને કાગળ સાથે ઘસી કાગળના ટુકડાની નજીક લાવતાં તે આકર્ષાય છે, આ કયું બળ છે?", ans: "સ્થિત વિદ્યુતબળ", ds: ["ચુંબકીય બળ", "ઘર્ષણ બળ", "ગુરુત્વાકર્ષણ બળ"], y: "2024" },
+        { q: "એકબીજાને સમાંતર મૂકેલા બે અરીસાઓની વચ્ચે મીણબત્તી મૂકતાં કેટલાં પ્રતિબિંબ મળે?", ans: "અસંખ્ય", ds: ["બે", "ચાર", "એક પણ નહીં"], y: "2024" },
+        { q: "નીચેનામાંથી કયું એન્ટીબાયોટિક છે?", ans: "સ્ટેપ્ટોમાયસીન", ds: ["સોડિયમ બાયકાર્બોનેટ", "આલ્કોહોલ", "યીસ્ટ"], y: "2024" },
+        { q: "દહન પ્રક્રિયા દરમિયાન કયા સ્વરૂપે ઊર્જા મુક્ત થાય છે?", ans: "પ્રકાશ અને ઉષ્મા બન્ને", ds: ["માત્ર પ્રકાશ", "માત્ર ઉષ્મા", "માત્ર ધ્વનિ"], y: "2024" },
+        { q: "શુક્રપિંડમાં ઉત્પન્ન થતા અંતઃ સ્ત્રાવનું નામ જણાવો.", ans: "ટેસ્ટેસ્ટેરોન", ds: ["ઇસ્ટ્રોજન", "ઇન્સ્યુલિન", "એડ્રિનાલિન"], y: "2024" },
+        { q: "કલિકા સર્જન પદ્ધતિથી અલિંગી પ્રજનન કરતું એકકોષી સજીવ કયું છે?", ans: "યીસ્ટ", ds: ["હાઇડ્રા", "અમીબા", "પેરામીશિયમ"], y: "2024" },
+        { q: "કયા માધ્યમમાં ધ્વનિ પ્રસરતો નથી.", ans: "શૂન્યાવકાશ", ds: ["હવા", "પાણી", "લોખંડ"], y: "2024" },
+        { q: "આંખની આગળના પારદર્શક ભાગને શું કહેવાય છે?", ans: "કોર્નિયા", ds: ["આઈરિસ", "રેટિના", "કીકી"], y: "2024" },
+        { q: "પંચમઢી જીવાવરણ આરક્ષિત ક્ષેત્રનું સ્થાનિક પ્રાણી કયું છે?", ans: "ઉડતી ખિસકોલી", ds: ["વાઘ", "સિંહ", "હાથી"], y: "2024" },
+        { q: "વિદ્યુતનું સુવાહક કોણ છે?", ans: "પાણી", ds: ["પ્લાસ્ટિક", "રબર", "લાકડું"], y: "2024" },
+        { q: "મશીનના બે ભાગ વચ્ચે ઘર્ષણ ઘટાડવા માટે શેનો ઉપયોગ થતો નથી?", ans: "લાકડાનો વહેર", ds: ["તેલ", "ગ્રીસ", "ગ્રેફાઇટ"], y: "2024" },
+        { q: "નીચે પૈકી કયો ધ્વનિ મનુષ્ય માટે અશ્રાવ્ય પણ શ્વાન માટે શ્રાવ્ય છે?", ans: "25,000 Hz", ds: ["20 Hz", "5000 Hz", "15,000 Hz"], y: "2024" },
+        { q: "યોગ્ય ક્રમમાં ગોઠવાયેલા ઓછામાં ઓછા કેટલા ચિત્રો 1 સેકન્ડમાં પસાર કરતાં ચિત્ર ગતિમાં લાગે?", ans: "16", ds: ["10", "24", "60"], y: "2024" },
+        { q: "ખેતરમાં નીંદણને દૂર કરવા અને જમીનને પોચી કરવા માટે વપરાય છે.", ans: "ખરપિયો", ds: ["હળ", "વાવણીયો", "થ્રેશર"], y: "2024" },
+        { q: "ગ્લોબલ વોર્મિંગનું મુખ્ય કારણ કયું છે?", ans: "હવામાં કાર્બનડાયોક્સાઇડનું વધતુ પ્રમાણ", ds: ["ઓક્સિજનનું વધતુ પ્રમાણ", "વૃક્ષોનું વાવેતર", "સૂર્યની ગરમી ઘટવી"], y: "2024" },
+        { q: "એક વ્યક્તિને ડાયાબિટીસ છે તેના માટે કયુ કારણ હોઈ શકે?", ans: "સ્વાદુપિંડ ઈન્સ્યુલિન પર્યાપ્ત માત્રામાં ઉત્પન્ન કરતું નથી.", ds: ["પિટ્યુટરી ગ્રંથિ નિષ્ક્રિય છે", "વધુ પડતું પાણી પીવે છે", "લોહીમાં આયર્નની કમી છે"], y: "2024" },
+        { q: "એક સેકન્ડ દીઠ થતાં દોલનોની સંખ્યાને શું કહે છે?", ans: "આવૃત્તિ", ds: ["આવર્તકાળ", "કંપવિસ્તાર", "તરંગલંબાઈ"], y: "2024" },
+        { q: "સમતલ અરીસા પર લંબરૂપે પ્રકાશ ફેકતા શું થશે?", ans: "આપાતકોણ શૂન્ય થશે અને પરાવર્તનકોણ શૂન્ય થશે.", ds: ["આપાતકોણ 90 થશે", "પરાવર્તનકોણ 45 થશે", "કિરણ પાછું નહીં ફરે"], y: "2024" },
+
+        // 2025 (20 Questions)
+        { q: "આ સૂક્ષ્મજીવ માત્ર યજમાન કોષમાં જ વિભાજન પામે છે.", ans: "વાઈરસ", ds: ["બેક્ટેરિયા", "પ્રજીવ", "ફૂગ"], y: "2025" },
+        { q: "ફેક્ટરીના માલિકને કયું બળતણ વાપરવાનું ફાયદાકારક રહેશે?", ans: "CNG", ds: ["પેટ્રોલ", "ડીઝલ", "કોલસો"], y: "2025" },
+        { q: "તે થાઈરોઈડ ગ્રંથિને આદેશ આપતી ગ્રંથિ છે.", ans: "પિટ્યુટરી", ds: ["સ્વાદુપિંડ", "એડ્રિનલ", "લાળગ્રંથિ"], y: "2025" },
+        { q: "પદાર્થ પર લાગતા દબાણના સંદર્ભમાં શું સાચું છે?", ans: "જેમ પદાર્થની સપાટી વધુ તેમ તેના પર લાગતું દબાણ ઓછું", ds: ["જેમ સપાટી વધુ તેમ દબાણ વધુ", "દબાણ સપાટી પર આધારિત નથી", "માત્ર બળ પર આધાર રાખે છે"], y: "2025" },
+        { q: "દોલન કરતો એક પદાર્થ 10 સેકન્ડમાં 10 દોલન કરે છે. આ પદાર્થની આવૃત્તિ કેટલી છે?", ans: "1 Hz", ds: ["10 Hz", "100 Hz", "0.1 Hz"], y: "2025" },
+        { q: "ઇલેક્ટ્રોસ્કોપ શા માટે વપરાય છે?", ans: "કોઈ પદાર્થ વીજભારિત છે કે નહીં તે ચકાસવા", ds: ["ભૂકંપ માપવા", "ધ્વનિ માપવા", "તાપમાન માપવા"], y: "2025" },
+        { q: "પ્રકાશનું કિરણ સમતલ અરીસા પર 30 અંશ નો આપાત કોણ રચે છે. પરાવર્તન કોણ કેટલો હશે?", ans: "30 અંશ", ds: ["60 અંશ", "90 અંશ", "0 અંશ"], y: "2025" },
+        { q: "આ આવૃત્તિવાળો ધ્વનિ આપણે સાંભળી શકતાં નથી.", ans: "25,000Hz", ds: ["20 Hz", "1000 Hz", "15,000 Hz"], y: "2025" },
+        { q: "કિશોરાવસ્થામાં સ્નાયુઓના યોગ્ય વિકાસ માટે આહારમાં શાનો સમાવેશ કરવો જરૂરી છે?", ans: "કઠોળ - પ્રોટીન માટે", ds: ["માત્ર ચોખા", "માત્ર ફળો", "જંક ફૂડ"], y: "2025" },
+        { q: "નીચે પૈકી કયું બળ સંપર્કબળ છે?", ans: "ઘર્ષણ બળ", ds: ["ચુંબકીય બળ", "ગુરુત્વાકર્ષણ બળ", "સ્થિત વિદ્યુતબળ"], y: "2025" },
+        { q: "કઈ ગ્રંથીની વધારે પડતી ક્રિયાશીલતાને કારણે ચહેરા ઉપર ખીલ થાય છે?", ans: "પ્રસ્વેદ / તૈલગ્રંથિ", ds: ["થાઈરોઈડ", "પિટ્યુટરી", "સ્વાદુપિંડ"], y: "2025" },
+        { q: "પાણીમાં વિદ્યુતપ્રવાહ પસાર કરતાં બેટરીના ધન છેડા પાસે કયા વાયુના પરપોટા જોવા મળશે?", ans: "ઑક્સિજન", ds: ["હાઇડ્રોજન", "નાઈટ્રોજન", "હિલિયમ"], y: "2025" },
+        { q: "બાથરૂમના નળ, સાઈકલના હૅન્ડલ વગેરેને ચમકતા રાખવા માટે તેના ઉપર શેનું પ્લેટિંગ થાય છે?", ans: "ક્રોમિયમ", ds: ["ઝિંક", "તાંબુ", "એલ્યુમિનિયમ"], y: "2025" },
+        { q: "અરીસામાં રચાતા પ્રતિબિંબિમાં ડાબો ભાગ જમણી બાજુ દેખાય છે, તે ઘટનાને શું કહે છે?", ans: "પાશ્ર્વય વ્યુત્ક્રમણ / પરિવર્તન", ds: ["પ્રકાશનું પરાવર્તન", "પ્રકાશનું વિખેરણ", "પ્રકાશનું વક્રીભવન"], y: "2025" },
+        { q: "‘ઘઉંનો અંગારિયો' કયા સૂક્ષ્મજીવથી થાય છે?", ans: "ફૂગ", ds: ["વાયરસ", "બેક્ટેરિયા", "લીલ"], y: "2025" },
+        { q: "પ્રવાસી પક્ષીઓ વર્ષના ચોક્કસ સમયગાળામાં દૂરના પ્રદેશોમાં શા માટે સ્થળાંતર કરે છે?", ans: "ઈંડા મુકવા", ds: ["ખોરાક શોધવા", "ઠંડીથી બચવા", "ફરવા માટે"], y: "2025" },
+        { q: "ટેસ્ટટ્યુબ બેબી માટે કયુ વિધાન અયોગ્ય છે?", ans: "ટેસ્ટટ્યુબમાં બાળકનો વિકાસ અને જન્મ થવો", ds: ["શરીરની બહાર ફલન થવું", "ગર્ભનું સ્થાપન ગર્ભાશયમાં થવું", "માતા ગર્ભને જન્મ આપે"], y: "2025" },
+        { q: "કયા સજીવમાં અંતઃફલન જોવા મળે છે?", ans: "મરઘી", ds: ["દેડકો", "માછલી", "સ્ટારફિશ"], y: "2025" },
+        { q: "આમળા, આંબલી તથા કાચીકેરીની જાણવણી શાના દ્વારા કરવામાં આવે છે?", ans: "મીઠું", ds: ["ખાંડ", "તેલ", "લીંબુ"], y: "2025" },
+        { q: "લોખંડના બનેલા પુલને કાટ લાગવાથી બચાવવા લોખંડ પર શાનું આવરણ ચઢાવવામાં આવે છે?", ans: "ઝિંક / જસત", ds: ["ક્રોમિયમ", "તાંબુ", "ચાંદી"], y: "2025" }
+    ];
+
+    function shuffle(a) { 
+        for (let i = a.length - 1; i > 0; i--) { 
+            const j = Math.floor(Math.random() * (i + 1)); 
+            [a[i], a[j]] = [a[j], a[i]]; 
+        } 
+        return a; 
+    }
+
+    function startQuiz() {
+        const input = document.getElementById("qCountInput").value;
+        limit = Math.min(60, Math.max(5, parseInt(input) || 10));
+        document.getElementById("setup-box").style.display = "none";
+        document.getElementById("quiz-box").style.display = "block";
+        init();
+    }
+
+    function init() {
+        // તમામ ૬૦ પ્રશ્નોને શફલ કરી અને યુઝરની લિમિટ મુજબ સ્લાઈસ કરો (No Repeat logic)
+        let pool = db.map(o => ({ q: o.q, ans: o.ans, opts: shuffle([o.ans, ...o.ds]), y: o.y }));
+        questions = shuffle(pool).slice(0, limit);
+        showQ();
+    }
+
+    function showQ() {
+        const q = questions[cur];
+        document.getElementById("qCountText").innerText = `પ્રશ્ન: ${cur + 1} / ${questions.length} (વર્ષ: ${q.y})`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("progressFill").style.width = ((cur + 1) / questions.length * 100) + "%";
+        document.getElementById("questionText").innerText = q.q;
+        
+        const cont = document.getElementById("optionsContainer");
+        cont.innerHTML = "";
+        document.getElementById("feedbackBox").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        q.opts.forEach(opt => {
+            const b = document.createElement("button");
+            b.className = "option";
+            b.innerText = opt;
+            b.onclick = () => check(opt, q.ans, b);
+            cont.appendChild(b);
+        });
+    }
+
+    function check(sel, cor, b) {
+        const opts = document.querySelectorAll(".option");
+        opts.forEach(o => o.disabled = true);
+        const isRight = sel === cor;
+        history.push({ q: questions[cur].q, sel, cor, isRight, y: questions[cur].y });
+
+        if (isRight) { 
+            b.classList.add("correct"); 
+            score++; 
+        } else { 
+            b.classList.add("wrong"); 
+            opts.forEach(o => { if(o.innerText === cor) o.classList.add("correct"); });
+            const fb = document.getElementById("feedbackBox");
+            fb.innerHTML = `❌ ખોટો જવાબ!<br>✅ સાચો જવાબ: <span style="color:#1a5c31">${cor}</span>`;
+            fb.style.display = "block";
+        }
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNext() {
+        cur++;
+        if (cur < questions.length) showQ();
+        else showRes();
+    }
+
+    function showRes() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQ").innerText = questions.length;
+        
+        let h = "";
+        history.forEach((item, i) => {
+            h += `<div class="summary-item">
+                    <b>${i+1}. ${item.q} (${item.y})</b><br>
+                    <span style="color:${item.isRight ? '#00b894' : '#d63031'}; font-weight:600;">${item.isRight ? '✅' : '❌'} તમારો જવાબ: ${item.sel}</span><br>
+                    ${!item.isRight ? `<span style="color:#00b894; font-weight:600;">✅ સાચો જવાબ: ${item.cor}</span>` : ''}
+                  </div>`;
+        });
+        document.getElementById("summaryContainer").innerHTML = h;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - વિજ્ઞાન (પ્રકરણ ૫)</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        
+        /* રિઝલ્ટ અને સમરી માટે CSS */
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૫ : વનસ્પતિ અને પ્રાણીઓનું સંરક્ષણ</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 30</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">30</span></p>
+        
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">
+    બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા
+</div>
+
+<script>
+    const rawQuestions = [
+        { q: "જંગલોનો નાશ કરી પ્રાપ્ત જમીનનો અન્ય કાર્યો માટે ઉપયોગ કરવો તેને શું કહેવાય?", ans: "વનનાબૂદી", distractors: ["વનીકરણ", "રણ નિર્માણ", "જમીન ધોવાણ"] },
+        { q: "નીચેનામાંથી વનનાબૂદીનું કુદરતી કારણ કયું છે?", ans: "દાવાનળ / ભયંકર દુષ્કાળ", distractors: ["ખેતી", "કારખાના", "ઘર-બાંધકામ"] },
+        { q: "વનનાબૂદીના કારણે વાતાવરણમાં કયા ગ્રીનહાઉસ વાયુના સ્તરમાં વધારો થાય છે?", ans: "કાર્બન ડાયોક્સાઈડ - CO2", distractors: ["ઓક્સિજન", "નાઈટ્રોજન", "આર્ગોન"] },
+        { q: "પૃથ્વીના તાપમાનમાં વધારો થવાની ઘટનાને શું કહે છે?", ans: "ગ્લોબલ વોર્મિંગ", distractors: ["ગ્રીનહાઉસ અસર", "એસિડ વર્ષા", "ઓઝોન ગાબડું"] },
+        { q: "ભૂમિના ઉપરના પડો દૂર થવાથી નીચેના સખત પથ્થરોના સ્તરો દેખાય છે અને જમીન રણમાં ફેરવાય છે, આ પ્રક્રિયાને શું કહે છે?", ans: "રણ નિર્માણ", distractors: ["વનનાબૂદી", "ભૂસ્ખલન", "પૂર"] },
+        { q: "વનનાબૂદીથી જમીનની કઈ ક્ષમતામાં સૌથી મોટો ઘટાડો થાય છે?", ans: "જલધારણ ક્ષમતા / ફળદ્રુપતા", distractors: ["ખારાશ", "રંગ", "કદ"] },
+        { q: "વનનાબૂદીને કારણે પૃથ્વી પર શાના પ્રમાણમાં ઘટાડો થાય છે?", ans: "વરસાદમાં", distractors: ["તાપમાનમાં", "પ્રદૂષણમાં", "ગરમીમાં"] },
+        { q: "પૃથ્વી પર જોવા મળતા વિવિધ સજીવો, તેમની વચ્ચેનો આંતરસંબંધ અને પર્યાવરણ સાથેનો સંબંધ એટલે શું?", ans: "જૈવવિવિધતા / Biodiversity", distractors: ["નિવસનતંત્ર", "પર્યાવરણ", "વનસ્પતિશાસ્ત્ર"] },
+        { q: "વન્યજીવો અને તેમના નિવાસસ્થાનને માનવ ખલેલથી સુરક્ષિત રાખવા માટે કયા વિસ્તારો બનાવવામાં આવ્યા છે?", ans: "અભયારણ્ય, રાષ્ટ્રીય ઉદ્યાન, જૈવાવરણ આરક્ષિત વિસ્તાર", distractors: ["પ્રાણીસંગ્રહાલય", "સર્કસ", "વનસ્પતિ ઉદ્યાન"] },
+        { q: "પંચમઢી જૈવાવરણ આરક્ષિત વિસ્તાર કયા રાજ્યમાં આવેલો છે?", ans: "મધ્ય પ્રદેશ", distractors: ["ગુજરાત", "રાજસ્થાન", "મહારાષ્ટ્ર"] },
+        { q: "પંચમઢી જૈવાવરણ આરક્ષિત વિસ્તારમાં કયો રાષ્ટ્રીય ઉદ્યાન આવેલો છે?", ans: "સાતપુડા રાષ્ટ્રીય ઉદ્યાન", distractors: ["ગીર રાષ્ટ્રીય ઉદ્યાન", "કાઝીરંગા રાષ્ટ્રીય ઉદ્યાન", "જીમ કોર્બેટ"] },
+        { q: "પ્રાણીઓને તેમના કુદરતી નિવાસસ્થાનમાં સુરક્ષિત રાખતા વિસ્તારને શું કહે છે?", ans: "વન્યજીવ અભયારણ્ય", distractors: ["પ્રાણીસંગ્રહાલય", "એક્વેરિયમ", "પક્ષીઘર"] },
+        { q: "ભારતનો પ્રથમ આરક્ષિત જંગલ વિસ્તાર કયો છે?", ans: "સાતપુડા રાષ્ટ્રીય ઉદ્યાન", distractors: ["ગીર રાષ્ટ્રીય ઉદ્યાન", "કાન્હા રાષ્ટ્રીય ઉદ્યાન", "સુંદરવન"] },
+        { q: "કયા રાષ્ટ્રીય ઉદ્યાનમાં પ્રાચીન ખડકોના આશ્રયસ્થાન (રોક શેલ્ટર્સ) અને ગુફાચિત્રો જોવા મળે છે?", ans: "સાતપુડા", distractors: ["ગીર", "કાઝીરંગા", "બાંદીપુર"] },
+        { q: "કોઈ એક જ ક્ષેત્રમાં વિશિષ્ટ રૂપે જોવા મળતી વનસ્પતિ કે પ્રાણીઓની જાતિને શું કહેવાય છે?", ans: "સ્થાનિક જાતિ / Endemic Species", distractors: ["લુપ્ત જાતિ", "નાશપ્રાય જાતિ", "પ્રવાસી જાતિ"] },
+        { q: "સાલ અને જંગલી આંબો એ કયા વિસ્તારની સ્થાનિક વનસ્પતિ છે?", ans: "પંચમઢી જૈવાવરણ આરક્ષિત વિસ્તારની", distractors: ["ગીર જંગલની", "હિમાલયની", "થરના રણની"] },
+        { q: "ભારતીય મહાકાય ખિસકોલી અને ઊડતી ખિસકોલી એ શું છે?", ans: "સ્થાનિક પ્રાણીઓ", distractors: ["પ્રવાસી પ્રાણીઓ", "લુપ્ત પ્રાણીઓ", "પાલતુ પ્રાણીઓ"] },
+        { q: "જે પ્રાણીઓની સંખ્યા એક નિર્ધારિત સીમાથી ઓછી થઈ જાય અને લુપ્ત થવાનો ભય હોય તેને શું કહે છે?", ans: "નાશપ્રાય જાતિઓ / Endangered Species", distractors: ["સ્થાનિક જાતિ", "લુપ્ત જાતિ", "વિદેશી જાતિ"] },
+        { q: "ડાયનાસોર એ કયા પ્રકારની જાતિનું ઉદાહરણ છે?", ans: "લુપ્ત જાતિ / Extinct Species", distractors: ["સ્થાનિક જાતિ", "નાશપ્રાય જાતિ", "પાલતુ જાતિ"] },
+        { q: "ભારત સરકારે વાઘના સંરક્ષણ માટે કયો પ્રોજેક્ટ અમલમાં મૂક્યો છે?", ans: "પ્રોજેક્ટ ટાઈગર", distractors: ["પ્રોજેક્ટ લાયન", "સેવ ટાઈગર", "ટાઈગર રિઝર્વ"] },
+        { q: "નાશપ્રાય જાતિઓનો રેકોર્ડ કયા પુસ્તકમાં રાખવામાં આવે છે?", ans: "રેડ ડેટા બુક", distractors: ["ગ્રીન ડેટા બુક", "બ્લેક ડેટા બુક", "યલો ડેટા બુક"] },
+        { q: "ઋતુગત ફેરફારોને કારણે પક્ષીઓ ઈંડા મૂકવા માટે પોતાના મૂળ નિવાસસ્થાનથી ખૂબ દૂર ઉડીને જાય તેને શું કહે છે?", ans: "સ્થળાંતર / Migration", distractors: ["પ્રજનન", "અનુકૂલન", "સંરક્ષણ"] },
+        { q: "સાઈબેરિયન ક્રેન જેવા પક્ષીઓ ભારતમાં આવે છે, તેઓ કેવા પક્ષીઓ કહેવાય?", ans: "પ્રવાસી પક્ષીઓ / Migratory Birds", distractors: ["સ્થાનિક પક્ષીઓ", "પાલતુ પક્ષીઓ", "લુપ્ત પક્ષીઓ"] },
+        { q: "૧ ટન કાગળ મેળવવા માટે અંદાજિત કેટલા પૂર્ણ વિકસિત વૃક્ષો કાપવામાં આવે છે?", ans: "૧૭ વૃક્ષો", distractors: ["૧૦ વૃક્ષો", "૨૦ વૃક્ષો", "૫૦ વૃક્ષો"] },
+        { q: "આપણે એક કાગળનો કેટલી વાર ઉપયોગ/રિસાયકલ કરી શકીએ છીએ?", ans: "૫ થી ૭ વાર", distractors: ["૧ થી ૨ વાર", "૧૦ થી ૧૫ વાર", "ક્યારેય નહીં"] },
+        { q: "કાગળના બચાવથી વૃક્ષો ઉપરાંત કયા મહત્વના સંસાધનની મોટી બચત થાય છે?", ans: "પાણી અને ઊર્જા", distractors: ["કોલસો અને પેટ્રોલ", "હવા અને સૂર્યપ્રકાશ", "જમીન અને ખનિજ"] },
+        { q: "કપાયેલા વૃક્ષોના સ્થાને નવા વૃક્ષો વાવવાની પ્રક્રિયાને શું કહે છે?", ans: "પુનઃવનીકરણ / Reforestation", distractors: ["વનનાબૂદી", "રણ નિર્માણ", "કાપણી"] },
+        { q: "ભારતમાં જંગલ સંરક્ષણ અધિનિયમનો મુખ્ય ઉદ્દેશ શું છે?", ans: "પ્રાકૃતિક જંગલોની જાળવણી અને સંરક્ષણ કરવું", distractors: ["જંગલો કાપી નાખવા", "જંગલોમાં કારખાના બનાવવા", "માત્ર પ્રાણીઓનો શિકાર રોકવો"] },
+        { q: "કોઈ વિસ્તારની જૈવવિવિધતા જાળવી રાખવા માટે કયો વિસ્તાર મદદરૂપ થાય છે?", ans: "જૈવાવરણ આરક્ષિત વિસ્તાર / Biosphere Reserve", distractors: ["પ્રાણીસંગ્રહાલય", "શહેરી વિસ્તાર", "ખેતીલાયક જમીન"] },
+        { q: "લાકડાના વિકલ્પે કઈ વસ્તુનો ઉપયોગ વધારવાથી વનનાબૂદી ઘટાડી શકાય?", ans: "પ્લાસ્ટિક અથવા રિસાયકલ કરેલ વસ્તુઓ/બાયોગેસ", distractors: ["વધુ લાકડું કાપવું", "કાગળનો વધુ ઉપયોગ", "માત્ર કોલસો વાપરવો"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+
+        userAnswersData.push({
+            question: questions[currentIdx].q,
+            selected: selectedOpt,
+            correct: correctOpt,
+            isRight: isCorrect
+        });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) {
+                optBtn.dataset.isCorrect = "true";
+            }
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => {
+                if(optBtn.dataset.isCorrect === "true") {
+                    optBtn.classList.add("correct");
+                }
+            });
+            
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            
+            summaryHTML += `<div class="summary-item">
+                <p class="summary-q">${index + 1}. ${data.question}</p>
+                <p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+                
+            if (!data.isRight) {
+                summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            }
+            summaryHTML += `</div>`;
+        });
+        
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

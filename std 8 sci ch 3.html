@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - વિજ્ઞાન (પ્રકરણ ૩)</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        
+        /* રિઝલ્ટ અને સમરી માટે CSS */
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૩ : કોલસો અને પેટ્રોલિયમ</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 30</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">30</span></p>
+        
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">
+    બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા
+</div>
+
+<script>
+    const rawQuestions = [
+        { q: "મૃત વનસ્પતિના કોલસામાં રૂપાંતરણની ધીમી પ્રક્રિયાને શું કહે છે?", ans: "કાર્બોનાઇઝેશન", distractors: ["ઓક્સિડેશન", "રિડક્શન", "ગેલ્વેનાઇઝેશન"] },
+        { q: "કોલસાનો કયો પ્રકાર લગભગ શુદ્ધ કાર્બન છે?", ans: "કોક", distractors: ["કોલટાર", "કોલગેસ", "બિટ્યુમેન"] },
+        { q: "ડામરની ગોળી (નેપ્થલીન બોલ્સ) શેમાંથી બનાવવામાં આવે છે?", ans: "કોલટાર", distractors: ["કોક", "પેટ્રોલિયમ", "કેરોસીન"] },
+        { q: "પહેલાના સમયમાં લંડન અને ન્યૂયોર્કમાં રસ્તા પરની લાઈટ માટે કયા ગેસનો ઉપયોગ થતો હતો?", ans: "કોલગેસ", distractors: ["કુદરતી ગેસ", "બાયોગેસ", "હાઇડ્રોજન ગેસ"] },
+        { q: "સ્ટીલના ઉત્પાદનમાં કોલસાના કયા ઉત્પાદનનો ઉપયોગ થાય છે?", ans: "કોક", distractors: ["કોલટાર", "બિટ્યુમેન", "ડીઝલ"] },
+        { q: "કયા બળતણને 'કાળું સોનું' (Black Gold) તરીકે ઓળખવામાં આવે છે?", ans: "પેટ્રોલિયમ", distractors: ["કોલસો", "કુદરતી વાયુ", "ડામર"] },
+        { q: "પેટ્રોલિયમના વિવિધ ઘટકોને અલગ કરવાની પ્રક્રિયાને શું કહે છે?", ans: "શુદ્ધિકરણ / Refining", distractors: ["કાર્બોનાઇઝેશન", "આથવણ", "નિસ્યંદન"] },
+        { q: "પેટ્રોલિયમ શુદ્ધિકરણ ક્યાં કરવામાં આવે છે?", ans: "પેટ્રોલિયમ રિફાઇનરીમાં", distractors: ["થર્મલ પાવર સ્ટેશનમાં", "ખાણમાં", "કારખાનામાં"] },
+        { q: "રસોઈમાં વપરાતો પ્રવાહી ગેસ કયો છે?", ans: "LPG - લિક્વિફાઇડ પેટ્રોલિયમ ગેસ", distractors: ["CNG", "કોલગેસ", "બાયોગેસ"] },
+        { q: "ભારે વાહનો જેમ કે ટ્રક અને ટ્રેક્ટરમાં કયું બળતણ વપરાય છે?", ans: "ડીઝલ", distractors: ["પેટ્રોલ", "કેરોસીન", "CNG"] },
+        { q: "જેટ વિમાનમાં બળતણ તરીકે કયું તેલ વપરાય છે?", ans: "શુદ્ધ કરેલું કેરોસીન / એવિએશન ફ્યુઅલ", distractors: ["ડીઝલ", "પેટ્રોલ", "બિટ્યુમેન"] },
+        { q: "મીણબત્તી અને વેસેલીન બનાવવા માટે પેટ્રોલિયમનો કયો ઘટક વપરાય છે?", ans: "પેરાફિન મીણ", distractors: ["ડામર", "કોલટાર", "પેટ્રોલ"] },
+        { q: "રોડ બનાવવા માટે અત્યારે કયા પેટ્રોલિયમ ઘટકનો ઉપયોગ થાય છે?", ans: "બિટ્યુમેન", distractors: ["કોલટાર", "પેરાફિન મીણ", "કોક"] },
+        { q: "વાહનો માટે સૌથી ઓછું પ્રદૂષણ કરતું બળતણ કયું છે?", ans: "CNG - કોમ્પ્રેસ્ડ નેચરલ ગેસ", distractors: ["પેટ્રોલ", "ડીઝલ", "LPG"] },
+        { q: "યુરિયા ખાતર બનાવવા માટે કયા વાયુનો ઉપયોગ થાય છે?", ans: "હાઇડ્રોજન વાયુ", distractors: ["ઓક્સિજન", "નાઇટ્રોજન", "કાર્બન ડાયોક્સાઈડ"] },
+        { q: "કયા પ્રકારના સંસાધનો માનવીય પ્રવૃત્તિઓથી ખતમ થઈ શકે છે?", ans: "પુનઃ અપ્રાપ્ય / ખૂટી જાય તેવા", distractors: ["પુનઃ પ્રાપ્ય", "અક્ષય", "કુદરતી"] },
+        { q: "જંગલો, વન્યજીવો અને ખનિજો કેવા સંસાધનો છે?", ans: "પુનઃ અપ્રાપ્ય", distractors: ["પુનઃ પ્રાપ્ય", "માનવનિર્મિત", "અક્ષય"] },
+        { q: "સૂર્યપ્રકાશ અને હવા કેવા સંસાધનો છે?", ans: "પુનઃ પ્રાપ્ય / અક્ષય", distractors: ["પુનઃ અપ્રાપ્ય", "માનવનિર્મિત", "ખૂટી જાય તેવા"] },
+        { q: "કોલસો અને પેટ્રોલિયમ બનવા માટે કેટલો સમય લાગે છે?", ans: "લાખો વર્ષ", distractors: ["થોડા મહિના", "થોડા વર્ષ", "હજારો વર્ષ"] },
+        { q: "અશ્મિ બળતણના સળગવાથી કયો વાયુ ઉત્પન્ન થાય છે જે ગ્લોબલ વોર્મિંગ માટે જવાબદાર છે?", ans: "કાર્બન ડાયોક્સાઈડ - CO2", distractors: ["ઓક્સિજન", "નાઇટ્રોજન", "હાઇડ્રોજન"] },
+        { q: "PCRA નું પૂરું નામ શું છે?", ans: "Petroleum Conservation Research Association", distractors: ["Pollution Control Research Agency", "Petroleum Control and Refining Association", "Public Conservation Reserve Authority"] },
+        { q: "ભારતમાં પેટ્રોલ અને ડીઝલની બચત કરવાની સલાહ કઈ સંસ્થા આપે છે?", ans: "PCRA", distractors: ["ISRO", "WHO", "GPCB"] },
+        { q: "વિશ્વનો પ્રથમ તેલનો કૂવો ક્યાં ખોદવામાં આવ્યો હતો?", ans: "અમેરિકા - પેન્સિલવેનિયા", distractors: ["રશિયા - સાઇબિરીયા", "ભારત - આસામ", "સાઉદી અરેબિયા"] },
+        { q: "ભારતમાં સૌથી પહેલા તેલ ક્યાંથી મળી આવ્યું હતું?", ans: "આસામ - માકુમ", distractors: ["ગુજરાત - અંકલેશ્વર", "મહારાષ્ટ્ર - બોમ્બે હાઈ", "રાજસ્થાન"] },
+        { q: "ગુજરાતમાં કઈ જગ્યાએથી ખનીજ તેલ મળી આવે છે?", ans: "અંકલેશ્વર અને ખંભાત", distractors: ["કચ્છ અને જામનગર", "સુરત અને નવસારી", "રાજકોટ અને મોરબી"] },
+        { q: "અશ્મિ બળતણ એટલે શું?", ans: "સજીવોના મૃતદેહોના અવશેષોમાંથી બનેલા બળતણ", distractors: ["લાકડામાંથી બનેલા બળતણ", "સૂર્યપ્રકાશમાંથી બનેલા બળતણ", "રસાયણોમાંથી બનેલા બળતણ"] },
+        { q: "કોલસાના સળગવાથી કયો વાયુ મુખ્યત્વે ઉત્પન્ન થાય છે?", ans: "કાર્બન ડાયોક્સાઈડ", distractors: ["ઓક્સિજન", "હાઇડ્રોજન", "નાઇટ્રોજન"] },
+        { q: "પેટ્રોકેમિકલ્સ કોને કહેવાય?", ans: "પેટ્રોલિયમ અને કુદરતી વાયુમાંથી મેળવાતા ઉપયોગી પદાર્થો", distractors: ["કોલસામાંથી બનતા પદાર્થો", "લાકડામાંથી બનતા પદાર્થો", "પ્લાસ્ટિકના પદાર્થો"] },
+        { q: "પેટ્રોલિયમ ક્યાંથી મળી આવે છે?", ans: "સમુદ્રના તળિયે ખડકોની વચ્ચેથી", distractors: ["નદીના તળિયેથી", "પર્વતોની ટોચ પરથી", "જંગલોમાંથી"] },
+        { q: "સૂર્યપ્રકાશ એ કેવું સંસાધન છે?", ans: "અક્ષય / પુનઃ પ્રાપ્ય", distractors: ["પુનઃ અપ્રાપ્ય", "માનવનિર્મિત", "ખૂટી જાય તેવું"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+
+        userAnswersData.push({
+            question: questions[currentIdx].q,
+            selected: selectedOpt,
+            correct: correctOpt,
+            isRight: isCorrect
+        });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) {
+                optBtn.dataset.isCorrect = "true";
+            }
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => {
+                if(optBtn.dataset.isCorrect === "true") {
+                    optBtn.classList.add("correct");
+                }
+            });
+            
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            
+            summaryHTML += `<div class="summary-item">
+                <p class="summary-q">${index + 1}. ${data.question}</p>
+                <p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+                
+            if (!data.isRight) {
+                summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            }
+            summaryHTML += `</div>`;
+        });
+        
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

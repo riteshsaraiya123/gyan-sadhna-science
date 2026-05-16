@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - વિજ્ઞાન (પ્રકરણ ૮)</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        
+        /* રિઝલ્ટ અને સમરી માટે CSS */
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૮ : બળ અને દબાણ</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 50</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">50</span></p>
+        
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">
+    બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા
+</div>
+
+<script>
+    const rawQuestions = [
+        { q: "પદાર્થ પરની ધક્કો મારવાની કે ખેંચવાની ક્રિયાને વિજ્ઞાનની ભાષામાં શું કહે છે?", ans: "બળ / Force", distractors: ["દબાણ", "ઘર્ષણ", "વેગ"] },
+        { q: "બળની સંપૂર્ણ રજૂઆત કરવા માટે કઈ બે બાબતોની જરૂર પડે છે?", ans: "બળનું મૂલ્ય અને દિશા", distractors: ["માત્ર મૂલ્ય", "માત્ર દિશા", "કદ અને આકાર"] },
+        { q: "બળનો આંતરરાષ્ટ્રીય (SI) એકમ કયો છે?", ans: "ન્યૂટન / Newton", distractors: ["પાસ્કલ / Pascal", "જૂલ / Joule", "વોટ / Watt"] },
+        { q: "જ્યારે પદાર્થ પર બે બળો એક જ દિશામાં લાગતા હોય, ત્યારે પરિણામી બળ કેટલું થાય?", ans: "બંને બળોના સરવાળા જેટલું", distractors: ["બંને બળોના તફાવત જેટલું", "શૂન્ય", "બંને બળોના ગુણાકાર જેટલું"] },
+        { q: "જ્યારે પદાર્થ પર પરસ્પર વિરુદ્ધ દિશામાં બે સમાન બળો લાગે, ત્યારે પરિણામી બળ કેટલું થાય?", ans: "શૂન્ય", distractors: ["બમણું", "અડધું", "અનંત"] },
+        { q: "જ્યારે પરિણામી બળ શૂન્ય હોય ત્યારે સ્થિર પદાર્થની સ્થિતિમાં શું ફેરફાર થાય?", ans: "પદાર્થ સ્થિર જ રહે છે", distractors: ["પદાર્થ ગતિમાં આવે છે", "પદાર્થની દિશા બદલાય છે", "પદાર્થનો આકાર બદલાય છે"] },
+        { q: "રબરના દડાને બે હાથ વચ્ચે દબાવવાથી શેમાં ફેરફાર થાય છે?", ans: "દડાના આકારમાં", distractors: ["દડાના વજનમાં", "દડાના રંગમાં", "દડાની દિશામાં"] },
+        { q: "બળ લગાડવા માટે જ્યારે પદાર્થ સાથે શારીરિક સંપર્ક જરૂરી હોય, ત્યારે તેને કેવું બળ કહેવાય?", ans: "સંપર્ક બળ", distractors: ["અસંપર્ક બળ", "ગુરુત્વાકર્ષણ બળ", "ચુંબકીય બળ"] },
+        { q: "પાણી ભરેલી ડોલ ઊંચકવા કે સ્કૂલબેગ ઉપાડવા માટે કયા બળનો ઉપયોગ થાય છે?", ans: "સ્નાયુબળ", distractors: ["ઘર્ષણ બળ", "ચુંબકીય બળ", "સ્થિર વિદ્યુત બળ"] },
+        { q: "બળદગાડું ખેંચવા માટે પ્રાણીઓ કયા બળનો ઉપયોગ કરે છે?", ans: "સ્નાયુબળ", distractors: ["ઘર્ષણ બળ", "ગુરુત્વાકર્ષણ બળ", "યાંત્રિક બળ"] },
+        { q: "ગતિમાન દડાને જમીન પર ગબડાવતા તે થોડીવાર પછી શા માટે આપમેળે ઊભો રહી જાય છે?", ans: "ઘર્ષણ બળના કારણે", distractors: ["ગુરુત્વાકર્ષણ બળના કારણે", "સ્નાયુબળના કારણે", "ચુંબકીય બળના કારણે"] },
+        { q: "ઘર્ષણ બળ હંમેશા ગતિની કઈ દિશામાં લાગે છે?", ans: "ગતિની વિરુદ્ધ દિશામાં", distractors: ["ગતિની જ દિશામાં", "લંબ દિશામાં", "કોઈ પણ દિશામાં"] },
+        { q: "ઘર્ષણ બળ એ કયા પ્રકારના બળનું ઉદાહરણ છે?", ans: "સંપર્ક બળ", distractors: ["અસંપર્ક બળ", "ગુરુત્વાકર્ષણ બળ", "સ્થિર વિદ્યુત બળ"] },
+        { q: "ચુંબક દ્વારા લોખંડની ખીલીઓ પર લાગતું બળ કયા પ્રકારનું છે?", ans: "અસંપર્ક બળ", distractors: ["સંપર્ક બળ", "ઘર્ષણ બળ", "સ્નાયુબળ"] },
+        { q: "પ્લાસ્ટિકની સ્ટ્રોને કાગળ સાથે ઘસીને બીજી સ્ટ્રો પાસે લાવતા કયું બળ ઉત્પન્ન થાય છે?", ans: "સ્થિર વિદ્યુત બળ / Electrostatic Force", distractors: ["ચુંબકીય બળ", "ગુરુત્વાકર્ષણ બળ", "ઘર્ષણ બળ"] },
+        { q: "ઝાડ પરથી ફળ તૂટીને હંમેશા નીચે જ શા માટે પડે છે?", ans: "ગુરુત્વાકર્ષણ બળના કારણે", distractors: ["ઘર્ષણ બળના કારણે", "ચુંબકીય બળના કારણે", "સ્નાયુબળના કારણે"] },
+        { q: "બ્રહ્માંડમાં આવેલા તમામ પદાર્થો એકબીજા પર કયું બળ લગાડે છે?", ans: "ગુરુત્વાકર્ષણ બળ", distractors: ["ચુંબકીય બળ", "ઘર્ષણ બળ", "સ્થિર વિદ્યુત બળ"] },
+        { q: "એકમ ક્ષેત્રફળ દીઠ લાગતા બળને શું કહે છે?", ans: "દબાણ / Pressure", distractors: ["બળ", "ઘર્ષણ", "વેગ"] },
+        { q: "દબાણ (Pressure - p) શોધવાનું સૂત્ર કયું છે?", ans: "p = બળ (F) / ક્ષેત્રફળ (A)", distractors: ["p = બળ (F) × ક્ષેત્રફળ (A)", "p = ક્ષેત્રફળ (A) / બળ (F)", "p = બળ (F) + ક્ષેત્રફળ (A)"] },
+        { q: "જો બળ સમાન હોય, તો સંપર્ક ક્ષેત્રફળ ઘટવાથી દબાણમાં શું ફેરફાર થાય છે?", ans: "દબાણ વધે છે", distractors: ["દબાણ ઘટે છે", "દબાણ શૂન્ય થાય છે", "કોઈ ફેરફાર થતો નથી"] },
+        { q: "ભારે સામાન ઊંચકનાર મજૂરો (કુલી) પોતાના માથા પર કાપડનો ગોળ વીંટો કેમ રાખે છે?", ans: "સંપર્ક ક્ષેત્રફળ વધારવા, જેથી માથા પર દબાણ ઘટે", distractors: ["સુંદર દેખાવા માટે", "માથાને ગરમ રાખવા", "સામાન સરકી ન જાય એટલે"] },
+        { q: "સ્કૂલ બેગની પટ્ટીઓ પહોળી શા માટે રાખવામાં આવે છે?", ans: "ખભા પર ક્ષેત્રફળ વધારીને દબાણ ઘટાડવા", distractors: ["બેગ સુંદર દેખાય તે માટે", "બેગનું વજન ઘટાડવા", "બેગ મજબૂત બનાવવા"] },
+        { q: "લોખંડની ખીલીનો આગળનો ભાગ અણીદાર અને ટાંકણીનો ભાગ તીક્ષ્ણ કેમ હોય છે?", ans: "ક્ષેત્રફળ ઘટાડીને દબાણ વધારવા માટે", distractors: ["ક્ષેત્રફળ વધારીને દબાણ ઘટાડવા", "પકડવા માટે સરળ રહે", "કાટ ન લાગે તે માટે"] },
+        { q: "પ્રવાહી પદાર્થો પાત્રની દીવાલ પર શું લગાડે છે?", ans: "દબાણ", distractors: ["ઘર્ષણ બળ", "ગુરુત્વાકર્ષણ બળ", "તાપમાન"] },
+        { q: "પાણીની ઊંડાઈ વધવાની સાથે પ્રવાહીના દબાણમાં શું ફેરફાર થાય છે?", ans: "દબાણ વધે છે", distractors: ["દબાણ ઘટે છે", "દબાણ શૂન્ય થઈ જાય છે", "દબાણ સમાન રહે છે"] },
+        { q: "પાત્રના તળિયે એક જ સમાન ઊંડાઈ પર પ્રવાહી દ્વારા લાગતું દબાણ કેવું હોય છે?", ans: "સમાન હોય છે", distractors: ["અલગ-અલગ હોય છે", "શૂન્ય હોય છે", "અનંત હોય છે"] },
+        { q: "આપણી ચારે બાજુ આવેલા હવાના આવરણને શું કહે છે?", ans: "વાતાવરણ", distractors: ["જલાવરણ", "મૃદાવરણ", "જીવાવરણ"] },
+        { q: "વાતાવરણમાં રહેલી હવા વડે લાગતા દબાણને શું કહેવાય છે?", ans: "વાતાવરણનું દબાણ / Atmospheric Pressure", distractors: ["પ્રવાહી દબાણ", "ઘર્ષણ બળ", "ગુરુત્વાકર્ષણ"] },
+        { q: "રબરના ચૂસક (Sucker) ને દીવાલ પર દબાવતા તે દીવાલ સાથે કેમ ચોંટી જાય છે?", ans: "વાતાવરણના દબાણને કારણે", distractors: ["ગુંદરના કારણે", "ગુરુત્વાકર્ષણ બળના કારણે", "ચુંબકીય બળના કારણે"] },
+        { q: "પર્વતો પર ખૂબ ઊંચાઈએ જતાં વાતાવરણના દબાણમાં શું ફેરફાર થાય છે?", ans: "વાતાવરણનું દબાણ ઘટે છે", distractors: ["વાતાવરણનું દબાણ વધે છે", "વાતાવરણનું દબાણ સમાન રહે છે", "દબાણ બમણું થાય છે"] },
+        { q: "વાતાવરણનું દબાણ માપવા માટે કયા સાધનનો ઉપયોગ થાય છે?", ans: "બેરોમીટર", distractors: ["થર્મોમીટર", "લેક્ટોમીટર", "સ્પીડોમીટર"] },
+        { q: "પ્રવાહીનું દબાણ માપવા માટે વિજ્ઞાન પ્રયોગશાળામાં કયું સાધન વપરાય છે?", ans: "મેનોમીટર / Manometer", distractors: ["બેરોમીટર", "ગેલ્વેનોમીટર", "થર્મોમીટર"] },
+        { q: "વસ્તુ પર લાગતું બળ કે વસ્તુનું વજન માપવા માટે કયું સાધન વપરાય છે?", ans: "સ્પ્રિંગ કાંટો / Spring Balance", distractors: ["ત્રાજવું", "માપપટ્ટી", "બેરોમીટર"] },
+        { q: "દબાણનો SI એકમ 'ન્યૂટન/મીટર²' ($N/m^2$) છે, તેને બીજા કયા નામે ઓળખવામાં આવે છે?", ans: "પાસ્કલ / Pascal - Pa", distractors: ["જૂલ", "વોટ", "એમ્પીયર"] },
+        { q: "જો 100 ન્યૂટન (N) બળ 2 ચોરસ મીટર ($m^2$) ક્ષેત્રફળ પર લાગતું હોય, તો દબાણ કેટલું થશે?", ans: "50 પાસ્કલ", distractors: ["200 પાસ્કલ", "100 પાસ્કલ", "25 પાસ્કલ"] },
+        { q: "પર્વતો પર ખૂબ ઊંચાઈએ જતાં કેટલાક લોકોના નાકમાંથી લોહી કેમ નીકળવા લાગે છે?", ans: "બહારનું વાતાવરણનું દબાણ ઘટી જવાથી અને શરીરની અંદરનું રુધિરનું દબાણ વધુ હોવાથી", distractors: ["ઠંડીના કારણે", "ગરમીના કારણે", "ઓક્સિજન વધી જવાથી"] },
+        { q: "ડ્રોપર (Dropper) નો રબરનો બલ્બ દબાવીને છોડતા તેમાં પ્રવાહી કેમ ભરાય છે?", ans: "વાતાવરણના દબાણને કારણે", distractors: ["ગુરુત્વાકર્ષણને કારણે", "પ્રવાહીના વજનને કારણે", "સ્નાયુબળને કારણે"] },
+        { q: "આપણે જ્યુસ કે નાળિયેર પાણી પીવા માટે સ્ટ્રો (Straw) નો ઉપયોગ કરીએ છીએ, તે કયા સિદ્ધાંત પર કામ કરે છે?", ans: "વાતાવરણના દબાણ પર", distractors: ["ગુરુત્વાકર્ષણના સિદ્ધાંત પર", "ઘર્ષણના સિદ્ધાંત પર", "ચુંબકત્વ પર"] },
+        { q: "મેગ્ડેબર્ગ (Magdeburg) ના અર્ધગોળાઓનો ઐતિહાસિક પ્રયોગ કયા વૈજ્ઞાનિકે કર્યો હતો?", ans: "ઓટો વોન ગેરિક / Otto von Guericke", distractors: ["આઇઝેક ન્યૂટન", "ગેલિલિયો", "આર્કિમિડીઝ"] },
+        { q: "મેગ્ડેબર્ગના પ્રયોગમાં તાંબાના બે અર્ધગોળાઓની વચ્ચેથી હવા કાઢી લેતાં તેમને ઘોડાઓ પણ કેમ ખેંચી ન શક્યા?", ans: "બહારથી લાગતા વાતાવરણના પ્રચંડ દબાણને કારણે અર્ધગોળાઓ ચોંટી ગયા હતા", distractors: ["ચુંબકીય બળના કારણે", "ગુરુત્વાકર્ષણને કારણે", "અર્ધગોળાઓનું વજન ખૂબ વધારે હતું"] },
+        { q: "ઊંટ રણમાં સરળતાથી ચાલી કે દોડી શકે છે તેનું વૈજ્ઞાનિક કારણ શું છે?", ans: "તેના પગના તળિયા પહોળા હોવાથી રેતી પર દબાણ ઘટે છે", distractors: ["તેના પગ લાંબા હોય છે", "તેને પાણી પીવાની જરૂર પડતી નથી", "તેનું વજન ઓછું હોય છે"] },
+        { q: "કાપવાની કે કાણાં પાડવાની વસ્તુઓ (જેમ કે છરી, કુહાડી) ની ધાર હંમેશા તીક્ષ્ણ કેમ રાખવામાં આવે છે?", ans: "સંપર્ક ક્ષેત્રફળ ઘટાડીને દબાણ વધારવા માટે", distractors: ["વસ્તુને સુંદર બનાવવા", "કાટ ન લાગે તે માટે", "વજન ઘટાડવા માટે"] },
+        { q: "ટ્રેક્ટરના પાછળના ટાયરો મોટા અને પહોળા શા માટે હોય છે?", ans: "જમીન પર દબાણ ઘટાડવા જેથી ટાયર કાદવમાં ખૂંપી ન જાય", distractors: ["ટ્રેક્ટરની ઝડપ વધારવા", "ટ્રેક્ટરને સુંદર દેખાડવા", "ઓછું ડીઝલ વપરાય તે માટે"] },
+        { q: "બહુમાળી ઈમારતોનો પાયો હંમેશા ખૂબ જ પહોળો શા માટે રાખવામાં આવે છે?", ans: "ઈમારતનું વજન મોટા ક્ષેત્રફળ પર વહેંચાઈ જાય અને જમીન પર દબાણ ઘટે", distractors: ["વધુ લોકો રહી શકે", "ઈમારત ઊંચી બને", "સુંદર દેખાય"] },
+        { q: "પાણીથી ભરેલી પ્લાસ્ટિકની બોટલમાં સૌથી વધુ દબાણ ક્યાં લાગશે?", ans: "સૌથી નીચે તળિયે", distractors: ["સૌથી ઉપરના ભાગમાં", "વચ્ચેના ભાગમાં", "બધે જ સમાન"] },
+        { q: "બોટલમાં એકસરખી ઊંચાઈએ કાણાં પાડવામાં આવે તો પાણી બહાર ફેંકાવાનું અંતર કેવું હશે?", ans: "બધી જ દિશામાં સમાન અંતરે ફેંકાશે", distractors: ["અલગ-અલગ અંતરે ફેંકાશે", "નીચેની તરફ ફેંકાશે નહીં", "માત્ર ઉપરની તરફ જશે"] },
+        { q: "સમાન ઊંડાઈએ પ્રવાહી પાત્રની ચારેય દીવાલો પર કેવું દબાણ લગાડે છે?", ans: "એકસરખું / સમાન", distractors: ["અસમાન", "શૂન્ય", "અનંત"] },
+        { q: "ફુગ્ગામાં હવા ભરતા તે કેમ ફૂલે છે અને બધી બાજુથી ગોળ કેમ બને છે?", ans: "વાયુઓ પાત્રની તમામ દીવાલો પર સમાન દબાણ લગાડે છે", distractors: ["રબર ખેંચાય છે માટે", "હવા હલકી છે માટે", "ગુરુત્વાકર્ષણને કારણે"] },
+        { q: "જ્યારે કોઈ પદાર્થ પર લાગતા બળની દિશા બદલવામાં આવે, ત્યારે પદાર્થમાં શું ફેરફાર થાય છે?", ans: "તેની ગતિની દિશા અને અવસ્થા બદલાય છે", distractors: ["તેનો આકાર બદલાય છે", "તેનું વજન બદલાય છે", "તેનું કદ બદલાય છે"] },
+        { q: "ચુંબકના બે સમાન ધ્રુવો (N-N અથવા S-S) વચ્ચે કયું બળ લાગે છે?", ans: "અપાકર્ષણ બળ", distractors: ["આકર્ષણ બળ", "ઘર્ષણ બળ", "ગુરુત્વાકર્ષણ બળ"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+
+        userAnswersData.push({
+            question: questions[currentIdx].q,
+            selected: selectedOpt,
+            correct: correctOpt,
+            isRight: isCorrect
+        });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) {
+                optBtn.dataset.isCorrect = "true";
+            }
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => {
+                if(optBtn.dataset.isCorrect === "true") {
+                    optBtn.classList.add("correct");
+                }
+            });
+            
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            
+            summaryHTML += `<div class="summary-item">
+                <p class="summary-q">${index + 1}. ${data.question}</p>
+                <p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+                
+            if (!data.isRight) {
+                summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            }
+            summaryHTML += `</div>`;
+        });
+        
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

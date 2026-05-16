@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - વિજ્ઞાન (પ્રકરણ ૬)</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        
+        /* રિઝલ્ટ અને સમરી માટે CSS */
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૬ : પ્રાણીઓમાં પ્રજનન</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 30</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">30</span></p>
+        
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">
+    બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા
+</div>
+
+<script>
+    const rawQuestions = [
+        { q: "પ્રજનનના મુખ્ય કેટલા પ્રકાર છે?", ans: "બે - લિંગી અને અલિંગી પ્રજનન", distractors: ["ત્રણ", "ચાર", "માત્ર એક"] },
+        { q: "મનુષ્યમાં નર પ્રજનન અંગો કયા કયા છે?", ans: "એક જોડ શુક્રપિંડ, બે શુક્રવાહિની અને એક શિશ્ન", distractors: ["અંડપિંડ અને ગર્ભાશય", "માત્ર શુક્રપિંડ", "ફેફસાં અને હૃદય"] },
+        { q: "શુક્રપિંડમાંથી કયા નર પ્રજનન કોષો ઉત્પન્ન થાય છે?", ans: "શુક્રકોષો", distractors: ["અંડકોષો", "રક્તકણો", "શ્વેતકણો"] },
+        { q: "માદા પ્રજનન અંગો કયા કયા છે?", ans: "એક જોડ અંડપિંડ, અંડવાહિનીઓ અને ગર્ભાશય", distractors: ["શુક્રપિંડ અને શિશ્ન", "માત્ર અંડપિંડ", "મૂત્રપિંડ અને મૂત્રાશય"] },
+        { q: "માદામાં અંડપિંડમાંથી દર મહિને શું મુક્ત થાય છે?", ans: "અંડકોષ", distractors: ["શુક્રકોષ", "અંતઃસ્ત્રાવ", "રક્તકણ"] },
+        { q: "શુક્રકોષ અને અંડકોષ બંને કેવા કોષો છે?", ans: "એકકોષીય", distractors: ["બહુકોષીય", "ત્રિકોષીય", "અકોષીય"] },
+        { q: "શુક્રકોષ અને અંડકોષના જોડાણની પ્રક્રિયાને શું કહે છે?", ans: "ફલન / Fertilization", distractors: ["વિભાજન", "પ્રજનન", "શ્વસન"] },
+        { q: "ફલનના પરિણામે શાનું નિર્માણ થાય છે?", ans: "યુગ્મનજ / Zygote", distractors: ["શુક્રકોષ", "અંડકોષ", "ભ્રૂણ"] },
+        { q: "જે ફલન માદાના શરીરની અંદર થતું હોય તેને શું કહેવાય?", ans: "અંતઃફલન", distractors: ["બાહ્ય ફલન", "કૃત્રિમ ફલન", "અર્ધફલન"] },
+        { q: "મનુષ્ય, ગાય અને કૂતરામાં કયા પ્રકારનું ફલન થાય છે?", ans: "અંતઃફલન", distractors: ["બાહ્ય ફલન", "અલિંગી ફલન", "દ્વિભાજન"] },
+        { q: "જે ફલન માદાના શરીરની બહાર (સામાન્ય રીતે પાણીમાં) થાય તેને શું કહેવાય?", ans: "બાહ્ય ફલન", distractors: ["અંતઃફલન", "આંતરિક ફલન", "કૃત્રિમ ફલન"] },
+        { q: "દેડકા, માછલી અને સ્ટારફિશ જેવા જળચર પ્રાણીઓમાં કયું ફલન જોવા મળે છે?", ans: "બાહ્ય ફલન", distractors: ["અંતઃફલન", "અર્ધફલન", "એકકોષીય ફલન"] },
+        { q: "IVF નું પૂરું નામ શું છે?", ans: "ઇન વિટ્રો ફર્ટિલાઇઝેશન - શરીરની બહાર થતું ફલન", distractors: ["ઇન વિવો ફર્ટિલાઇઝેશન", "ઇન્ટરનલ વિટ્રો ફલન", "ઇન્ડિયન વાઇરલ ફાઉન્ડેશન"] },
+        { q: "IVF પદ્ધતિ દ્વારા જન્મેલા બાળકને સામાન્ય રીતે શું કહેવામાં આવે છે?", ans: "ટેસ્ટ ટ્યુબ બેબી", distractors: ["ક્લોન બેબી", "નેચરલ બેબી", "સુપર બેબી"] },
+        { q: "મનુષ્યમાં યુગ્મનજનું વિભાજન થઈને બનેલી રચના ગર્ભાશયની દીવાલમાં સ્થાપિત થાય છે, તેને શું કહે છે?", ans: "ગર્ભ / Embryo", distractors: ["શુક્રકોષ", "અંડકોષ", "પ્યુપા"] },
+        { q: "ગર્ભની એવી અવસ્થા કે જેમાં શરીરના બધા જ અંગોની ઓળખ થઈ શકે તેને શું કહેવાય?", ans: "ભ્રૂણ / Foetus", distractors: ["યુગ્મનજ", "ગર્ભ", "શિશુ"] },
+        { q: "જે પ્રાણીઓ સીધા જ બચ્ચાને જન્મ આપે છે તેમને કેવા પ્રાણીઓ કહેવાય છે?", ans: "અપત્યપ્રસવી પ્રાણીઓ / Viviparous", distractors: ["અંડપ્રસવી પ્રાણીઓ", "જળચર પ્રાણીઓ", "ઉભયજીવી પ્રાણીઓ"] },
+        { q: "ગાય, કૂતરો અને મનુષ્ય એ કેવા પ્રાણીઓના ઉદાહરણ છે?", ans: "અપત્યપ્રસવી પ્રાણીઓ", distractors: ["અંડપ્રસવી પ્રાણીઓ", "અપૃષ્ઠવંશી પ્રાણીઓ", "સરીસૃપ"] },
+        { q: "જે પ્રાણીઓ ઈંડા મૂકે છે તેમને કેવા પ્રાણીઓ કહેવાય છે?", ans: "અંડપ્રસવી પ્રાણીઓ / Oviparous", distractors: ["અપત્યપ્રસવી પ્રાણીઓ", "સસ્તન પ્રાણીઓ", "નિશાચર પ્રાણીઓ"] },
+        { q: "મરઘી, દેડકો, ગરોળી અને પતંગિયું કેવા પ્રાણીઓ છે?", ans: "અંડપ્રસવી પ્રાણીઓ", distractors: ["અપત્યપ્રસવી પ્રાણીઓ", "સસ્તન પ્રાણીઓ", "એકકોષીય પ્રાણીઓ"] },
+        { q: "રેશમના કીડાના જીવનચક્રનો સાચો ક્રમ કયો છે?", ans: "ઈંડું → લાર્વા (ઈયળ) → પ્યુપા → પુખ્ત કીડો", distractors: ["ઈંડું → પ્યુપા → લાર્વા → કીડો", "પ્યુપા → ઈંડું → લાર્વા → કીડો", "લાર્વા → પ્યુપા → ઈંડું → કીડો"] },
+        { q: "ટેડપોલનું રૂપાંતર પુખ્ત દેડકામાં થવાની પ્રક્રિયાને શું કહે છે?", ans: "કાયાંતરણ / Metamorphosis", distractors: ["ફલન", "પ્રજનન", "વિભાજન"] },
+        { q: "જે પ્રજનનમાં માત્ર એક જ પિતૃ ભાગ લેતો હોય તેને કેવું પ્રજનન કહેવાય?", ans: "અલિંગી પ્રજનન", distractors: ["લિંગી પ્રજનન", "અંતઃફલન", "બાહ્ય ફલન"] },
+        { q: "હાઇડ્રામાં કયા પ્રકારનું અલિંગી પ્રજનન જોવા મળે છે?", ans: "કલિકાસર્જન / Budding", distractors: ["દ્વિભાજન", "બહુભાજન", "અવખંડન"] },
+        { q: "અમીબામાં કયા પ્રકારનું અલિંગી પ્રજનન જોવા મળે છે?", ans: "દ્વિભાજન / Binary Fission", distractors: ["કલિકાસર્જન", "બીજાણુ નિર્માણ", "અવખંડન"] },
+        { q: "અમીબામાં દ્વિભાજનની શરૂઆત કોના વિભાજનથી થાય છે?", ans: "કોષકેન્દ્રના વિભાજનથી", distractors: ["કોષરસના વિભાજનથી", "કોષદીવાલના વિભાજનથી", "રસધાનીના વિભાજનથી"] },
+        { q: "કોઈ કોષ, જીવંત ભાગ કે સંપૂર્ણ પ્રાણીની આબેહૂબ નકલ બનાવવાની પ્રક્રિયાને શું કહે છે?", ans: "ક્લોનિંગ / Cloning", distractors: ["ફલન", "કાયાંતરણ", "કલિકાસર્જન"] },
+        { q: "વિશ્વમાં સૌપ્રથમ સફળ ક્લોનિંગ કયા પ્રાણીનું કરવામાં આવ્યું હતું?", ans: "ઘેટું", distractors: ["ગાય", "વાંદરો", "કૂતરો"] },
+        { q: "પ્રથમ ક્લોન થયેલા ઘેટાનું નામ શું રાખવામાં આવ્યું હતું?", ans: "ડૉલી / Dolly", distractors: ["મોલી", "પોલી", "લ્યુસી"] },
+        { q: "ડૉલી ઘેટાનું ક્લોનિંગ કયા વૈજ્ઞાનિકે કર્યું હતું?", ans: "ઇયાન વિલ્મટ અને તેમના સાથીઓએ", distractors: ["લુઈ પાશ્ચર", "એડવર્ડ જેનર", "એલેક્ઝાન્ડર ફ્લેમિંગ"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+
+        userAnswersData.push({
+            question: questions[currentIdx].q,
+            selected: selectedOpt,
+            correct: correctOpt,
+            isRight: isCorrect
+        });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) {
+                optBtn.dataset.isCorrect = "true";
+            }
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => {
+                if(optBtn.dataset.isCorrect === "true") {
+                    optBtn.classList.add("correct");
+                }
+            });
+            
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            
+            summaryHTML += `<div class="summary-item">
+                <p class="summary-q">${index + 1}. ${data.question}</p>
+                <p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+                
+            if (!data.isRight) {
+                summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            }
+            summaryHTML += `</div>`;
+        });
+        
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

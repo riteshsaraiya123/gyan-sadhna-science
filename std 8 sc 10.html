@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - વિજ્ઞાન (પ્રકરણ ૧૦)</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        
+        /* રિઝલ્ટ અને સમરી માટે CSS */
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૧૦ : ધ્વનિ</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 50</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">50</span></p>
+        
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">
+    બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા
+</div>
+
+<script>
+    const rawQuestions = [
+        { q: "કોઈપણ પદાર્થમાં ધ્વનિ કેવી રીતે ઉત્પન્ન થાય છે?", ans: "પદાર્થના કંપનથી", distractors: ["પદાર્થના વજનથી", "પદાર્થના રંગથી", "પદાર્થના આકારથી"] },
+        { q: "પદાર્થની આગળ-પાછળ કે ઉપર-નીચે થતી ઝડપી ગતિને શું કહે છે?", ans: "કંપન / Vibration", distractors: ["પરિભ્રમણ", "વેગ", "સ્થાનાંતર"] },
+        { q: "ધ્વનિ એક જગ્યાએથી બીજી જગ્યાએ જવા માટે શેની જરૂર પડે છે?", ans: "માધ્યમની", distractors: ["પ્રકાશની", "શૂન્યાવકાશની", "ચુંબકત્વની"] },
+        { q: "ધ્વનિ કયા માધ્યમમાંથી પસાર થઈ શકતો નથી?", ans: "શૂન્યાવકાશમાંથી", distractors: ["ઘન માધ્યમમાંથી", "પ્રવાહી માધ્યમમાંથી", "વાયુ માધ્યમમાંથી"] },
+        { q: "ધ્વનિ સૌથી ઝડપી કયા માધ્યમમાં પ્રસરે છે?", ans: "ઘન માધ્યમમાં - દા.ત. લોખંડ કે લાકડામાં", distractors: ["પ્રવાહી માધ્યમમાં", "વાયુ માધ્યમમાં", "શૂન્યાવકાશમાં"] },
+        { q: "પાણીની અંદર (પ્રવાહીમાં) રહેલી ડોલ્ફિન કે માછલીઓ એકબીજાનો અવાજ સાંભળી શકે છે, તે શું દર્શાવે છે?", ans: "ધ્વનિ પ્રવાહીમાં પણ પ્રસરી શકે છે", distractors: ["માછલીઓ પાસે વિશેષ શક્તિ છે", "ધ્વનિ માત્ર વાયુમાં પ્રસરે છે", "પાણી અવાજ ઉત્પન્ન કરે છે"] },
+        { q: "મનુષ્યમાં ધ્વનિ કયા અંગમાંથી ઉત્પન્ન થાય છે?", ans: "સ્વરપેટી / કંઠસ્થાનમાંથી", distractors: ["ફેફસામાંથી", "હૃદયમાંથી", "જઠરમાંથી"] },
+        { q: "સ્વરપેટીમાં આવેલી બે ખેંચાયેલી પટ્ટીઓ જેવી રચનાને શું કહે છે?", ans: "સ્વરતંતુઓ / Vocal cords", distractors: ["શ્વાસનળી", "અન્નનળી", "સ્વરપેટીના પડદા"] },
+        { q: "પુરુષોમાં સ્વરતંતુઓની લંબાઈ આશરે કેટલી હોય છે?", ans: "૨૦ mm", distractors: ["૧૦ mm", "૧૫ mm", "૨૫ mm"] },
+        { q: "સ્ત્રીઓમાં સ્વરતંતુઓની લંબાઈ પુરુષો કરતાં કેટલી ટૂંકી હોય છે?", ans: "૫ mm ટૂંકી / આશરે ૧૫ mm", distractors: ["૧૦ mm ટૂંકી", "લંબાઈ સમાન હોય છે", "પુરુષો કરતાં વધુ હોય છે"] },
+        { q: "આપણે અવાજ સાંભળવા માટે કાનના કયા ભાગનો ઉપયોગ કરીએ છીએ જે ગરણી જેવો આકાર ધરાવે છે?", ans: "કર્ણપલ્લવ / કાનનો બહારનો ભાગ", distractors: ["કાનનો પડદો", "મધ્ય કર્ણ", "અંતઃ કર્ણ"] },
+        { q: "કાનની અંદર આવેલા ખેંચાયેલા રબરના પડદા જેવા ભાગને શું કહે છે?", ans: "કાનનો પડદો / Eardrum", distractors: ["કર્ણપલ્લવ", "સ્વરતંતુ", "નેત્રપટલ"] },
+        { q: "એક સેકન્ડમાં થતા કંપનોની સંખ્યાને શું કહે છે?", ans: "આવૃત્તિ / Frequency", distractors: ["કંપવિસ્તાર", "આવર્તકાળ", "તરંગલંબાઈ"] },
+        { q: "આવૃત્તિ માપવાનો SI એકમ કયો છે?", ans: "હર્ટ્ઝ / Hertz - Hz", distractors: ["ડેસિબેલ / dB", "સેકન્ડ / s", "મીટર / m"] },
+        { q: "એક કંપન પૂર્ણ કરવા માટે લાગતા સમયને શું કહે છે?", ans: "આવર્તકાળ / Time period", distractors: ["આવૃત્તિ", "કંપવિસ્તાર", "વેગ"] },
+        { q: "ધ્વનિની પ્રબળતા (Loudness) એટલે કે અવાજ કેટલો મોટો છે, તેનો આધાર કોના પર છે?", ans: "કંપવિસ્તાર / Amplitude પર", distractors: ["આવૃત્તિ પર", "આવર્તકાળ પર", "માધ્યમ પર"] },
+        { q: "ધ્વનિની પ્રબળતા માપવાનો એકમ કયો છે?", ans: "ડેસિબેલ / Decibel - dB", distractors: ["હર્ટ્ઝ / Hz", "ન્યૂટન / N", "પાસ્કલ / Pa"] },
+        { q: "સામાન્ય વાતચીતનો અવાજ આશરે કેટલા ડેસિબેલ હોય છે?", ans: "૬૦ dB", distractors: ["૧૦ dB", "૧૦૦ dB", "૧૩૦ dB"] },
+        { q: "કેટલા ડેસિબેલથી વધારે પ્રબળ ધ્વનિ કાન માટે શારીરિક રીતે કષ્ટદાયક હોય છે?", ans: "૮૦ dB થી વધુ", distractors: ["૪૦ dB થી વધુ", "૬૦ dB થી વધુ", "૨૦ dB થી વધુ"] },
+        { q: "ધ્વનિનું તીણાપણું (Pitch - પીચ) કોના પર આધાર રાખે છે?", ans: "આવૃત્તિ પર", distractors: ["કંપવિસ્તાર પર", "માધ્યમની ઘનતા પર", "તાપમાન પર"] },
+        { q: "પુરુષો કરતાં સ્ત્રીઓ અને બાળકોના અવાજની આવૃત્તિ (પીચ) કેવી હોય છે?", ans: "વધુ હોય છે, તેથી તેમનો અવાજ તીણો હોય છે", distractors: ["ઓછી હોય છે, તેથી અવાજ ઘેરો હોય છે", "સમાન હોય છે", "આવૃત્તિ હોતી નથી"] },
+        { q: "મનુષ્યના કાન માટે શ્રાવ્ય (સાંભળી શકાય તેવા) ધ્વનિની આવૃત્તિ મર્યાદા કેટલી છે?", ans: "૨૦ Hz થી ૨૦,૦૦૦ Hz", distractors: ["૦ Hz થી ૨૦ Hz", "૨૦,૦૦૦ Hz થી ૪૦,૦૦૦ Hz", "૧૦૦ Hz થી ૧૦૦૦ Hz"] },
+        { q: "૨૦ Hz થી ઓછી આવૃત્તિવાળા ધ્વનિને શું કહેવાય છે?", ans: "અવશ્રાવ્ય ધ્વનિ / Infrasonic sound", distractors: ["પરાશ્રાવ્ય ધ્વનિ / Ultrasonic", "શ્રાવ્ય ધ્વનિ", "ઘોંઘાટ"] },
+        { q: "૨૦,૦૦૦ Hz થી વધુ આવૃત્તિવાળા ધ્વનિને શું કહેવાય છે?", ans: "પરાશ્રાવ્ય ધ્વનિ / Ultrasonic sound", distractors: ["અવશ્રાવ્ય ધ્વનિ / Infrasonic", "શ્રાવ્ય ધ્વનિ", "સંગીત"] },
+        { q: "કૂતરાં, ચામાચીડિયું અને ડોલ્ફિન કયા પ્રકારનો ધ્વનિ સાંભળી શકે છે જે મનુષ્ય સાંભળી શકતો નથી?", ans: "પરાશ્રાવ્ય ધ્વનિ / ૨૦,૦૦૦ Hz થી વધુ", distractors: ["અવશ્રાવ્ય ધ્વનિ / ૨૦ Hz થી ઓછો", "શ્રાવ્ય ધ્વનિ", "માત્ર ઘોંઘાટ"] },
+        { q: "તબીબી ક્ષેત્રે બીમારીઓ શોધવા માટે વપરાતા અલ્ટ્રાસાઉન્ડ (સોનોગ્રાફી) સાધનો કેટલી આવૃત્તિ પર કામ કરે છે?", ans: "૨૦,૦૦૦ Hz થી વધુ", distractors: ["૨૦ Hz થી ઓછી", "૨૦ Hz થી ૨૦,૦૦૦ Hz ની વચ્ચે", "માત્ર ૫૦૦ Hz પર"] },
+        { q: "કાનને અપ્રિય લાગતા અને ન ગમતા અવાજને શું કહે છે?", ans: "ઘોંઘાટ / Noise", distractors: ["સંગીત", "શ્રાવ્ય ધ્વનિ", "અવશ્રાવ્ય ધ્વનિ"] },
+        { q: "સિતાર, વીણા અને ગિટારમાં ધ્વનિ ઉત્પન્ન કરતો ભાગ કયો છે?", ans: "ખેંચાયેલો તાર / દોરી", distractors: ["હવાનો સ્તંભ", "ચામડાનો પડદો", "લાકડાનું બોક્સ"] },
+        { q: "વાંસળી અને શરણાઈમાં ધ્વનિ કોના કંપનથી ઉત્પન્ન થાય છે?", ans: "હવાના સ્તંભથી", distractors: ["ખેંચાયેલા તારથી", "ચામડાના પડદાથી", "ધાતુની પ્લેટથી"] },
+        { q: "તબલા અને ઢોલકમાં ધ્વનિ કોના કંપનથી ઉત્પન્ન થાય છે?", ans: "ખેંચાયેલી ચામડાની ત્વચા / પડદાથી", distractors: ["હવાના સ્તંભથી", "ખેંચાયેલા તારથી", "લાકડાના બોક્સથી"] },
+        { q: "સામાન્ય તાપમાને હવામાં ધ્વનિની ઝડપ આશરે કેટલી હોય છે?", ans: "૩૪૦ મીટર/સેકન્ડ", distractors: ["૩૦૦૦૦૦ કિમી/સેકન્ડ", "૧૫૦૦ મીટર/સેકન્ડ", "૫૦૦૦ મીટર/સેકન્ડ"] },
+        { q: "પ્રકાશ અને ધ્વનિમાંથી કોની ઝડપ સૌથી વધારે છે?", ans: "પ્રકાશની", distractors: ["ધ્વનિની", "બંનેની ઝડપ સમાન છે", "માધ્યમ પર આધાર રાખે છે"] },
+        { q: "ચોમાસામાં વાદળોની ગર્જના અને વીજળી એકસાથે થાય છે, છતાં વીજળી પહેલા દેખાય છે અને ગર્જના પછી સંભળાય છે, શા માટે?", ans: "પ્રકાશની ઝડપ ધ્વનિની ઝડપ કરતા ઘણી વધારે હોવાથી", distractors: ["ધ્વનિની ઝડપ પ્રકાશ કરતા વધારે હોવાથી", "વીજળી વાદળોની ઉપર થાય છે એટલે", "આપણો કાન અવાજ મોડો સાંભળે છે"] },
+        { q: "ચંદ્ર પર ઊભેલા બે અવકાશયાત્રીઓ એકબીજાનો અવાજ સીધો સાંભળી શકતા નથી, શા માટે?", ans: "કારણ કે ચંદ્ર પર વાતાવરણ નથી અને ધ્વનિ શૂન્યાવકાશમાં પ્રસરતો નથી", distractors: ["કારણ કે ચંદ્ર પર ખૂબ ઠંડી હોય છે", "કારણ કે તેમનો અવાજ ધીમો હોય છે", "કારણ કે ચંદ્રનું ગુરુત્વાકર્ષણ ઓછું છે"] },
+        { q: "જો કોઈ કંપન કરતો પદાર્થ ૧ સેકન્ડમાં ૫૦ કંપન પૂર્ણ કરે, તો તેની આવૃત્તિ કેટલી કહેવાય?", ans: "૫૦ Hz", distractors: ["૧/૫૦ Hz", "૫૦૦ Hz", "૧૦૦ Hz"] },
+        { q: "જો કોઈ પદાર્થની આવૃત્તિ ૨૦ Hz હોય, તો તેનો આવર્તકાળ કેટલો થાય?", ans: "૧/૨૦ = ૦.૦૫ સેકન્ડ", distractors: ["૨૦ સેકન્ડ", "૦.૫ સેકન્ડ", "૨ સેકન્ડ"] },
+        { q: "ઢોલકનો કાન ફાડી નાખે તેવો અવાજ આવે છે, કારણ કે તેનો...", ans: "કંપવિસ્તાર મોટો હોય છે", distractors: ["આવર્તકાળ મોટો હોય છે", "કંપવિસ્તાર નાનો હોય છે", "આવૃત્તિ ઓછી હોય છે"] },
+        { q: "પક્ષીઓનો અવાજ તીણો હોય છે જ્યારે સિંહની ગર્જના ઘેરી હોય છે, આ શાના કારણે છે?", ans: "પક્ષીના અવાજની આવૃત્તિ વધુ અને સિંહના અવાજની આવૃત્તિ ઓછી હોય છે", distractors: ["પક્ષીનો કંપવિસ્તાર વધુ અને સિંહનો કંપવિસ્તાર ઓછો હોય છે", "પક્ષી હવામાં ઉડે છે તેથી", "બંનેની આવૃત્તિ સમાન હોય છે"] },
+        { q: "જલતરંગ વાદ્યમાં ધ્વનિ કોના કંપનથી ઉત્પન્ન થાય છે?", ans: "પાણી ભરેલા પ્યાલા અને તેમાં રહેલા પાણીના સ્તંભથી", distractors: ["માત્ર ખાલી પ્યાલાથી", "લાકડાની સળીથી", "પ્યાલાના ઢાંકણથી"] },
+        { q: "મંજીરા, ઝાંઝ અને ઘંટ જેવા વાદ્યોમાં ધ્વનિ કેવી રીતે ઉત્પન્ન કરાય છે?", ans: "વાદ્યને પરસ્પર અથડાવીને કે તેના પર આઘાત કરીને", distractors: ["ફૂંક મારીને", "તાર ખેંચીને", "ચામડા પર થાપ મારીને"] },
+        { q: "મંજીરા અને ઘંટમાં અવાજ ઉત્પન્ન કરતો મુખ્ય કંપનશીલ ભાગ કયો છે?", ans: "વાદ્યનું આખું પતરું / સમગ્ર સાધન", distractors: ["માત્ર તેની દોરી", "માત્ર તેની કિનારી", "તેમાં રહેલી હવા"] },
+        { q: "વાતાવરણમાં રહેલા અતિશય અને અવાંછિત ધ્વનિની હાજરીને શું કહે છે?", ans: "ધ્વનિ પ્રદૂષણ / Noise Pollution", distractors: ["વાતાવરણનું પ્રદૂષણ", "સંગીત", "શ્રાવ્ય ધ્વનિ"] },
+        { q: "નીચેનામાંથી ધ્વનિ પ્રદૂષણનું મુખ્ય કારણ કયું છે?", ans: "વાહનોનો અવાજ, કારખાનાના મશીનો, ફટાકડા અને લાઉડસ્પીકર", distractors: ["પક્ષીઓનો કલરવ", "વૃક્ષોના પાંદડાનો અવાજ", "વહેતા પાણીનો અવાજ"] },
+        { q: "ધ્વનિ પ્રદૂષણથી મનુષ્યના સ્વાસ્થ્ય પર કઈ નકારાત્મક અસરો જોવા મળે છે?", ans: "અનિદ્રા, હાઈ બ્લડપ્રેશર, ચિંતા અને માથાનો દુખાવો", distractors: ["શરદી અને ઉધરસ", "આંખના રોગો", "ચામડીના રોગો"] },
+        { q: "સતત ૮૦ ડેસિબેલ (dB) થી વધુ પ્રબળ ધ્વનિના સંપર્કમાં રહેવાથી કાન પર શું અસર પડે છે?", ans: "કાનમાં કામચલાઉ અથવા કાયમી બહેરાશ આવી શકે છે", distractors: ["કાન વધુ તેજસ્વી બને છે", "કાનનો આકાર બદલાય છે", "કાઈ અસર થતી નથી"] },
+        { q: "ધ્વનિ પ્રદૂષણની અસર ઘટાડવા રસ્તાની બંને બાજુએ અને ઇમારતો પાસે શું કરવું જોઈએ?", ans: "વૃક્ષો વાવવા જોઈએ, જેથી તે અવાજને શોષી લે", distractors: ["મોટી દીવાલો ચણવી જોઈએ", "રસ્તા પહોળા કરવા જોઈએ", "સ્પીડ બ્રેકર બનાવવા જોઈએ"] },
+        { q: "વાહનો અને મશીનોમાં અવાજ ઘટાડવા માટે કયા સાધનનો ઉપયોગ ફરજિયાત છે?", ans: "સાઇલેન્સર / Silencer", distractors: ["એન્જિન", "હોર્ન", "બ્રેક પેડ"] },
+        { q: "કારખાનાના કામદારોએ મશીનોના ભારે ઘોંઘાટથી બચવા કાનની સુરક્ષા માટે શું પહેરવું જોઈએ?", ans: "ઈયર પ્લગ / Earplugs અથવા ઈયર મફ્સ", distractors: ["હેલ્મેટ", "ચશ્મા", "રૂમાલ"] },
+        { q: "કાનના પડદાને નુકસાન ન થાય તે માટે કાન સાફ કરવા શાનો ઉપયોગ બિલકુલ ન કરવો જોઈએ?", ans: "અણીદાર વસ્તુ, પીન કે સળીનો", distractors: ["નરમ કાપડનો", "રૂ નો", "પાણીનો"] },
+        { q: "વિમાન મથક (એરપોર્ટ) અને ઔદ્યોગિક એકમો ક્યાં સ્થાપવા જોઈએ?", ans: "રહેણાંક વિસ્તારોથી દૂર", distractors: ["શહેરની વચ્ચે", "શાળાની બાજુમાં", "હોસ્પિટલની નજીક"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+
+        userAnswersData.push({
+            question: questions[currentIdx].q,
+            selected: selectedOpt,
+            correct: correctOpt,
+            isRight: isCorrect
+        });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) {
+                optBtn.dataset.isCorrect = "true";
+            }
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => {
+                if(optBtn.dataset.isCorrect === "true") {
+                    optBtn.classList.add("correct");
+                }
+            });
+            
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            
+            summaryHTML += `<div class="summary-item">
+                <p class="summary-q">${index + 1}. ${data.question}</p>
+                <p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+                
+            if (!data.isRight) {
+                summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            }
+            summaryHTML += `</div>`;
+        });
+        
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

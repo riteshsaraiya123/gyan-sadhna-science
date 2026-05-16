@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - વિજ્ઞાન</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        
+        /* રિઝલ્ટ અને સમરી માટે નવું CSS */
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૧ : પાક ઉત્પાદન અને વ્યવસ્થાપન</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 30</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">30</span></p>
+        
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">
+    બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા
+</div>
+
+<script>
+    const rawQuestions = [
+        { q: "ખેતરની જમીનને ઉપર-નીચે કરવા અને પોચી કરવા માટે કયું સાધન વપરાય છે?", ans: "હળ", distractors: ["દાંતી", "વાવણીયો", "સમાર"] },
+        { q: "આજના સમયમાં ટ્રેક્ટર દ્વારા સંચાલિત ખેડ કરવા માટેનું સાધન કયું છે?", ans: "દાંતી / કલ્ટિવેટર", distractors: ["હળ", "ખરપિયો", "દાતરડું"] },
+        { q: "બીજની વાવણી કરવા માટે કયા આધુનિક સાધનનો ઉપયોગ થાય છે?", ans: "સીડ-ડ્રિલ / વાવણીયો", distractors: ["રહેંટ", "ટ્રેક્ટર", "થ્રેશર"] },
+        { q: "જમીનને સમથળ કરવા માટે કયા સાધનનો ઉપયોગ કરવામાં આવે છે?", ans: "સમાર", distractors: ["હળ", "વાવણીયો", "ખરપિયો"] },
+        { q: "જમીનમાં રહેલા નીંદણને દૂર કરવા અને જમીનને પોચી કરવા કયું સરળ ઓજાર વપરાય છે?", ans: "ખરપિયો", distractors: ["દાતરડું", "સમાર", "ટ્રેક્ટર"] },
+        { q: "કઈ સિંચાઈ પદ્ધતિમાં પાણીનો વ્યય સૌથી ઓછો થાય છે?", ans: "ટપક સિંચાઈ પદ્ધતિ", distractors: ["ફુવારા પદ્ધતિ", "ધોરિયા પદ્ધતિ", "ક્યારા પદ્ધતિ"] },
+        { q: "રેતાળ જમીન માટે સિંચાઈની કઈ પદ્ધતિ સૌથી વધુ અનુકૂળ છે?", ans: "ફુવારા પદ્ધતિ", distractors: ["ટપક પદ્ધતિ", "રહેંટ", "ધોરિયા પદ્ધતિ"] },
+        { q: "ટીપે ટીપે છોડના મૂળમાં પાણી પહોંચાડવાની પદ્ધતિને શું કહે છે?", ans: "ટપક પદ્ધતિ", distractors: ["ફુવારા પદ્ધતિ", "મોટ", "ઢેંકલી"] },
+        { q: "નીચેનામાંથી સિંચાઈનો પરંપરાગત સ્ત્રોત કયો છે?", ans: "રહેંટ", distractors: ["ટપક", "ફુવારા", "સીડ-ડ્રિલ"] },
+        { q: "મોટ, ચેઈન પંપ અને ઢેંકલી એ સિંચાઈની કેવી પદ્ધતિઓ છે?", ans: "પરંપરાગત પદ્ધતિઓ", distractors: ["આધુનિક પદ્ધતિઓ", "રાસાયણિક પદ્ધતિઓ", "નકામી પદ્ધતિઓ"] },
+        { q: "વરસાદની ઋતુમાં રોપવામાં આવતા પાકને શું કહેવાય છે?", ans: "ખરીફ પાક", distractors: ["રવી પાક", "જાયદ પાક", "રોકડિયો પાક"] },
+        { q: "શિયાળામાં લેવામાં આવતા પાકને કયા નામથી ઓળખવામાં આવે છે?", ans: "રવી પાક", distractors: ["ખરીફ પાક", "જાયદ પાક", "બાગાયતી પાક"] },
+        { q: "ડાંગર અને મકાઈ એ કયા પ્રકારના પાકના ઉદાહરણ છે?", ans: "ખરીફ પાક", distractors: ["રવી પાક", "જાયદ પાક", "રોકડિયો પાક"] },
+        { q: "ઘઉં અને ચણા એ કયા પ્રકારના પાક છે?", ans: "રવી પાક", distractors: ["ખરીફ પાક", "જાયદ પાક", "બાગાયતી પાક"] },
+        { q: "કયું ખાતર માનવ નિર્મિત અકાર્બનિક ક્ષાર છે?", ans: "રાસાયણિક ખાતર", distractors: ["કુદરતી ખાતર", "વર્મી કમ્પોસ્ટ", "લીલો પડવાશ"] },
+        { q: "ખેતરમાં જ બનાવેલા કયા ખાતરથી જમીનને પુષ્કળ પ્રમાણમાં સેન્દ્રિય પદાર્થો (હ્યુમસ) મળે છે?", ans: "કુદરતી ખાતર", distractors: ["રાસાયણિક ખાતર", "યુરિયા", "DAP"] },
+        { q: "NPK ખાતરમાં 'K' કયા તત્વનું સૂચન કરે છે?", ans: "પોટેશિયમ", distractors: ["નાઇટ્રોજન", "ફોસ્ફરસ", "કેલ્શિયમ"] },
+        { q: "અળસિયા દ્વારા તૈયાર કરવામાં આવતા ખાતરને શું કહે છે?", ans: "વર્મી કમ્પોસ્ટ", distractors: ["રાસાયણિક ખાતર", "યુરિયા", "છાણિયું ખાતર"] },
+        { q: "પાક સાથે ઉગી નીકળતી બિનજરૂરી વનસ્પતિને શું કહેવાય છે?", ans: "નીંદણ", distractors: ["પાક", "બીજ", "ખાતર"] },
+        { q: "નીંદણ દૂર કરવાની પ્રક્રિયાને શું કહે છે?", ans: "નિંદામણ", distractors: ["લણણી", "વાવણી", "સિંચાઈ"] },
+        { q: "કયા રસાયણનો ઉપયોગ નીંદણના નાશ માટે થાય છે?", ans: "નીંદણનાશક - દા.ત. 2,4-D", distractors: ["જંતુનાશક", "ફૂગનાશક", "ખાતર"] },
+        { q: "પાક જ્યારે પૂર્ણ પરિપક્વ થઈ જાય ત્યારે તેને કાપવાની ક્રિયાને શું કહે છે?", ans: "લણણી", distractors: ["વાવણી", "સિંચાઈ", "નિંદામણ"] },
+        { q: "લણણી કરવા માટે વપરાતું પરંપરાગત હાથ-ઓજાર કયું છે?", ans: "દાતરડું", distractors: ["હળ", "ખરપિયો", "વાવણીયો"] },
+        { q: "લણણી અને થ્રેસીંગ બંને કાર્ય કરતું આધુનિક મશીન કયું છે?", ans: "કમ્બાઈન હાર્વેસ્ટર", distractors: ["થ્રેશર", "ટ્રેક્ટર", "સીડ-ડ્રિલ"] },
+        { q: "અનાજમાંથી ફોતરાં છૂટાં કરવાની પદ્ધતિને શું કહે છે?", ans: "ઉપણવું", distractors: ["લણણી", "થ્રેસીંગ", "ચાળવું"] },
+        { q: "મોટા પાયે અનાજનો સંગ્રહ કરવા માટે શાનો ઉપયોગ થાય છે?", ans: "સાઈલો (Silo) અથવા કોઠાર", distractors: ["ખેતર", "ઘર", "મેદાન"] },
+        { q: "ઘરમાં અનાજની જાળવણી માટે કયા વૃક્ષના પાનનો ઉપયોગ થાય છે?", ans: "લીમડો", distractors: ["વડ", "પીપળો", "તુલસી"] },
+        { q: "કયા પાકને વધુ પાણીની જરૂર હોવાથી તે ચોમાસામાં જ વવાય છે?", ans: "ડાંગર", distractors: ["ઘઉં", "ચણા", "બાજરી"] },
+        { q: "જમીનની ફળદ્રુપતા જાળવવા માટે એક પછી એક અલગ પાક લેવાની પદ્ધતિને શું કહે છે?", ans: "પાકની ફેરબદલી", distractors: ["મિશ્ર પાક", "આંતર પાક", "સળંગ પાક"] },
+        { q: "પશુપાલન એટલે શું?", ans: "ખોરાક માટે પશુઓને પાળવા અને તેમની સંભાળ રાખવી", distractors: ["જંગલી પ્રાણીઓનો શિકાર કરવો", "માત્ર ખેતી કરવી", "પ્રાણીઓને વેચવા"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = []; // સમરી માટે નવો એરે
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+
+        // સમરી માટે ડેટા સેવ કરો
+        userAnswersData.push({
+            question: questions[currentIdx].q,
+            selected: selectedOpt,
+            correct: correctOpt,
+            isRight: isCorrect
+        });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) {
+                optBtn.dataset.isCorrect = "true";
+            }
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => {
+                if(optBtn.dataset.isCorrect === "true") {
+                    optBtn.classList.add("correct");
+                }
+            });
+            
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) {
+            loadQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+
+        // સમરી જનરેટ કરો
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            
+            summaryHTML += `<div class="summary-item">
+                <p class="summary-q">${index + 1}. ${data.question}</p>
+                <p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+                
+            if (!data.isRight) {
+                summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            }
+            summaryHTML += `</div>`;
+        });
+        
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+
+</body>
+</html>

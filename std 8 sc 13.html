@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>જ્ઞાન સાધના ક્વિઝ - પ્રકરણ ૧૩</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --success: #2ecc71; --danger: #e74c3c; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { color: var(--primary); font-size: 24px; margin: 0; }
+        .quiz-container { background: white; width: 100%; max-width: 600px; border-radius: 15px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .progress-container { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; font-weight: bold; color: #555; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .question { font-size: 19px; font-weight: 600; margin-bottom: 20px; color: #333; line-height: 1.4; }
+        .options-grid { display: flex; flex-direction: column; gap: 12px; }
+        .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; background: white; cursor: pointer; text-align: left; font-size: 17px; transition: all 0.3s ease; font-weight: 500; color: #444; }
+        .option:hover { background: #f8f9fa; border-color: var(--secondary); }
+        .option:disabled { cursor: not-allowed; }
+        .correct { background-color: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .wrong { background-color: var(--danger) !important; color: white !important; border-color: var(--danger) !important; }
+        .answer-text { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f4fd; display: none; font-size: 16px; font-weight: bold; color: #2c3e50; border-left: 5px solid var(--secondary); animation: fadeIn 0.5s; }
+        .next-btn { width: 100%; padding: 15px; margin-top: 25px; background: var(--secondary); color: white; border: none; border-radius: 10px; font-size: 18px; font-weight: bold; cursor: pointer; display: none; transition: 0.3s; }
+        .next-btn:hover { background: #2980b9; }
+        .score-board { text-align: center; display: none; padding: 10px 0; }
+        .score-board h2 { font-size: 28px; color: var(--primary); margin-bottom: 5px; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background: var(--secondary); color: white; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; margin: 15px auto; }
+        .summary-box { margin-top: 20px; text-align: left; max-height: 350px; overflow-y: auto; padding: 15px; border: 1px solid #ddd; border-radius: 10px; background: #fafafa; }
+        .summary-item { margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .summary-item p { margin: 5px 0; font-size: 15px; }
+        .summary-q { font-weight: bold; color: #333; }
+        .footer { margin-top: 30px; text-align: center; font-size: 14px; color: #7f8c8d; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>પ્રકરણ ૧૩ : પ્રકાશ</h1>
+</div>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <div class="progress-container">
+            <span id="progressText">પ્રશ્ન: 1 / 50</span>
+            <span id="scoreText">સ્કોર: 0</span>
+        </div>
+        <div class="question" id="questionText">Loading...</div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div id="answerFeedback" class="answer-text"></div>
+        <button id="nextBtn" class="next-btn" onclick="loadNextQuestion()">આગળનો પ્રશ્ન ➔</button>
+    </div>
+
+    <div id="scoreBox" class="score-board">
+        <h2>ક્વિઝ પૂર્ણ! 🏆</h2>
+        <div class="score-circle"><span id="finalScore">0</span></div>
+        <p style="font-size: 18px; color: #555; margin: 5px 0;">કુલ પ્રશ્નો: <span id="totalQuestions">50</span></p>
+        <h3 style="color: var(--primary); margin-top: 25px; text-align: left; border-bottom: 2px solid #eee; padding-bottom: 5px;">તમારું પ્રદર્શન (Summary):</h3>
+        <div id="summaryContainer" class="summary-box"></div>
+        <button class="next-btn" style="display:block; margin-top: 20px;" onclick="location.reload()">ફરીથી રમો ↻</button>
+    </div>
+</div>
+
+<div class="footer">બનાવનાર: રિતેશ સરૈયા | પ્રાથમિક શાળા નાયકીવાડ વાંઝણા</div>
+
+<script>
+    const rawQuestions = [
+        { q: "વસ્તુ શાના કારણે દ્રશ્યમાન થાય છે?", ans: "પ્રકાશના પરાવર્તનને કારણે", distractors: ["પ્રકાશના વક્રીભવનને કારણે", "પ્રકાશના શોષણને કારણે", "પ્રકાશના વિખેરણને કારણે"] },
+        { q: "ચળકતી સપાટી પર પ્રકાશ અથડાઈને પાછા ફરવાની ઘટનાને શું કહે છે?", ans: "પ્રકાશનું પરાવર્તન", distractors: ["પ્રકાશનું વક્રીભવન", "પ્રકાશનું શોષણ", "પ્રકાશનું વિખેરણ"] },
+        { q: "આપાતકોણ અને પરાવર્તનકોણ વચ્ચે કેવો સંબંધ હોય છે?", ans: "બંને હંમેશા સમાન હોય છે", distractors: ["આપાતકોણ મોટો હોય છે", "પરાવર્તનકોણ મોટો હોય છે", "કોઈ સંબંધ નથી"] },
+        { q: "જો આપાતકોણ ૪૫° હોય, તો પરાવર્તનકોણ કેટલા અંશનો હોય?", ans: "૪૫°", distractors: ["૯૦°", "૦°", "૧૩૫°"] },
+        { q: "સમતલ અરીસામાં વસ્તુનું પ્રતિબિંબ કેવું મળે છે?", ans: "આભાસી અને ચત્તું", distractors: ["વાસ્તવિક અને ઊલટું", "વાસ્તવિક અને ચત્તું", "આભાસી અને ઊલટું"] },
+        { q: "અરીસામાં વસ્તુનો ડાબો ભાગ જમણો અને જમણો ભાગ ડાબો દેખાય, તે ઘટનાને શું કહે છે?", ans: "પાર્શ્વ વ્યુત્ક્રમણ", distractors: ["નિયમિત પરાવર્તન", "અનિયમિત પરાવર્તન", "પ્રકાશનું વિખેરણ"] },
+        { q: "જો આપાતકિરણ અરીસા સાથે લંબ રૂપે (૯૦°) અથડાય, તો પરાવર્તનકોણ કેટલો થાય?", ans: "૦°", distractors: ["૯૦°", "૪૫°", "૧૮૦°"] },
+        { q: "ખરબચડી સપાટી પર થતા પરાવર્તનને કેવું પરાવર્તન કહેવાય?", ans: "અનિયમિત પરાવર્તન", distractors: ["નિયમિત પરાવર્તન", "સંપૂર્ણ પરાવર્તન", "આંશિક પરાવર્તન"] },
+        { q: "જે પરાવર્તનમાં પરાવર્તિત કિરણો એકબીજાને સમાંતર રહે તેને શું કહેવાય?", ans: "નિયમિત પરાવર્તન", distractors: ["અનિયમિત પરાવર્તન", "વિખેરણ પરાવર્તન", "ખરબચડું પરાવર્તન"] },
+        { q: "આપાતકિરણ, પરાવર્તિત કિરણ અને સપાટી પર દોરેલો લંબ - આ ત્રણેય ક્યાં હોય છે?", ans: "એક જ સમતલમાં", distractors: ["અલગ-અલગ સમતલમાં", "હવામાં", "માત્ર અરીસાની પાછળ"] },
+        { q: "એકબીજાને સમાંતર રાખેલા બે અરીસા વચ્ચે વસ્તુ રાખતા કેટલા પ્રતિબિંબ મળે?", ans: "અસંખ્ય / અનંત", distractors: ["એક", "બે", "શૂન્ય"] },
+        { q: "કેલિડોસ્કોપમાં કેટલા અરીસા વપરાય છે?", ans: "ત્રણ", distractors: ["બે", "ચાર", "પાંચ"] },
+        { q: "કેલિડોસ્કોપના અરીસાઓ એકબીજા સાથે કેટલા અંશના ખૂણે ગોઠવાયેલા હોય છે?", ans: "૬૦°", distractors: ["૯૦°", "૪૫°", "૧૨૦°"] },
+        { q: "પેરિસ્કોપમાં કેટલા અરીસાનો ઉપયોગ થાય છે?", ans: "બે", distractors: ["ત્રણ", "ચાર", "એક"] },
+        { q: "સબમરીન અને બંકરમાં છુપાયેલા સૈનિકો બહાર જોવા માટે કયા સાધનનો ઉપયોગ કરે છે?", ans: "પેરિસ્કોપ", distractors: ["કેલિડોસ્કોપ", "ટેલિસ્કોપ", "માઈક્રોસ્કોપ"] },
+        { q: "સૂર્યપ્રકાશ (શ્વેત પ્રકાશ) કેટલા રંગોનો બનેલો છે?", ans: "સાત રંગો", distractors: ["પાંચ રંગો", "ત્રણ રંગો", "એક જ રંગ"] },
+        { q: "પ્રકાશના સાત રંગોમાં વિભાજિત થવાની ઘટનાને શું કહે છે?", ans: "પ્રકાશનું વિખેરણ", distractors: ["પ્રકાશનું પરાવર્તન", "પ્રકાશનું વક્રીભવન", "પ્રકાશનું શોષણ"] },
+        { q: "આકાશમાં મેઘધનુષ્ય રચાવું એ પ્રકાશની કઈ ઘટનાનું ઉદાહરણ છે?", ans: "વિખેરણ", distractors: ["નિયમિત પરાવર્તન", "અનિયમિત પરાવર્તન", "શોષણ"] },
+        { q: "આંખનો સૌથી બહારનો સફેદ અને સખત ભાગ કયો છે?", ans: "કોર્નિયા / સ્વચ્છ પટલ", distractors: ["આઈરિસ", "કીકી", "રેટિના"] },
+        { q: "આંખના રંગીન ભાગને શું કહેવામાં આવે છે?", ans: "આઈરિસ / કનિનિકા", distractors: ["કોર્નિયા", "કીકી", "રેટિના"] },
+        { q: "આંખમાં પ્રવેશતા પ્રકાશના પ્રમાણનું નિયંત્રણ કોણ કરે છે?", ans: "આઈરિસ", distractors: ["કોર્નિયા", "કીકી", "રેટિના"] },
+        { q: "આઈરિસની મધ્યમાં આવેલા નાના છિદ્રને શું કહે છે?", ans: "કીકી / Pupil", distractors: ["કોર્નિયા", "રેટિના", "નેત્રમણિ"] },
+        { q: "આંખમાં વસ્તુનું પ્રતિબિંબ કયા પડદા પર રચાય છે?", ans: "નેત્રપટલ / રેટિના", distractors: ["કોર્નિયા", "આઈરિસ", "કીકી"] },
+        { q: "રેટિના પર કેટલા પ્રકારના ચેતાકોષો આવેલા હોય છે?", ans: "બે - શંકુકોષો અને સળીકોષો", distractors: ["ત્રણ", "ચાર", "એક"] },
+        { q: "તીવ્ર પ્રકાશની સંવેદના કયા કોષો પારખે છે?", ans: "શંકુકોષો", distractors: ["સળીકોષો", "રક્તકણો", "શ્વેતકણો"] },
+        { q: "ઝાંખા પ્રકાશમાં જોવામાં કયા કોષો મદદરૂપ થાય છે?", ans: "સળીકોષો", distractors: ["શંકુકોષો", "નેત્રમણિ", "આઈરિસ"] },
+        { q: "રંગોની પરખ કયા કોષો દ્વારા થાય છે?", ans: "શંકુકોષો", distractors: ["સળીકોષો", "કોર્નિયા", "કીકી"] },
+        { q: "રેટિના અને દ્રષ્ટિચેતાના જોડાણ પાસે જ્યાં કોઈ કોષો હોતા નથી તેને શું કહે છે?", ans: "અંધબિંદુ / Blind Spot", distractors: ["દ્રષ્ટિબિંદુ", "પ્રકાશબિંદુ", "કેન્દ્રબિંદુ"] },
+        { q: "નેત્રમણિ (લેન્સ) ને તેની જગ્યાએ જકડી રાખતા સ્નાયુઓ કયા છે?", ans: "સિલિયરી સ્નાયુઓ", distractors: ["હૃદય સ્નાયુઓ", "કંકાલ સ્નાયુઓ", "સરળ સ્નાયુઓ"] },
+        { q: "સામાન્ય આંખ માટે વાંચવા માટેનું લઘુત્તમ અંતર કેટલું છે?", ans: "૨૫ સેમી", distractors: ["૧૦ સેમી", "૫૦ સેમી", "૧૦૦ સેમી"] },
+        { q: "કઈ ખામીમાં નજીકનું દેખાય પણ દૂરનું સ્પષ્ટ દેખાતું નથી?", ans: "લઘુદ્રષ્ટિની ખામી / માયોપિયા", distractors: ["ગુરુદ્રષ્ટિની ખામી", "મોતિયો", "રતાંધળાપણું"] },
+        { q: "મોટી ઉંમરે આંખનો લેન્સ દૂધિયો કે ઝાંખો થઈ જાય તેને શું કહે છે?", ans: "મોતિયો / Cataract", distractors: ["માયોપિયા", "ગ્લુકોમા", "રતાંધળાપણું"] },
+        { q: "આંખની સુરક્ષા માટે કયું વિટામિન સૌથી વધુ જરૂરી છે?", ans: "વિટામિન - A", distractors: ["વિટામિન - B", "વિટામિન - C", "વિટામિન - D"] },
+        { q: "કયા ખોરાકમાંથી વિટામિન-A ભરપૂર માત્રામાં મળે છે?", ans: "ગાજર, પપૈયું, દૂધ, ઈંડા", distractors: ["ખાટા ફળો", "બટાકા", "ચોખા"] },
+        { q: "વિટામિન-A ની ઉણપથી કયો રોગ થાય છે?", ans: "રતાંધળાપણું", distractors: ["સ્કર્વી", "સુખતાન", "ગોઇટર"] },
+        { q: "તીવ્ર પ્રકાશ કે લેસર ટોર્ચ સામે જોવાથી આંખના કયા ભાગને નુકસાન થાય છે?", ans: "રેટિના", distractors: ["કોર્નિયા", "આઈરિસ", "કીકી"] },
+        { q: "દ્રષ્ટિહીન વ્યક્તિઓ માટે વાંચવા-લખવાની કઈ પદ્ધતિ જાણીતી છે?", ans: "બ્રેઈલ લિપિ", distractors: ["રોમન લિપિ", "દેવનાગરી લિપિ", "મોર્ય લિપિ"] },
+        { q: "લુઈ બ્રેઈલે આ લિપિની શોધ ક્યારે કરી હતી?", ans: "૧૮૨૧ માં", distractors: ["૧૭૨૧ માં", "૧૯૨૧ માં", "૧૬૨૧ માં"] },
+        { q: "બ્રેઈલ લિપિમાં કેટલા ટપકાંઓ (Dots) ની તરાહ હોય છે?", ans: "૬૩", distractors: ["૨૬", "૫૨", "૧૦૦"] },
+        { q: "રાત્રિના સમયે તેજસ્વી જોઈ શકતા પ્રાણીની આંખમાં કયા કોષો વધુ હોય છે?", ans: "સળીકોષો", distractors: ["શંકુકોષો", "રક્તકણો", "શ્વેતકણો"] },
+        { q: "પતંગિયાની આંખો કેવી હોય છે?", ans: "મોટી અને હજારો નાની આંખોની બનેલી", distractors: ["માત્ર બે નાની આંખો", "આંખો હોતી નથી", "માણસ જેવી આંખો"] },
+        { q: "ઘુવડ રાત્રે કેમ સ્પષ્ટ જોઈ શકે છે?", ans: "મોટી કોર્નિયા, મોટી કીકી અને વધુ સળીકોષોને કારણે", distractors: ["માત્ર શંકુકોષોને કારણે", "અંધારામાં પ્રકાશ ફેંકે છે તેથી", "મોતિયો હોતો નથી તેથી"] },
+        { q: "રેટિના પર બનેલા પ્રતિબિંબની છાપ મગજ પર કેટલા સમય સુધી રહે છે?", ans: "૧/૧૬ સેકન્ડ", distractors: ["૧ સેકન્ડ", "૧૦ સેકન્ડ", "૧ મિનિટ"] },
+        { q: "જો પ્રતિબિંબ બદલાવાનો દર ૧/૧૬ સેકન્ડથી વધુ હોય તો વસ્તુ કેવી દેખાય?", ans: "ગતિમાન / ચલચિત્ર જેવી", distractors: ["સ્થિર", "અદ્રશ્ય", "કાળી"] },
+        { q: "આંખમાં બહારનો કચરો જાય તો શું ન કરવું જોઈએ?", ans: "આંખ ચોળવી ન જોઈએ", distractors: ["આંખ ધોવી ન જોઈએ", "ડોક્ટર પાસે ન જવું", "પાણી ન છાંટવું"] },
+        { q: "અરીસા સામે વસ્તુ રાખતા મળતા પ્રતિબિંબની સંખ્યા શોધવાનું સૂત્ર શું છે?", ans: "(૩૬૦ / ખૂણો) - ૧", distractors: ["(૧૮૦ / ખૂણો) + ૧", "(૯૦ / ખૂણો)", "(૩૬૦ × ખૂણો)"] },
+        { q: "બે અરીસા ૯૦° ના ખૂણે હોય તો કેટલા પ્રતિબિંબ મળે?", ans: "૩", distractors: ["૪", "૨", "અનંત"] },
+        { q: "આપણી આંખમાં કેવો લેન્સ (નેત્રમણિ) હોય છે?", ans: "બહિર્ગોળ લેન્સ", distractors: ["અંતર્ગોળ લેન્સ", "સમતલ લેન્સ", "નળાકાર લેન્સ"] },
+        { q: "જે પ્રતિબિંબને પડદા પર ઝીલી શકાય તેને કેવું પ્રતિબિંબ કહેવાય?", ans: "વાસ્તવિક પ્રતિબિંબ", distractors: ["આભાસી પ્રતિબિંબ", "અવાસ્તવિક પ્રતિબિંબ", "સ્થિર પ્રતિબિંબ"] },
+        { q: "જે પ્રતિબિંબ પડદા પર ઝીલી શકાતું નથી તેને શું કહેવાય?", ans: "આભાસી પ્રતિબિંબ", distractors: ["વાસ્તવિક પ્રતિબિંબ", "સ્પષ્ટ પ્રતિબિંબ", "ચલચિત્ર પ્રતિબિંબ"] }
+    ];
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    let questions = [];
+    let userAnswersData = [];
+    let currentIdx = 0;
+    let score = 0;
+
+    function initQuiz() {
+        let processedData = rawQuestions.map(qObj => {
+            let options = [qObj.ans, ...qObj.distractors];
+            return {
+                q: qObj.q,
+                correctAnswer: qObj.ans,
+                options: shuffleArray(options)
+            };
+        });
+        questions = shuffleArray(processedData);
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const qData = questions[currentIdx];
+        document.getElementById("progressText").innerText = `પ્રશ્ન: ${currentIdx + 1} / ${questions.length}`;
+        document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        document.getElementById("questionText").innerText = qData.q;
+        const optionsDiv = document.getElementById("optionsContainer");
+        optionsDiv.innerHTML = "";
+        document.getElementById("answerFeedback").style.display = "none";
+        document.getElementById("nextBtn").style.display = "none";
+
+        qData.options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "option";
+            btn.innerText = opt;
+            btn.onclick = () => checkAnswer(opt, qData.correctAnswer, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedOpt, correctOpt, btn) {
+        const allOptions = document.querySelectorAll(".option");
+        let isCorrect = (selectedOpt === correctOpt);
+        userAnswersData.push({ question: questions[currentIdx].q, selected: selectedOpt, correct: correctOpt, isRight: isCorrect });
+
+        allOptions.forEach(optBtn => {
+            optBtn.disabled = true;
+            if(optBtn.innerText === correctOpt) optBtn.dataset.isCorrect = "true";
+        });
+
+        if (isCorrect) {
+            btn.classList.add("correct");
+            score++;
+            document.getElementById("scoreText").innerText = `સ્કોર: ${score}`;
+        } else {
+            btn.classList.add("wrong");
+            allOptions.forEach(optBtn => { if(optBtn.dataset.isCorrect === "true") optBtn.classList.add("correct"); });
+            const feedback = document.getElementById("answerFeedback");
+            feedback.innerHTML = `❌ તમારો જવાબ ખોટો છે.<br>✅ <b>સાચો જવાબ:</b> ${correctOpt}`;
+            feedback.style.display = "block";
+        }
+        document.getElementById("nextBtn").style.display = "block";
+    }
+
+    function loadNextQuestion() {
+        currentIdx++;
+        if (currentIdx < questions.length) loadQuestion();
+        else showResult();
+    }
+
+    function showResult() {
+        document.getElementById("quiz-box").style.display = "none";
+        document.getElementById("scoreBox").style.display = "block";
+        document.getElementById("finalScore").innerText = score;
+        document.getElementById("totalQuestions").innerText = questions.length;
+        let summaryHTML = "";
+        userAnswersData.forEach((data, index) => {
+            let color = data.isRight ? "green" : "red";
+            let icon = data.isRight ? "✅" : "❌";
+            summaryHTML += `<div class="summary-item"><p class="summary-q">${index + 1}. ${data.question}</p><p style="color: ${color}; font-weight: bold;">${icon} તમારો જવાબ: ${data.selected}</p>`;
+            if (!data.isRight) summaryHTML += `<p style="color: green; font-weight: bold;">✅ સાચો જવાબ: ${data.correct}</p>`;
+            summaryHTML += `</div>`;
+        });
+        document.getElementById("summaryContainer").innerHTML = summaryHTML;
+    }
+
+    initQuiz();
+</script>
+</body>
+</html>
