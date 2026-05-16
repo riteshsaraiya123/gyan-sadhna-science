@@ -27,24 +27,22 @@
         <span class="dev-name">Developed by: Ritesh Saraiya</span>
     </div>
 
-    <div class="form-group">
-        <label>🎯 ક્વિઝનો પ્રકાર પસંદ કરો:</label>
-        <select id="mode" onchange="toggle()">
-            <option value="chapter">📚 પ્રકરણ મુજબ ક્વિઝ</option>
-            <option value="mixed">🔀 મિક્સ ક્વિઝ (પ્રેક્ટિસ)</option>
-            <option value="paper">📄 ઓરિજનલ પેપર</option>
-        </select>
-    </div>
+   <div class="form-group">
+    <label>🎯 ક્વિઝનો પ્રકાર પસંદ કરો:</label>
+    <select id="mode" onchange="toggle()">
+        <option value="chapter">📖 પ્રકરણ મુજબ ક્વિઝ</option>
+        <option value="mixed">🔀 મિક્સ ક્વિઝ (પ્રેક્ટિસ)</option>
+        <option value="paper">📜 ઓરિજિનલ પેપર</option>
+    </select>
+</div>
 
-    <div id="chapGroup" class="form-group">
-        <label>📖 પ્રકરણ પસંદ કરો:</label>
-        <div id="chapGroup" class="form-group">
+<div id="chapGroup" class="form-group">
     <label>📖 પ્રકરણ પસંદ કરો:</label>
     <select id="selFile">
         <option value="std 8 sci ch 1.html">પાઠ ૧: પાક ઉત્પાદન</option>
         <option value="std 8 sci ch 2.html">પાઠ ૨: સૂક્ષ્મજીવો</option>
         <option value="std 8 sci ch 3.html">પાઠ ૩: કોલસો અને પેટ્રોલિયમ</option>
-        <option value="std 8 sci ch 4.html">પાઠ ૪: દહન અને j્યોત</option>
+        <option value="std 8 sci ch 4.html">પાઠ ૪: દહન અને જ્યોત</option>
         <option value="std 8 sci ch 5.html">પાઠ ૫: વનસ્પતિ સંરક્ષણ</option>
         <option value="std 8 sci ch 6.html">પાઠ ૬: પ્રાણીઓમાં પ્રજનન</option>
         <option value="std 8 sci ch 7.html">પાઠ ૭: તરૂણાવસ્થા તરફ</option>
@@ -56,14 +54,13 @@
         <option value="std 8 sc 13.html">પાઠ ૧૩: પ્રકાશ</option>
     </select>
 </div>
-    <div id="paperGroup" class="form-group">
-        <label>📄 પેપર પસંદ કરો:</label>
-        <select id="selPaper">
-            <option value="original.html">ઓરિજનલ પેપર</option>
-        </select>
-    </div>
 
-    <div id="numGroup" class="form-group">
+<div id="paperGroup" class="form-group" style="display:none;">
+    <label>📄 પેપર પસંદ કરો:</label>
+    <select id="selPaper">
+        <option value="original.html">ઓરિજિનલ પેપર</option>
+    </select>
+</div>    <div id="numGroup" class="form-group">
         <label>🔢 પ્રશ્નોની સંખ્યા:</label>
         <input type="number" id="qNum" value="25" min="1" max="260">
     </div>
