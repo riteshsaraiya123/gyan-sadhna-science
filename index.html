@@ -5,17 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gyan Sadhna Science Quiz - By Ritesh Saraiya</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%); margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .container { background: white; width: 100%; max-width: 450px; border-radius: 30px; padding: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 4px solid #f1c40f; }
-        .header-box { background: #f1f2f6; padding: 15px; border-radius: 20px; margin-bottom: 25px; border-bottom: 5px solid #f1c40f; }
-        h1 { color: #1e3799; margin: 0; font-size: 24px; }
-        .dev-name { color: #e67e22; font-weight: bold; font-size: 18px; display: block; margin-top: 5px; }
-        .form-group { text-align: left; margin-bottom: 18px; }
-        label { font-weight: bold; color: #0c2461; display: block; margin-bottom: 8px; font-size: 15px; }
-        select, input { width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 16px; box-sizing: border-box; outline: none; transition: 0.3s; }
-        .btn-start { width: 100%; padding: 18px; background: #f1c40f; color: #0c2461; border: none; border-radius: 50px; font-size: 22px; font-weight: bold; cursor: pointer; margin-top: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
-        .btn-start:hover { background: #e67e22; color: white; transform: scale(1.03); }
-        .footer { margin-top: 30px; padding: 15px; background: #f8f9fa; border-radius: 20px; border: 1px solid #dee2e6; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%); margin: 0; padding: 20px 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+        .container { background: white; width: 100%; max-width: 450px; border-radius: 30px; padding: 25px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 4px solid #f1c40f; box-sizing: border-box; }
+        .header-box { background: #f1f2f6; padding: 15px; border-radius: 20px; margin-bottom: 22px; border-bottom: 5px solid #f1c40f; }
+        h1 { color: #1e3799; margin: 0; font-size: 23px; }
+        .dev-name { color: #e67e22; font-weight: bold; font-size: 16px; display: block; margin-top: 5px; }
+        .form-group { text-align: left; margin-bottom: 16px; }
+        label { font-weight: bold; color: #0c2461; display: block; margin-bottom: 8px; font-size: 14.5px; }
+        select, input { width: 100%; padding: 13px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 15px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        select:focus, input:focus { border-color: #1e3799; }
+        
+        .btn-start { width: 100%; padding: 16px; background: #f1c40f; color: #0c2461; border: none; border-radius: 50px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .btn-start:hover { background: #e67e22; color: white; transform: scale(1.02); }
+
+        /* નવીન સ્ટડી મટીરીયલ અને બ્લોગ સેક્શન */
+        .study-box { margin-top: 22px; padding: 15px; background: #eef2f7; border-radius: 18px; border: 2px dashed #1e3799; }
+        .study-title { font-weight: bold; color: #0c2461; font-size: 15px; margin-bottom: 10px; display: block; }
+        .btn-swadhyay { display: block; width: 100%; padding: 13px; background: #27ae60; color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: bold; box-sizing: border-box; box-shadow: 0 4px 10px rgba(39,174,96,0.3); transition: 0.3s; margin-bottom: 10px; }
+        .btn-swadhyay:hover { background: #219150; }
+        
+        .btn-blog-link { display: block; width: 100%; padding: 11px; background: #ffffff; color: #d35400; text-decoration: none; border-radius: 12px; font-size: 14.5px; font-weight: bold; border: 2px solid #e67e22; box-sizing: border-box; transition: 0.3s; }
+        .btn-blog-link:hover { background: #e67e22; color: white; }
+
+        .footer { margin-top: 22px; padding: 12px; background: #f8f9fa; border-radius: 18px; border: 1px solid #dee2e6; }
+        .school-name { font-weight: bold; color: #2d3436; font-size: 14px; }
         #numGroup, #paperGroup { display: none; }
     </style>
 </head>
@@ -27,45 +40,54 @@
         <span class="dev-name">Developed by: Ritesh Saraiya</span>
     </div>
 
-   <div class="form-group">
-    <label>🎯 ક્વિઝનો પ્રકાર પસંદ કરો:</label>
-    <select id="mode" onchange="toggle()">
-        <option value="chapter">📖 પ્રકરણ મુજબ ક્વિઝ</option>
-        <option value="mixed">🔀 મિક્સ ક્વિઝ (પ્રેક્ટિસ)</option>
-        <option value="paper">📜 ઓરિજિનલ પેપર</option>
-    </select>
-</div>
+    <div class="form-group">
+        <label>🎯 ક્વિઝનો પ્રકાર પસંદ કરો:</label>
+        <select id="mode" onchange="toggle()">
+            <option value="chapter">📖 પ્રકરણ મુજબ ક્વિઝ</option>
+            <option value="mixed">🔀 મિક્સ ક્વિઝ (પ્રેક્ટિસ)</option>
+            <option value="paper">📜 ઓરિજિનલ પેપર</option>
+        </select>
+    </div>
 
-<div id="chapGroup" class="form-group">
-    <label>📖 પ્રકરણ પસંદ કરો:</label>
-    <select id="selFile">
-        <option value="std 8 sci ch 1.html">પાઠ ૧: પાક ઉત્પાદન</option>
-        <option value="std 8 sci ch 2.html">પાઠ ૨: સૂક્ષ્મજીવો</option>
-        <option value="std 8 sci ch 3.html">પાઠ ૩: કોલસો અને પેટ્રોલિયમ</option>
-        <option value="std 8 sci ch 4.html">પાઠ ૪: દહન અને જ્યોત</option>
-        <option value="std 8 sci ch 5.html">પાઠ ૫: વનસ્પતિ સંરક્ષણ</option>
-        <option value="std 8 sci ch 6.html">પાઠ ૬: પ્રાણીઓમાં પ્રજનન</option>
-        <option value="std 8 sci ch 7.html">પાઠ ૭: તરૂણાવસ્થા તરફ</option>
-        <option value="std 8 sci ch 8.html">પાઠ ૮: બળ અને દબાણ</option>
-        <option value="std 8 sci ch 9.html">પાઠ ૯: ઘર્ષણ</option>
-        <option value="std 8 sc 10.html">પાઠ ૧૦: ધ્વનિ</option>
-        <option value="std 8 sc 11.html">પાઠ ૧૧: વિદ્યુત અસરો</option>
-        <option value="std 8 sc 12.html">પાઠ ૧૨: કુદરતી ઘટનાઓ</option>
-        <option value="std 8 sc 13.html">પાઠ ૧૩: પ્રકાશ</option>
-    </select>
-</div>
+    <div id="chapGroup" class="form-group">
+        <label>📖 પ્રકરણ પસંદ કરો:</label>
+        <select id="selFile">
+            <option value="std 8 sci ch 1.html">પાઠ ૧: પાક ઉત્પાદન</option>
+            <option value="std 8 sci ch 2.html">પાઠ ૨: સૂક્ષ્મજીવો</option>
+            <option value="std 8 sci ch 3.html">પાઠ ૩: કોલસો અને પેટ્રોલિયમ</option>
+            <option value="std 8 sci ch 4.html">પાઠ ૪: દહન અને જ્યોત</option>
+            <option value="std 8 sci ch 5.html">પાઠ ૫: વનસ્પતિ સંરક્ષણ</option>
+            <option value="std 8 sci ch 6.html">પાઠ ૬: પ્રાણીઓમાં પ્રજનન</option>
+            <option value="std 8 sci ch 7.html">પાઠ ૭: તરૂણાવસ્થા તરફ</option>
+            <option value="std 8 sci ch 8.html">પાઠ ૮: બળ અને દબાણ</option>
+            <option value="std 8 sci ch 9.html">પાઠ ૯: ઘર્ષણ</option>
+            <option value="std 8 sc 10.html">પાઠ ૧૦: ધ્વનિ</option>
+            <option value="std 8 sc 11.html">પાઠ ૧૧: વિદ્યુત અસરો</option>
+            <option value="std 8 sc 12.html">પાઠ ૧૨: કુદરતી ઘટનાઓ</option>
+            <option value="std 8 sc 13.html">પાઠ ૧૩: પ્રકાશ</option>
+        </select>
+    </div>
 
-<div id="paperGroup" class="form-group" style="display:none;">
-    <label>📄 પેપર પસંદ કરો:</label>
-    <select id="selPaper">
-        <option value="original.html">ઓરિજિનલ પેપર</option>
-    </select>
-</div>    <div id="numGroup" class="form-group">
+    <div id="paperGroup" class="form-group">
+        <label>📄 પેપર પસંદ કરો:</label>
+        <select id="selPaper">
+            <option value="original.html">ઓરિજિનલ પેપર</option>
+        </select>
+    </div>
+
+    <div id="numGroup" class="form-group">
         <label>🔢 પ્રશ્નોની સંખ્યા:</label>
         <input type="number" id="qNum" value="25" min="1" max="260">
     </div>
 
     <button class="btn-start" onclick="go()">ક્વિઝ શરૂ કરો ➔</button>
+
+    <!-- નવું સ્ટડી મટીરીયલ અને સ્વાધ્યાય સેક્શન -->
+    <div class="study-box">
+        <span class="study-title">📚 વિશેષ શૈક્ષણિક સાહિત્ય</span>
+        <a href="swadhyay.html" class="btn-swadhyay">📖 ધોરણ ૮ વિજ્ઞાન સંપૂર્ણ સ્વાધ્યાય (PDF)</a>
+        <a href="https://arunogyan.blogspot.com" target="_blank" class="btn-blog-link">🌐 અરુનોજ્ઞાન બ્લોગની મુલાકાત લો</a>
+    </div>
 
     <div class="footer">
         <div class="school-name">Primary School Naikiwad Vanzana</div>
