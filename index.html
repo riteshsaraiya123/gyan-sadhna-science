@@ -82,10 +82,10 @@
 
     <button class="btn-start" onclick="go()">ક્વિઝ શરૂ કરો ➔</button>
 
-    <!-- નવું સ્ટડી મટીરીયલ અને સ્વાધ્યાય સેક્શન -->
+    <!-- નવીન શૈક્ષણિક સાહિત્ય સેક્શન -->
     <div class="study-box">
         <span class="study-title">📚 વિશેષ શૈક્ષણિક સાહિત્ય</span>
-        <a href="swadhyay.html" class="btn-swadhyay">📖 ધોરણ ૮ વિજ્ઞાન સંપૂર્ણ સ્વાધ્યાય (વાંચન)</a>
+        <a href="swadhyay.html" class="btn-swadhyay">📖 ધોરણ ૮ વિજ્ઞાન સંપૂર્ણ સ્વાધ્યાય</a>
         <a href="https://arunogyan.blogspot.com" target="_blank" class="btn-blog-link">🌐 અરુનોજ્ઞાન બ્લોગની મુલાકાત લો</a>
     </div>
 
@@ -115,6 +115,13 @@
         }
         window.location.href = url;
     }
+
+    // જ્યારે પણ યુઝર હોમ સ્ક્રીન પર આવે ત્યારે હિસ્ટ્રી રીસેટ થઈ જાય
+    window.onload = function() {
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
+    };
 </script>
 
 </body>
