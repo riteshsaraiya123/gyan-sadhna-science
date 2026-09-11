@@ -22,6 +22,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      align-items: center;
     }
     .app-title {
       font-size: 18px;
@@ -32,30 +33,26 @@
     }
     .action-row {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
+      width: 100%;
     }
     .btn {
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13.5px;
       font-weight: bold;
       text-decoration: none;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-    }
-    .btn-download {
-      background: #2e7d32;
-      color: #ffffff;
+      gap: 6px;
     }
     .btn-blog {
       background: #e65100;
       color: #ffffff;
+      box-shadow: 0 3px 8px rgba(230, 81, 0, 0.3);
     }
     .chapter {
       background: #ffffff;
@@ -121,14 +118,6 @@
       color: #37474f;
       font-weight: 600;
     }
-
-    /* Print / PDF Mode Styling */
-    @media print {
-      body { background-color: #fff; padding: 0; }
-      .top-bar, .bottom-bar { display: none !important; }
-      .chapter { box-shadow: none; border: 1px solid #ccc; margin-bottom: 25px; page-break-inside: avoid; }
-      .chapter-header { background: #333 !important; color: #fff !important; -webkit-print-color-adjust: exact; }
-    }
   </style>
 </head>
 <body>
@@ -137,8 +126,7 @@
   <div class="top-bar">
     <h1 class="app-title">ધોરણ ૮ વિજ્ઞાન - સંપૂર્ણ સ્વાધ્યાય સોલ્યુશન</h1>
     <div class="action-row">
-      <button class="btn btn-download" onclick="window.print()">📥 Download / Save PDF</button>
-      <a href="https://arunogyan.blogspot.com" target="_blank" class="btn btn-blog">🌐 અરુનોજ્ઞાન બ્લોગ</a>
+      <a href="https://arunogyan.blogspot.com" target="_blank" class="btn btn-blog">🌐 વધુ સાહિત્ય માટે: અરુનોજ્ઞાન બ્લોગ</a>
     </div>
   </div>
 
