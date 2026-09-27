@@ -1,0 +1,924 @@
+<style>
+  /* ડેસ્કટોપ / લેપટોપ પર બ્લોગર સાઇડબાર હાઇડ કરવા માટે */
+  @media screen and (min-width: 769px) {
+      .sidebar, #sidebar-wrapper, .sidebar-container, aside {
+          display: none !important;
+          visibility: hidden !important;
+          width: 0px !important;
+      }
+      #main, .main-inner, .content-inner, #main-wrapper {
+          width: 100% !important;
+          max-width: 100% !important;
+          float: none !important;
+          display: block !important;
+          opacity: 1 !important;
+      }
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ધોરણ-૭ ગણિત પ્રથમ સત્રાંત કસોટી - ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (૮૦ ગુણ)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #1d4ed8 100%);
+        }
+        .gradient-blog {
+            background: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+        }
+        .modal-blur {
+            backdrop-filter: blur(6px);
+        }
+        
+        /* A4 Size Print CSS */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm 8mm 10mm;
+            }
+            body {
+                background-color: white !important;
+                font-size: 9.5pt !important;
+                line-height: 1.3 !important;
+                color: #000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .content-block {
+                display: block !important;
+                box-shadow: none !important;
+                border: 1px solid #94a3b8 !important;
+                border-radius: 6px !important;
+                margin: 0 0 15px 0 !important;
+                padding: 10px 14px !important;
+                page-break-after: always;
+                break-after: page;
+            }
+            .content-block h2 {
+                font-size: 12pt !important;
+            }
+            .content-block h3 {
+                font-size: 10pt !important;
+                padding: 3px 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 4px !important;
+                background-color: #f1f5f9 !important;
+                color: #000 !important;
+                border-left: 4px solid #1d4ed8 !important;
+            }
+            ol, ul {
+                margin-bottom: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body class="pb-16 relative">
+
+    <!-- Header Section -->
+    <header class="gradient-header text-white shadow-xl no-print sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:flex sm:items-center sm:justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+                    <svg class="w-7 h-7 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-wide">ધોરણ-૭ ગણિત : પ્રથમ સત્રાંત કસોટી (પ્રકરણ ૧ થી ૬)</h1>
+                    <p class="text-xs text-blue-100 mt-0.5">GCERT સત્તાવાર બ્લૂપ્રિન્ટ ૨૦૨૬-૨૭ આધારિત ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (કુલ ગુણ: ૮૦)</p>
+                </div>
+            </div>
+            <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
+                <button onclick="window.print()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    પ્રિન્ટ / PDF ડાઉનલોડ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 mt-5 no-print">
+        <div class="flex border-b-2 border-slate-200 overflow-x-auto space-x-1 pb-1 scrollbar-none">
+            <button onclick="switchTab('notes')" id="tab-btn-notes" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-blue-600 text-white shadow-md">📊 બ્લૂપ્રિન્ટ</button>
+            <button onclick="switchTab('1')" id="tab-btn-1" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૧</button>
+            <button onclick="switchTab('2')" id="tab-btn-2" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૨</button>
+            <button onclick="switchTab('3')" id="tab-btn-3" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૩</button>
+            <button onclick="switchTab('4')" id="tab-btn-4" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૪</button>
+            <button onclick="switchTab('5')" id="tab-btn-5" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૫</button>
+            <button onclick="switchTab('all')" id="tab-btn-all" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-purple-100 text-purple-800 hover:bg-purple-200">તમામ ૫ પેપર્સ</button>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 mt-5">
+
+        <!-- ==================== BLUEPRINT TAB ==================== -->
+        <article id="block-notes" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8">
+            <div class="border-b-2 border-blue-600 pb-3 mb-4">
+                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">GCERT પરિરૂપ ૨૦૨૬-૨૭</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">ધોરણ-૭ ગણિત પ્રથમ સત્રાંત કસોટી બ્લૂપ્રિન્ટ (પ્રકરણ ૧ થી ૬)</h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">કુલ ગુણ: ૮૦ | સમય: ૩ કલાક | પ્રકરણવાર અને અધ્યયન નિષ્પત્તિ મુજબ ગુણભાર</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs sm:text-sm text-left border-collapse border border-slate-300">
+                    <thead class="bg-blue-900 text-white font-bold text-center">
+                        <tr>
+                            <th class="p-2 border border-slate-300">પ્રકરણ નંબર & નામ</th>
+                            <th class="p-2 border border-slate-300">અધ્યયન નિષ્પત્તિ</th>
+                            <th class="p-2 border border-slate-300">કુલ ગુણ</th>
+                            <th class="p-2 border border-slate-300">ભારાંક (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700">
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૧. પૂર્ણાંક સંખ્યાઓ</td><td class="p-2 border border-slate-300">M701</td><td class="p-2 border border-slate-300 text-center font-bold">10</td><td class="p-2 border border-slate-300 text-center">12.50%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૨. અપૂર્ણાંક અને દશાંશ સંખ્યાઓ</td><td class="p-2 border border-slate-300">M703</td><td class="p-2 border border-slate-300 text-center font-bold">14</td><td class="p-2 border border-slate-300 text-center">17.50%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૩. માહિતીનું નિયમન</td><td class="p-2 border border-slate-300">M718 (6) & M720 (8)</td><td class="p-2 border border-slate-300 text-center font-bold">14</td><td class="p-2 border border-slate-300 text-center">17.50%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૪. સાદા સમીકરણ</td><td class="p-2 border border-slate-300">M706</td><td class="p-2 border border-slate-300 text-center font-bold">16</td><td class="p-2 border border-slate-300 text-center">20.00%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૫. રેખા અને ખૂણા</td><td class="p-2 border border-slate-300">M712</td><td class="p-2 border border-slate-300 text-center font-bold">10</td><td class="p-2 border border-slate-300 text-center">12.50%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૬. ત્રિકોણ અને તેના ગુણધર્મો</td><td class="p-2 border border-slate-300">M713 (7) & M724 (9)</td><td class="p-2 border border-slate-300 text-center font-bold">16</td><td class="p-2 border border-slate-300 text-center">20.00%</td></tr>
+                        <tr class="bg-blue-100 font-extrabold text-blue-900 text-center">
+                            <td class="p-2 border border-slate-300 text-left" colspan="2">કુલ સરવાળો</td>
+                            <td class="p-2 border border-slate-300">૮૦ ગુણ</td>
+                            <td class="p-2 border border-slate-300">૧૦૦%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 1 ==================== -->
+        <article id="block-1" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૧)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૭</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M701 : પૂર્ણાંક સંખ્યાઓ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-20) × (-5) = _____ (A) 100 (B) -100 (C) 25 (D) -25</li>
+                    <li>(-36) ÷ (-4) = _____ (A) -9 (B) 9 (C) -40 (D) 40</li>
+                    <li>પૂર્ણાંક સંખ્યાઓ માટે ગુણાકારની તટસ્થ સંખ્યા: (A) 0 (B) 1 (C) -1 (D) અસ્તિત્વ નથી</li>
+                    <li>કોઈપણ પૂર્ણાંક a માટે a × 0 = _____ (A) a (B) 1 (C) 0 (D) -a</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>બપોરે ૧૨ વાગ્યાનું તાપમાન શૂન્યથી ૧૦°C ઉપર હતું. જો તે ૨°C પ્રતિ કલાકના દરે ઘટે તો કયા સમયે તાપમાન શૂન્યથી ૮°C નીચે હોય?</li>
+                    <li>એક લિફ્ટ ૬ મીટર પ્રતિ મિનિટના દરે ખાણમાં નીચે ઊતરે છે. જો તે જમીનથી ૧૦ મીટર ઉપરથી નીચે જતી હોય તો -૩૫૦ મીટર સુધી પહોંચતા કેટલો સમય લાગે?</li>
+                    <li>એક પરીક્ષામાં પ્રત્યેક સાચા જવાબના +૫ ગુણ અને ખોટા જવાબના -૨ ગુણ છે. રાધિકાએ બધા પ્રશ્નોના ઉત્તર આપ્યા અને ૨૦ ગુણ મેળવ્યા. જો તેના ૧૨ સાચા જવાબો હોય તો તેના કેટલા જવાબો ખોટા પડ્યા હશે?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૨. (LO-M703 : અપૂર્ણાંક અને દશાંશ સંખ્યાઓ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>2/3 નો વ્યસ્ત કયો છે? (A) 3/2 (B) -2/3 (C) -3/2 (D) 1</li>
+                    <li>0.2 × 0.3 = _____ (A) 0.6 (B) 0.06 (C) 6.0 (D) 60</li>
+                    <li>3/5 × 5/3 = _____ (A) 0 (B) 1 (C) 15/25 (D) 25/15</li>
+                    <li>2.5 ÷ 100 = _____ (A) 250 (B) 0.25 (C) 0.025 (D) 0.0025</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શોધો: 2.7 ÷ 100 અને 0.3 × 10</li>
+                    <li>કિંમત શોધો: 7/3 ÷ 2</li>
+                    <li>ગુણાકાર કરો: 11.2 × 0.15</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક કાર ૧ લિટર પેટ્રોલમાં ૧૬ કિમી અંતર કાપે છે, તો ૨ ¾ લિટર પેટ્રોલમાં તે કેટલું અંતર કાપશે?</li>
+                    <li>એક લંબચોરસ પ્લેટની લંબાઈ ૫.૭ સેમી અને પહોળાઈ ૩ સેમી છે. તેનું ક્ષેત્રફળ શોધો.</li>
+                    <li>એક વાહન ૨.૪ લિટર પેટ્રોલમાં ૪૩.૨ કિમી અંતર કાપે છે, તો ૧ લિટર પેટ્રોલમાં તે વાહન કેટલું અંતર કાપશે?</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M718 : મધ્યક, મધ્યસ્થ અને બહુલક) (કોઈપણ ત્રણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પ્રથમ પાંચ પૂર્ણ સંખ્યાઓનો મધ્યક શોધો. (૨ ગુણ)</li>
+                    <li>માહિતી 2, 4, 6, 4, 8, 4, 10 નો બહુલક શોધો. (૨ ગુણ)</li>
+                    <li>આપેલ પ્રાપ્તાંકો 24, 36, 46, 17, 18, 25, 35 નો મધ્યસ્થ શોધો. (૨ ગુણ)</li>
+                    <li>એક ક્રિકેટરે ૬ ઇનિંગ્સમાં 36, 35, 50, 46, 60, 55 રન બનાવ્યા, તો તેના સરેરાશ રન (મધ્યક) શોધો. (૨ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૪. (LO-M720 : લંબ આલેખનું અર્થઘટન & આલેખ નિર્માણ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) આલેખનું અર્થઘટન કરી પ્રશ્નોના ઉત્તર આપો: [૪ ગુણ]</p>
+                <p class="pl-2">એક શાળાના ધોરણ ૭ ના વિદ્યાર્થીઓનું મનપસંદ પાળતુ પ્રાણી દર્શાવતો આલેખ આપેલ છે: કૂતરો = 10, બિલાડી = 12, સસલું = 4, માછલી = 6.</p>
+                <ol class="list-decimal list-inside space-y-1 pl-4">
+                    <li>સૌથી વધુ લોકપ્રિય પાળતુ પ્રાણી કયું છે?</li>
+                    <li>કેટલા વિદ્યાર્થીઓનું મનપસંદ પ્રાણી કૂતરો છે?</li>
+                    <li>કયું પ્રાણી સૌથી ઓછા વિદ્યાર્થીઓને પસંદ છે?</li>
+                    <li>કુલ કેટલા વિદ્યાર્થીઓનું સર્વેક્ષણ કરવામાં આવ્યું છે?</li>
+                </ol>
+                <p class="font-bold pt-1">(B) યોગ્ય પ્રમાણમાપ લઈ લંબ આલેખ દોરો: (કોઈપણ એક) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જુદા જુદા છ વર્ગોના વિદ્યાર્થીઓની સંખ્યા નીચે મુજબ છે: પાંચમું = 135, છઠ્ઠું = 120, સાતમું = 95, આઠમું = 100. આ માહિતીનો લંબ આલેખ દોરો.</li>
+                    <li>એક વિદ્યાર્થીના બે સત્રના પરિણામ નીચે મુજબ છે: ગણિત = 88 (સત્ર ૧) / 95 (સત્ર ૨), વિજ્ઞાન = 81 (સત્ર ૧) / 85 (સત્ર ૨). આ માહિતીનો દ્વિ-લંબ આલેખ દોરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (LO-M706 : સાદા સમીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(A) હેતુલક્ષી પ્રશ્નો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>x માં 4 ઉમેરતાં 9 મળે, તેનું સમીકરણ: (A) x - 4 = 9 (B) x + 4 = 9 (C) 4x = 9 (D) x/4 = 9</li>
+                    <li>જો 3n = 21 હોય તો n = _____ (A) 7 (B) 18 (C) 24 (D) 63</li>
+                    <li>સમીકરણ 2y = 10 માં ચલ કયો છે? (ખાલી જગ્યા પૂરો)</li>
+                    <li>સમીકરણની બંને બાજુ સમાન સંખ્યા બાદ કરતાં સમાનતા જળવાય છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(B) ચલને અલગ કરી સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>3n - 2 = 46</li>
+                    <li>5m + 7 = 17</li>
+                    <li>20p / 3 = 40</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ કોયડા ઉકેલો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લક્ષ્મીના પિતા ૪૯ વર્ષના છે. તે લક્ષ્મીની ઉંમરના ત્રણ ગણા કરતાં ૪ વર્ષ મોટા છે. લક્ષ્મીની ઉંમર શોધો.</li>
+                    <li>એક સમદ્વિબાજુ ત્રિકોણમાં આધારકોણ સમાન છે. શિરોકોણનું માપ ૪૦° હોય તો આધારકોણનું માપ શોધો.</li>
+                    <li>એક સંખ્યાના ૫ ગણામાં ૮ ઉમેરતાં ૩૩ મળે છે, તો તે સંખ્યા શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૬. (LO-M712 : રેખા અને ખૂણા) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કોટિકોણની જોડના બંને ખૂણાઓનો સરવાળો કેટલો થાય? (A) 90° (B) 180° (C) 360° (D) 45°</li>
+                    <li>પૂરકકોણની જોડના ખૂણાઓનો સરવાળો કેટલો હોય? (A) 90° (B) 180° (C) 270° (D) 360°</li>
+                    <li>અભિકોણોનાં માપ હંમેશાં _____ હોય છે. (A) સમાન (B) પૂરક (C) અસમાન (D) 90°</li>
+                    <li>જો બે સમાંતર રેખાઓને છેદિકા છેદે, તો અનુકોણની પ્રત્યેક જોડ: (A) સમાન (B) પૂરક (C) કાટખૂણા (D) અસમાન</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ ત્રણ) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>65° ના માપવાળા ખૂણાના કોટિકોણનું માપ શોધો.</li>
+                    <li>105° ના માપવાળા ખૂણાના પૂરકકોણનું માપ શોધો.</li>
+                    <li>જો બે સમાંતર રેખાઓને એક છેદિકા છેદે અને એક ખૂણો 70° હોય તો તેના અનુકોણ અને અંતઃયુગ્મકોણનું માપ શોધો.</li>
+                    <li>રેખાઓ l અને m સમાંતર છે કે નહીં તે ચકાસો (જો છેદિકાની એક જ બાજુના અંતઃકોણ 100° અને 80° હોય).</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૭. (LO-M713 : ત્રિકોણના ખૂણાઓના માપ) [૭ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણના ત્રણેય ખૂણાઓનો સરવાળો કેટલો થાય? (A) 90° (B) 180° (C) 360° (D) 270°</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ તેના બંને અંતઃસંમુખકોણના સરવાળા _____ હોય છે. (A) જેટલો (B) થી વધુ (C) થી ઓછો (D) બમણો</li>
+                    <li>સમબાજુ ત્રિકોણના દરેક ખૂણાનું માપ કેટલું હોય છે? (A) 45° (B) 60° (C) 90° (D) 30°</li>
+                </ol>
+                <p class="font-bold pt-1">(B) અજ્ઞાત x નું મૂલ્ય શોધો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણ ABC માં ∠A = 50° અને ∠B = 60° હોય તો ∠C (x) શોધો.</li>
+                    <li>એક ત્રિકોણનો બહિષ્કોણ 110° છે અને એક અંતઃસંમુખકોણ 50° છે, તો બીજો અંતઃસંમુખકોણ x શોધો.</li>
+                    <li>કાટકોણ ત્રિકોણમાં એક લઘુકોણ 30° હોય તો બીજો લઘુકોણ x શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : ત્રિકોણના ગુણધર્મો અને પાયથાગોરસ) [૯ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાટકોણ ત્રિકોણમાં કાટખૂણાની સામેની બાજુને શું કહેવાય? (A) કર્ણ (B) વેધ (C) મધ્યગા (D) પાયો</li>
+                    <li>નીચેનામાંથી કઈ બાજુઓ કાટકોણ ત્રિકોણ બનાવી શકે? (A) 3, 4, 5 (B) 2, 3, 4 (C) 1, 2, 3 (D) 4, 5, 6</li>
+                    <li>ત્રિકોણની કોઈપણ બે બાજુઓની લંબાઈનો સરવાળો ત્રીજી બાજુ કરતાં _____ હોય છે. (A) વધારે (B) ઓછો (C) સમાન (D) અડધો</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક ઝાડ જમીન પરથી ૫ મીટર ઊંચાઈએથી તૂટી પડે છે અને તેની ટોચ ઝાડના થડથી ૧૨ મીટર દૂર જમીનને અડે છે. ઝાડની મૂળ ઊંચાઈ શોધો.</li>
+                    <li>એક નિસરણી દીવાલ સાથે એવી રીતે ગોઠવી છે કે તેનો નીચેનો છેડો દીવાલથી ૬ મીટર દૂર રહે અને ઉપરનો છેડો ૮ મીટર ઊંચી બારીને અડે. નિસરણીની લંબાઈ શોધો.</li>
+                    <li>એક લંબચોરસની લંબાઈ ૪૦ સેમી અને તેના એક વિકર્ણની લંબાઈ ૪૧ સેમી છે. આ લંબચોરસની પરિમિતિ શોધો.</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 2 ==================== -->
+        <article id="block-2" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૨)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૭</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M701 : પૂર્ણાંક સંખ્યાઓ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-1) ને એકી સંખ્યા વખત ગુણતાં શું મળે? (A) 1 (B) -1 (C) 0 (D) 2</li>
+                    <li>(-30) ÷ 10 = _____ (A) 3 (B) -3 (C) -300 (D) 30</li>
+                    <li>(-8) × _____ = 72 (A) 9 (B) -9 (C) 8 (D) -8</li>
+                    <li>સરવાળા માટેની તટસ્થ સંખ્યા: (A) 0 (B) 1 (C) -1 (D) કોઈ નહીં</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>યોગ્ય ગુણધર્મનો ઉપયોગ કરી ગણતરી કરો: 26 × (-48) + (-48) × (-36)</li>
+                    <li>એક સિમેન્ટ કંપનીને સફેદ સિમેન્ટની ગુણ વેચતા ₹ ૮ નફો થાય છે અને રાખોડી સિમેન્ટ પર ₹ ૫ ખોટ જાય છે. જો કંપની ૩૦૦૦ સફેદ અને ૫૦૦૦ રાખોડી ગુણ વેચે તો નફો કે ખોટ કેટલો થાય?</li>
+                    <li>શ્રીનગરનું તાપમાન સોમવારે -૫°C હતું. મંગળવારે ૨°C ઓછું થયું. બુધવારે ૪°C વધ્યું, તો બુધવારે તાપમાન કેટલું હશે?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૨. (LO-M703 : અપૂર્ણાંક અને દશાંશ સંખ્યાઓ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1/2 નું અડધું કેટલું થાય? (A) 1/4 (B) 1 (C) 1/8 (D) 2</li>
+                    <li>0.7 × 10 = _____ (A) 0.07 (B) 7 (C) 70 (D) 0.70</li>
+                    <li>5 ÷ 1/2 = _____ (A) 5/2 (B) 10 (C) 2/5 (D) 1</li>
+                    <li>35 મીમી = _____ સેમી (A) 3.5 (B) 0.35 (C) 350 (D) 0.035</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શોધો: 0.5 ÷ 1000 અને 31.1 × 100</li>
+                    <li>કિંમત શોધો: 4 1/3 ÷ 3</li>
+                    <li>સાદુંરૂપ આપો: 2.5 × 0.3</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સાઈલીએ તેના બગીચામાં એક હારમાં ૪ છોડ રોપ્યા છે. બે છોડ વચ્ચેનું અંતર ૩/૪ મીટર હોય તો પ્રથમ અને છેલ્લા છોડ વચ્ચેનું અંતર શોધો.</li>
+                    <li>એક નિયમિત બહુકોણની દરેક બાજુની લંબાઈ ૨.૫ સેમી છે. તેની પરિમિતિ ૧૨.૫ સેમી હોય તો બહુકોણની બાજુઓની સંખ્યા શોધો.</li>
+                    <li>એક ચોરસ પ્લોટની બાજુની લંબાઈ ૪.૨ મીટર છે. તેનું ક્ષેત્રફળ શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M718 : મધ્યક, મધ્યસ્થ અને બહુલક) (કોઈપણ ત્રણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>માહિતીનો વિસ્તાર એટલે શું? ઉદાહરણ આપો. (૨ ગુણ)</li>
+                    <li>માહિતી 13, 16, 12, 14, 19, 12, 14, 13, 14 નો બહુલક શોધો. (૨ ગુણ)</li>
+                    <li>પ્રથમ સાત પ્રાકૃતિક સંખ્યાઓનો મધ્યસ્થ શોધો. (૨ ગુણ)</li>
+                    <li>પાંચ વિદ્યાર્થીઓના ગણિતના ગુણ 25, 30, 40, 20, 35 છે. તેમનો મધ્યક શોધો. (૨ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૪. (LO-M720 : આલેખ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) આલેખ પરથી પ્રશ્નોના ઉત્તર આપો: [૪ ગુણ]</p>
+                <p class="pl-2">એક પુસ્તકાલયમાં સોમવારથી ગુરુવાર સુધી વંચાયેલાં પુસ્તકો: સોમવાર = 50, મંગળવાર = 40, બુધવાર = 60, ગુરુવાર = 30.</p>
+                <ol class="list-decimal list-inside space-y-1 pl-4">
+                    <li>સૌથી વધુ પુસ્તકો કયા વારે વંચાયા?</li>
+                    <li>મંગળવારે કેટલાં પુસ્તકો વંચાયા?</li>
+                    <li>ગુરુવારે વંચાયેલાં પુસ્તકોની સંખ્યા જણાવો.</li>
+                    <li>ચાર દિવસમાં વંચાયેલાં કુલ પુસ્તકો કેટલાં?</li>
+                </ol>
+                <p class="font-bold pt-1">(B) યોગ્ય પ્રમાણમાપ લઈ લંબ આલેખ દોરો: (કોઈપણ એક) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક સપ્તાહના જુદા જુદા દિવસોમાં વેચાયેલી ઘડિયાળો: સોમ = 20, મંગળ = 25, બુધ = 15, ગુરુ = 30, શુક્ર = 35. આ માહિતીનો લંબ આલેખ દોરો.</li>
+                    <li>ત્રણ બાળકોના બે વિષયના ગુણ: અમિત = 40 (ગણિત) / 35 (અંગ્રેજી), સુમિત = 45 / 42, રોહિત = 38 / 40. દ્વિ-લંબ આલેખ દોરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (LO-M706 : સાદા સમીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(A) હેતુલક્ષી પ્રશ્નો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>y માંથી 5 બાદ કરતાં 7 મળે, સમીકરણ: (A) y - 5 = 7 (B) y + 5 = 7 (C) 5 - y = 7 (D) 5y = 7</li>
+                    <li>જો m / 2 = 6 હોય તો m = _____ (A) 3 (B) 12 (C) 8 (D) 4</li>
+                    <li>સમીકરણમાં ક્ષમતા દર્શાવવા કયું ચિહ્ન વપરાય છે? (ખાલી જગ્યા પૂરો)</li>
+                    <li>x = 2 એ x + 3 = 5 નો ઉકેલ છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>2q - 6 = 0</li>
+                    <li>4(m + 3) = 16</li>
+                    <li>3s + 12 = 0</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ કોયડા ઉકેલો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શિક્ષકે કહ્યું કે વર્ગમાં એક વિદ્યાર્થીએ મેળવેલા સૌથી વધુ ગુણ સૌથી ઓછા ગુણના બમણા કરતાં ૭ વધારે છે. સૌથી વધુ ગુણ ૮૭ હોય તો સૌથી ઓછા ગુણ શોધો.</li>
+                    <li>ઇરફાને કહ્યું કે તેની પાસે પરમીત પાસેની લખોટીના ૫ ગણા કરતાં ૭ લખોટી વધુ છે. ઇરફાન પાસે ૩૭ લખોટી હોય તો પરમીત પાસે કેટલી લખોટી હશે?</li>
+                    <li>એક સંખ્યાના ચોથા ભાગમાંથી ૪ બાદ કરતાં ૪ મળે છે, તે સંખ્યા શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૬. (LO-M712 : રેખા અને ખૂણા) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>45° ના ખૂણાના કોટિકોણનું માપ કેટલું? (A) 45° (B) 90° (C) 135° (D) 180°</li>
+                    <li>જો બે ખૂણા રૈખિક જોડ રચતા હોય તો તેમનો સરવાળો: (A) 90° (B) 180° (C) 360° (D) 270°</li>
+                    <li>છેદિકાની એક જ બાજુના અંતઃકોણ કેવા હોય છે? (A) પૂરકકોણ (B) કોટિકોણ (C) સમાન (D) કાટખૂણા</li>
+                    <li>લઘુકોણનું માપ હંમેશાં _____ થી ઓછું હોય છે. (A) 90° (B) 180° (C) 45° (D) 60°</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ ત્રણ) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એવો ખૂણો શોધો જે તેના કોટિકોણ જેટલો જ હોય.</li>
+                    <li>એવો ખૂણો શોધો જે તેના પૂરકકોણ જેટલો જ હોય.</li>
+                    <li>આકૃતિ પરથી જો બે રેખાઓ છેદતી હોય અને એક અભિકોણ 55° હોય તો બાકીના ત્રણેય ખૂણા શોધો.</li>
+                    <li>બે સમાંતર રેખાઓ p અને q ને એક છેદિકા છેદે છે. એક અંતઃયુગ્મકોણ 60° હોય તો બીજો અંતઃયુગ્મકોણ શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૭. (LO-M713 : ત્રિકોણના ખૂણા) [૭ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાટકોણ ત્રિકોણમાં વધુમાં વધુ કેટલા કાટખૂણા હોઈ શકે? (A) 1 (B) 2 (C) 3 (D) 0</li>
+                    <li>સમદ્વિબાજુ ત્રિકોણમાં કેટલી બાજુઓ સમાન હોય? (A) 1 (B) 2 (C) 3 (D) 0</li>
+                    <li>ત્રિકોણના એક ખૂણાનું માપ 90° હોય તો તે કેવો ત્રિકોણ કહેવાય? (A) લઘુકોણ (B) કાટકોણ (C) ગુરુકોણ (D) સમબાજુ</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણના બે ખૂણા 30° અને 80° છે, તો ત્રીજો ખૂણો x શોધો.</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 120° છે અને બંને અંતઃસંમુખકોણ સમાન માપના (x) છે, તો x શોધો.</li>
+                    <li>એક ત્રિકોણના ત્રણેય ખૂણા સમાન છે (x), તો x નું માપ શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : પાયથાગોરસ અને ત્રિકોણ ગુણધર્મો) [૯ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાયથાગોરસનો ગુણધર્મ કયા ત્રિકોણ માટે સાચો છે? (A) કાટકોણ ત્રિકોણ (B) લઘુકોણ (C) ગુરુકોણ (D) બધા જ</li>
+                    <li>જો કાટકોણ ત્રિકોણની બાજુઓ 6 cm અને 8 cm હોય તો કર્ણ: (A) 10 cm (B) 14 cm (C) 12 cm (D) 7 cm</li>
+                    <li>ત્રિકોણની કોઈપણ બે બાજુઓની લંબાઈનો સરવાળો ત્રીજી બાજુ કરતાં _____ હોય છે. (A) વધારે (B) ઓછો (C) સમાન (D) અડધો</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક ઝાડ જમીન પરથી ૫ મીટર ઊંચાઈએથી તૂટી પડે છે અને તેની ટોચ ઝાડના થડથી ૧૨ મીટર દૂર જમીનને અડે છે. ઝાડની મૂળ ઊંચાઈ શોધો.</li>
+                    <li>એક નિસરણી દીવાલ સાથે એવી રીતે ગોઠવી છે કે તેનો નીચેનો છેડો દીવાલથી ૬ મીટર દૂર રહે અને ઉપરનો છેડો ૮ મીટર ઊંચી બારીને અડે. નિસરણીની લંબાઈ શોધો.</li>
+                    <li>એક લંબચોરસની લંબાઈ ૪૦ સેમી અને તેના એક વિકર્ણની લંબાઈ ૪૧ સેમી છે. આ લંબચોરસની પરિમિતિ શોધો.</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 3 ==================== -->
+        <article id="block-3" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૩)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૭</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M701 : પૂર્ણાંક સંખ્યાઓ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-15) × 0 = _____ (A) -15 (B) 15 (C) 0 (D) 1</li>
+                    <li>(-2) × (-3) × (-4) = _____ (A) 24 (B) -24 (C) -12 (D) 12</li>
+                    <li>(-50) ÷ _____ = -1 (A) 50 (B) -50 (C) 1 (D) -1</li>
+                    <li>પૂર્ણાંકો માટે વિભાજનનો નિયમ: a × (b + c) = _____ (A) ab + ac (B) ab - ac (C) a + bc (D) abc</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક રેફ્રિજરેટરનું તાપમાન ઓરડાના તાપમાન (૩૫°C) થી શરૂ કરીને ૫°C પ્રતિ કલાક ઘટાડવામાં આવે છે. ૮ કલાક પછી તાપમાન કેટલું હશે?</li>
+                    <li>વિભાજનના ગુણધર્મથી કિંમત શોધો: (-41) × 102</li>
+                    <li>એક વર્ગ કસોટીમાં ૧૫ પ્રશ્નો છે. દરેક સાચા જવાબ માટે ૪ ગુણ અને ખોટા માટે -૨ ગુણ છે. ગુરપ્રીત ૯ સાચા જવાબો આપે છે તો તેના કુલ ગુણ કેટલા થશે?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૨. (LO-M703 : અપૂર્ણાંક અને દશાંશ સંખ્યાઓ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>3/4 × 8 = _____ (A) 6 (B) 24 (C) 32 (D) 2</li>
+                    <li>0.05 × 10 = _____ (A) 0.5 (B) 5 (C) 50 (D) 0.005</li>
+                    <li>12 ÷ 3/4 = _____ (A) 9 (B) 16 (C) 4 (D) 36</li>
+                    <li>કયો દશાંશ મોટો છે? (A) 0.5 (B) 0.05 (C) 0.005 (D) 0.055</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શોધો: 0.8 × 1000</li>
+                    <li>કિંમત શોધો: 3/5 ÷ 1/2</li>
+                    <li>ગુણાકાર કરો: 0.2 × 51.7</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લિપિકા દરરોજ ૧ ¾ કલાક એક પુસ્તક વાંચે છે. આખું પુસ્તક તે ૬ દિવસમાં વાંચી લે છે, તો તેણે કુલ કેટલા કલાક વાંચ્યું હશે?</li>
+                    <li>એક ચોરસનું ક્ષેત્રફળ શોધો જેની બાજુનું માપ ૫.૫ સેમી છે.</li>
+                    <li>દરેક પેન્સિલની કિંમત ₹ ૩.૫૦ હોય તો આવી ૧૫ પેન્સિલની કુલ કિંમત કેટલી થાય?</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M718 : મધ્યક, મધ્યસ્થ અને બહુલક) (કોઈપણ ત્રણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પ્રથમ પાંચ અવિભાજ્ય સંખ્યાઓનો મધ્યક શોધો. (૨ ગુણ)</li>
+                    <li>માહિતી 6, 8, 5, 4, 8, 6, 8, 10 નો બહુલક શોધો. (૨ ગુણ)</li>
+                    <li>આપેલ અંકો 3, 1, 5, 6, 3, 4, 5 નો મધ્યસ્થ શોધો. (૨ ગુણ)</li>
+                    <li>સતત ૪ દિવસમાં એક દુકાનદારનું વેચાણ ₹ 100, 150, 200, 250 છે, સરેરાશ વેચાણ શોધો. (૨ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૪. (LO-M720 : આલેખ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) આલેખનું અર્થઘટન: [૪ ગુણ]</p>
+                <p class="pl-2">વિવિધ વિષયોમાં એક બાળકે મેળવેલા ગુણ: ગણિત = 80, વિજ્ઞાન = 70, ગુજરાતી = 60, હિન્દી = 50.</p>
+                <ol class="list-decimal list-inside space-y-1 pl-4">
+                    <li>કયા વિષયમાં સૌથી વધુ ગુણ મળ્યા છે?</li>
+                    <li>વિજ્ઞાન વિષયમાં કેટલા ગુણ મળ્યા છે?</li>
+                    <li>ગણિત અને ગુજરાતીના ગુણ વચ્ચેનો તફાવત જણાવો.</li>
+                    <li>કુલ ગુણનો સરવાળો કેટલો થાય?</li>
+                </ol>
+                <p class="font-bold pt-1">(B) લંબ આલેખ દોરો: (કોઈપણ એક) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિવિધ રમતો પસંદ કરતા બાળકો: ક્રિકેટ = 40, ફૂટબોલ = 30, વોલીબોલ = 20, ખો-ખો = 25. લંબ આલેખ દોરો.</li>
+                    <li>બે મિત્રોના પરીક્ષા પરિણામનો દ્વિ-લંબ આલેખ દોરો (ગણિત, વિજ્ઞાન અને અંગ્રેજી).</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (LO-M706 : સાદા સમીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(A) હેતુલક્ષી પ્રશ્નો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>p ના 4 ગણા 20 છે, સમીકરણ: (A) p/4 = 20 (B) 4p = 20 (C) p + 4 = 20 (D) p - 4 = 20</li>
+                    <li>જો 2x = 14 હોય તો x = _____ (A) 7 (B) 12 (C) 28 (D) 16</li>
+                    <li>સમીકરણમાં ડાબી બાજુને અંગ્રેજીમાં શું કહેવાય? (LHS / RHS)</li>
+                    <li>3x + 1 = 10 નો ઉકેલ x = 3 છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>3p / 4 = 6</li>
+                    <li>2(x + 4) = 12</li>
+                    <li>-4(2 + x) = 8</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ કોયડા ઉકેલો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સુંદરગ્રામના લોકોએ પોતાના ગામના બગીચામાં વૃક્ષો વાવ્યા. ફળ ન આપતા વૃક્ષોની સંખ્યા ફળ આપતા વૃક્ષોના ત્રણ ગણા કરતાં ૨ વધારે હતી. ફળ ન આપતા વૃક્ષો ૭૭ હોય તો ફળ આપતા વૃક્ષો કેટલા હશે?</li>
+                    <li>અનવર એક સંખ્યા ધારે છે. તે તેમાંથી ૭ બાદ કરે છે અને પરિણામ ૧૧ મળે છે. ધારેલી સંખ્યા શોધો.</li>
+                    <li>એક સંખ્યાના ત્રીજા ભાગમાં ૫ ઉમેરતાં ૮ મળે છે, તે સંખ્યા શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૬. (LO-M712 : રેખા અને ખૂણા) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>30° ના ખૂણાના કોટિકોણનું માપ: (A) 60° (B) 150° (C) 90° (D) 30°</li>
+                    <li>80° ના ખૂણાના પૂરકકોણનું માપ: (A) 100° (B) 10° (C) 80° (D) 180°</li>
+                    <li>બે પરસ્પર છેદતી રેખાઓથી બનતા અભિકોણ કેવા હોય? (A) સમાન (B) પૂરક (C) અસમાન (D) 90°</li>
+                    <li>ઝેડ (Z) આકારમાં બનતા ખૂણા કયા પ્રકારના હોય? (A) અંતઃયુગ્મકોણ (B) અનુકોણ (C) અભિકોણ (D) રૈખિક જોડ</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ ત્રણ) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>રૈખિક જોડના બે ખૂણા પૈકી એક ખૂણો 110° હોય તો બીજો ખૂણો શોધો.</li>
+                    <li>આકૃતિ પરથી જો l || m હોય અને છેદિકા t નો એક અંતઃકોણ 120° હોય તો બીજો અંતઃકોણ શોધો.</li>
+                    <li>કોટિકોણની જોડના બે ખૂણા 2x અને 3x હોય તો બંને ખૂણાનાં માપ શોધો.</li>
+                    <li>બે રેખાઓ પરસ્પર છેદે છે ત્યારે બનતા ચાર ખૂણાઓ પૈકી એક કાટખૂણો હોય તો બાકીના ખૂણા શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૭. (LO-M713 : ત્રિકોણના ખૂણા) [૭ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ગુરુકોણ ત્રિકોણમાં વધુમાં વધુ કેટલા ગુરુકોણ હોઈ શકે? (A) 1 (B) 2 (C) 3 (D) 0</li>
+                    <li>સમબાજુ ત્રિકોણની ત્રણેય બાજુઓ: (A) સમાન હોય (B) અસમાન હોય (C) કાટખૂણે હોય</li>
+                    <li>ત્રિકોણના બહિષ્કોણનું માપ તેના બંને અંતઃસંમુખકોણના માપ કરતાં હંમેશાં _____ હોય છે. (A) મોટું (B) નાનું (C) સમાન</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણ PQR માં ∠Q = 45° અને ∠R = 55° હોય તો ∠P (x) શોધો.</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 100° છે અને એક અંતઃસંમુખકોણ 40° છે, બીજો ખૂણો x શોધો.</li>
+                    <li>સમદ્વિબાજુ કાટકોણ ત્રિકોણમાં બંને લઘુકોણનાં માપ શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : પાયથાગોરસ અને ત્રિકોણ ગુણધર્મો) [૯ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાટકોણ ત્રિકોણમાં સૌથી મોટી બાજુ કઈ હોય? (A) કર્ણ (B) પાયો (C) વેધ (D) મધ્યગા</li>
+                    <li>પાયથાગોરિયન ત્રિપુટી કઈ છે? (A) 5, 12, 13 (B) 2, 3, 5 (C) 4, 5, 6 (D) 1, 2, 3</li>
+                    <li>ત્રિકોણમાં શિરોબિંદુમાંથી સામેની બાજુના મધ્યબિંદુને જોડતા રેખાખંડને શું કહેવાય? (A) મધ્યગા (B) વેધ (C) કર્ણ (D) પાયો</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક કાટકોણ ત્રિકોણ ABC માં ∠C કાટખૂણો છે. જો AB = 25 cm અને AC = 7 cm હોય તો BC શોધો.</li>
+                    <li>એક 10 મીટર લાંબી નિસરણી દીવાલ સાથે 8 મીટર ઊંચાઈએ અડે છે, તો નિસરણીના પાયાનું દીવાલથી અંતર શોધો.</li>
+                    <li>ચકાસો કે 6 cm, 8 cm અને 10 cm બાજુવાળો ત્રિકોણ કાટકોણ ત્રિકોણ છે? કારણ સહિત ગણતરી દર્શાવો.</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 4 ==================== -->
+        <article id="block-4" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૪)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૭</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M701 : પૂર્ણાંક સંખ્યાઓ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-10) × (-10) = _____ (A) 100 (B) -100 (C) 20 (D) -20</li>
+                    <li>(-45) ÷ 9 = _____ (A) 5 (B) -5 (C) -4 (D) 9</li>
+                    <li>સંખ્યારેખા પર શૂન્યની ડાબી બાજુએ કેવી સંખ્યાઓ હોય છે? (A) ધન (B) ઋણ (C) પૂર્ણ (D) પ્રાકૃતિક</li>
+                    <li>(-1) × 0 = _____ (A) -1 (B) 1 (C) 0 (D) અગણિત</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક સબમરીન દરિયાની સપાટીથી ૮૦૦ મીટર નીચે છે. જો તે ૨૫ મીટર પ્રતિ મિનિટના દરે ઉપર આવે તો સપાટી પર પહોંચતા કેટલો સમય લાગશે?</li>
+                    <li>યોગ્ય નિયમ વાપરી ગણતરી કરો: 625 × (-35) + (-625) × 65</li>
+                    <li>પાંચ પૂર્ણાંકોનો ગુણાકાર ઋણ હોય તેવા બે ઉદાહરણ આપો અને ચકાસો.</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૨. (LO-M703 : અપૂર્ણાંક અને દશાંશ સંખ્યાઓ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શુદ્ધ અપૂર્ણાંક કયો છે? (A) 3/2 (B) 2/3 (C) 7/5 (D) 4/3</li>
+                    <li>0.3 × 100 = _____ (A) 3 (B) 30 (C) 300 (D) 0.03</li>
+                    <li>1/3 ÷ 3 = _____ (A) 1 (B) 1/9 (C) 9 (D) 3</li>
+                    <li>200 ગ્રામ = _____ કિગ્રા (A) 0.2 (B) 2 (C) 0.02 (D) 20</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શોધો: 4.8 ÷ 10 અને 0.03 × 100</li>
+                    <li>કિંમત શોધો: 1/5 ÷ 4/5</li>
+                    <li>સાદુંરૂપ આપો: 0.2 × 0.2 × 0.2</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક મોટરસાઇકલ ૧ લિટર પેટ્રોલમાં ૫૫.૩ કિમી અંતર કાપે છે, તો ૧૦ લિટર પેટ્રોલમાં કેટલું અંતર કાપશે?</li>
+                    <li>રેશ્મા ૧ કલાકમાં પુસ્તકનો ૧/૩ ભાગ વાંચે છે. ૨ ૧/૫ કલાકમાં તે પુસ્તકનો કેટલો ભાગ વાંચશે?</li>
+                    <li>એક સમાંતરબાજુ ચતુષ્કોણનો પાયો ૭.૫ સેમી અને ઊંચાઈ ૪ સેમી છે. તેનું ક્ષેત્રફળ શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M718 : મધ્યક, મધ્યસ્થ અને બહુલક) (કોઈપણ ત્રણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પ્રથમ દસ પ્રાકૃતિક સંખ્યાઓનો વિસ્તાર શોધો. (૨ ગુણ)</li>
+                    <li>માહિતી 2, 3, 2, 5, 2, 6, 2 નો બહુલક શોધો. (૨ ગુણ)</li>
+                    <li>આપેલ અંકો 10, 20, 30, 40, 50 નો મધ્યક અને મધ્યસ્થ શોધો. (૨ ગુણ)</li>
+                    <li>એક વિદ્યાર્થીએ ત્રણ ટેસ્ટમાં 80, 85 અને 90 ગુણ મેળવ્યા, સરેરાશ ગુણ શોધો. (૨ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૪. (LO-M720 : આલેખ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) આલેખનું અર્થઘટન: [૪ ગુણ]</p>
+                <p class="pl-2">વૃક્ષારોપણ સપ્તાહમાં વાવેલા છોડ: ગુલાબ = 25, તુલસી = 40, લીમડો = 35, આસોપાલવ = 20.</p>
+                <ol class="list-decimal list-inside space-y-1 pl-4">
+                    <li>કયો છોડ સૌથી વધુ વાવવામાં આવ્યો?</li>
+                    <li>લીમડાના કેટલા છોડ વાવ્યા?</li>
+                    <li>તુલસી અને આસોપાલવના છોડનો તફાવત કેટલો?</li>
+                    <li>કુલ કેટલા છોડ વાવવામાં આવ્યા?</li>
+                </ol>
+                <p class="font-bold pt-1">(B) લંબ આલેખ દોરો: (કોઈપણ એક) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક શાળાના પાંચ શિક્ષકોની વય: A = 30, B = 40, C = 35, D = 45, E = 50. લંબ આલેખ દોરો.</li>
+                    <li>બે દુકાનોમાં દૈનિક ગ્રાહકોની સંખ્યા દર્શાવતો દ્વિ-લંબ આલેખ દોરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (LO-M706 : સાદા સમીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(A) હેતુલક્ષી પ્રશ્નો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>x ના ત્રીજા ભાગમાં 2 ઉમેરતાં 8 મળે: (A) x/3 + 2 = 8 (B) 3x + 2 = 8 (C) x + 2/3 = 8</li>
+                    <li>જો y - 7 = 3 હોય તો y = _____ (A) 10 (B) 4 (C) -4 (D) 21</li>
+                    <li>સમીકરણમાં અજ્ઞાત સંખ્યાને _____ કહે છે. (ચલ / અચલ)</li>
+                    <li>4x = 20 માં x ની કિંમત 5 છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>7m + 19/2 = 13</li>
+                    <li>6z + 10 = -2</li>
+                    <li>a/5 + 3 = 2</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ કોયડા ઉકેલો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મહેશના પિતાની ઉંમર મહેશની ઉંમરના ત્રણ ગણાથી ૫ વર્ષ વધારે છે. પિતા ૪૪ વર્ષના હોય તો મહેશની ઉંમર શોધો.</li>
+                    <li>એક સંખ્યાના ૬ ગણામાંથી ૫ બાદ કરતાં ૭ મળે છે, તે સંખ્યા શોધો.</li>
+                    <li>સમદ્વિબાજુ ત્રિકોણનો શિરોકોણ ૭૦° હોય તો બંને સમાન આધારકોણનાં માપ શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૬. (LO-M712 : રેખા અને ખૂણા) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>50° ના ખૂણાના કોટિકોણનું માપ: (A) 40° (B) 130° (C) 90° (D) 50°</li>
+                    <li>120° ના ખૂણાના પૂરકકોણનું માપ: (A) 60° (B) 90° (C) 180° (D) 30°</li>
+                    <li>પરસ્પર છેદતી બે રેખાઓથી કેટલા ખૂણા બને? (A) 2 (B) 4 (C) 6 (D) 8</li>
+                    <li>સમાંતર રેખાઓ વચ્ચેનું લંબ અંતર હંમેશાં _____ રહે છે. (A) સમાન (B) બદલાતું (C) શૂન્ય (D) બમણું</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ ત્રણ) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જો બે પૂરકકોણ પૈકી મોટો ખૂણો નાના ખૂણા કરતાં 44° મોટો હોય તો બંને ખૂણા શોધો.</li>
+                    <li>આકૃતિ પરથી જો બે રેખાઓ સમાંતર હોય અને અનુકોણ 115° હોય તો બીજો અનુકોણ શોધો.</li>
+                    <li>એક રેખા પર આવેલા આસન્નકોણ પૈકી એક ખૂણો 75° હોય તો બીજો ખૂણો શોધો.</li>
+                    <li>શું બે ગુરુકોણ એકબીજાના પૂરકકોણ હોઈ શકે? કારણ આપો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૭. (LO-M713 : ત્રિકોણના ખૂણા) [૭ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણમાં વધુમાં વધુ કેટલા લઘુકોણ હોઈ શકે? (A) 1 (B) 2 (C) 3 (D) 0</li>
+                    <li>ત્રિકોણની ત્રણેય બાજુઓ અસમાન હોય તો તે કેવો ત્રિકોણ કહેવાય? (A) વિષમબાજુ (B) સમબાજુ (C) સમદ્વિબાજુ</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ અને તેની સાથે રૈખિક જોડ રચતો અંતઃકોણ કેવા હોય? (A) પૂરકકોણ (B) કોટિકોણ (C) સમાન</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણના બે ખૂણા 40° અને 70° છે, ત્રીજો ખૂણો x શોધો.</li>
+                    <li>એક કાટકોણ ત્રિકોણમાં એક લઘુકોણ 45° હોય તો બીજો લઘુકોણ x શોધો.</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 125° છે અને એક અંતઃસંમુખકોણ 60° હોય તો બીજો ખૂણો x શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : પાયથાગોરસ અને ત્રિકોણ ગુણધર્મો) [૯ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાટકોણ ત્રિકોણમાં કર્ણનો વર્ગ બાકીની બે બાજુઓના વર્ગોના _____ બરાબર હોય. (A) સરવાળા (B) બાદબાકી (C) ગુણાકાર (D) ભાગાકાર</li>
+                    <li>જો બાજુઓ 9 cm, 12 cm હોય તો કાટકોણ ત્રિકોણનો કર્ણ: (A) 15 cm (B) 21 cm (C) 18 cm (D) 20 cm</li>
+                    <li>ત્રિકોણમાં શિરોબિંદુમાંથી સામેની બાજુ પર દોરેલા લંબને શું કહેવાય? (A) વેધ (B) મધ્યગા (C) કર્ણ (D) પાયો</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક લંબચોરસની લંબાઈ 15 cm અને પહોળાઈ 8 cm છે. તેના વિકર્ણની લંબાઈ શોધો.</li>
+                    <li>એક 10 મીટર લાંબી નિસરણી દીવાલ સાથે 8 મીટર ઊંચાઈએ અડે છે, તો નિસરણીના પાયાનું દીવાલથી અંતર શોધો.</li>
+                    <li>ચકાસો કે 7 cm, 24 cm અને 25 cm કાટકોણ ત્રિકોણની બાજુઓ હોઈ શકે કે નહીં?</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 5 ==================== -->
+        <article id="block-5" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૫)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૭</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M701 : પૂર્ણાંક સંખ્યાઓ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-8) + (-4) _____ (-8) - (-4) [ખાલી જગ્યામાં સંજ્ઞા પૂરો] (A) < (B) > (C) = (D) કહી ન શકાય</li>
+                    <li>(-100) ÷ 5 = _____ (A) 20 (B) -20 (C) 500 (D) -500</li>
+                    <li>ગુણાકાર માટે જૂથનો નિયમ: (A) a × (b × c) = (a × b) × c (B) a + b = b + a (C) ab = ba (D) a × 1 = a</li>
+                    <li>(-12) × (-10) × 6 = _____ (A) 720 (B) -720 (C) 120 (D) -120</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક પરીક્ષામાં પ્રત્યેક સાચા જવાબ માટે +૩ ગુણ અને ખોટા જવાબ માટે -૧ ગુણ છે. મીનાએ બધા પ્રશ્નોના ઉત્તર આપી ૨૪ ગુણ મેળવ્યા. જો તેના ૧૦ સાચા ઉત્તરો હોય તો ખોટા ઉત્તરોની સંખ્યા શોધો.</li>
+                    <li>યોગ્ય ક્રમ અને જૂથ વાપરી શોધો: 8 × 53 × (-125)</li>
+                    <li>ચોક્કસ ઠંડક પ્રક્રિયા માટે ઓરડાનું તાપમાન ૪૦°C થી શરૂ કરીને ૪°C પ્રતિ કલાકના દરે ઘટાડવું જરૂરી છે. પ્રક્રિયા શરૂ થયાના ૧૨ કલાક પછી ઓરડાનું તાપમાન કેટલું હશે?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૨. (LO-M703 : અપૂર્ણાંક અને દશાંશ સંખ્યાઓ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>અશુદ્ધ અપૂર્ણાંક કયો છે? (A) 5/7 (B) 7/5 (C) 1/2 (D) 3/4</li>
+                    <li>0.03 × 0.2 = _____ (A) 0.06 (B) 0.006 (C) 0.6 (D) 6</li>
+                    <li>2 1/3 નો વ્યસ્ત: (A) 7/3 (B) 3/7 (C) -7/3 (D) 1/3</li>
+                    <li>7 સેમી = _____ મીટર (A) 0.07 (B) 0.7 (C) 70 (D) 700</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શોધો: 0.9 ÷ 100 અને 15.3 × 10</li>
+                    <li>કિંમત શોધો: 2 1/5 ÷ 1 1/5</li>
+                    <li>ગુણાકાર કરો: 100.01 × 1.1</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સુનિતા એક પુસ્તકનો ૧/૪ ભાગ ૧ દિવસમાં વાંચે છે, તો ૩ ૧/૨ દિવસમાં તે કેટલો ભાગ વાંચશે?</li>
+                    <li>એક સમાંતરબાજુ ચતુષ્કોણનું ક્ષેત્રફળ ૨૪.૫ ચોરસ સેમી અને પાયો ૭ સેમી હોય તો તેની ઊંચાઈ શોધો.</li>
+                    <li>એક બોક્સમાં ૩.૫ કિગ્રા વજનની ૮ મીઠાઈની થેલીઓ છે, તો બોક્સનું કુલ વજન કેટલું થાય?</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M718 : મધ્યક, મધ્યસ્થ અને બહુલક) (કોઈપણ ત્રણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પ્રથમ પાંચ યુગ્મ (બેકી) પ્રાકૃતિક સંખ્યાઓનો મધ્યક શોધો. (૨ ગુણ)</li>
+                    <li>માહિતી 1, 3, 2, 5, 3, 4, 3, 6 નો બહુલક શોધો. (૨ ગુણ)</li>
+                    <li>આપેલ પ્રાપ્તાંકો 15, 17, 20, 22, 25 નો મધ્યસ્થ શોધો. (૨ ગુણ)</li>
+                    <li>એક વર્ગના પાંચ વિદ્યાર્થીઓની ઊંચાઈ (સેમીમાં) 130, 132, 135, 138, 140 છે, સરેરાશ ઊંચાઈ શોધો. (૨ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૪. (LO-M720 : આલેખ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) આલેખનું અર્થઘટન: [૪ ગુણ]</p>
+                <p class="pl-2">એક ફેક્ટરીમાં અઠવાડિયાના દિવસોમાં થયેલ સાયકલનું ઉત્પાદન: સોમ = 300, મંગળ = 400, બુધ = 350, ગુરુ = 250.</p>
+                <ol class="list-decimal list-inside space-y-1 pl-4">
+                    <li>કયા દિવસે સૌથી વધુ સાયકલ બની?</li>
+                    <li>ગુરુવારે થયેલ ઉત્પાદન કેટલું?</li>
+                    <li>સોમવાર અને બુધવાર વચ્ચેનો ઉત્પાદન તફાવત જણાવો.</li>
+                    <li>ચાર દિવસનું કુલ ઉત્પાદન કેટલું થયું?</li>
+                </ol>
+                <p class="font-bold pt-1">(B) લંબ આલેખ દોરો: (કોઈપણ એક) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિવિધ વાહનોથી શાળાએ આવતા વિદ્યાર્થીઓ: બસ = 120, સાયકલ = 80, વાન = 60, પગપાળા = 40. લંબ આલેખ દોરો.</li>
+                    <li>બે સત્રના પરિણામનો દ્વિ-લંબ આલેખ તૈયાર કરો (હિન્દી, અંગ્રેજી અને ગણિત).</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (LO-M706 : સાદા સમીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(A) હેતુલક્ષી પ્રશ્નો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>x ના બમણામાંથી 3 બાદ કરતાં 7 મળે: (A) 2x - 3 = 7 (B) 2x + 3 = 7 (C) x - 3 = 7 (D) 3x - 2 = 7</li>
+                    <li>જો 5p = 35 હોય તો p = _____ (A) 7 (B) 30 (C) 40 (D) 6</li>
+                    <li>સમીકરણમાં અજ્ઞાતની જે કિંમતથી બંને બાજુ સમાન થાય તેને સમીકરણનો _____ કહેવાય. (ઉકેલ / ગુણક)</li>
+                    <li>x + 4 = 4 નો ઉકેલ x = 0 છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>4(2 - x) = 8</li>
+                    <li>-4 = 5(p - 2)</li>
+                    <li>3s = -9</li>
+                </ol>
+                <p class="font-bold pt-1">(C) વ્યવહારુ કોયડા ઉકેલો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>રાજુના પિતાની ઉંમર રાજુની ઉંમરના ત્રણ ગણાથી ૫ વર્ષ વધારે છે. જો પિતા ૪૪ વર્ષના હોય તો રાજુની ઉંમર કેટલી હશે?</li>
+                    <li>એક સંખ્યાના ચોથા ભાગમાં ૩ ઉમેરતાં ૨૧ મળે છે, તે સંખ્યા શોધો.</li>
+                    <li>એક વર્ગમાં છોકરાઓ અને છોકરીઓની સંખ્યાનો ગુણોત્તર ૭:૫ છે. જો છોકરાઓની સંખ્યા છોકરીઓ કરતાં ૮ વધુ હોય તો વર્ગમાં કુલ વિદ્યાર્થી કેટલા?</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૬. (LO-M712 : રેખા અને ખૂણા) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>20° ના ખૂણાના કોટિકોણનું માપ: (A) 70° (B) 160° (C) 90° (D) 20°</li>
+                    <li>135° ના ખૂણાના પૂરકકોણનું માપ: (A) 45° (B) 90° (C) 180° (D) 135°</li>
+                    <li>બે સમાંતર રેખાઓ વચ્ચે લંબ અંતર હંમેશાં _____ રહે છે. (A) અચળ (B) વધતું (C) ઘટતું (D) શૂન્ય</li>
+                    <li>જો બે રેખાઓ છેદે તો રૈખિક જોડના ખૂણા કેવા હોય? (A) પૂરકકોણ (B) કોટિકોણ (C) સમાન (D) કાટખૂણા</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ ત્રણ) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એવો ખૂણો શોધો જે તેના પૂરકકોણના માપ કરતાં બમણો હોય.</li>
+                    <li>આકૃતિ પરથી જો બે સમાંતર રેખાઓને છેદિકા છેદે અને એક અનુકોણ 80° હોય તો તેના અંતઃયુગ્મકોણનું માપ શોધો.</li>
+                    <li>રૈખિક જોડના બે ખૂણા 3x અને 2x હોય તો બંને ખૂણા શોધો.</li>
+                    <li>બે સમાંતર રેખાઓને છેદિકા છેદતાં બનતા છેદિકાની એક જ બાજુના અંતઃકોણ પૈકી એક 110° હોય તો બીજો ખૂણો શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૭. (LO-M713 : ત્રિકોણના ખૂણા) [૭ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણના ત્રણેય ખૂણાઓનો સરવાળો કેટલા કાટખૂણા બરાબર થાય? (A) 2 (B) 1 (C) 3 (D) 4</li>
+                    <li>સમબાજુ ત્રિકોણનો દરેક ખૂણો કેવો હોય? (A) લઘુકોણ (B) કાટકોણ (C) ગુરુકોણ (D) સરળકોણ</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 115° હોય તો તેની સાથે રૈખિક જોડ રચતો અંતઃકોણ કેટલો થાય? (A) 65° (B) 75° (C) 90° (D) 180°</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ત્રિકોણ XYZ માં ∠X = 60° અને ∠Y = 70° હોય તો ∠Z (x) શોધો.</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 130° છે અને એક અંતઃસંમુખકોણ 70° હોય તો બીજો ખૂણો x શોધો.</li>
+                    <li>એક ત્રિકોણના બે ખૂણા 50° અને 50° હોય તો ત્રીજો ખૂણો x શોધો.</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : પાયથાગોરસ અને ત્રિકોણ ગુણધર્મો) [૯ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાટકોણ ત્રિકોણમાં કર્ણની લંબાઈ અન્ય બાજુઓ કરતાં હંમેશાં _____ હોય છે. (A) મોટી (B) નાની (C) સમાન (D) અડધી</li>
+                    <li>નીચેના પૈકી કઈ પાયથાગોરિયન ત્રિપુટી છે? (A) 8, 15, 17 (B) 3, 4, 6 (C) 1, 2, 4 (D) 5, 6, 7</li>
+                    <li>ત્રિકોણની બે બાજુ 4 cm અને 6 cm હોય તો ત્રીજી બાજુનું માપ કઈ બે સંખ્યા વચ્ચે હોય? (A) 2 અને 10 (B) 4 અને 6 (C) 0 અને 4</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાટકોણ ત્રિકોણ ABC માં ∠B = 90° છે. જો AB = 9 cm અને BC = 12 cm હોય તો કર્ણ AC શોધો.</li>
+                    <li>એક 20 મીટર લાંબો વાંસ દીવાલ સાથે 12 મીટર અંતરે જમીન પર ગોઠવેલ છે. દીવાલ પર વાંસ કેટલી ઊંચાઈએ પહોંચશે?</li>
+                    <li>એક લંબચોરસની લંબાઈ 24 cm અને પહોળાઈ 7 cm છે, તો તેના વિકર્ણની લંબાઈ શોધો.</li>
+                </ol>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 15-SECOND BLOG FOLLOW POP-UP MODAL -->
+    <div id="blogFollowModal" class="fixed inset-0 bg-slate-900/60 modal-blur z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 text-center transform transition-all scale-95 border-2 border-amber-400 relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🧡</span>
+            </div>
+            <span class="bg-orange-100 text-orange-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">શૈક્ષણિક અપડેટ્સ</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-2">ARUNOGYAN Blog ને Follow કરો!</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                ધોરણ ૬ થી ૮ ના તમામ વિષયોના પરિરૂપ (બ્લૂપ્રિન્ટ), મોડેલ પ્રશ્નપત્રો અને એકમ કસોટીઓ સૌથી પહેલાં મેળવવા માટે અમારા બ્લોગને આજે જ Follow કરો.
+            </p>
+            <div class="mt-6 flex flex-col gap-2.5">
+                <a href="https://www.blogger.com/follow.g?blogID=7874056882573718914" target="_blank" rel="noopener noreferrer" onclick="closeModal()" class="gradient-blog text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:opacity-95 transition transform hover:scale-105 flex items-center justify-center gap-2 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                    👉 Follow Blog Now (અહીં ક્લિક કરો)
+                </a>
+                <button onclick="closeModal()" class="text-slate-500 hover:text-slate-800 font-semibold text-xs py-2">
+                    પછી કરીશ (Close)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Switching Scripts -->
+    <script>
+        function switchTab(tabId) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'bg-purple-600');
+                btn.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+                if (tabId === 'all') {
+                    activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+                } else {
+                    activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+                }
+            }
+
+            const blocks = document.querySelectorAll('.content-block');
+            blocks.forEach(block => block.classList.add('hidden'));
+
+            if (tabId === 'all') {
+                blocks.forEach(block => {
+                    if (block.id !== 'block-notes') {
+                        block.classList.0 ? block.classList.remove('hidden') : block.classList.remove('hidden');
+                    }
+                });
+            } else {
+                const targetBlock = document.getElementById('block-' + tabId);
+                if (targetBlock) {
+                    targetBlock.classList.remove('hidden');
+                }
+            }
+        }
+
+        // 15-second pop-up modal timer
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const modal = document.getElementById('blogFollowModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+            }, 15000);
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('blogFollowModal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

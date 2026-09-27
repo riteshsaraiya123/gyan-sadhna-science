@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ધોરણ-૮ વિજ્ઞાન પ્રથમ સત્રાંત કસોટી - ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (૮૦ ગુણ)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #065f46 0%, #059669 50%, #047857 100%);
+        }
+        .gradient-blog {
+            background: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+        }
+        .modal-blur {
+            backdrop-filter: blur(6px);
+        }
+        
+        /* A4 Size Print Styling */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm 8mm 10mm;
+            }
+            body {
+                background-color: white !important;
+                font-size: 9.5pt !important;
+                line-height: 1.3 !important;
+                color: #000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .content-block {
+                display: block !important;
+                box-shadow: none !important;
+                border: 1px solid #94a3b8 !important;
+                border-radius: 6px !important;
+                margin: 0 0 15px 0 !important;
+                padding: 10px 14px !important;
+                page-break-after: always;
+                break-after: page;
+            }
+            .content-block h2 {
+                font-size: 12pt !important;
+            }
+            .content-block h3 {
+                font-size: 10pt !important;
+                padding: 3px 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 4px !important;
+                background-color: #f1f5f9 !important;
+                color: #000 !important;
+                border-left: 4px solid #059669 !important;
+            }
+            ol, ul {
+                margin-bottom: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body class="pb-16 relative">
+
+    <!-- Header Section -->
+    <header class="gradient-header text-white shadow-xl no-print sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:flex sm:items-center sm:justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+                    <svg class="w-7 h-7 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-wide">ધોરણ-૮ વિજ્ઞાન : પ્રથમ સત્રાંત કસોટી (પ્રકરણ ૧ થી ૬)</h1>
+                    <p class="text-xs text-emerald-100 mt-0.5">GCERT સત્તાવાર બ્લૂપ્રિન્ટ ૨૦૨૬-૨૭ આધારિત ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (કુલ ગુણ: ૮૦)</p>
+                </div>
+            </div>
+            <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
+                <button onclick="window.print()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    પ્રિન્ટ / PDF ડાઉનલોડ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 mt-5 no-print">
+        <div class="flex border-b-2 border-slate-200 overflow-x-auto space-x-1 pb-1 scrollbar-none">
+            <button onclick="switchTab('notes')" id="tab-btn-notes" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-emerald-700 text-white shadow-md">📊 બ્લૂપ્રિન્ટ</button>
+            <button onclick="switchTab('1')" id="tab-btn-1" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૧</button>
+            <button onclick="switchTab('2')" id="tab-btn-2" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૨</button>
+            <button onclick="switchTab('3')" id="tab-btn-3" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૩</button>
+            <button onclick="switchTab('4')" id="tab-btn-4" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૪</button>
+            <button onclick="switchTab('5')" id="tab-btn-5" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૫</button>
+            <button onclick="switchTab('all')" id="tab-btn-all" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-purple-100 text-purple-800 hover:bg-purple-200">તમામ ૫ પેપર્સ</button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 mt-5">
+
+        <!-- ==================== BLUEPRINT TAB ==================== -->
+        <article id="block-notes" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8">
+            <div class="border-b-2 border-emerald-600 pb-3 mb-4">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase">GCERT પરિરૂપ ૨૦૨૬-૨૭</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">ધોરણ-૮ વિજ્ઞાન પ્રથમ સત્રાંત કસોટી બ્લૂપ્રિન્ટ (પ્રકરણ ૧ થી ૬)</h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">કુલ ગુણ: ૮૦ | સમય: ૩ કલાક | પ્રકરણવાર અને અધ્યયન નિષ્પત્તિ મુજબ ગુણભાર</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs sm:text-sm text-left border-collapse border border-slate-300">
+                    <thead class="bg-emerald-900 text-white font-bold text-center">
+                        <tr>
+                            <th class="p-2 border border-slate-300">પ્રકરણ નંબર & નામ</th>
+                            <th class="p-2 border border-slate-300">અધ્યયન નિષ્પત્તિ</th>
+                            <th class="p-2 border border-slate-300">કુલ ગુણ</th>
+                            <th class="p-2 border border-slate-300">ભારાંક (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700">
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૧. પાક ઉત્પાદન અને વ્યવસ્થાપન</td><td class="p-2 border border-slate-300">SC801, SC805, SC811</td><td class="p-2 border border-slate-300 text-center font-bold">16 (3)*</td><td class="p-2 border border-slate-300 text-center">20.00%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૨. સૂક્ષ્મજીવો : મિત્ર અને શત્રુ</td><td class="p-2 border border-slate-300">SC801, SC802, SC809</td><td class="p-2 border border-slate-300 text-center font-bold">14 (2)*</td><td class="p-2 border border-slate-300 text-center">17.50%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૩. કોલસો અને પેટ્રોલિયમ</td><td class="p-2 border border-slate-300">SC802, SC805, SC813</td><td class="p-2 border border-slate-300 text-center font-bold">11 (5)</td><td class="p-2 border border-slate-300 text-center">13.75%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૪. દહન અને જ્યોત</td><td class="p-2 border border-slate-300">SC803, SC804, SC809</td><td class="p-2 border border-slate-300 text-center font-bold">12 (4)*</td><td class="p-2 border border-slate-300 text-center">15.00%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૫. વનસ્પતિઓ અને પ્રાણીઓનું સંરક્ષણ</td><td class="p-2 border border-slate-300">SC804, SC811, SC813</td><td class="p-2 border border-slate-300 text-center font-bold">13 (4)</td><td class="p-2 border border-slate-300 text-center">16.25%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૬. પ્રાણીઓમાં પ્રજનન</td><td class="p-2 border border-slate-300">SC801, SC805, SC809</td><td class="p-2 border border-slate-300 text-center font-bold">14 (3)*</td><td class="p-2 border border-slate-300 text-center">17.50%</td></tr>
+                        <tr class="bg-emerald-100 font-extrabold text-emerald-950 text-center">
+                            <td class="p-2 border border-slate-300 text-left" colspan="2">કુલ સરવાળો</td>
+                            <td class="p-2 border border-slate-300">૮૦ ગુણ (21)*</td>
+                            <td class="p-2 border border-slate-300">૧૦૦%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 1 ==================== -->
+        <article id="block-1" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૧)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: વિજ્ઞાન</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (SC801 : ગુણધર્મ, રચના અને કાર્ય આધારે ભેદ) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેના પૈકી ખરીફ પાક કયો છે? (A) ઘઉં (B) ચણા (C) ડાંગર (D) રાઈ</li>
+                    <li>દૂધમાંથી દહીં બનાવવામાં કયા બેક્ટેરિયા ઉપયોગી છે? (A) લેક્ટોબેસિલસ (B) રાઇઝોબિયમ (C) પ્લાઝમોડિયમ (D) યીસ્ટ</li>
+                    <li>નર પ્રજનનતંત્રમાં શુક્રકોષો ક્યાં ઉત્પન્ન થાય છે? (A) શુક્રવાહિની (B) શુક્રપિંડ (C) શિશ્ન (D) મૂત્રાશય</li>
+                    <li>કોષમાં પિતૃમાંથી સંતતિમાં લક્ષણોનું વહન કોણ કરે છે? (A) રંગસૂત્ર/જનીન (B) કોષરસ (C) કણાભસૂત્ર (D) રસધાની</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) મને ઓળખો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હું કઠોળ વર્ગની વનસ્પતિના મૂળમાં નાઇટ્રોજન સ્થાપન કરું છું.</li>
+                    <li>હું અમીબામાં એકમાંથી બે બાળ સજીવ ઉત્પન્ન કરતી પ્રજનન રીત છું.</li>
+                    <li>હું પાક સાથે કુદરતી રીતે ઊગી નીકળતી બિનજરૂરી વનસ્પતિ છું.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ખરીફ પાક અને રવિ પાક વચ્ચેના ત્રણ તફાવતો ઉદાહરણ સાથે આપો.</li>
+                    <li>કુદરતી ખાતર અને કૃત્રિમ ખાતર વચ્ચેનો તફાવત ત્રણ મુદ્દામાં સ્પષ્ટ કરો.</li>
+                    <li>અંતઃફલન અને બાહ્યફલન વચ્ચેનો ભેદ ઉદાહરણ આપી સમજાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (SC802 : ગુણધર્મ અને લાક્ષણિકતા આધારે વર્ગીકરણ) [૧૧ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પુનઃઅપ્રાપ્ય સંસાધન કયું છે? (A) સૂર્યપ્રકાશ (B) હવા (C) પેટ્રોલિયમ (D) પવન</li>
+                    <li>યીસ્ટનો ઉપયોગ મોટા પાયે શેમાં થાય છે? (A) ખાંડ (B) આલ્કોહોલ (C) હાઇડ્રોક્લોરિક એસિડ (D) ઓક્સિજન</li>
+                    <li>નીચેનામાંથી કયું અશ્મિ બળતણ નથી? (A) કોલસો (B) લાકડું (C) પેટ્રોલિયમ (D) કુદરતી વાયુ</li>
+                    <li>બચ્ચાને જન્મ આપતા પ્રાણીઓ: (A) અંડપ્રસવી (B) અપત્યપ્રસવી (C) ઉભયજીવી (D) કીટકો</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) બેક્ટેરિયા, ફૂગ, પ્રજીવ અને લીલમાં વર્ગીકરણ કરો: [૩ ગુણ]</p>
+                <p class="pl-2">(રાઇઝોબિયમ, પેનિસિલિયમ, અમીબા, સ્પાયરોગાયરા, પેરામિશિયમ, યીસ્ટ)</p>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પુનઃપ્રાપ્ય અને પુનઃઅપ્રાપ્ય કુદરતી સંસાધનો વચ્ચે તફાવત આપો.</li>
+                    <li>અંડપ્રસવી અને અપત્યપ્રસવી પ્રાણીઓ ઉદાહરણ સાથે સમજાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (SC803 : સરળ તપાસ હાથ ધરે છે) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દહન માટે કયો વાયુ અનિવાર્ય છે? (A) નાઇટ્રોજન (B) ઓક્સિજન (C) CO₂ (D) હાઇડ્રોજન</li>
+                    <li>પદાર્થ જે નીચા તાપમાને સળગે તેને શું કહેવાય? (A) ઉત્કલનબિંદુ (B) ગલનબિંદુ (C) જ્વલનબિંદુ (D) ક્રાંતિક તાપમાન</li>
+                    <li>જ્યોતનો કયો વિસ્તાર સૌથી વધુ ગરમ હોય છે? (A) અંદરનો કાળો (B) મધ્યનો પીળો (C) બહારનો ભૂરો (D) તળિયાનો ભાગ</li>
+                    <li>વિદ્યુત સાધનોની આગ ઓલવવા શ્રેષ્ઠ: (A) પાણી (B) CO₂ (C) રેતી (D) ઓક્સિજન</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાગળના કપમાં પાણી ભરી ગરમ કરતાં કાગળ કેમ સળગતો નથી?</li>
+                    <li>પેટ્રોલથી લાગેલી આગ પર પાણી કેમ રેડી શકાતું નથી?</li>
+                    <li>દહન માટે હવા જરૂરી છે તે સાબિત કરતી સરળ પ્રવૃત્તિ જણાવો.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) પ્રયોગ વર્ણવો: (૨ માંથી ૧) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દહન માટે જ્વલનબિંદુ પ્રાપ્ત કરવું અનિવાર્ય છે તે સાબિત કરતો પ્રયોગ વર્ણવો.</li>
+                    <li>મીણબત્તીની જ્યોતના વિવિધ વિસ્તારોની તપાસ કરતો પ્રયોગ સમજાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૪. (SC804 : કારણ સાથે જોડે છે) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વાતાવરણમાં CO₂ વધતાં કઈ સમસ્યા થાય? (A) ગ્લોબલ વોર્મિંગ (B) ઓઝોન ક્ષયન (C) ધરતીકંપ (D) સુનામી</li>
+                    <li>વનનાબૂદીથી વરસાદ પર શું અસર થાય? (A) વધે (B) ઘટે (C) અચળ રહે (D) કોઈ નહીં</li>
+                    <li>એસિડ વર્ષા માટે મુખ્ય વાયુઓ: (A) SO₂ અને NO₂ (B) O₂ અને H₂ (C) CH₄ અને He (D) CO અને N₂</li>
+                    <li>ફળદ્રુપ જમીન રણમાં ફેરવાય તેને શું કહેવાય? (A) વનીકરણ (B) રણીકરણ (C) જળચક્ર (D) પ્રદૂષણ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વૈજ્ઞાનિક કારણો આપો: (૪ માંથી ૩) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વનનાબૂદીથી ગ્લોબલ વોર્મિંગ થાય છે. શા માટે?</li>
+                    <li>આપણે કાગળની બચત શા માટે કરવી જોઈએ?</li>
+                    <li>બંધ ઓરડામાં સળગતો કોલસો રાખવો જોખમી છે. કારણ આપો.</li>
+                    <li>રણમાં જમીનનું ધોવાણ શા માટે વધારે થાય છે?</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (SC805 : પ્રક્રિયા અને ઘટના સમજાવે છે) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્નો: (૪ માંથી ૩) (દરેકના ૩ ગુણ) [૯ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સેન્દ્રિય ખાતરના ફાયદાઓ ત્રણ મુદ્દામાં વર્ણવો.</li>
+                    <li>હાઇડ્રામાં કલિકાસર્જન દ્વારા અલિંગી પ્રજનન સમજાવો.</li>
+                    <li>કોલસામાંથી કોક, કોલટાર અને કોલગૅસ મેળવવાની પ્રક્રિયા ટૂંકમાં લખો.</li>
+                    <li>ટપક અને ફુવારા સિંચાઈ પદ્ધતિની કાર્યપદ્ધતિ વર્ણવો.</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: (૪ ગુણ) [૪ ગુણ]</p>
+                <p class="pl-2">૧. પેટ્રોલિયમના નિર્માણની પ્રક્રિયા પૃથ્વીના પેટાળમાં કેવી રીતે થઈ તે વર્ણવો.</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (SC809 : આકૃતિ/ફ્લોચાર્ટ દોરે છે) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મીણબત્તીની જ્યોતના વિસ્તારો દર્શાવતી નામનિર્દેશનવાળી આકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>વાતાવરણમાં નાઇટ્રોજન ચક્રનો સુઘડ ફ્લોચાર્ટ દોરો. (૪ ગુણ)</li>
+                    <li>મનુષ્યના નર પ્રજનનતંત્રની નામનિર્દેશનવાળી આકૃતિ દોરો. (૪ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૭. (SC811 : રોજિંદા જીવનમાં ખ્યાલો લાગુ કરે છે) [૭ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાણીની અછતવાળા વિસ્તારમાં શ્રેષ્ઠ સિંચાઈ: (A) ધોરિયા (B) ટપક (C) નહેર (D) રેહટ</li>
+                    <li>દૂધને ઉકાળી ઠંડું કરી સાચવવાની પદ્ધતિ: (A) આથવણ (B) પાશ્ચરાઇઝેશન (C) ગાળણ (D) નિક્ષાલન</li>
+                    <li>ખોરાક જાળવણીમાં કયું પ્રિઝર્વેટિવ વપરાય? (A) મીઠું-તેલ (B) સોડિયમ બેન્ઝોએટ (C) ખાંડ (D) આપેલ તમામ</li>
+                    <li>વાહનોમાં પ્રદૂષણ ઘટાડવા કયું બળતણ યોગ્ય છે? (A) કેરોસીન (B) CNG (C) કોલસો (D) લાકડું</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વ્યવહારુ પ્રશ્ન: (૨ માંથી ૧) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ડેન્ગ્યુ અને મલેરિયા અટકાવવા તમારા ઘરમાં કયા પગલાં લેશો?</li>
+                    <li>પેટ્રોલ-ડીઝલની બચત કરવા ડ્રાઇવિંગ વખતે કઈ સાવચેતી રાખવી જોઈએ?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (SC813 : પર્યાવરણ રક્ષણ) [૬ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. રેડ ડેટા બુક એટલે શું? તેનો ઉપયોગ જણાવો.</p>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. અભયારણ્ય, રાષ્ટ્રીય ઉદ્યાન અને જૈવાવરણ સુરક્ષિત ક્ષેત્ર વચ્ચેનો તફાવત ઉદાહરણ સાથે સમજાવો.</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 2 ==================== -->
+        <article id="block-2" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૨)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: વિજ્ઞાન</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (SC801 : ગુણધર્મ, રચના અને કાર્ય) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી રવિ પાક કયો છે? (A) મકાઈ (B) સોયાબીન (C) ઘઉં (D) કપાસ</li>
+                    <li>મેલેરિયા રોગ ફેલાવતો પ્રજીવ કયો છે? (A) પ્લાઝમોડિયમ (B) અમીબા (C) પેરામિશિયમ (D) એન્ટામીબા</li>
+                    <li>માદા પ્રજનનતંત્રમાં અંડકોષનું ફલન સામાન્ય રીતે ક્યાં થાય છે? (A) ગર્ભાશય (B) અંડવાહિની (C) અંડપિંડ (D) યોનિમાર્ગ</li>
+                    <li>જમીનને સમથળ કરવા વપરાતું સાધન કયું? (A) હળ (B) ખરપિયો (C) સમાર (D) વાવણીયો</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) મને ઓળખો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હું પેનિસિલીન નામની એન્ટિબાયોટિક બનાવવામાં વપરાતી ફૂગ છું.</li>
+                    <li>હું ગર્ભાશયની દીવાલ સાથે જોડાઈને ભ્રૂણનો વિકાસ કરતો ભાગ છું.</li>
+                    <li>હું પાકને ચોક્કસ અંતરે પાણી આપવાની કાર્યપદ્ધતિ છું.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીંદણ એટલે શું? ખેતરમાંથી નીંદણ દૂર કરવું શા માટે જરૂરી છે?</li>
+                    <li>સૂક્ષ્મજીવો આપણા મિત્ર છે તે સાબિત કરતા ત્રણ ઉપયોગો લખો.</li>
+                    <li>શુક્રકોષ અને અંડકોષની રચના વચ્ચેના મુખ્ય તફાવતો જણાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (SC802 : વર્ગીકરણ) [૧૧ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>CNG નું મુખ્ય ઘટક કયો વાયુ છે? (A) મિથેન (B) બ્યુટેન (C) પ્રોપેન (D) હાઇડ્રોજન</li>
+                    <li>નીચેનામાંથી રોગકારક સૂક્ષ્મજીવ કયો છે? (A) લેક્ટોબેસિલસ (B) રાઇઝોબિયમ (C) સાલ્મોનેલા (D) યીસ્ટ</li>
+                    <li>કોલસાનો કયો પ્રકાર સૌથી સખત અને કાર્બનથી ભરપૂર છે? (A) લિગ્નાઇટ (B) બીટ્યુમિનસ (C) એન્થ્રેસાઇટ (D) પીટ</li>
+                    <li>દેડકામાં કયા પ્રકારનું ફલન થાય છે? (A) અંતઃફલન (B) બાહ્યફલન (C) દ્વિભાજન (D) કલિકાસર્જન</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) ખરીફ પાક અને રવિ પાકમાં વર્ગીકરણ કરો: [૩ ગુણ]</p>
+                <p class="pl-2">(ડાંગર, ચણા, મકાઈ, રાયડો, મગફળી, વટાણા)</p>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એન્ટિબાયોટિક્સ અને રસી વચ્ચેનો ભેદ સ્પષ્ટ કરો.</li>
+                    <li>અશ્મિ બળતણ અને જૈવિક બળતણનું વર્ગીકરણ સમજાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (SC803 : સરળ તપાસ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ધાતુઓની બળવાની પ્રક્રિયા કેવા પ્રકારનું દહન છે? (A) ઝડપી (B) ધીમું (C) સ્વયંસ્ફુરિત (D) વિસ્ફોટ</li>
+                    <li>LPG સિલિન્ડરમાં દહન કેવા પ્રકારનું થાય છે? (A) ઝડપી દહન (B) વિસ્ફોટ (C) સ્વયંસ્ફુરિત (D) ધીમું</li>
+                    <li>અપૂર્ણ દહનથી કયો ઝેરી વાયુ ઉત્પન્ન થાય છે? (A) CO₂ (B) CO (C) SO₂ (D) N₂</li>
+                    <li>સોની ઘરેણાં બનાવવા જ્યોતના કયા ભાગનો ઉપયોગ કરે છે? (A) સૌથી અંદરનો (B) મધ્યનો (C) સૌથી બહારનો (D) તળિયાનો</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લાકડું સળગાવવા માટે કેરોસીન કે કાગળનો ઉપયોગ કેમ કરવો પડે છે?</li>
+                    <li>અગ્નિશામક નળાકારમાં CO₂ વાયુ કયા સ્વરૂપે સંગ્રહિત હોય છે અને તે કેવી રીતે કામ કરે છે?</li>
+                    <li>ચીમની પર કાચનો ગ્લાસ ઢાંકતાં મીણબત્તી કેમ ઓલવાઈ જાય છે?</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) પ્રયોગ વર્ણવો: (૨ માંથી ૧) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાણીમાં બીજ ડૂબાડીને તંદુરસ્ત અને ક્ષતિગ્રસ્ત બીજ અલગ કરવાની તપાસ વર્ણવો.</li>
+                    <li>મીણબત્તીની જ્યોતના અપ્રકાશિત વિસ્તારમાં રહેલા દહન ન પામેલા કાર્બનના કણો દર્શાવતો પ્રયોગ લખો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૪. (SC804 : કારણ સાથે જોડાણ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>તાજમહાલના આરસ પીળા પડવા પાછળ કયું મુખ્ય કારણ છે? (A) એસિડ વર્ષા (B) ગ્લોબલ વોર્મિંગ (C) દુષ્કાળ (D) વનનાબૂદી</li>
+                    <li>કાઝીરંગા રાષ્ટ્રીય ઉદ્યાન કયા પ્રાણીના સંરક્ષણ માટે પ્રખ્યાત છે? (A) એકશિંગી ગેંડો (B) સિંહ (C) વાઘ (D) હાથી</li>
+                    <li>ભૂગર્ભજળનું સ્તર નીચે જવાનું મુખ્ય કારણ: (A) વનનાબૂદી (B) વધુ વૃક્ષારોપણ (C) ઓછો પવન (D) ઠંડી</li>
+                    <li>જૈવવિવિધતામાં ઘટાડો થવાનું મુખ્ય કારણ: (A) કુદરતી આવાસનો નાશ (B) વરસાદ (C) અભયારણ્ય (D) વાવેતર</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વૈજ્ઞાનિક કારણો આપો: (૪ માંથી ૩) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જમીનમાં વારંવાર એક જ પાક લેવાથી જમીનની ફળદ્રુપતા ઘટે છે. શા માટે?</li>
+                    <li>વાયરસને સજીવ અને નિર્જીવ વચ્ચે જોડતી કડી માનવામાં આવે છે. કારણ આપો.</li>
+                    <li>અશ્મિ બળતણનો વિવેકપૂર્ણ ઉપયોગ કરવો જોઈએ. શા માટે?</li>
+                    <li>કાગળનું રિસાયકલિંગ કરવું પર્યાવરણ માટે કેમ જરૂરી છે?</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (SC805 : પ્રક્રિયા/ઘટના સમજૂતી) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્નો: (૪ માંથી ૩) (દરેકના ૩ ગુણ) [૯ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કઠોળ પાક લીધા પછી જમીનમાં નાઇટ્રોજન ખાતર ઉમેરવાની જરૂર કેમ રહેતી નથી?</li>
+                    <li>દેડકામાં ઈંડામાંથી પુખ્ત દેડકો બનવા સુધીનું કાયાંતરણ સમજાવો.</li>
+                    <li>પેટ્રોલિયમનું શુદ્ધીકરણ (વિભાજક નિસ્યંદન) કેવી રીતે થાય છે?</li>
+                    <li>અનાજના સંગ્રહ પૂર્વે તેને સૂર્યપ્રકાશમાં સૂકવવું કેમ જરૂરી છે?</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. કોલસાના નિર્માણની ધીમી પ્રક્રિયા (કાર્બોનાઇઝેશન) પૃથ્વી પર કેવી રીતે થઈ તે વર્ણવો.</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (SC809 : આકૃતિ/ફ્લોચાર્ટ) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મનુષ્યના શુક્રકોષની નામનિર્દેશનવાળી રચના દોરો. (૪ ગુણ)</li>
+                    <li>અમીબામાં દ્વિભાજન પ્રક્રિયા દર્શાવતી ક્રમબદ્ધ આકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>પેટ્રોલિયમના વિભાજક નિસ્યંદન ટાવરનો રેખાચિત્ર ફ્લોચાર્ટ દોરો. (૪ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૭. (SC811 : રોજિંદા જીવનમાં ઉપયોગ) [૭ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>અથાણાંને બગડતું અટકાવવા સામાન્ય રીતે શું ઉમેરાય છે? (A) તેલ અને મીઠું (B) પાણી (C) દૂધ (D) ખાંડનું પાણી</li>
+                    <li>પાકને કાપણી પછી દાણા છૂટા પાડવાની રીત: (A) થ્રેશિંગ (B) ઉપણવું (C) નીંદામણ (D) સિંચાઈ</li>
+                    <li>ઘરમાં ગેસ લીકેજ થાય ત્યારે કઈ સાવચેતી રાખવી? (A) સ્વિચ ચાલુ ન કરવી (B) બારી-બારણાં ખોલવા (C) રેગ્યુલેટર બંધ કરવું (D) આપેલ તમામ</li>
+                    <li>બેકરીમાં બ્રેડ-કેક બનાવવા કયો સૂક્ષ્મજીવ વપરાય? (A) યીસ્ટ (B) શેવાળ (C) વાયરસ (D) પ્રોટોઝોઆ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વ્યવહારુ પ્રશ્ન: (૨ માંથી ૧) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શાળાની કમ્પાઉન્ડ દીવાલ પાસે કચરો બાળવાને બદલે કમ્પોસ્ટ ખાતર બનાવવા શું આયોજન કરશો?</li>
+                    <li>રસોડામાં તેલની કઢાઈમાં આગ લાગે તો તમે તેને પાણી વગર કેવી રીતે ઓલવશો?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (SC813 : પર્યાવરણ રક્ષણ) [૬ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. સ્થાનિક જાતિઓ (Endemic Species) એટલે શું? બે ઉદાહરણ આપો.</p>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પુનઃવનીકરણ (Reforestation) એટલે શું? તેનાથી પર્યાવરણને થતા ચાર મુખ્ય ફાયદા જણાવો.</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 3 ==================== -->
+        <article id="block-3" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૩)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: વિજ્ઞાન</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (SC801 : ગુણધર્મ, રચના અને કાર્ય) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વાવણી માટે સૌથી ઉત્તમ અને પરંપરાગત સાધન કયું? (A) વાવણીયો (B) હળ (C) ખરપિયો (D) કલ્ટીવેટર</li>
+                    <li>સૂક્ષ્મજીવોને જોવા માટે કયું સાધન વપરાય છે? (A) ટેલિસ્કોપ (B) માઇક્રોસ્કોપ (C) પેરિસ્કોપ (D) બેરોમીટર</li>
+                    <li>હાઇડ્રામાં કયા પ્રકારનું અલિંગી પ્રજનન થાય છે? (A) કલિકાસર્જન (B) દ્વિભાજન (C) પુનર્જનન (D) બીજાણુસર્જન</li>
+                    <li>જનીન ક્યાં આવેલા હોય છે? (A) રંગસૂત્રો પર (B) હરિતકણમાં (C) કોષરસપટલમાં (D) ગોલ્ગીકાયમાં</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) મને ઓળખો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હું દહન દરમિયાન વાતાવરણમાંથી વપરાઈ જતો પ્રાણવાયુ છું.</li>
+                    <li>હું એડવર્ડ જેનર દ્વારા શોધાયેલ શીતળા રોગ સામે રક્ષણ આપતી શોધ છું.</li>
+                    <li>હું ગર્ભનું પરિપક્વ સ્વરૂપ છું જેમાં બધા અંગો ઓળખી શકાય છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જમીનને ખેડવી કેમ જરૂરી છે? તેના ત્રણ ફાયદા જણાવો.</li>
+                    <li>વાયરસ સામાન્ય બેક્ટેરિયા કરતાં કેવી રીતે જુદા પડે છે?</li>
+                    <li>લિંગી પ્રજનન અને અલિંગી પ્રજનન વચ્ચેનો મુખ્ય ભેદ સ્પષ્ટ કરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (SC802 : વર્ગીકરણ) [૧૧ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાળો ઘટ્ટ પ્રવાહી અને અપ્રિય વાસ ધરાવતો પદાર્થ કયો છે? (A) કોલટાર (B) પેટ્રોલ (C) ડીઝલ (D) કેરોસીન</li>
+                    <li>મરઘી કેવા પ્રકારનું પ્રાણી છે? (A) અંડપ્રસવી (B) અપત્યપ્રસવી (C) જળચર (D) ઉભયજીવી</li>
+                    <li>કુદરતી ખાતર કયું છે? (A) યુરિયા (B) છાણિયું ખાતર (C) NPK (D) ડીએપી</li>
+                    <li>ક્ષય (TB) રોગ શેના દ્વારા ફેલાય છે? (A) બેક્ટેરિયા (B) વાયરસ (C) પ્રજીવ (D) ફૂગ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) દહનશીલ અને અદહનશીલ પદાર્થોમાં વર્ગીકરણ કરો: [૩ ગુણ]</p>
+                <p class="pl-2">(કાગળ, લોખંડની ખીલી, લાકડું, કાચ, પેટ્રોલ, પથ્થર)</p>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કોક અને કોલટારના ગુણધર્મો અને ઉપયોગો અલગ તારવો.</li>
+                    <li>દ્વિભાજન અને કલિકાસર્જનનું ઉદાહરણ સાથે વર્ગીકરણ કરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (SC803 : સરળ તપાસ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દિવાસળીની સળીના છેડે કયો જ્વલનશીલ પદાર્થ લાગેલો હોય છે? (A) એન્ટિમની ટ્રાયસલ્ફાઇડ (B) લાલ ફોસ્ફરસ (C) મીણ (D) સલ્ફર</li>
+                    <li>બળતણના કેલરી મૂલ્યનો એકમ કયો છે? (A) kJ/kg (B) kg/kJ (C) J/kg (D) kW</li>
+                    <li>સૌથી ઉત્તમ કેલરી મૂલ્ય ધરાવતું બળતણ: (A) હાઇડ્રોજન (B) મિથેન (C) એલપીજી (D) સીએનજી</li>
+                    <li>મીણબત્તીની જ્યોતનો કયો ભાગ વાદળી રંગનો હોય છે? (A) સૌથી નીચેનો અને બહારનો (B) મધ્યનો (C) અંદરનો (D) ઉપરનો</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિદ્યુત પ્રવાહ ચાલુ હોય તેવા તારમાં લાગેલી આગ પર પાણી કેમ ન છાંટવું જોઈએ?</li>
+                    <li>દાઝેલા વ્યક્તિ પર ધાબળો કેમ લપેટવામાં આવે છે?</li>
+                    <li>વાતાવરણમાં ભેજનું પ્રમાણ વધતાં દિવાસળી કેમ મુશ્કેલીથી સળગે છે?</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) પ્રયોગ વર્ણવો: (૨ માંથી ૧) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>યીસ્ટ દ્વારા ખાંડના દ્રાવણમાં આથવણ થઈ આલ્કોહોલ બને છે તે દર્શાવતો પ્રયોગ લખો.</li>
+                    <li>દહન માટે જ્વલનબિંદુ જરૂરી છે તે કાગળના બે કપની મદદથી સાબિત કરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૪. (SC804 : કારણ સાથે જોડાણ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વનનાબૂદીથી પૂર આવવાનું જોખમ કેમ વધે છે? (A) જમીનની જળસંગ્રહ ક્ષમતા ઘટવાથી (B) પવન વધવાથી (C) નદીઓ સુકાવાથી (D) ગરમી ઘટવાથી</li>
+                    <li>ગીર રાષ્ટ્રીય ઉદ્યાન કયા પ્રાણી માટે સુરક્ષિત છે? (A) એશિયાઈ સિંહ (B) વાઘ (C) રીંછ (D) કાળિયાર</li>
+                    <li>દહનની પ્રક્રિયા એ કેવા પ્રકારની પ્રક્રિયા છે? (A) રાસાયણિક (B) ભૌતિક (C) જૈવિક (D) ઉત્ક્રમણીય</li>
+                    <li>સૂક્ષ્મજીવો ખોરાકને કેમ બગાડે છે? (A) ઝેરી દ્રવ્યો ઉત્પન્ન કરીને (B) સુગંધ આપીને (C) ઠંડક કરીને (D) સૂકવીને</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વૈજ્ઞાનિક કારણો આપો: (૪ માંથી ૩) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાક ફેરબદલી કરવી ખેડૂત માટે ફાયદાકારક છે. શા માટે?</li>
+                    <li>પૃથ્વી પર વૃક્ષો ઘટવાથી ભૂગર્ભ જળસ્તર કેમ નીચે જાય છે?</li>
+                    <li>ખોરાકને હંમેશાં ઢાંકીને રાખવો જોઈએ. કારણ આપો.</li>
+                    <li>વાહનોમાં સીએનજી વાપરવાથી હવા શુદ્ધ રહે છે. કારણ આપો.</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (SC805 : પ્રક્રિયા/ઘટના સમજૂતી) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્નો: (૪ માંથી ૩) (દરેકના ૩ ગુણ) [૯ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લુપ્ત થતી જાતિઓ (Endangered Species) એટલે શું? બે ઉદાહરણ આપો.</li>
+                    <li>મનુષ્યમાં ફલન પછી ગર્ભનો વિકાસ કેવી રીતે થાય છે?</li>
+                    <li>કોલગૅસના ઉપયોગો અને મહત્વ જણાવો.</li>
+                    <li>અનાજ સંગ્રહ માટે વપરાતા સાયલો (Silos) અને કોઠારની રચના સમજાવો.</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. કુદરતી વાયુ (Natural Gas) ના ગુણધર્મો, સંગ્રહ અને ઉપયોગો વિસ્તારપૂર્વક સમજાવો.</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (SC809 : આકૃતિ/ફ્લોચાર્ટ) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મનુષ્યના માદા પ્રજનનતંત્રની સ્વચ્છ નામનિર્દેશનવાળી આકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>બેક્ટેરિયા અને અમીબાની નામનિર્દેશનવાળી રેખાકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>વન્યજીવ સંરક્ષણ પદાનુક્રમ (અભયારણ્ય → રાષ્ટ્રીય ઉદ્યાન → જૈવાવરણ) નો ચાર્ટ દોરો. (૪ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૭. (SC811 : રોજિંદા જીવનમાં ઉપયોગ) [૭ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ફળો અને શાકભાજીની જાળવણી માટે કયું રસાયણ વપરાય? (A) સોડિયમ મેટાબાયસલ્ફાઇટ (B) મીઠું (C) ખાંડ (D) આપેલ તમામ</li>
+                    <li>ખેતરમાં રાસાયણિક ખાતરનો વધુ પડતો ઉપયોગ કરવાથી: (A) જમીન એસિડિક બને (B) ફળદ્રુપતા વધે (C) વરસાદ વધે (D) કોઈ અસર ન થાય</li>
+                    <li>ઘરમાં ગેસ સિલિન્ડર સળગે ત્યારે ઓલવવા કયો ઉપાય યોગ્ય છે? (A) ભીનો મોટો ધાબળો લપેટવો (B) પંખો ચાલુ કરવો (C) પાણી છાંટવું (D) દોડવું</li>
+                    <li>રસી મુકાવવાથી શરીરમાં શું ઉત્પન્ન થાય છે? (A) એન્ટિબોડી (B) એન્ટિજેન (C) વાયરસ (D) ઝેર</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વ્યવહારુ પ્રશ્ન: (૨ માંથી ૧) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>તમારા ખેતરમાં જમીનનું ધોવાણ અટકાવવા તમે વૃક્ષો અને પાળાઓનું આયોજન કેવી રીતે કરશો?</li>
+                    <li>શિયાળામાં બંધ ઓરડામાં તાપણું કે અંગીઠી કરીને સૂવાથી શા માટે મૃત્યુ થઈ શકે છે? સાવચેતી જણાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (SC813 : પર્યાવરણ રક્ષણ) [૬ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. કાગળનું પુનઃચક્રણ (Recycling) કેટલી વખત થઈ શકે છે અને તેનાથી શું ફાયદો થાય?</p>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. જૈવવિવિધતાનું સંરક્ષણ કરવું માનવજાતના અસ્તિત્વ માટે કેમ અનિવાર્ય છે? તમારા ચાર સૂચનો આપો.</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 4 ==================== -->
+        <article id="block-4" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૪)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: વિજ્ઞાન</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (SC801 : ગુણધર્મ, રચના અને કાર્ય) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ધાન્ય પાકની કાપણી માટે કયું આધુનિક મશીન વપરાય છે? (A) કમ્બાઈન (B) હળ (C) પાવડો (D) ખુરપી</li>
+                    <li>કોલેરા રોગ શેના દ્વારા થાય છે? (A) વિબ્રિયો કોલેરી બેક્ટેરિયા (B) વાયરસ (C) ફૂગ (D) પ્રજીવ</li>
+                    <li>નર જન્યુ અને માદા જન્યુના જોડાણને શું કહેવાય? (A) ફલન (B) ગર્ભધારણ (C) કાયાંતરણ (D) પ્રજનન</li>
+                    <li>વનસ્પતિ કોષમાં સૌથી બહાર આવેલું રક્ષણાત્મક આવરણ: (A) કોષદીવાલ (B) કોષરસપટલ (C) રસધાની (D) હરિતકણ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) મને ઓળખો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હું સૂર્યપ્રકાશની ગેરહાજરીમાં લાખો વર્ષો સુધી મૃત વનસ્પતિમાંથી બનેલો કાળો પથ્થર જેવો પદાર્થ છું.</li>
+                    <li>હું વાહનોમાં પેટ્રોલના વિકલ્પ તરીકે વપરાતો સ્વચ્છ વાયુ છું.</li>
+                    <li>હું રેશમના કીડા અને દેડકાના જીવનચક્રમાં થતો શારીરિક બદલાવ છું.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સિંચાઈની પરંપરાગત પદ્ધતિઓ (મોટ, ચેઈન પંપ, ઢેંકલી, રેહટ) ની મર્યાદાઓ જણાવો.</li>
+                    <li>ફૂગથી માનવી અને પાકને થતા નુકસાનના ત્રણ ઉદાહરણ આપો.</li>
+                    <li>નર પ્રજનન અંગો અને માદા પ્રજનન અંગોના કાર્યો સ્પષ્ટ કરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (SC802 : વર્ગીકરણ) [૧૧ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પેટ્રોલિયમમાંથી મળતો કયો ઘટક ડામર રોડ બનાવવા વપરાય છે? (A) બીટ્યુમિન (B) કેરોસીન (C) પેટ્રોલ (D) ડીઝલ</li>
+                    <li>નીચેનામાંથી કયો રોગ વાયરસજન્ય છે? (A) પોલિયો (B) ટાઇફોઇડ (C) કોલેરા (D) ક્ષય</li>
+                    <li>અળસિયા ખેડૂતના મિત્ર કેમ ગણાય છે? (A) જમીન પોચી કરે (B) સેન્દ્રિય પદાર્થ ઉમેરે (C) હવાની અવરજવર વધારે (D) આપેલ તમામ</li>
+                    <li>ઇંડા મૂકતાં પ્રાણીઓનું ઉદાહરણ: (A) ગરોળી (B) ચામાચીડિયું (C) ગાય (D) કૂતરો</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) પુનઃપ્રાપ્ય અને પુનઃઅપ્રાપ્ય સંસાધનોમાં વર્ગીકરણ કરો: [૩ ગુણ]</p>
+                <p class="pl-2">(સૂર્યપ્રકાશ, કોલસો, પવન, કુદરતી વાયુ, જંગલો, પેટ્રોલિયમ)</p>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ઝડપી દહન અને સ્વયંસ્ફુરિત દહન વચ્ચે ભેદ સ્પષ્ટ કરો.</li>
+                    <li>ખરીફ ઋતુ અને રવિ ઋતુના પાકનું વર્ગીકરણ કરો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (SC803 : સરળ તપાસ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિસ્ફોટનું શ્રેષ્ઠ ઉદાહરણ કયું છે? (A) ફટાકડા ફૂટવા (B) ગેસ સળગવો (C) લાકડું સળગવું (D) લોખંડને કાટ લાગવો</li>
+                    <li>આગ ઓલવવા માટે નીચેનામાંથી કઈ શરત દૂર કરવી પડે? (A) બળતણ દૂર કરવું (B) હવાનો સંપર્ક કાપવો (C) તાપમાન જ્વલનબિંદુથી નીચું લાવવું (D) આપેલ પૈકી કોઈપણ એક</li>
+                    <li>મીણબત્તીની જ્યોતમાં સૌથી ઓછું ગરમ ક્ષેત્ર કયું છે? (A) અંદરનો કાળો વિસ્તાર (B) મધ્યનો પીળો (C) બહારનો ભૂરો (D) જ્યોતની ટોચ</li>
+                    <li>બળતણની કાર્યક્ષમતા શેના પરથી નક્કી થાય છે? (A) રંગ પરથી (B) કેલરી મૂલ્ય પરથી (C) કદ પરથી (D) વજન પરથી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ઘરમાં ગેસ સ્ટવની જ્યોત વાદળી હોય છે પરંતુ દીવાની જ્યોત પીળી કેમ હોય છે?</li>
+                    <li>લાકડાને બળતણ તરીકે વાપરવું કેમ નુકસાનકારક છે?</li>
+                    <li>કાગળનો ટુકડો ઝડપથી સળગે છે પણ જાડું લાકડું સળગતું નથી. તપાસ સ્પષ્ટ કરો.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) પ્રયોગ વર્ણવો: (૨ માંથી ૧) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જમીનમાં ભેજનું પ્રમાણ તપાસતો પ્રયોગ સાધન અને પદ્ધતિ સાથે વર્ણવો.</li>
+                    <li>દહન દરમિયાન જ્યોત ઉત્પન્ન થવા માટે પદાર્થનું બાષ્પીભવન જરૂરી છે તે દર્શાવતો પ્રયોગ લખો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૪. (SC804 : કારણ સાથે જોડાણ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>રણ પ્રદેશમાં રેતીના ઢૂવા કેમ બને છે? (A) પવન દ્વારા માટીના ધોવાણથી (B) વરસાદથી (C) ઠંડીથી (D) ધરતીકંપથી</li>
+                    <li>પંચમઢી જૈવાવરણ સુરક્ષિત ક્ષેત્ર કયા રાજ્યમાં આવેલું છે? (A) મધ્ય પ્રદેશ (B) ગુજરાત (C) રાજસ્થાન (D) મહારાષ્ટ્ર</li>
+                    <li>દૂધ બગડી જાય ત્યારે તેનો સ્વાદ ખાટો કેમ થાય છે? (A) લેક્ટિક એસિડ બનવાથી (B) ખાંડ વધવાથી (C) મીઠું બનવાથી (D) ગરમીથી</li>
+                    <li>અશ્મિ બળતણો પુનઃઅપ્રાપ્ય કેમ ગણાય છે? (A) બનતા લાખો વર્ષ લાગે છે (B) સરળતાથી મળે છે (C) ક્યારેય ખૂટતા નથી (D) લેબમાં બને છે</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વૈજ્ઞાનિક કારણો આપો: (૪ માંથી ૩) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જંગલો પૃથ્વીના ફેફસાં ગણાય છે. કારણ આપો.</li>
+                    <li>પેટ્રોલ અને ડીઝલ વાપરતાં વાહનો ઓછો ધુમાડો કરે તેવા ઉપાયો કેમ કરવા જોઈએ?</li>
+                    <li>ફૂગ ભેજવાળી ઋતુમાં જ ચામડાની વસ્તુઓ પર કેમ ઊગી નીકળે છે?</li>
+                    <li>પ્લાસ્ટિક કચરો બાળવો પર્યાવરણ માટે કેમ જોખમી છે?</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (SC805 : પ્રક્રિયા/ઘટના સમજૂતી) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્નો: (૪ માંથી ૩) (દરેકના ૩ ગુણ) [૯ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વનનાબૂદીથી દુષ્કાળ કેવી રીતે પડે છે તે સમજાવો.</li>
+                    <li>ટેડપોલમાંથી પુખ્ત દેડકો બનવા સુધીનું કાયાંતરણ સમજાવો.</li>
+                    <li>પેટ્રોલિયમ ગેસમાંથી એલપીજી બનવાની પ્રક્રિયા ટૂંકમાં લખો.</li>
+                    <li>પાકની વાવણી યોગ્ય ઊંડાઈએ અને યોગ્ય અંતરે કેમ કરવી જોઈએ?</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. નાઇટ્રોજન ચક્રની સમગ્ર પ્રક્રિયાનું વિગતવાર વર્ણન કરો.</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (SC809 : આકૃતિ/ફ્લોચાર્ટ) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મનુષ્યના ફલન અને ગર્ભ વિકાસના તબક્કા દર્શાવતી રેખાકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>મીણબત્તીની જ્યોતના તાપમાન વિસ્તારો દર્શાવતી આકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>ખોરાક જાળવણીની પદ્ધતિઓ દર્શાવતો ફ્લોચાર્ટ દોરો. (૪ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૭. (SC811 : રોજિંદા જીવનમાં ઉપયોગ) [૭ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ઘરમાં તેલ અને ઘી લાંબો સમય સાચવવા માટે કઈ કાળજી રાખવી? (A) હવાચુસ્ત ડબ્બામાં રાખવું (B) સૂર્યપ્રકાશમાં રાખવું (C) ખુલ્લું રાખવું (D) પાણી નાખવું</li>
+                    <li>ખેતરમાં પાકને નીંદણથી બચાવવા કયું રસાયણ વપરાય? (A) 2,4-D (B) NPK (C) ડીડીટી (D) યુરિયા</li>
+                    <li>શહેરોમાં વાહનોના પ્રદૂષણ નિયંત્રણ માટે કયું સર્ટિફિકેટ જરૂરી છે? (A) PUC (B) RC (C) PAN (D) આધાર</li>
+                    <li>બાળકોને રોગપ્રતિકારક શક્તિ વધારવા જન્મ સમયે કઈ રસી મુકાય છે? (A) BCG (B) પેનિસિલિન (C) ઇન્સ્યુલિન (D) પેરાસિટામોલ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વ્યવહારુ પ્રશ્ન: (૨ માંથી ૧) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>તમારા ખેતરમાં જમીનનું ધોવાણ અટકાવવા તમે વૃક્ષો અને પાળાઓનું આયોજન કેવી રીતે કરશો?</li>
+                    <li>શિયાળામાં બંધ ઓરડામાં તાપણું કે અંગીઠી કરીને સૂવાથી શા માટે મૃત્યુ થઈ શકે છે? સાવચેતી જણાવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (SC813 : પર્યાવરણ રક્ષણ) [૬ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. વન્યજીવ અભયારણ્યમાં કઈ પ્રવૃત્તિઓ પર કડક પ્રતિબંધ હોય છે?</p>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પર્યાવરણના રક્ષણ માટે વ્યક્તિગત રીતે તમે કયા ચાર નિયમોનું પાલન કરશો? વિગતવાર જણાવો.</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 5 ==================== -->
+        <article id="block-5" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૫)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: વિજ્ઞાન</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (SC801 : ગુણધર્મ, રચના અને કાર્ય) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જમીનને પોચી કરવા અને ઉલટાવવા કયું સાધન પરંપરાગત રીતે વપરાય છે? (A) હળ (B) દાતરડું (C) વાવણીયો (D) થ્રેશર</li>
+                    <li>ટાઇફોઇડ રોગ શેનાથી ફેલાય છે? (A) પ્રદૂષિત પાણી અને ખોરાક (B) હવા (C) મચ્છર (D) સ્પર્શ</li>
+                    <li>માનવ શરીરનો સૌથી મોટો કોષ કયો ગણાય છે? (A) અંડકોષ (B) શુક્રકોષ (C) રક્તકણ (D) શ્વેતકણ</li>
+                    <li>કોષકેન્દ્રની અંદર આવેલી ગોળાકાર રચનાને શું કહેવાય? (A) કોષકેન્દ્રિકા (B) રંગસૂત્ર (C) રસધાની (D) હરિતકણ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) મને ઓળખો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હું દૂધમાંથી દહીં બનાવવામાં ઉપયોગી સૂક્ષ્મજીવ છું.</li>
+                    <li>હું સળગતી વખતે ઓક્સિજન શોષીને CO₂ મુક્ત કરતી રાસાયણિક પ્રક્રિયા છું.</li>
+                    <li>હું વનસ્પતિમાં હરિતદ્રવ્ય ધરાવતો પ્રકાશસંશ્લેષણ કરતો ભાગ છું.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સિંચાઈની ટપક પદ્ધતિ પાણીની બચત કેવી રીતે કરે છે? સમજાવો.</li>
+                    <li>રોગપ્રતિકારક રસી (Vaccine) શરીરમાં કેવી રીતે કામ કરે છે?</li>
+                    <li>અપત્યપ્રસવી અને અંડપ્રસવી પ્રાણીઓના પ્રજનન અંગોના તફાવતો આપો.</li>
+                </ol>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (SC802 : વર્ગીકરણ) [૧૧ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સ્ટવ અને વાહનોમાં વપરાતું પેટ્રોલિયમનું પ્રવાહી સ્વરૂપ: (A) કેરોસીન/પેટ્રોલ (B) કોલસો (C) ડામર (D) પેરાફિન મીણ</li>
+                    <li>દાવાનળ (જંગલની આગ) કેવા પ્રકારનું દહન છે? (A) સ્વયંસ્ફુરિત (B) ઝડપી (C) ધીમું (D) વિસ્ફોટ</li>
+                    <li>નીચેનામાંથી કયો રોગ મચ્છર કરડવાથી થાય છે? (A) ડેન્ગ્યુ (B) પોલિયો (C) કમળો (D) ક્ષય</li>
+                    <li>ગર્ભાશયમાં બાળકનો વિકાસ પૂર્ણ થતાં શું કહેવાય? (A) શિશુ (B) યુગ્મનજ (C) ભ્રૂણ (D) ફલિતાંડ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) લાભદાયી અને હાનિકારક સૂક્ષ્મજીવોમાં વર્ગીકરણ કરો: [૩ ગુણ]</p>
+                <p class="pl-2">(લેક્ટોબેસિલસ, પ્લાઝમોડિયમ, રાઇઝોબિયમ, વિબ્રિયો કોલેરી, યીસ્ટ, પોલિયો વાયરસ)</p>
+                <p class="font-bold pt-1">(ક) ટૂંક જવાબી પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કુદરતી ખાતર અને લીલા પડવાશ ખાતરનું વર્ગીકરણ સમજાવો.</li>
+                    <li>પુનઃપ્રાપ્ય ઉર્જા સ્ત્રોતોના બે-બે ફાયદા અલગ તારવો.</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (SC803 : સરળ તપાસ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કેરોસીનનો દીવો સળગાવતાં જ્યોત કેમ થાય છે? (A) કેરોસીનનું બાષ્પીભવન થવાથી (B) લાકડા જેવું હોવાથી (C) ઓક્સિજન ન મળવાથી (D) ગરમીથી</li>
+                    <li>કોલસો સળગતાં જ્યોત કેમ નથી થતી? (A) કોલસાનું બાષ્પીભવન થતું નથી (B) ઓક્સિજન વધારે હોય (C) કાળો રંગ હોવાથી (D) તાપમાન ઓછું હોય</li>
+                    <li>આગ ઓલવવા પાણી છાંટતાં તાપમાન શું થાય છે? (A) જ્વલનબિંદુ કરતાં નીચું જાય છે (B) વધે છે (C) અચળ રહે છે (D) શૂન્ય થાય</li>
+                    <li>આદર્શ બળતણનું લક્ષણ કયું છે? (A) સસ્તું અને સરળતાથી પ્રાપ્ય (B) વધુ કેલરી મૂલ્ય (C) ઓછો ધુમાડો (D) આપેલ તમામ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) ટૂંક જવાબી પ્રશ્નો: (૩ માંથી ૨) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જ્વલનશીલ પદાર્થો એટલે શું? બે ઉદાહરણ આપો.</li>
+                    <li>ગેસના ચૂલામાં વાદળી જ્યોત શું દર્શાવે છે? તપાસ સ્પષ્ટ કરો.</li>
+                    <li>માટીમાં હવા રહેલી છે તે દર્શાવતી સરળ પ્રવૃત્તિ ટૂંકમાં લખો.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) પ્રયોગ વર્ણવો: (૨ માંથી ૧) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હવામાં ઓક્સિજનની હાજરી દહન માટે જરૂરી છે તે મીણબત્તી અને કાચના પ્યાલાથી સાબિત કરતો પ્રયોગ લખો.</li>
+                    <li>દૂધમાંથી દહીં બનવા માટે અનુકૂળ તાપમાનની તપાસ દર્શાવતો પ્રયોગ લખો.</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૪. (SC804 : કારણ સાથે જોડાણ) [૧૦ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પૃથ્વી પર સૂર્યના પારજાંબલી કિરણો રોકવાનું કામ કોણ કરે છે? (A) ઓઝોન સ્તર (B) ઓક્સિજન (C) નાઇટ્રોજન (D) વાદળો</li>
+                    <li>વાતાવરણમાં ધુમાડો અને ધુમ્મસ ભળતાં શું બને છે? (A) સ્મોગ (ધૂમ-ધુમ્મસ) (B) એસિડ (C) વાદળ (D) ઝાકળ</li>
+                    <li>જંગલો ઘટવાથી જંગલી પ્રાણીઓ શહેરો તરફ કેમ આવે છે? (A) કુદરતી આવાસ નાશ પામવાથી (B) ઠંડી લાગવાથી (C) રમવા માટે (D) કોઈ નહીં</li>
+                    <li>કૂવાનું પાણી ઉનાળામાં કેમ ઊંડું જાય છે? (A) બાષ્પીભવન અને વધુ વપરાશથી (B) ઠંડકથી (C) પવનથી (D) ધરતીકંપથી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વૈજ્ઞાનિક કારણો આપો: (૪ માંથી ૩) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ખોરાકને ફ્રિજમાં રાખવાથી લાંબો સમય સારો રહે છે. શા માટે?</li>
+                    <li>વનનાબૂદીથી માટીનું ઉપરનું ફળદ્રુપ સ્તર ધોવાઈ જાય છે. કારણ આપો.</li>
+                    <li>અગ્નિશામક તરીકે પાણી કરતાં CO₂ વાયુ વિદ્યુત આગમાં કેમ શ્રેષ્ઠ છે?</li>
+                    <li>પ્રાણીઓમાં લિંગી પ્રજનન પેઢી ચાલુ રાખવા માટે કેમ અનિવાર્ય છે?</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૫. (SC805 : પ્રક્રિયા/ઘટના સમજૂતી) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્નો: (૪ માંથી ૩) (દરેકના ૩ ગુણ) [૯ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જૈવભાર (Biomass) માંથી બાયોગેસ બનવાની પ્રક્રિયા ટૂંકમાં વર્ણવો.</li>
+                    <li>મનુષ્યમાં બાળકના લિંગ નિશ્ચયનની પ્રક્રિયા સમજાવો.</li>
+                    <li>કોલસાના વિવિધ ઉત્પાદનો (કોક, કોલટાર) ના મહત્વની ચર્ચા કરો.</li>
+                    <li>અનાજની કાપણી પછી ઉપણવાની (Winnowing) પ્રક્રિયા સમજાવો.</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પેટ્રોલિયમના વિવિધ ઘટકો (પેટ્રોલ, ડીઝલ, કેરોસીન, ઊંજણતેલ) ના ઉપયોગો વિસ્તારપૂર્વક સમજાવો.</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (SC809 : આકૃતિ/ફ્લોચાર્ટ) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મનુષ્યના અંડકોષ અને ફલનની પ્રક્રિયા દર્શાવતી નામનિર્દેશનવાળી આકૃતિ દોરો. (૪ ગુણ)</li>
+                    <li>વાતાવરણમાં કાર્બન ચક્ર (Carbon Cycle) નો રેખાચિત્ર ફ્લોચાર્ટ દોરો. (૪ ગુણ)</li>
+                    <li>હાઇડ્રામાં કલિકાસર્જનના તબક્કા દર્શાવતી આકૃતિ દોરો. (૪ ગુણ)</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૭. (SC811 : રોજિંદા જીવનમાં ઉપયોગ) [૭ ગુણ]</h3>
+                <p class="font-bold">(અ) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ઘરમાં પીવાનું પાણી શુદ્ધ કરવાની સૌથી સરળ ઘરગથ્થુ રીત: (A) ઉકાળવું (B) ઠંડું કરવું (C) મીઠું નાખવું (D) હલાવવું</li>
+                    <li>ખેતરમાં પાકને પક્ષીઓથી બચાવવા શું મુકાય છે? (A) ચાડિયો (B) પંખો (C) વાયર (D) દવા</li>
+                    <li>ઈજા થાય ત્યારે ધનુર્વા સામે કયું ઇન્જેક્શન અપાય છે? (A) ટીટી (ટેટનસ) (B) ઇન્સ્યુલિન (C) પેનિસિલિન (D) પેરાસિટામોલ</li>
+                    <li>ગેસ ગીઝર વાપરતી વખતે બાથરૂમમાં શું સાવચેતી રાખવી? (A) વેન્ટિલેશન (હવાબારી) ખુલ્લી રાખવી (B) દરવાજો કડક બંધ કરવો (C) લાઇટ બંધ રાખવી (D) દોડવું</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) વ્યવહારુ પ્રશ્ન: (૨ માંથી ૧) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>તમારા ગામમાં કૂવા કે બોરવેલના પાણીને જંતુમુક્ત કરવા કઈ ગોળીઓ કે પાવડર વપરાય? પદ્ધતિ જણાવો.</li>
+                    <li>વીજળીની બચત અને બળતણની બચત માટે રોજિંદા જીવનમાં કઈ સારી ટેવો કેળવશો?</li>
+                </ol>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (SC813 : પર્યાવરણ રક્ષણ) [૬ ગુણ]</h3>
+                <p class="font-bold">(અ) ટૂંક જવાબી પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. કાગળ બનાવવામાં લાખો વૃક્ષો કપાય છે, તો કાગળ બચાવવાના બે વ્યવહારુ ઉપાયો લખો.</p>
+                <p class="font-bold pt-1">(બ) વિસ્તૃત જવાબી પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. જંગલોનું રક્ષણ કરવા માટે સરકાર અને નાગરિક તરીકે આપણે કેવા સંયુક્ત પ્રયાસો કરવા જોઈએ? સવિસ્તાર લખો.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 15-SECOND BLOG FOLLOW POP-UP MODAL -->
+    <div id="blogFollowModal" class="fixed inset-0 bg-slate-900/60 modal-blur z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 text-center transform transition-all scale-95 border-2 border-amber-400 relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🧡</span>
+            </div>
+            <span class="bg-orange-100 text-orange-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">શૈક્ષણિક અપડેટ્સ</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-2">ARUNOGYAN Blog ને Follow કરો!</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                ધોરણ ૬ થી ૮ ના તમામ વિષયોના પરિરૂપ (બ્લૂપ્રિન્ટ), મોડેલ પ્રશ્નપત્રો અને એકમ કસોટીઓ સૌથી પહેલાં મેળવવા માટે અમારા બ્લોગને આજે જ Follow કરો.
+            </p>
+            <div class="mt-6 flex flex-col gap-2.5">
+                <a href="https://www.blogger.com/follow.g?blogID=7874056882573718914" target="_blank" rel="noopener noreferrer" onclick="closeModal()" class="gradient-blog text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:opacity-95 transition transform hover:scale-105 flex items-center justify-center gap-2 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                    👉 Follow Blog Now (અહીં ક્લિક કરો)
+                </a>
+                <button onclick="closeModal()" class="text-slate-500 hover:text-slate-800 font-semibold text-xs py-2">પછી કરીશ (Close)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function switchTab(tabId) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'bg-purple-600');
+                btn.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+                if (tabId === 'all') {
+                    activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+                } else {
+                    activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+                }
+            }
+
+            const blocks = document.querySelectorAll('.content-block');
+            blocks.forEach(block => block.classList.add('hidden'));
+
+            if (tabId === 'all') {
+                blocks.forEach(block => {
+                    if (block.id !== 'block-notes') {
+                        block.classList.remove('hidden');
+                    }
+                });
+            } else {
+                const targetBlock = document.getElementById('block-' + tabId);
+                if (targetBlock) {
+                    targetBlock.classList.remove('hidden');
+                }
+            }
+        }
+
+        // 15 seconds Pop-up timer
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const modal = document.getElementById('blogFollowModal');
+                if (modal) modal.classList.remove('hidden');
+            }, 15000);
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('blogFollowModal');
+            if (modal) modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

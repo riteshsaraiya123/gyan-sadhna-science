@@ -1,0 +1,838 @@
+<style>
+  /* Moti screen (Desktop/Laptop) par Blogger sidebar hide karva mate */
+  @media screen and (min-width: 769px) {
+      .sidebar, #sidebar-wrapper, .sidebar-container, aside {
+          display: none !important;
+          visibility: hidden !important;
+          width: 0px !important;
+      }
+      #main, .main-inner, .content-inner, #main-wrapper {
+          width: 100% !important;
+          max-width: 100% !important;
+          float: none !important;
+          display: block !important;
+          opacity: 1 !important;
+      }
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ધોરણ-૮ ગણિત પ્રથમ સત્રાંત કસોટી - ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (૮૦ ગુણ)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #1d4ed8 100%);
+        }
+        .gradient-blog {
+            background: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+        }
+        .modal-blur {
+            backdrop-filter: blur(6px);
+        }
+        
+        /* A4 Size Print CSS */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm 8mm 10mm;
+            }
+            body {
+                background-color: white !important;
+                font-size: 9.5pt !important;
+                line-height: 1.3 !important;
+                color: #000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .content-block {
+                display: block !important;
+                box-shadow: none !important;
+                border: 1px solid #94a3b8 !important;
+                border-radius: 6px !important;
+                margin: 0 0 15px 0 !important;
+                padding: 10px 14px !important;
+                page-break-after: always;
+                break-after: page;
+            }
+            .content-block h2 {
+                font-size: 12pt !important;
+            }
+            .content-block h3 {
+                font-size: 10pt !important;
+                padding: 3px 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 4px !important;
+                background-color: #f1f5f9 !important;
+                color: #000 !important;
+                border-left: 4px solid #1d4ed8 !important;
+            }
+            ol, ul {
+                margin-bottom: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body class="pb-16 relative">
+
+    <!-- Header -->
+    <header class="gradient-header text-white shadow-xl no-print sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:flex sm:items-center sm:justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+                    <svg class="w-7 h-7 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-wide">ધોરણ-૮ ગણિત : પ્રથમ સત્રાંત કસોટી (પ્રકરણ ૧ થી ૬)</h1>
+                    <p class="text-xs text-blue-100 mt-0.5">GCERT સત્તાવાર બ્લૂપ્રિન્ટ ૨૦૨૬-૨૭ આધારિત ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (કુલ ગુણ: ૮૦)</p>
+                </div>
+            </div>
+            <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
+                <button onclick="window.print()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    પ્રિન્ટ / PDF ડાઉનલોડ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 mt-5 no-print">
+        <div class="flex border-b-2 border-slate-200 overflow-x-auto space-x-1 pb-1 scrollbar-none">
+            <button onclick="switchTab('notes')" id="tab-btn-notes" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-blue-600 text-white shadow-md">📊 બ્લૂપ્રિન્ટ</button>
+            <button onclick="switchTab('1')" id="tab-btn-1" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૧</button>
+            <button onclick="switchTab('2')" id="tab-btn-2" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૨</button>
+            <button onclick="switchTab('3')" id="tab-btn-3" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૩</button>
+            <button onclick="switchTab('4')" id="tab-btn-4" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૪</button>
+            <button onclick="switchTab('5')" id="tab-btn-5" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૫</button>
+            <button onclick="switchTab('all')" id="tab-btn-all" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-purple-100 text-purple-800 hover:bg-purple-200">તમામ ૫ પેપર્સ</button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 mt-5">
+        
+        <!-- BLUEPRINT TAB -->
+        <article id="block-notes" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8">
+            <div class="border-b-2 border-blue-600 pb-3 mb-4">
+                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">GCERT પરિરૂપ ૨૦૨૬-૨૭</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">ધોરણ-૮ ગણિત પ્રથમ સત્રાંત કસોટી બ્લૂપ્રિન્ટ (પ્રકરણ ૧ થી ૬)</h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">કુલ ગુણ: ૮૦ | સમય: ૩ કલાક | પ્રકરણવાર અને અધ્યયન નિષ્પત્તિ મુજબ ગુણભાર</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs sm:text-sm text-left border-collapse border border-slate-300">
+                    <thead class="bg-blue-900 text-white font-bold text-center">
+                        <tr>
+                            <th class="p-2 border border-slate-300">પ્રકરણ નંબર & નામ</th>
+                            <th class="p-2 border border-slate-300">અધ્યયન નિષ્પત્તિ</th>
+                            <th class="p-2 border border-slate-300">કુલ ગુણ</th>
+                            <th class="p-2 border border-slate-300">ભારાંક (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700">
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૧. સંમેય સંખ્યાઓ</td><td class="p-2 border border-slate-300">M801</td><td class="p-2 border border-slate-300 text-center font-bold">12</td><td class="p-2 border border-slate-300 text-center">15.0%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૨. એક ચલ સુરેખ સમીકરણ</td><td class="p-2 border border-slate-300">M806</td><td class="p-2 border border-slate-300 text-center font-bold">14</td><td class="p-2 border border-slate-300 text-center">17.5%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૩. ચતુષ્કોણની સમજ</td><td class="p-2 border border-slate-300">M812 (8 ગુણ) & M825 (6 ગુણ)</td><td class="p-2 border border-slate-300 text-center font-bold">14</td><td class="p-2 border border-slate-300 text-center">17.5%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૪. માહિતીનું નિયમન</td><td class="p-2 border border-slate-300">M819 (6 ગુણ) & M820.2 (6 ગુણ)</td><td class="p-2 border border-slate-300 text-center font-bold">12</td><td class="p-2 border border-slate-300 text-center">15.0%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold">૫. વર્ગ અને વર્ગમૂળ</td><td class="p-2 border border-slate-300">M804.2 (4) + M804.3 (4) + M804.6 (6)</td><td class="p-2 border border-slate-300 text-center font-bold">14</td><td class="p-2 border border-slate-300 text-center">17.5%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold">૬. ઘન અને ઘનમૂળ</td><td class="p-2 border border-slate-300">M804.11 (6 ગુણ) & M804.13 (8 ગુણ)</td><td class="p-2 border border-slate-300 text-center font-bold">14</td><td class="p-2 border border-slate-300 text-center">17.5%</td></tr>
+                        <tr class="bg-blue-100 font-extrabold text-blue-900 text-center">
+                            <td class="p-2 border border-slate-300 text-left" colspan="2">કુલ સરવાળો</td>
+                            <td class="p-2 border border-slate-300">૮૦ ગુણ</td>
+                            <td class="p-2 border border-slate-300">૧૦૦%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 1 ==================== -->
+        <article id="block-1" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૧)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M801 : સંમેય સંખ્યાઓ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સંમેય સંખ્યાઓ કઈ ક્રિયા માટે સંવૃત નથી? (A) સરવાળો (B) બાદબાકી (C) ગુણાકાર (D) ભાગાકાર[cite: 18]</li>
+                    <li>ગુણાકાર માટેની તટસ્થ સંખ્યા કઈ છે? (A) 0 (B) 1 (C) -1 (D) અસ્તિત્વ નથી[cite: 18]</li>
+                    <li>-7/19 ની વિરોધી સંખ્યા કઈ? (A) 19/7 (B) -19/7 (C) 7/19 (D) 0[cite: 18]</li>
+                    <li>(-5/8) × (-3/7) = (-3/7) × (-5/8) કયો ગુણધર્મ છે? (A) સંવૃતતા (B) ક્રમનો (C) જૂથનો (D) વિભાજન[cite: 18]</li>
+                    <li>કઈ સંખ્યાનો વ્યસ્ત અસ્તિત્વ ધરાવતો નથી? (A) 1 (B) -1 (C) 0 (D) 2[cite: 18]</li>
+                    <li>a × (b + c) = ab + ac એ શું દર્શાવે છે? (A) વિભાજન (B) જૂથનો નિયમ (C) ક્રમનો નિયમ (D) સંવૃતતા[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) યોગ્ય ગુણધર્મ વાપરી કિંમત શોધો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-2/3) × (3/5) + 5/2 - (3/5) × (1/6)[cite: 18]</li>
+                    <li>(7/5) × (-3/12) + (7/5) × (5/12)[cite: 18]</li>
+                    <li>3/7 + (-6/11) + (-8/21) + 5/22[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૨. (LO-M806 : એક ચલ સુરેખ સમીકરણ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક ચલ સુરેખ સમીકરણમાં ચલનો મહત્તમ ઘાત કેટલો હોય? (A) 0 (B) 1 (C) 2 (D) 3[cite: 18]</li>
+                    <li>જો 2x - 3 = 7 હોય તો x = _____ (A) 2 (B) 5 (C) -5 (D) 10[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણો ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>3x = 2x + 18[cite: 18]</li>
+                    <li>5t - 3 = 3t - 5[cite: 18]</li>
+                    <li>5x + 9 = 5 + 3x[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(C) સાદુંરૂપ આપી ઉકેલો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>x/2 - 1/5 = x/3 + 1/4[cite: 18]</li>
+                    <li>(x - 5)/3 = (x - 3)/5[cite: 18]</li>
+                    <li>8x + 4 = 3(x - 1) + 7[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M812 : સમાંતરબાજુ ચતુષ્કોણ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સમાંતરબાજુ ચતુષ્કોણના સામસામેના ખૂણા: (A) સમાન (B) પૂરક (C) કાટખૂણા (D) અસમાન[cite: 18]</li>
+                    <li>પાસપાસેના ખૂણાઓનો સરવાળો કેટલો હોય? (A) 90° (B) 180° (C) 360° (D) 270°[cite: 18]</li>
+                    <li>ચારેય ખૂણા કાટખૂણા હોય તેવો સમાંતરબાજુ ચતુષ્કોણ: (A) લંબચોરસ (B) સમલંબ (C) પતંગ (D) સમબાજુ[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણના વિકર્ણો પરસ્પર: (A) લંબ હોય (B) દુભાગે (C) સમાન હોય (D) છેદતા નથી[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સમાંતરબાજુ ચતુષ્કોણ ABCD માં ∠A = 70° હોય તો ∠B, ∠C અને ∠D શોધો.[cite: 18]</li>
+                    <li>પાસપાસેના બે ખૂણાઓનો ગુણોત્તર 3:2 હોય તો બધા ખૂણા શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (LO-M825 : બહુકોણ અને પ્રકારો) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક નિયમિત બહુકોણના પ્રત્યેક બહિષ્કોણનું માપ 45° હોય તો બાજુઓની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>લંબચોરસ RENT માં વિકર્ણો O બિંદુએ છેદે છે. OT = 3x + 1 અને OR = 2x + 4 હોય તો x શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૫. (LO-M819 : સ્તંભ આલેખ અને પાય ચાર્ટ) [૬ ગુણ]</h3>
+                <p>૩૬૦ લોકોના મનપસંદ રંગનો પાય ચાર્ટ: વાદળી = 180°, લીલો = 90°, લાલ = 60°, પીળો = 30°.[cite: 18]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વાદળી રંગ કેટલા ટકા લોકો પસંદ કરે છે? (૨ ગુણ)[cite: 18]</li>
+                    <li>લીલો રંગ પસંદ કરતા લોકોની સંખ્યા શોધો. (૨ ગુણ)[cite: 18]</li>
+                    <li>સૌથી ઓછો પસંદગી પામેલ રંગ કયો અને કેટલા લોકો? (૨ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૬. (LO-M820.2 : તક અને સંભાવના) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાસા પર અવિભાજ્ય સંખ્યા મળવાની સંભાવના: (A) 1/6 (B) 1/2 (C) 1/3 (D) 2/3[cite: 18]</li>
+                    <li>સિક્કા પર છાપ (Head) મળવાની સંભાવના: (A) 1 (B) 0 (C) 1/2 (D) 1/4[cite: 18]</li>
+                    <li>૫૨ પત્તાંમાંથી ૧ એક્કો મળવાની સંભાવના: (A) 1/13 (B) 4/13 (C) 1/52 (D) 1/4[cite: 18]</li>
+                    <li>પાસા પર ૬ કરતાં મોટી સંખ્યા મળવાની સંભાવના: (A) 1 (B) 1/6 (C) 0 (D) 5/6[cite: 18]</li>
+                    <li>૪ લાલ અને ૨ પીળા દડામાંથી ૧ લાલ દડો નીકળવાની સંભાવના: (A) 1/3 (B) 2/3 (C) 1/2 (D) 4/2[cite: 18]</li>
+                    <li>ઘટનાની સંભાવના ક્યારેય _____ ન હોય. (A) 0 (B) 1 (C) ધન (D) ઋણ[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૭. (LO-M804.2 : વર્ગ) [૪ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જે સંખ્યાનો એકમ 3 કે 7 હોય તેના વર્ગનો એકમ: (A) 3 (B) 7 (C) 9 (D) 1[cite: 18]</li>
+                    <li>નીચેનામાંથી કઈ પૂર્ણવર્ગ નથી? (A) 1024 (B) 1027 (C) 625 (D) 400[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) નિત્યસમ વાપરી 32² શોધો. (૨ ગુણ)[cite: 18]</p>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (LO-M804.3 : અવિભાજ્ય અવયવથી વર્ગમૂળ) (૩ માંથી ૨) [૪ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>729 નું વર્ગમૂળ શોધો.[cite: 18]</li>
+                    <li>1296 નું વર્ગમૂળ શોધો.[cite: 18]</li>
+                    <li>1764 નું વર્ગમૂળ શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-orange-900 bg-orange-50 p-2 rounded border-l-4 border-orange-600">પ્રશ્ન ૯. (LO-M804.6 : વર્ગ-વર્ગમૂળના કૂટપ્રશ્નો) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ધોરણ-૮ ના વિદ્યાર્થીઓએ ₹ ૨૪૦૧ ફાળો આપ્યો. વિદ્યાર્થી સંખ્યા જેટલા જ રૂપિયા દરેકે આપ્યા હોય તો સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>બગીચામાં ૨૦૨૫ છોડ એવી રીતે રોપવા છે કે હારની સંખ્યા અને છોડ સમાન હોય. હારની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-violet-900 bg-violet-50 p-2 rounded border-l-4 border-violet-600">પ્રશ્ન ૧૦. (LO-M804.11 : અવિભાજ્ય અવયવથી ઘનમૂળ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>512 નું ઘનમૂળ શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>10648 નું ઘનમૂળ શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-pink-900 bg-pink-50 p-2 rounded border-l-4 border-pink-600">પ્રશ્ન ૧૧. (LO-M804.13 : પૂર્ણ ઘન બનાવવા ગુણવા કે ભાગવા) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>૨૪૩ ને કઈ નાનામાં નાની સંખ્યા વડે ગુણવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>૭૦૪ ને કઈ નાનામાં નાની સંખ્યા વડે ભાગવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>પરીક્ષિત 5cm, 2cm, 5cm માપનો લંબઘન બનાવે છે. પૂર્ણ ઘન બનાવવા આવા કેટલા લંબઘન જોઈએ? (૪ ગુણ)[cite: 18]</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 2 ==================== -->
+        <article id="block-2" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૨)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M801 : સંમેય સંખ્યાઓ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>-13/19 ની વ્યસ્ત સંખ્યા કઈ છે? (A) 19/13 (B) -19/13 (C) 13/19 (D) 1[cite: 18]</li>
+                    <li>સરવાળા માટેની તટસ્થ સંખ્યા કઈ છે? (A) 1 (B) 0 (C) -1 (D) કોઈ નહીં[cite: 18]</li>
+                    <li>બે સંમેય સંખ્યાઓ વચ્ચે કેટલી સંમેય સંખ્યાઓ આવેલી હોય? (A) 1 (B) 10 (C) 100 (D) અગણિત[cite: 18]</li>
+                    <li>(2/3) + (3/5) = (3/5) + (2/3) કયો નિયમ છે? (A) ક્રમનો (B) જૂથનો (C) સંવૃતતા (D) વિભાજન[cite: 18]</li>
+                    <li>નીચેનામાંથી કઈ સંખ્યા પોતે જ પોતાનો વ્યસ્ત છે? (A) 0 (B) 1 (C) 2 (D) -2[cite: 18]</li>
+                    <li>સંમેય સંખ્યાઓ બાદબાકી માટે: (A) સંવૃત છે (B) સંવૃત નથી (C) ક્રમ પાળે છે (D) જૂથ પાળે છે[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(-4/5) × (3/7) × (15/16) × (-14/9) ની કિંમત શોધો.[cite: 18]</li>
+                    <li>(2/5) × (-3/7) - 1/14 - (3/7) × (3/5) ની કિંમત શોધો.[cite: 18]</li>
+                    <li>વિભાજનના ગુણધર્મથી શોધો: (9/16) × (4/12) + (9/16) × (-3/9)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૨. (LO-M806 : એક ચલ સુરેખ સમીકરણ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સુરેખ સમીકરણ ax + b = 0 નો ઉકેલ: (A) b/a (B) -b/a (C) a/b (D) -a/b[cite: 18]</li>
+                    <li>જો 3x = 21 હોય તો x = _____ (A) 7 (B) 63 (C) 18 (D) 24[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણો ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>2x - 1 = 14 - x[cite: 18]</li>
+                    <li>8x + 4 = 3(x - 1) + 7[cite: 18]</li>
+                    <li>2y + 5/3 = 26/3 - y[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(C) સમીકરણ ઉકેલો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>m - (m - 1)/2 = 1 - (m - 2)/3[cite: 18]</li>
+                    <li>3(t - 3) = 5(2t + 1)[cite: 18]</li>
+                    <li>15(y - 4) - 2(y - 9) + 5(y + 6) = 0[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M812 : સમાંતરબાજુ ચતુષ્કોણ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચોરસના વિકર્ણો પરસ્પર: (A) લંબ દુભાગે (B) માત્ર દુભાગે (C) અસમાન હોય (D) કાટખૂણે ન હોય[cite: 18]</li>
+                    <li>ચતુષ્કોણના ચારેય ખૂણાઓનો સરવાળો કેટલો થાય? (A) 180° (B) 270° (C) 360° (D) 540°[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણ ABCD માં AB = 8 cm હોય તો CD = _____ (A) 4 cm (B) 8 cm (C) 16 cm (D) 12 cm[cite: 18]</li>
+                    <li>સમબાજુ ચતુષ્કોણના વિકર્ણો: (A) સમાન હોય (B) પરસ્પર લંબ હોય (C) છેદતા નથી (D) પૂરક હોય[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સમાંતરબાજુ ચતુષ્કોણના બે પાસપાસેના ખૂણાઓ 4:5 ના ગુણોત્તરમાં છે. બધા ખૂણા શોધો.[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણ GUNS માં SG = 3x અને NU = 18 હોય તો x શોધો. તેમજ GU = 3y - 1 અને SN = 26 હોય તો y શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (LO-M825 : બહુકોણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નિયમિત બહુકોણના પ્રત્યેક બહિષ્કોણનું માપ 24° હોય તો બાજુઓની સંખ્યા કેટલી? (૩ ગુણ)[cite: 18]</li>
+                    <li>ચતુષ્કોણ ABCD માં ∠A = 50°, ∠B = 110°, ∠C = 80° હોય તો ∠D નું માપ શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૫. (LO-M819 : આલેખ/પાય ચાર્ટ) [૬ ગુણ]</h3>
+                <p>એક વિદ્યાર્થીના ૨૪ કલાકની દિનચર્યાનો પાય ચાર્ટ: ઊંઘ = 120°, શાળા = 90°, ગૃહકાર્ય = 60°, રમત = 60°, અન્ય = 30°.[cite: 18]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિદ્યાર્થી ઊંઘ પાછળ કેટલા કલાક વિતાવે છે? (૨ ગુણ)[cite: 18]</li>
+                    <li>શાળા અને રમત પાછળ કુલ કેટલા કલાક થાય? (૨ ગુણ)[cite: 18]</li>
+                    <li>ગૃહકાર્ય પાછળ વિતાવેલ સમય ટકાવારીમાં શોધો. (૨ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૬. (LO-M820.2 : સંભાવના) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાસા પર યુગ્મ (બેકી) સંખ્યા મળવાની સંભાવના: (A) 1/2 (B) 1/6 (C) 1/3 (D) 2/3[cite: 18]</li>
+                    <li>સિક્કા પર કાંટો (Tail) મળવાની સંભાવના: (A) 1 (B) 1/2 (C) 0 (D) 1/4[cite: 18]</li>
+                    <li>ચોક્કસ બનતી ઘટનાની સંભાવના કેટલી હોય? (A) 0 (B) 1 (C) 0.5 (D) અનંત[cite: 18]</li>
+                    <li>અશક્ય ઘટનાની સંભાવના કેટલી હોય? (A) 0 (B) 1 (C) -1 (D) 1/2[cite: 18]</li>
+                    <li>૧ થી ૧૦ અંકના કાર્ડમાંથી ૫ કરતાં મોટો અંક મળવાની સંભાવના: (A) 1/2 (B) 1/5 (C) 4/10 (D) 1/10[cite: 18]</li>
+                    <li>૫૨ પત્તાંમાંથી લાલ રંગનું પત્તું મળવાની સંભાવના: (A) 1/4 (B) 1/2 (C) 1/13 (D) 2/13[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૭. (LO-M804.2 : વર્ગ) [૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એકી સંખ્યાનો વર્ગ હંમેશાં _____ સંખ્યા જ હોય. (A) એકી (B) બેકી (C) ઋણ (D) શૂન્ય[cite: 18]</li>
+                    <li>49 ના વર્ગનો એકમનો અંક કયો હશે? (A) 9 (B) 1 (C) 7 (D) 3[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) ગુણાકાર કર્યા વગર (42)² ની કિંમત શોધો. (૨ ગુણ)[cite: 18]</p>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (LO-M804.3 : વર્ગમૂળ) (૩ માંથી ૨) [૪ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>529 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>4096 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>7744 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-orange-900 bg-orange-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૯. (LO-M804.6 : વર્ગના કૂટપ્રશ્નો) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક સૈન્ય ટુકડીના ૧૭૬૪ સૈનિકોને ચોરસ આકારમાં ગોઠવવાના છે. દરેક હારમાં કેટલા સૈનિક હશે? (૩ ગુણ)[cite: 18]</li>
+                    <li>એક વર્ગના વિદ્યાર્થીઓએ પિકનિક માટે ₹ ૧૧૫૬ એકઠા કર્યા. દરેક વિદ્યાર્થીએ પોતાની સંખ્યા જેટલા જ રૂપિયા આપ્યા હોય તો સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-violet-900 bg-violet-50 p-2 rounded border-l-4 border-violet-600">પ્રશ્ન ૧૦. (LO-M804.11 : ઘનમૂળ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1728 નું ઘનમૂળ અવિભાજ્ય અવયવની રીતે શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>9261 નું ઘનમૂળ અવિભાજ્ય અવયવની રીતે શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-pink-900 bg-pink-50 p-2 rounded border-l-4 border-pink-600">પ્રશ્ન ૧૧. (LO-M804.13 : પૂર્ણ ઘન) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>૬૭૫ ને કઈ નાનામાં નાની સંખ્યા વડે ગુણવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>૧૯૨ ને કઈ નાનામાં નાની સંખ્યા વડે ભાગવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>એક લંબઘન પેટીનું માપ 2cm × 3cm × 5cm છે. પૂર્ણ ઘન પેટી બનાવવા આવી કેટલી પેટી જોઈએ? (૪ ગુણ)[cite: 18]</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 3 ==================== -->
+        <article id="block-3" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૩)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M801 : સંમેય સંખ્યાઓ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>0 નો વ્યસ્ત: (A) 0 (B) 1 (C) અસ્તિત્વ ધરાવતો નથી (D) -1[cite: 18]</li>
+                    <li>સંમેય સંખ્યાઓ કયા સ્વરૂપમાં હોય? (A) p/q, q ≠ 0 (B) p/q, q = 0 (C) p × q (D) p - q[cite: 18]</li>
+                    <li>-1 ની વ્યસ્ત સંખ્યા કઈ છે? (A) 1 (B) -1 (C) 0 (D) અસ્તિત્વ નથી[cite: 18]</li>
+                    <li>2/3 ની વિરોધી સંખ્યા: (A) 3/2 (B) -2/3 (C) -3/2 (D) 1[cite: 18]</li>
+                    <li>(a + b) + c = a + (b + c) કયો ગુણધર્મ છે? (A) ક્રમનો (B) જૂથનો (C) સંવૃતતા (D) વિભાજન[cite: 18]</li>
+                    <li>સંમેય સંખ્યાઓ ગુણાકાર માટે: (A) સંવૃત છે (B) સંવૃત નથી (C) અસત્ય (D) શૂન્ય છે[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) યોગ્ય ગુણધર્મ વાપરી સાદુંરૂપ આપો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(2/5) × (-3/7) - (1/6) × (3/2) + (1/14) × (2/5)[cite: 18]</li>
+                    <li>(-1/4) × (2/7) + (-1/4) × (5/7)[cite: 18]</li>
+                    <li>4/9 + (-5/12) + (-7/18) + 11/24[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૨. (LO-M806 : સમીકરણ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જો 7x - 9 = 16 હોય તો 7x = _____ (A) 25 (B) 7 (C) 16 (D) -7[cite: 18]</li>
+                    <li>નીચેનામાંથી સુરેખ સમીકરણ કયું છે? (A) x² + 1 = 5 (B) 2x + 3 = 7 (C) x³ = 8 (D) xy = 4[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>4z + 3 = 6 + 2z[cite: 18]</li>
+                    <li>2x/3 + 1 = 7x/15 + 3[cite: 18]</li>
+                    <li>x = 4/5 (x + 10)[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(C) સાદુંરૂપ આપી ઉકેલો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(3t - 2)/4 - (2t + 3)/3 = 2/3 - t[cite: 18]</li>
+                    <li>0.25(4f - 3) = 0.05(10f - 9)[cite: 18]</li>
+                    <li>(x + 1)/6 + 1 = (x - 3)/3[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M812 : ચતુષ્કોણ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જે ચતુષ્કોણમાં સામસામેની બાજુઓની એક જ જોડ સમાંતર હોય તેને શું કહેવાય? (A) સમલંબ (B) પતંગ (C) ચોરસ (D) લંબચોરસ[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણમાં ∠A = 100° હોય તો સામેનો ∠C = _____ (A) 80° (B) 100° (C) 180° (D) 50°[cite: 18]</li>
+                    <li>લંબચોરસના વિકર્ણો: (A) સમાન હોય (B) અસમાન હોય (C) છેદતા નથી (D) લંબ હોય[cite: 18]</li>
+                    <li>પતંગાકાર ચતુષ્કોણમાં કેટલી જોડ પાસપાસેની બાજુ સમાન હોય? (A) 1 (B) 2 (C) 3 (D) 4[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સમાંતરબાજુ ચતુષ્કોણના બે પાસપાસેના ખૂણા સમાન માપના છે. બધા ખૂણા શોધો.[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણ HELP માં વિકર્ણો O માં છેદે છે. OE = 4 cm અને HL એ PE કરતાં 5 વધારે છે. OH શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (LO-M825 : બહુકોણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક નિયમિત બહુકોણનો દરેક અંતઃકોણ 165° હોય તો બાજુઓની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>નિયમિત ષટ્કોણના બધા બહિષ્કોણોનો સરવાળો કેટલો થાય? પ્રત્યેક બહિષ્કોણનું માપ શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૫. (LO-M819 : આલેખ/પાય ચાર્ટ) [૬ ગુણ]</h3>
+                <p>એક પરિવારનો માસિક ખર્ચ (કુલ આવક ₹ ૩૬,૦૦૦) નો પાય ચાર્ટ: ખોરાક = 120°, શિક્ષણ = 90°, મકાન ભાડું = 90°, બચત = 60°.[cite: 18]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ખોરાક પાછળ કેટલા રૂપિયા ખર્ચાય છે? (૨ ગુણ)[cite: 18]</li>
+                    <li>પરિવાર દર મહિને કેટલા રૂપિયાની બચત કરે છે? (૨ ગુણ)[cite: 18]</li>
+                    <li>શિક્ષણ પાછળનો ખર્ચ ટકાવારીમાં જણાવો. (૨ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૬. (LO-M820.2 : સંભાવના) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાસા પર 3 નો ગુણક મળવાની સંભાવના: (A) 1/3 (B) 1/6 (C) 1/2 (D) 2/3[cite: 18]</li>
+                    <li>સૂર્ય પશ્ચિમમાં ઊગે તે ઘટનાની સંભાવના: (A) 1 (B) 0 (C) 1/2 (D) અચોક્કસ[cite: 18]</li>
+                    <li>૫૨ પત્તાંમાંથી કાળીનો એક્કો મળવાની સંભાવના: (A) 1/52 (B) 1/13 (C) 4/52 (D) 1/4[cite: 18]</li>
+                    <li>એક થેલીમાં ૫ લાલ અને ૩ વાદળી દડા છે. વાદળી દડો નીકળવાની સંભાવના: (A) 3/8 (B) 5/8 (C) 3/5 (D) 1/8[cite: 18]</li>
+                    <li>કોઈપણ ઘટના E માટે P(E) + P(નહીં E) = _____ (A) 0 (B) 1 (C) -1 (D) 2[cite: 18]</li>
+                    <li>સિક્કો ઉછાળતાં મળતા કુલ પરિણામો: (A) 1 (B) 2 (C) 4 (D) 6[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૭. (LO-M804.2 : વર્ગ) [૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જે સંખ્યાનો એકમ 0 હોય તેના વર્ગમાં છેલ્લે ઓછામાં ઓછા કેટલા શૂન્ય હોય? (A) 1 (B) 2 (C) 3 (D) 4[cite: 18]</li>
+                    <li>નીચેનામાંથી કઈ સંખ્યા પૂર્ણવર્ગ છે? (A) 500 (B) 900 (C) 1000 (D) 800[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) ગુણાકાર વગર (35)² ની કિંમત શોધો. (૨ ગુણ)[cite: 18]</p>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (LO-M804.3 : વર્ગમૂળ) (૩ માંથી ૨) [૪ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>576 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>2304 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>5929 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-orange-900 bg-orange-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૯. (LO-M804.6 : વર્ગના કૂટપ્રશ્નો) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક સભામંડપમાં ૧૨૨૫ ખુરશીઓ એવી રીતે ગોઠવી છે કે જેટલી હાર તેટલી જ ખુરશી પ્રત્યેક હારમાં છે. હારની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>એક ચોરસ બગીચાનું ક્ષેત્રફળ ૨૦૨૫ ચોરસ મીટર છે, તો તેની બાજુની લંબાઈ શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-violet-900 bg-violet-50 p-2 rounded border-l-4 border-violet-600">પ્રશ્ન ૧૦. (LO-M804.11 : ઘનમૂળ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>3375 નું ઘનમૂળ અવિભાજ્ય અવયવની રીતે શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>4913 નું ઘનમૂળ અવિભાજ્ય અવયવની રીતે શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-pink-900 bg-pink-50 p-2 rounded border-l-4 border-pink-600">પ્રશ્ન ૧૧. (LO-M804.13 : પૂર્ણ ઘન) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>૨૫૬ ને કઈ નાનામાં નાની સંખ્યા વડે ગુણવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>૧૩૫ ને કઈ નાનામાં નાની સંખ્યા વડે ભાગવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>રાહુલ 5cm × 2cm × 5cm નો પ્લાસ્ટિક લંબઘન બનાવે છે. પૂર્ણ ઘન બનાવવા આવા કેટલા લંબઘન જોઈએ? (૪ ગુણ)[cite: 18]</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 4 ==================== -->
+        <article id="block-4" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૪)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M801 : સંમેય સંખ્યાઓ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>-3/8 નો વિરોધી: (A) 3/8 (B) 8/3 (C) -8/3 (D) 0[cite: 18]</li>
+                    <li>કોઈપણ સંખ્યા અને તેની વિરોધીનો સરવાળો કેટલો થાય? (A) 1 (B) 0 (C) -1 (D) અગણિત[cite: 18]</li>
+                    <li>સંમેય સંખ્યા a માટે a × 1 = _____ (A) 1 (B) a (C) 0 (D) -a[cite: 18]</li>
+                    <li>શૂન્ય સિવાયની સંખ્યા a/b નો વ્યસ્ત: (A) -a/b (B) b/a (C) -b/a (D) 1[cite: 18]</li>
+                    <li>સંમેય સંખ્યાઓ ભાગાકાર માટે: (A) સંવૃત છે (B) સંવૃત નથી (C) હંમેશા 1 (D) નિયમ પાળે[cite: 18]</li>
+                    <li>ગુણાકારનું બાદબાકી પર વિભાજન કયું? (A) a(b - c) = ab - ac (B) a + b = b + a (C) ab = ba (D) a(bc) = (ab)c[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>યોગ્ય ક્રમ વાપરી શોધો: 4/5 + (-2/3) + 1/5 + (-4/3)[cite: 18]</li>
+                    <li>વિભાજનના ગુણધર્મથી કિંમત શોધો: (7/16) × 8/3 + (7/16) × 4/3[cite: 18]</li>
+                    <li>સાદુંરૂપ આપો: (-3/7) × (2/5) + (4/9) × (-3/7)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૨. (LO-M806 : સમીકરણ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જો x/3 = 10 હોય તો x = _____ (A) 30 (B) 10/3 (C) 13 (D) 7[cite: 18]</li>
+                    <li>સમીકરણમાં '=' ના ચિહ્નને શું કહેવાય? (A) ક્ષમતા (B) સમાનતા (C) ગુણોત્તર (D) અસમતા[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>6x = 12[cite: 18]</li>
+                    <li>t/5 = 10[cite: 18]</li>
+                    <li>2x/3 = 18[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(C) સાદુંરૂપ આપી ઉકેલો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(x - 5)/2 = (x - 3)/5[cite: 18]</li>
+                    <li>5x + 7/2 = 3/2 x - 14[cite: 18]</li>
+                    <li>0.16(5x - 2) = 0.4x + 7[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M812 : ચતુષ્કોણ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચોરસ એ _____ પણ છે. (A) લંબચોરસ (B) સમબાજુ (C) સમાંતરબાજુ (D) આપેલ તમામ[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણમાં સામસામેની બાજુઓ: (A) સમાંતર અને સમાન (B) માત્ર સમાંતર (C) અસમાન (D) લંબ[cite: 18]</li>
+                    <li>લંબચોરસના દરેક ખૂણાનું માપ: (A) 60° (B) 90° (C) 120° (D) 180°[cite: 18]</li>
+                    <li>સમબાજુ ચતુષ્કોણની બધી બાજુઓ: (A) સમાન હોય (B) અસમાન હોય (C) સમાંતર ન હોય (D) કાટખૂણે હોય[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સમાંતરબાજુ ચતુષ્કોણ RING માં ∠R = 75° હોય તો ∠I, ∠N, ∠G શોધો.[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણના બે આસન્ન ખૂણા 2:3 પ્રમાણમાં હોય તો બંને ખૂણા શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (LO-M825 : બહુકોણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નિયમિત અષ્ટકોણના પ્રત્યેક બહિષ્કોણનું માપ શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>ચતુષ્કોણના ત્રણ ખૂણા 65°, 105° અને 75° હોય તો ચોથો ખૂણો શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૫. (LO-M819 : આલેખ/પાય ચાર્ટ) [૬ ગુણ]</h3>
+                <p>એક શાળાના ૭૨૦ વિદ્યાર્થીઓનો વાહન વ્યવહાર પાય ચાર્ટ: બસ = 120°, સાયકલ = 90°, પગપાળા = 90°, વાન = 60°.[cite: 18]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>બસ દ્વારા શાળાએ આવતા વિદ્યાર્થીઓની સંખ્યા કેટલી? (૨ ગુણ)[cite: 18]</li>
+                    <li>પગપાળા આવતા વિદ્યાર્થીઓ કેટલા ટકા થાય? (૨ ગુણ)[cite: 18]</li>
+                    <li>વાન દ્વારા આવતા વિદ્યાર્થીઓની ચોક્કસ સંખ્યા શોધો. (૨ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૬. (LO-M820.2 : સંભાવના) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાસો ફેંકતાં 5 મળવાની સંભાવના: (A) 1/6 (B) 5/6 (C) 1/2 (D) 1/3[cite: 18]</li>
+                    <li>૫૨ પત્તાંમાંથી રાણી (Queen) મળવાની સંભાવના: (A) 1/13 (B) 4/13 (C) 1/52 (D) 2/13[cite: 18]</li>
+                    <li>સિક્કો ઉછાળતાં બંને પરિણામો કેવા કહેવાય? (A) સમસંભાવી (B) અસંભાવી (C) અશક્ય (D) ચોક્કસ[cite: 18]</li>
+                    <li>એક પેટીમાં ૩ લાલ અને ૭ કાળી લખોટી છે. લાલ નીકળવાની સંભાવના: (A) 3/10 (B) 7/10 (C) 1/3 (D) 3/7[cite: 18]</li>
+                    <li>સંભાવનાનું લઘુત્તમ મૂલ્ય કેટલું હોઈ શકે? (A) 0 (B) -1 (C) 1 (D) 0.1[cite: 18]</li>
+                    <li>પાસા પર 7 આવે તેની સંભાવના: (A) 0 (B) 1 (C) 1/6 (D) 7/6[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૭. (LO-M804.2 : વર્ગ) [૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જે સંખ્યાનો એકમ 5 હોય તેના વર્ગના છેલ્લા બે અંક કયા હોય? (A) 25 (B) 15 (C) 05 (D) 35[cite: 18]</li>
+                    <li>25 નો વર્ગ કેટલો થાય? (A) 525 (B) 625 (C) 225 (D) 725[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) નિત્યસમથી (51)² શોધો. (૨ ગુણ)[cite: 18]</p>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (LO-M804.3 : વર્ગમૂળ) (૩ માંથી ૨) [૪ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1024 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>3136 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>8100 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-orange-900 bg-orange-50 p-2 rounded border-l-4 border-orange-600">પ્રશ્ન ૯. (LO-M804.6 : વર્ગના કૂટપ્રશ્નો) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક સૈનિક કેમ્પમાં ૨૬૦૧ જવાનોને ચોરસ હરોળમાં ગોઠવવાના છે. દરેક હરોળમાં જવાનોની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>એક બગીચામાં ૭૮૪ ગુલાબના છોડ એવી રીતે રોપ્યા છે કે હાર અને સ્તંભ સમાન થાય. હારની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-violet-900 bg-violet-50 p-2 rounded border-l-4 border-violet-600">પ્રશ્ન ૧૦. (LO-M804.11 : ઘનમૂળ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>2744 નું ઘનમૂળ અવિભાજ્ય અવયવની રીતે શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>5832 નું ઘનમૂળ અવિભાજ્ય અવયવની રીતે શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-pink-900 bg-pink-50 p-2 rounded border-l-4 border-pink-600">પ્રશ્ન ૧૧. (LO-M804.13 : પૂર્ણ ઘન) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>૧૨૮ ને કઈ નાનામાં નાની સંખ્યા વડે ગુણવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>૧૯૨ ને કઈ નાનામાં નાની સંખ્યા વડે ભાગવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>એક લંબઘન ચોકલેટ બોક્સ 4cm × 2cm × 4cm માપનું છે. પૂર્ણ ઘન બોક્સ બનાવવા આવા કેટલા બોક્સ જોઈએ? (૪ ગુણ)[cite: 18]</li>
+                </ol>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 5 ==================== -->
+        <article id="block-5" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૫)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૮</span><span>વિષય: ગણિત</span><span>પ્રકરણ: ૧ થી ૬</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૧. (LO-M801 : સંમેય સંખ્યાઓ) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>-1 1/7 ની વ્યસ્ત સંખ્યા: (A) -7/8 (B) 7/8 (C) -8/7 (D) 8/7[cite: 18]</li>
+                    <li>બે ધન સંમેય સંખ્યાઓનો ગુણાકાર હંમેશા _____ મળે. (A) ધન (B) ઋણ (C) શૂન્ય (D) અસંમેય[cite: 18]</li>
+                    <li>સરવાળા માટે ક્રમના નિયમનું પાલન: (A) થાય છે (B) થતું નથી (C) ક્યારેક (D) શૂન્ય માટે જ[cite: 18]</li>
+                    <li>કોઈપણ સંખ્યાનો તેના વ્યસ્ત સાથે ગુણાકાર: (A) 0 (B) 1 (C) -1 (D) તે જ સંખ્યા[cite: 18]</li>
+                    <li>નીચેનામાંથી કઈ ઋણ સંમેય સંખ્યા છે? (A) -3/-4 (B) 5/7 (C) -2/9 (D) 0[cite: 18]</li>
+                    <li>સંમેય સંખ્યાઓ બાદબાકી માટે ક્રમનો નિયમ: (A) પાળે છે (B) પાળતી નથી (C) અચળ છે (D) સાચું[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) યોગ્ય ગુણધર્મથી કિંમત શોધો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(3/5) × (-2/7) - (1/14) - (3/7) × (2/5)[cite: 18]</li>
+                    <li>વિભાજનના નિયમથી: (8/9) × 4/5 + (8/9) × 1/5[cite: 18]</li>
+                    <li>2/3 + 4/5 + (-2/3) + (-1/5)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૨. (LO-M806 : સમીકરણ) [૧૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જો 5x - 2 = 18 હોય તો x = _____ (A) 4 (B) 3 (C) 5 (D) 20[cite: 18]</li>
+                    <li>સમીકરણની બંને બાજુ સમાન સંખ્યા ઉમેરતાં પરિણામ: (A) બદલાય (B) સમાન રહે (C) શૂન્ય થાય (D) બમણું થાય[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>3x = 2x + 18[cite: 18]</li>
+                    <li>7x - 9 = 16[cite: 18]</li>
+                    <li>y/3 + 1 = 7/15[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(C) સાદુંરૂપ આપી ઉકેલો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>(2x + 1)/3 + 1 = (x - 2)/4[cite: 18]</li>
+                    <li>3(5z - 7) - 2(9z - 11) = 4(8z - 13) - 17[cite: 18]</li>
+                    <li>0.2(2x - 1) = 0.5x + 1[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૩. (LO-M812 : ચતુષ્કોણ) [૮ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચોરસની પરિમિતિ = _____ (A) 4 × બાજુ (B) બાજુ² (C) 2 × બાજુ (D) બાજુ/4[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણમાં સામસામેના ખૂણાઓ: (A) સમાન (B) પૂરક (C) 90° (D) 180°[cite: 18]</li>
+                    <li>લંબચોરસના વિકર્ણો પરસ્પર: (A) દુભાગે (B) લંબ હોય (C) છેદતા નથી (D) અસમાન હોય[cite: 18]</li>
+                    <li>જે ચતુષ્કોણની ચારેય બાજુ સરખી હોય પણ ખૂણા 90° ન હોય: (A) સમબાજુ (B) ચોરસ (C) લંબચોરસ (D) સમલંબ[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) દાખલા ગણો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચતુષ્કોણ ABCD માં ∠A = 80°, ∠B = 100°, ∠C = 80° હોય તો ∠D શોધો. તે કયા પ્રકારનો ચતુષ્કોણ છે?[cite: 18]</li>
+                    <li>સમાંતરબાજુ ચતુષ્કોણના બે આસન્ન ખૂણા (3x - 4)° અને (3x + 16)° છે. x શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (LO-M825 : બહુકોણ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક નિયમિત બહુકોણના પ્રત્યેક અંતઃકોણનું માપ 140° હોય તો બાજુઓની સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>પંચકોણના બધા જ આંતરિક ખૂણાઓનો સરવાળો કેટલો થાય? રીત દર્શાવો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૫. (LO-M819 : આલેખ/પાય ચાર્ટ) [૬ ગુણ]</h3>
+                <p>એક સ્પોર્ટ્સ ક્લબમાં ૩૬૦ બાળકોની રમત પસંદગી: ક્રિકેટ = 150°, ફૂટબોલ = 90°, કબડ્ડી = 80°, ખો-ખો = 40°.[cite: 18]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ક્રિકેટ પસંદ કરતા બાળકોની સંખ્યા શોધો. (૨ ગુણ)[cite: 18]</li>
+                    <li>ફૂટબોલ પસંદ કરતા બાળકો કેટલા ટકા થાય? (૨ ગુણ)[cite: 18]</li>
+                    <li>કઈ રમત સૌથી ઓછી પસંદ છે અને કેટલા બાળકો? (૨ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૬. (LO-M820.2 : સંભાવના) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાસો ફેંકતાં બેકી અવિભાજ્ય સંખ્યા મળવાની સંભાવના: (A) 1/6 (B) 1/2 (C) 1/3 (D) 0[cite: 18]</li>
+                    <li>લિપ વર્ષમાં ૫૩ રવિવાર હોવાની સંભાવના: (A) 2/7 (B) 1/7 (C) 53/366 (D) 0[cite: 18]</li>
+                    <li>૫૨ પત્તાંમાંથી કાળીનો રાજા મળવાની સંભાવના: (A) 1/52 (B) 1/13 (C) 1/26 (D) 4/52[cite: 18]</li>
+                    <li>એક સિક્કો એકવાર ઉછાળતાં મળતા કુલ શક્ય પરિણામ: (A) 1 (B) 2 (C) 4 (D) 0[cite: 18]</li>
+                    <li>સંભાવનાનું મૂલ્ય હંમેશા _____ વચ્ચે હોય. (A) 0 થી 1 (B) -1 થી 1 (C) 1 થી 100 (D) શૂન્યથી ઓછું[cite: 18]</li>
+                    <li>સારી ઘટના બનવાની સંભાવના 0.65 હોય તો ન બનવાની સંભાવના: (A) 0.35 (B) 0.45 (C) 1.65 (D) 0[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૭. (LO-M804.2 : વર્ગ) [૪ ગુણ]</h3>
+                <p class="font-bold">(A) વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>જે સંખ્યાનો એકમ 2 કે 8 હોય તેના વર્ગનો એકમ: (A) 4 (B) 2 (C) 8 (D) 6[cite: 18]</li>
+                    <li>12 નો વર્ગ કેટલો થાય? (A) 144 (B) 124 (C) 142 (D) 24[cite: 18]</li>
+                </ol>
+                <p class="font-bold pt-1">(B) નિત્યસમથી (99)² ની કિંમત શોધો. (૨ ગુણ)[cite: 18]</p>
+
+                <h3 class="font-bold text-indigo-900 bg-indigo-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૮. (LO-M804.3 : વર્ગમૂળ) (૩ માંથી ૨) [૪ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>441 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>2025 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                    <li>9604 નું વર્ગમૂળ અવિભાજ્ય અવયવથી શોધો.[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-orange-900 bg-orange-50 p-2 rounded border-l-4 border-indigo-600">પ્રશ્ન ૯. (LO-M804.6 : વર્ગના કૂટપ્રશ્નો) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>એક શાળાના બાળકોએ વડાપ્રધાન રાહત ફંડમાં ₹ ૩૧૩૬ ફાળો આપ્યો. દરેક બાળકે સંખ્યા જેટલા જ રૂપિયા આપ્યા હોય તો સંખ્યા શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>ચોરસ પ્લોટનું ક્ષેત્રફળ ૫૧૮૪ ચોરસ મીટર છે, તેની લંબાઈ શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-violet-900 bg-violet-50 p-2 rounded border-l-4 border-violet-600">પ્રશ્ન ૧૦. (LO-M804.11 : ઘનમૂળ) [૬ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>4096 નું ઘનમૂળ અવિભાજ્ય અવયવથી શોધો. (૩ ગુણ)[cite: 18]</li>
+                    <li>8000 નું ઘનમૂળ અવિભાજ્ય અવયવથી શોધો. (૩ ગુણ)[cite: 18]</li>
+                </ol>
+
+                <h3 class="font-bold text-pink-900 bg-pink-50 p-2 rounded border-l-4 border-pink-600">પ્રશ્ન ૧૧. (LO-M804.13 : પૂર્ણ ઘન) (૩ માંથી ૨) [૮ ગુણ]</h3>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>૧૦૦ ને કઈ નાનામાં નાની સંખ્યા વડે ગુણવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>૨૫૦ ને કઈ નાનામાં નાની સંખ્યા વડે ભાગવાથી પૂર્ણ ઘન બને? (૪ ગુણ)[cite: 18]</li>
+                    <li>પરીક્ષિત 5cm × 2cm × 5cm નો લંબઘન બનાવે છે. પૂર્ણ ઘન બનાવવા આવા કેટલા લંબઘનની જરૂર પડે? (૪ ગુણ)[cite: 18]</li>
+                </ol>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 15-SECOND BLOG FOLLOW POP-UP MODAL -->
+    <div id="blogFollowModal" class="fixed inset-0 bg-slate-900/60 modal-blur z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 text-center transform transition-all scale-95 border-2 border-amber-400 relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🧡</span>
+            </div>
+            <span class="bg-orange-100 text-orange-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">શૈક્ષણિક અપડેટ્સ</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-2">ARUNOGYAN Blog ને Follow કરો!</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                ધોરણ ૬ થી ૮ ના તમામ વિષયોના પરિરૂપ (બ્લૂપ્રિન્ટ), મોડેલ પ્રશ્નપત્રો અને એકમ કસોટીઓ સૌથી પહેલાં મેળવવા માટે અમારા બ્લોગને આજે જ Follow કરો.
+            </p>
+            <div class="mt-6 flex flex-col gap-2.5">
+                <a href="https://www.blogger.com/follow.g?blogID=7874056882573718914" target="_blank" rel="noopener noreferrer" onclick="closeModal()" class="gradient-blog text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:opacity-95 transition transform hover:scale-105 flex items-center justify-center gap-2 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                    👉 Follow Blog Now (અહીં ક્લિક કરો)
+                </a>
+                <button onclick="closeModal()" class="text-slate-500 hover:text-slate-800 font-semibold text-xs py-2">પછી કરીશ (Close)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function switchTab(tabId) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'bg-purple-600');
+                btn.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+                if (tabId === 'all') {
+                    activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+                } else {
+                    activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+                }
+            }
+
+            const blocks = document.querySelectorAll('.content-block');
+            blocks.forEach(block => block.classList.add('hidden'));
+
+            if (tabId === 'all') {
+                blocks.forEach(block => {
+                    if (block.id !== 'block-notes') {
+                        block.classList.remove('hidden');
+                    }
+                });
+            } else {
+                const targetBlock = document.getElementById('block-' + tabId);
+                if (targetBlock) {
+                    targetBlock.classList.remove('hidden');
+                }
+            }
+        }
+
+        // 15 seconds Pop-up timer
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const modal = document.getElementById('blogFollowModal');
+                if (modal) modal.classList.remove('hidden');
+            }, 15000);
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('blogFollowModal');
+            if (modal) modal.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

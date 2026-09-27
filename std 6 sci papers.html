@@ -1,0 +1,938 @@
+<style>
+  /* ડેસ્કટોપ / લેપટોપ પર બ્લોગર સાઇડબાર હાઇડ કરવા માટે */
+  @media screen and (min-width: 769px) {
+      .sidebar, #sidebar-wrapper, .sidebar-container, aside {
+          display: none !important;
+          visibility: hidden !important;
+          width: 0px !important;
+      }
+      #main, .main-inner, .content-inner, #main-wrapper {
+          width: 100% !important;
+          max-width: 100% !important;
+          float: none !important;
+          display: block !important;
+          opacity: 1 !important;
+      }
+  }
+</style>
+
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ધોરણ-૬ વિજ્ઞાન (કુતૂહલ) પ્રથમ સત્રાંત કસોટી - ૫ આદર્શ મોડેલ પ્રશ્નપત્રો (૮૦ ગુણ)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .gradient-header {
+            background: linear-gradient(135deg, #065f46 0%, #059669 50%, #047857 100%);
+        }
+        .gradient-blog {
+            background: linear-gradient(135deg, #ea580c 0%, #d97706 100%);
+        }
+        .modal-blur {
+            backdrop-filter: blur(6px);
+        }
+        
+        /* A4 Size Print CSS */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm 8mm 10mm;
+            }
+            body {
+                background-color: white !important;
+                font-size: 9.5pt !important;
+                line-height: 1.3 !important;
+                color: #000 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .content-block {
+                display: block !important;
+                box-shadow: none !important;
+                border: 1px solid #94a3b8 !important;
+                border-radius: 6px !important;
+                margin: 0 0 15px 0 !important;
+                padding: 10px 14px !important;
+                page-break-after: always;
+                break-after: page;
+            }
+            .content-block h2 {
+                font-size: 12pt !important;
+            }
+            .content-block h3 {
+                font-size: 10pt !important;
+                padding: 3px 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 4px !important;
+                background-color: #f1f5f9 !important;
+                color: #000 !important;
+                border-left: 4px solid #059669 !important;
+            }
+            ol, ul {
+                margin-bottom: 2px !important;
+            }
+        }
+    </style>
+</head>
+<body class="pb-16 relative">
+
+    <!-- Header Section -->
+    <header class="gradient-header text-white shadow-xl no-print sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 sm:flex sm:items-center sm:justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+                    <svg class="w-7 h-7 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-wide">ધોરણ-૬ વિજ્ઞાન (કુતૂહલ) : પ્રથમ સત્રાંત કસોટી પરિરૂપ & આદર્શ પ્રશ્નપત્રો</h1>
+                    <p class="text-xs text-emerald-100 mt-0.5">GCERT સત્તાવાર બ્લૂપ્રિન્ટ ૨૦૨૬-૨૭ આધારિત ૫ આદર્શ મોડેલ પેપર્સ (કુલ ગુણ: ૮૦)</p>
+                </div>
+            </div>
+            <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
+                <button onclick="window.print()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    પ્રિન્ટ / PDF ડાઉનલોડ
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 mt-5 no-print">
+        <div class="flex border-b-2 border-slate-200 overflow-x-auto space-x-1 pb-1 scrollbar-none">
+            <button onclick="switchTab('notes')" id="tab-btn-notes" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-emerald-700 text-white shadow-md">📊 બ્લૂપ્રિન્ટ</button>
+            <button onclick="switchTab('1')" id="tab-btn-1" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૧</button>
+            <button onclick="switchTab('2')" id="tab-btn-2" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૨</button>
+            <button onclick="switchTab('3')" id="tab-btn-3" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૩</button>
+            <button onclick="switchTab('4')" id="tab-btn-4" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૪</button>
+            <button onclick="switchTab('5')" id="tab-btn-5" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-t-xl transition bg-white text-slate-700 hover:bg-slate-100">પ્રશ્નપત્ર - ૫</button>
+            <button onclick="switchTab('all')" id="tab-btn-all" class="tab-btn px-3.5 py-2 text-xs sm:text-sm font-bold rounded-t-xl transition bg-purple-100 text-purple-800 hover:bg-purple-200">તમામ ૫ પેપર્સ</button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 mt-5">
+
+        <!-- ==================== BLUEPRINT TAB ==================== -->
+        <article id="block-notes" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8">
+            <div class="border-b-2 border-emerald-600 pb-3 mb-4">
+                <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase">GCERT પરિરૂપ ૨૦૨૬-૨૭</span>
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-2">ધોરણ-૬ વિજ્ઞાન (કુતૂહલ) પ્રથમ સત્રાંત કસોટી બ્લૂપ્રિન્ટ</h2>
+                <p class="text-xs sm:text-sm text-slate-600 mt-1">કુલ ગુણ: ૮૦ | સમય: ૩ કલાક | પ્રકરણવાર અને ક્ષમતા મુજબ ગુણભાર</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-xs sm:text-sm text-left border-collapse border border-slate-300">
+                    <thead class="bg-emerald-900 text-white font-bold text-center">
+                        <tr>
+                            <th class="p-2 border border-slate-300">પ્રકરણ ક્રમ</th>
+                            <th class="p-2 border border-slate-300">ક્ષમતા કોડ & ક્ષમતા વિધાન</th>
+                            <th class="p-2 border border-slate-300">કુલ ગુણ</th>
+                            <th class="p-2 border border-slate-300">ભારાંક (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-200 text-slate-700">
+                        <tr><td class="p-2 border border-slate-300 font-semibold text-center">પ્રકરણ ૨</td><td class="p-2 border border-slate-300">C 3.1 : નૈસર્ગિક વાતાવરણમાં સજીવોનું વૈવિધ્ય</td><td class="p-2 border border-slate-300 text-center font-bold">15 (2)*</td><td class="p-2 border border-slate-300 text-center">18.75%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold text-center">પ્રકરણ ૩</td><td class="p-2 border border-slate-300">C 4.1 & C 4.2 : આહારના ઘટકો, રાંધવાની પદ્ધતિઓ અને વૈવિધ્ય</td><td class="p-2 border border-slate-300 text-center font-bold">21 (5)*</td><td class="p-2 border border-slate-300 text-center">26.25%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold text-center">પ્રકરણ ૪</td><td class="p-2 border border-slate-300">C 2.3 : ચુંબકના ગુણધર્મો અને ઉપયોગો</td><td class="p-2 border border-slate-300 text-center font-bold">12 (7)*</td><td class="p-2 border border-slate-300 text-center">15.00%</td></tr>
+                        <tr class="bg-slate-50"><td class="p-2 border border-slate-300 font-semibold text-center">પ્રકરણ ૫</td><td class="p-2 border border-slate-300">C 1.3 : માપનનું મહત્વ અને ભૌતિક રાશિઓનું માપન</td><td class="p-2 border border-slate-300 text-center font-bold">16 (3)*</td><td class="p-2 border border-slate-300 text-center">20.00%</td></tr>
+                        <tr><td class="p-2 border border-slate-300 font-semibold text-center">પ્રકરણ ૬</td><td class="p-2 border border-slate-300">C 1.1 : દ્રવ્યના ભૌતિક-રાસાયણિક ગુણધર્મો અને વર્ગીકરણ</td><td class="p-2 border border-slate-300 text-center font-bold">16 (4)*</td><td class="p-2 border border-slate-300 text-center">20.00%</td></tr>
+                        <tr class="bg-emerald-100 font-extrabold text-emerald-950 text-center">
+                            <td class="p-2 border border-slate-300 text-left" colspan="2">કુલ સરવાળો</td>
+                            <td class="p-2 border border-slate-300">૮૦ ગુણ (21)*</td>
+                            <td class="p-2 border border-slate-300">૧૦૦%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 1 ==================== -->
+        <article id="block-1" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૧)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૬ (કુતૂહલ)</span><span>વિષય: વિજ્ઞાન</span><span>સેમેસ્ટર: ૧</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (ક્ષમતા C 1.1 : દ્રવ્યનું વર્ગીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): (૫ પ્રશ્નો) [૫ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી કયો પદાર્થ પાણીમાં સંપૂર્ણ દ્રાવ્ય છે? (A) ખાંડ (B) રેતી (C) લાકડાનો વહેર (D) ચાની પત્તી</li>
+                    <li>જે પદાર્થની આરપાર વસ્તુઓને સ્પષ્ટ જોઈ શકાય તેને શું કહેવાય? (A) અપારદર્શક (B) પારદર્શક (C) અર્ધપારદર્શક (D) અપારગમ્ય</li>
+                    <li>પાણી પર તરતી વસ્તુ કઈ છે? (A) લોખંડની ખીલી (B) પથ્થર (C) સૂકું પાંદડું (D) સિક્કો</li>
+                    <li>ધાતુઓ સામાન્ય રીતે સપાટી પર કેવો ગુણધર્મ ધરાવે છે? (A) ચળકાટ (B) બરડપણું (C) પારદર્શકતા (D) દ્રાવ્યતા</li>
+                    <li>હાથ વડે સરળતાથી દબાવી ન શકાય તેવા પદાર્થને કેવો પદાર્થ કહે છે? (A) નરમ (B) કઠોર (સખત) (C) સ્થિતિસ્થાપક (D) પ્રવાહી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: (૩ પ્રશ્નો) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>તેલવાળો કાગળ એ ________ પદાર્થનું ઉદાહરણ છે. (પારદર્શક / અર્ધપારદર્શક)</li>
+                    <li>લાકડું એ ચળકાટ ધરાવતો પદાર્થ છે. (ખરું કે ખોટું?)</li>
+                    <li>પાણીમાં અદ્રાવ્ય હોય તેવા એક પ્રવાહીનું નામ આપો.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (૨ ગુણના ૨ પ્રશ્નો) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પારદર્શક પદાર્થો અને અપારદર્શક પદાર્થો વચ્ચેના બે તફાવત આપો. (૨ ગુણ)</li>
+                    <li>પદાર્થોનું જૂથમાં વર્ગીકરણ કરવું શા માટે જરૂરી છે? બે ફાયદા જણાવો. (૨ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: (૪ ગુણનો ૧ પ્રશ્ન) [૪ ગુણ]</p>
+                <p class="pl-2">૧. ઘનતા અને તરણના આધારે પદાર્થો પાણીમાં તરે છે કે ડૂબે છે તે સમજાવો અને રોજિંદા જીવનના ચાર ઉદાહરણો આપો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. દ્રાવ્યતા એટલે શું? પાણીમાં દ્રાવ્ય અને અદ્રાવ્ય પદાર્થો દર્શાવતો પ્રયોગ સાધનો અને અવલોકન સાથે વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (ક્ષમતા C 1.3 : માપનનું મહત્વ અને ભૌતિક ગુણધર્મોનું માપન) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): (૪ પ્રશ્નો) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લંબાઈનો આંતરરાષ્ટ્રીય એકમ (SI Unit) કયો છે? (A) સેન્ટીમીટર (B) મીટર (C) મિલીમીટર (D) કિલોમીટર</li>
+                    <li>1 મીટર = કેટલા સેન્ટીમીટર થાય? (A) 10 (B) 100 (C) 1000 (D) 50</li>
+                    <li>ખૂબ લાંબા અંતર (દા.ત. બે શહેરો વચ્ચેનું અંતર) માપવા કયો એકમ વપરાય? (A) મીટર (B) કિલોમીટર (C) મિલીમીટર (D) ઈંચ</li>
+                    <li>નીચેનામાંથી કયો લંબાઈ માપવાનો અપ્રમાણભૂત (સ્થાનિક) એકમ છે? (A) વેંત (B) મીટર (C) સેમી (D) મિલીમીટર</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: (૨ પ્રશ્નો) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1 કિલોમીટર = ________ મીટર થાય.</li>
+                    <li>માપન ચોક્કસ કરવા માટે પ્રમાણભૂત સાધનોની જરૂર નથી. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (૩ માંથી કોઈપણ ૨) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પ્રમાણભૂત એકમોની જરૂરિયાત શા માટે ઊભી થઈ? વેંત કે પગલાંથી માપવામાં શી મુશ્કેલી પડે? (૩ ગુણ)</li>
+                    <li>માપપટ્ટી વડે કોઈ વસ્તુની લંબાઈ માપતી વખતે કઈ ત્રણ સાવચેતી રાખવી જોઈએ? (૩ ગુણ)</li>
+                    <li>વક્રરેખા (વાંકીચૂંકી રેખા) ની લંબાઈ દોરીની મદદથી કેવી રીતે માપી શકાય તે સમજાવો. (૩ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: (૪ ગુણનો ૧ પ્રશ્ન) [૪ ગુણ]</p>
+                <p class="pl-2">૧. માપનના વિવિધ એકમો (મિલીમીટર, સેન્ટીમીટર, મીટર, કિલોમીટર) વચ્ચેનો પારસ્પરિક સંબંધ ઉદાહરણ આપી સ્પષ્ટ કરો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (ક્ષમતા C 2.3 : ચુંબકના ગુણધર્મો) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): (૨ પ્રશ્નો) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબક કઈ ધાતુને પોતાની તરફ આકર્ષે છે? (A) લોખંડ (B) લાકડું (C) પ્લાસ્ટિક (D) રબર</li>
+                    <li>મુક્ત રીતે લટકાવેલ ગજિયો ચુંબક હંમેશાં કઈ દિશામાં સ્થિર થાય છે? (A) પૂર્વ-પશ્ચિમ (B) ઉત્તર-દક્ષિણ (C) ઉત્તર-પૂર્વ (D) દક્ષિણ-પશ્ચિમ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: (૧ પ્રશ્ન) [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબકના સમાન ધ્રુવો વચ્ચે ________ થાય છે. (આકર્ષણ / અપાકર્ષણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: (૨ ગુણનો ૧ પ્રશ્ન) [૨ ગુણ]</p>
+                <p class="pl-2">૧. ચુંબકીય પદાર્થો અને બિનચુંબકીય પદાર્થો એટલે શું? દરેકના બે ઉદાહરણ આપો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: (૩ ગુણનો ૧ પ્રશ્ન) [૩ ગુણ]</p>
+                <p class="pl-2">૧. હોકાયંત્રની રચના અને દિશા જાણવા માટે તેનો ઉપયોગ કેવી રીતે થાય છે તે સમજાવો. (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ચુંબકનું ચુંબકત્વ ક્યારે નાશ પામે છે? તેની કાળજી રાખવાના ત્રણ ઉપાયો જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: (૪ ગુણનો ૧ પ્રશ્ન) [૪ ગુણ]</p>
+                <p class="pl-2">૧. ગજિયા ચુંબકના ધ્રુવો નક્કી કરતો અને ચુંબકના ચાર મુખ્ય ગુણધર્મો વર્ણવતો પ્રયોગ લખો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. લોખંડની સાદી પટ્ટીમાંથી આપણું પોતાનું ચુંબક કેવી રીતે બનાવી શકાય? પદ્ધતિ સવિસ્તાર વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (ક્ષમતા C 3.1 : સજીવોનું વૈવિધ્ય અને અનુકૂલન) [૧૫ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): (૪ પ્રશ્નો) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>રણનું વહાણ કોને કહેવામાં આવે છે? (A) ઘોડો (B) ઊંટ (C) હાથી (D) ગધેડું</li>
+                    <li>માછલીને પાણીમાં શ્વસન કરવા માટે કયું અંગ ઉપયોગી છે? (A) ફેફસાં (B) ચૂઈ (ઝાલર) (C) ત્વચા (D) મુખ</li>
+                    <li>થોર જેવી રણની વનસ્પતિમાં પ્રકાશસંશ્લેષણ સામાન્ય રીતે કોના દ્વારા થાય છે? (A) પર્ણ (B) લીલા પ્રકાંડ (C) મૂળ (D) કાંટા</li>
+                    <li>પર્વતીય વિસ્તારમાં વસતા પ્રાણીઓના શરીર પર શું જોવા મળે છે? (A) જાડી રૂંવાટી (B) પાતળી ચામડી (C) ભીંગડાં (D) પીંછા</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: (૨ પ્રશ્નો) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સજીવો પોતાના પર્યાવરણમાં જીવવા માટે જે ખાસ લક્ષણો કેળવે છે તેને ________ કહે છે.</li>
+                    <li>જલીય વનસ્પતિના મૂળ જમીનમાં ઊંડે સુધી વિસ્તરેલા હોય છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: (૨ ગુણનો ૧ પ્રશ્ન) [૨ ગુણ]</p>
+                <p class="pl-2">૧. જૈવિક ઘટકો અને અજૈવિક ઘટકો વચ્ચેના બે તફાવત આપો. (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. રણમાં રહેતા નાના ઉંદરો અને સાપ દિવસની ગરમીથી બચવા શું કરે છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: (૩ ગુણનો ૧ પ્રશ્ન) [૩ ગુણ]</p>
+                <p class="pl-2">૧. ઊંટના શરીરની રચના રણમાં રહેવા માટે કેવી રીતે અનુકૂળ થયેલી છે? ત્રણ મુદ્દા લખો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: (૪ ગુણનો ૧ પ્રશ્ન) [૪ ગુણ]</p>
+                <p class="pl-2">૧. માછલીના શરીરમાં જલીય જીવન માટે થયેલા ચાર મુખ્ય અનુકૂલનો આકૃતિ સહ વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૫. (ક્ષમતા C 4.1 : આહારના ઘટકો અને પોષણ આધારિત વિશ્લેષણ) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): (૩ પ્રશ્નો) [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શરીરને મુખ્યત્વે ઉર્જા આપતો આહારનો ઘટક કયો છે? (A) કાર્બોદિત (B) વિટામિન (C) પાણી (D) ખનીજ ક્ષાર</li>
+                    <li>વિટામિન-C ની ઊણપથી કયો રોગ થાય છે? (A) રિકેટ્સ (B) સ્કર્વી (C) બેરીબેરી (D) ગોઇટર</li>
+                    <li>શરીરની વૃદ્ધિ અને સમારકામ માટે કયો પોષક ઘટક અનિવાર્ય છે? (A) પ્રોટીન (B) ચરબી (C) સ્ટાર્ચ (D) શર્કરા</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: (૧ પ્રશ્ન) [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>આયોડિનની ઊણપથી ગળામાં ________ નામનો રોગ થાય છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: (૨ ગુણનો ૧ પ્રશ્ન) [૨ ગુણ]</p>
+                <p class="pl-2">૧. સમતોલ આહાર એટલે શું? તેમાં કયા ઘટકો હોવા જરૂરી છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ત્રુટિજન્ય રોગો એટલે શું? તેનાથી બચવા શું કરવું જોઈએ? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: (૩ ગુણનો ૧ પ્રશ્ન) [૩ ગુણ]</p>
+                <p class="pl-2">૧. ખોરાક રાંધવાની ભારતીય પદ્ધતિઓ (ઉકાળવું, વરાળથી બાફવું, શેકવું) થી પોષક તત્વો કેવી રીતે જળવાઈ રહે છે તે સમજાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: (૪ ગુણનો ૧ પ્રશ્ન) [૪ ગુણ]</p>
+                <p class="pl-2">૧. ખાદ્ય પદાર્થમાં સ્ટાર્ચ (કાર્બોદિત) અને ચરબીની હાજરી ચકાસતા પ્રયોગો સાધન અને પદ્ધતિ સાથે વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (ક્ષમતા C 4.2 : ખોરાકનાં વૈવિધ્યના પરિમાણો) [૮ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): (૨ પ્રશ્નો) [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ભારતમાં દક્ષિણ ભારતના રાજ્યોનો મુખ્ય ખોરાક કયો છે? (A) ઘઉં-રોટલી (B) ચોખા-ઈડલી-ઢોંસા (C) બાજરીનો રોટલો (D) મકાઈની રોટલી</li>
+                    <li>મધમાખીઓ પુષ્પોમાંથી શું એકઠું કરીને મધ બનાવે છે? (A) પરાગરજ (B) મધુરસ (નેક્ટર) (C) પાંદડાં (D) પાણી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: (૧ પ્રશ્ન) [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સરસવના છોડમાંથી આપણને શાકભાજી અને ________ બંને મળે છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: (૨ ગુણનો ૧ પ્રશ્ન) [૨ ગુણ]</p>
+                <p class="pl-2">૧. વનસ્પતિજ ખોરાકના સ્ત્રોતો અને પ્રાણીજ ખોરાકના સ્ત્રોતોના બે-બે ઉદાહરણ આપો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: (૩ ગુણનો ૧ પ્રશ્ન) [૩ ગુણ]</p>
+                <p class="pl-2">૧. ભારતના વિવિધ રાજ્યોમાં ભૌગોલિક પરિસ્થિતિ મુજબ ખોરાકમાં જોવા મળતું વૈવિધ્ય ઉદાહરણ આપી સમજાવો. (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ફણગાવેલા કઠોળ (મગ/ચણા) ખાવાથી શરીરને કયા વધારાના પોષક તત્વો મળે છે અને તેનું મહત્વ શું છે? (૩ ગુણ)</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 2 ==================== -->
+        <article id="block-2" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૨)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૬ (કુતૂહલ)</span><span>વિષય: વિજ્ઞાન</span><span>સેમેસ્ટર: ૧</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (ક્ષમતા C 1.1 : દ્રવ્યનું વર્ગીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): [૫ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી કયો પદાર્થ ચળકાટ ધરાવે છે? (A) એલ્યુમિનિયમનો વાયર (B) લાકડાનો ટુકડો (C) ચોક (D) રબર</li>
+                    <li>દુકાનદાર બિસ્કિટ અને ચોકલેટ કાચની બરણીમાં કેમ રાખે છે? (A) કાચ પારદર્શક હોવાથી (B) કાચ મજબૂત હોવાથી (C) સસ્તો હોવાથી</li>
+                    <li>પાણીમાં તેલનું ટીપું નાખતાં શું થાય છે? (A) તેલ પાણીમાં ઓગળે છે (B) તેલ પાણી પર તરે છે (C) તેલ તળિયે બેસી જાય છે</li>
+                    <li>નીચેનામાંથી નરમ પદાર્થ કયો છે? (A) વાદળી (સ્પોન્જ) (B) લોખંડ (C) પથ્થર (D) લાકડું</li>
+                    <li>નીચેના પૈકી અદ્રાવ્ય પદાર્થ કયો છે? (A) મીઠું (B) ચોકનો ભૂકો (C) ખાંડ (D) લીંબુનો રસ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિનેગાર પાણીમાં ભળી જાય છે. (ખરું કે ખોટું?)</li>
+                    <li>જે પદાર્થમાંથી પ્રકાશ અંશતઃ પસાર થાય તેને ________ કહેવાય.</li>
+                    <li>કાચના પ્યાલાને બદલે કાપડનો પ્યાલો કેમ બનાવી શકાતો નથી?</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કઠોર પદાર્થ અને નરમ પદાર્થ વચ્ચેનો તફાવત ઉદાહરણ આપી સમજાવો. (૨ ગુણ)</li>
+                    <li>ઓગળવું (દ્રાવ્યતા) એટલે શું? ઘન અને પ્રવાહી પદાર્થનું એક-એક ઉદાહરણ આપો. (૨ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પદાર્થોના દેખાવ, કઠોરતા, દ્રાવ્યતા અને પારદર્શકતાના આધારે વર્ગીકરણ કોષ્ટક તૈયાર કરી સમજાવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. અર્ધપારદર્શક પદાર્થો એટલે શું? તેલવાળા કાગળની પ્રવૃત્તિ દ્વારા અર્ધપારદર્શકતા સમજાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (ક્ષમતા C 1.3 : માપનનું મહત્વ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દ્રવ્યમાન (વજન) નો પ્રમાણભૂત SI એકમ કયો છે? (A) ગ્રામ (B) કિલોગ્રામ (C) મિલિગ્રામ (D) ટન</li>
+                    <li>દરજી કપડાંનું માપ લેવા માટે શેનો ઉપયોગ કરે છે? (A) લાકડાની માપપટ્ટી (B) માપપટ્ટી (ટેપ) (C) દોરી (D) વેંત</li>
+                    <li>15 સેમી ની નાની પ્લાસ્ટિક સ્કેલ પર કેટલા મિલીમીટર હોય છે? (A) 15 (B) 150 (C) 1500 (D) 100</li>
+                    <li>પ્રાચીન સમયમાં લોકો સમય જાણવા શેનો ઉપયોગ કરતા હતા? (A) સૂર્યઘડિયાળ (B) ડિજિટલ ઘડિયાળ (C) મોબાઈલ (D) કેલ્ક્યુલેટર</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1 સેન્ટીમીટર = ________ મિલીમીટર થાય.</li>
+                    <li>કોઈપણ માપન દર્શાવવા માટે સંખ્યા અને એકમ બંને જરૂરી છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>તૂટેલી માપપટ્ટી (જેનો શૂન્ય અંક દેખાતો ન હોય) થી ચોક્કસ માપ કેવી રીતે લઈ શકાય? (૩ ગુણ)</li>
+                    <li>માપન કરતી વખતે આંખની સાચી સ્થિતિ શા માટે જરૂરી છે? આકૃતિ સહ સમજાવો. (૩ ગુણ)</li>
+                    <li>સ્થાનિક એકમોથી વેપાર કરવામાં શી સમસ્યાઓ થતી હતી? (૩ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. તમારા વર્ગખંડના ટેબલની લંબાઈ અને પહોળાઈ માપવાની ચોક્કસ પદ્ધતિ સોપાન સહિત વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (ક્ષમતા C 2.3 : ચુંબકના ગુણધર્મો) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબકની સૌથી વધુ આકર્ષણ શક્તિ ક્યાં જોવા મળે છે? (A) બંને ધ્રુવો આગળ (B) મધ્યમાં (C) સપાટી પર (D) ચારેય બાજુ સરખી</li>
+                    <li>ચુંબકના ઉત્તર ધ્રુવ (N) પાસે બીજો ઉત્તર ધ્રુવ (N) લાવતાં શું થાય? (A) આકર્ષણ (B) અપાકર્ષણ (C) ચોંટી જાય (D) કોઈ અસર ન થાય</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબકને ગરમ કરવાથી તેનું ચુંબકત્વ ________ છે. (વધે છે / ઘટે છે)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. કુદરતી ચુંબક અને કૃત્રિમ ચુંબક વચ્ચેનો ભેદ સ્પષ્ટ કરો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ગજિયા ચુંબકના ધ્રુવો નક્કી કરવાની રીત દર્શાવો. (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. કચરાના ઢગલામાંથી લોખંડની વસ્તુઓ અલગ કરવા ક્રેનમાં ચુંબકનો ઉપયોગ કેવી રીતે થાય છે? (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પાણી પર તરતા બૂચ અને સોયની મદદથી સાદું હોકાયંત્ર બનાવવાની પ્રવૃત્તિ આકૃતિ સાથે વર્ણવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ચુંબકના આકર્ષણ અને અપાકર્ષણના નિયમો સાબિત કરતો પ્રયોગ વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (ક્ષમતા C 3.1 : સજીવોનું વૈવિધ્ય અને અનુકૂલન) [૧૫ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પર્વતીય પ્રદેશના વૃક્ષો સામાન્ય રીતે કેવા આકારના હોય છે? (A) શંકુ આકારના (B) ગોળાકાર (C) છત્ર આકારના (D) સપાટ</li>
+                    <li>પાણીમાં તરવા માટે બતકના પગના પંજા કેવા હોય છે? (A) જાળીદાર (B) નહોરવાળા (C) લાંબા (D) કાંટાવાળા</li>
+                    <li>રણમાં વનસ્પતિમાં બાષ્પોત્સર્જન ઘટાડવા પર્ણોનું શેમાં રૂપાંતર થાય છે? (A) કાંટામાં (B) પ્રકાંડમાં (C) મૂળમાં (D) ફૂલમાં</li>
+                    <li>ઘાસના મેદાનમાં હરણને શિકારીથી બચવા કયું લક્ષણ મદદ કરે છે? (A) ઝડપથી દોડવાની ક્ષમતા (B) મોટો અવાજ (C) રંગબેરંગી ચામડી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>માછલીનું શરીર બંને છેડે સાંકડું અને વચ્ચેથી પહોળું હોય છે જેને ________ આકાર કહેવાય.</li>
+                    <li>સજીવો જે જગ્યાએ રહે છે તેને તેનું અનુકૂલન કહે છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. જલીય નિવાસસ્થાન અને ભૂ-નિવાસસ્થાનના બે-બે ઉદાહરણ આપો. (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. પર્વતીય બકરાના ખરીની રચના ઢોળાવ પર ચડવા કેવી રીતે મદદરૂપ છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. રણમાં થોર (કેક્ટસ) પાણીની તંગીમાં કેવી રીતે અનુકૂલન સાધે છે? ત્રણ બાબતો જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. જંગલમાં વસતા સિંહના શિકાર પકડવા માટેના શારીરિક અનુકૂલનો વિગતવાર સમજાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૫. (ક્ષમતા C 4.1 : આહારના ઘટકો અને પોષણ) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિટામિન-A ની ઊણપથી કયો રોગ થાય છે? (A) રતાંધળાપણું (B) સ્કર્વી (C) રિકેટ્સ (D) એનિમિયા</li>
+                    <li>તેલ, ઘી અને માખણમાંથી આપણને મુખ્યત્વે શું મળે છે? (A) ચરબી (B) પ્રોટીન (C) વિટામિન (D) પાણી</li>
+                    <li>હાડકાં અને દાંતના બંધારણ માટે કયું ખનીજક્ષાર જરૂરી છે? (A) કેલ્શિયમ (B) આયર્ન (C) સોડિયમ (D) પોટેશિયમ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લોહતત્વ (આયર્ન) ની ઊણપથી ________ (એનિમિયા) થાય છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. આહારમાં પાણી અને રેસા (પાચક રેસા) નું શું મહત્વ છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. વિટામિનો આપણા શરીર માટે શા માટે આવશ્યક છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. વધુ પડતો તળેલો અને ચરબીયુક્ત ખોરાક ખાવાથી શરીરને શું નુકસાન થાય છે (મેદસ્વીતા)? (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પ્રોટીનનું પરીક્ષણ કરવા માટેનો કોપર સલ્ફેટ અને કોસ્ટિક સોડાવાળો પ્રયોગ સવિસ્તાર વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (ક્ષમતા C 4.2 : ખોરાકનાં વૈવિધ્યના પરિમાણો) [૮ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દૂધ આપતાં મુખ્ય બે પાલતુ પ્રાણીઓ કયાં છે? (A) ગાય અને ભેંસ (B) કૂતરો અને બિલાડી (C) ઘોડો અને ગધેડો</li>
+                    <li>ગાજર, મૂળો અને બીટ એ વનસ્પતિનો કયો ખાદ્ય ભાગ છે? (A) મૂળ (B) પ્રકાંડ (C) પર્ણ (D) ફળ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>શેરડીમાંથી આપણને ________ અને ગોળ મળે છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. આપણે ખોરાક રાંધીને કેમ ખાવો જોઈએ? બે કારણો આપો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. મસાલાઓ આપણા ખોરાકને સ્વાદિષ્ટ બનાવવા ઉપરાંત પાચન અને સ્વાસ્થ્યમાં કેવી રીતે મદદ કરે છે? (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. પ્રાણીઓ પોતાના આહારના આધારે તૃણાહારી, માંસાહારી અને મિશ્રાહારીમાં કેવી રીતે વહેંચાય છે? ઉદાહરણ આપો. (૩ ગુણ)</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 3 ==================== -->
+        <article id="block-3" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૩)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૬ (કુતૂહલ)</span><span>વિષય: વિજ્ઞાન</span><span>સેમેસ્ટર: ૧</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (ક્ષમતા C 1.1 : દ્રવ્યનું વર્ગીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): [૫ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી કઈ વસ્તુ કાગળમાંથી બનેલી નથી? (A) પુસ્તક (B) નોટબુક (C) ટેબલ (D) કેલેન્ડર</li>
+                    <li>બરફ પાણી પર કેમ તરે છે? (A) બરફની ઘનતા પાણી કરતાં ઓછી હોવાથી (B) બરફ ભારે હોવાથી (C) બરફ ઠંડો હોવાથી</li>
+                    <li>નીચેના પૈકી ચળકાટ રહિત (ઝાંખો) પદાર્થ કયો છે? (A) સોનું (B) ચાંદી (C) લાકડું (D) તાંબુ</li>
+                    <li>પાણીમાં અદ્રાવ્ય પદાર્થ કયો છે? (A) ગ્લુકોઝ (B) કેરોસીન (C) દૂધ (D) મધ</li>
+                    <li>કાચ, હવા અને શુદ્ધ પાણી એ કેવા પદાર્થો છે? (A) પારદર્શક (B) અપારદર્શક (C) અર્ધપારદર્શક (D) ધાતુ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દુકાનમાં પારદર્શક બરણી રાખવાથી ગ્રાહક સરળતાથી વસ્તુ જોઈ શકે છે. (ખરું/ખોટું)</li>
+                    <li>ચોકનો ભૂકો પાણીમાં ________ છે. (દ્રાવ્ય / અદ્રાવ્ય)</li>
+                    <li>પ્લાસ્ટિક પાણીમાં તરે છે કે ડૂબે છે?</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પાણીમાં દ્રાવ્ય વાયુઓનું મહત્વ જણાવો (દા.ત. ઓક્સિજન). (૨ ગુણ)</li>
+                    <li>પદાર્થોને સમાન ગુણધર્મોના આધારે વર્ગીકૃત કરવાના બે ફાયદા જણાવો. (૨ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. ઘન, પ્રવાહી અને વાયુ પદાર્થોના સામાન્ય ગુણધર્મો ઉદાહરણ સાથે સમજાવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. પાણી પર તરતા અને ડૂબતા પદાર્થોની ચકાસણી કરતો પ્રયોગ સાધન અને અવલોકન સાથે લખો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (ક્ષમતા C 1.3 : માપનનું મહત્વ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સમયનો પ્રમાણભૂત SI એકમ કયો છે? (A) મિનિટ (B) કલાક (C) સેકન્ડ (D) દિવસ</li>
+                    <li>પાતળા તારની જાડાઈ માપવા માટે સૌથી નાનો ઉપયોગી એકમ: (A) મીટર (B) કિલોમીટર (C) મિલીમીટર (D) સેમી</li>
+                    <li>પગલાં વડે માપેલું અંતર બધા માટે સરખું કેમ નથી હોતું? (A) દરેકના ડગલાંની લંબાઈ અલગ હોવાથી (B) પગલાં નાના હોવાથી (C) થાક લાગવાથી</li>
+                    <li>દોડ સ્પર્ધામાં ચોક્કસ સમય માપવા કઈ ઘડિયાળ વપરાય છે? (A) સ્ટોપવોચ (B) દીવાલ ઘડિયાળ (C) રેતીઘડી (D) સૂર્યઘડિયાળ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1 મીટર = ________ મિલીમીટર થાય.</li>
+                    <li>તાપમાન માપવા માટે થર્મોમીટર વપરાય છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>અપ્રમાણભૂત એકમોથી થતા ગેરફાયદા ત્રણ મુદ્દામાં જણાવો. (૩ ગુણ)</li>
+                    <li>SI એકમ પદ્ધતિ એટલે શું? તેના મુખ્ય ફાયદા લખો. (૩ ગુણ)</li>
+                    <li>ગોળાકાર સપાટી (જેમ કે વૃક્ષના થડ) નો ઘેરાવો માપવા તમે શું કરશો? (૩ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. લંબાઈ માપવાના સાધનો (મીટરપટ્ટી, ટેપ) ની સરખામણી કરી કયું સાધન ક્યાં વપરાય તે સમજાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (ક્ષમતા C 2.3 : ચુંબકના ગુણધર્મો) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી કઈ વસ્તુ ચુંબક તરફ આકર્ષાશે? (A) તાંબાનો સિક્કો (B) લોખંડની ટાંકણી (C) એલ્યુમિનિયમની વાટકી (D) કાગળ</li>
+                    <li>ચુંબકના ઉત્તર ધ્રુવ (N) અને દક્ષિણ ધ્રુવ (S) વચ્ચે શું થાય? (A) આકર્ષણ (B) અપાકર્ષણ (C) કશું ન થાય (D) ધ્રુવો બદલાઈ જાય</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મેગ્નેટાઈટ એ કુદરતી ચુંબક છે. (ખરું કે ખોટું?)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. ગજિયા ચુંબકનું ચુંબકીય ક્ષેત્ર ક્યાં સૌથી પ્રબળ હોય છે અને શા માટે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. બે ચુંબકો વચ્ચે ક્યારે આકર્ષણ અને ક્યારે અપાકર્ષણ થાય છે તે સ્પષ્ટ કરો. (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ચુંબકને લાંબા સમય સુધી સંગ્રહ કરવા માટે કઈ સાવચેતી રાખવી જોઈએ? (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. ચુંબકની મદદથી અજાણ્યા સ્થળે દિશા કેવી રીતે જાણી શકાય તે પ્રયોગ સાથે સમજાવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ચુંબક બનાવવા માટે 'એક સ્પર્શ પદ્ધતિ' (Single touch method) વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (ક્ષમતા C 3.1 : સજીવોનું વૈવિધ્ય અને અનુકૂલન) [૧૫ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>યાક (પહાડી બળદ) કયા વિસ્તારમાં જોવા મળે છે? (A) પર્વતીય (B) રણ (C) દરિયાકાંઠો (D) ઘાસના મેદાનો</li>
+                    <li>જલીય વનસ્પતિ કમળના પર્ણો પર મીણ જેવું આવરણ કેમ હોય છે? (A) પાણીથી સડતા અટકાવવા (B) ગરમી માટે (C) વજન વધારવા</li>
+                    <li>ઊંટ તેના ખૂંધમાં શેનો સંગ્રહ કરે છે? (A) ચરબીનો (B) પાણીનો (C) હવા (D) ખોરાકનો સીધો રસ</li>
+                    <li>ધ્રુવ પ્રદેશમાં રહેતા રીંછનો રંગ સફેદ કેમ હોય છે? (A) બરફમાં છુપાઈ શિકાર કરવા અને બચવા (B) સુંદરતા માટે (C) ઠંડી માટે</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દેડકો જમીન અને પાણી બંનેમાં રહી શકે છે માટે તેને ________ પ્રાણી કહે છે.</li>
+                    <li>રણના છોડના મૂળ પાણીની શોધમાં ઊંડે સુધી જાય છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. શિકારી પ્રાણી અને તૃણાહારી પ્રાણીની આંખોની રચનામાં શો તફાવત હોય છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. જળચર વનસ્પતિના પ્રકાંડ કેવા હોય છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. પર્વતીય પ્રદેશના પાઈન અને દેવદારના વૃક્ષો બરફવર્ષા સામે કેવી રીતે રક્ષણ મેળવે છે? (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. નિવાસસ્થાન એટલે શું? રણ, પર્વત અને જલીય નિવાસસ્થાનનું તુલનાત્મક વર્ણન કરો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૫. (ક્ષમતા C 4.1 : આહારના ઘટકો અને પોષણ) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિટામિન-D ની ઊણપથી કયો રોગ થાય છે? (A) રિકેટ્સ (સૂકતાન) (B) બેરીબેરી (C) સ્કર્વી (D) ગોઇટર</li>
+                    <li>દૂધને સંપૂર્ણ આહાર કેમ ગણવામાં આવે છે? (A) તેમાં મોટાભાગના પોષક તત્વો હોય છે (B) તે પ્રવાહી છે (C) તે સફેદ છે</li>
+                    <li>આહારમાં આયોડિનની હાજરી ચકાસવા કયું દ્રાવણ વપરાય છે? (A) આયોડિન દ્રાવણ (B) મીઠાનું પાણી (C) લીંબુનો રસ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાગળ પર તેલનો ડાઘ પડતાં કાગળ અર્ધપારદર્શક બને છે, જે ________ ની હાજરી સૂચવે છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. વિટામિન-B ની ઊણપથી થતો રોગ અને તેનાં બે લક્ષણો જણાવો. (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. આપણા શરીર માટે દૈનિક આહારમાં સલાડ (કાચાં શાકભાજી) કેમ જરૂરી છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. રસોઈ કરતી વખતે વિટામિન-C સરળતાથી નાશ પામે છે, આ સમસ્યા નિવારવા શું કાળજી લેશો? (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. મુખ્ય પોષક દ્રવ્યો (કાર્બોદિત, પ્રોટીન, ચરબી, વિટામિન, ખનીજક્ષાર) ના કાર્યો અને મુખ્ય સ્ત્રોતોનું કોષ્ટક બનાવી સમજાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (ક્ષમતા C 4.2 : ખોરાકનાં વૈવિધ્યના પરિમાણો) [૮ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ગુજરાતમાં શિયાળામાં કયો પારંપરિક પૌષ્ટિક આહાર વધુ ખવાય છે? (A) ઊંધિયું અને રોટલો (B) ઢોંસા (C) દાળ-બાટી (D) મોમોઝ</li>
+                    <li>ઈંડાં આપતાં બે મુખ્ય પક્ષીઓ કયાં છે? (A) મરઘી અને બતક (B) પોપટ અને મોર (C) કાગડો અને ચકલી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>બટાટા એ વનસ્પતિનો ________ વાળો ભાગ છે. (મૂળ / પ્રકાંડ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. મધમાખીઓ મધ કઈ રીતે બનાવે છે અને તેનો સંગ્રહ ક્યાં કરે છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ખોરાકનો બગાડ અટકાવવા માટે ઘરમાં અને સામાજિક પ્રસંગોમાં કયા પગલાં લઈ શકાય? (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. અનાજ, કઠોળ, તેલીબિયાં અને શાકભાજીનું માનવ આહારમાં મહત્વ સ્પષ્ટ કરો. (૩ ગુણ)</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 4 ==================== -->
+        <article id="block-4" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૪)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૬ (કુતૂહલ)</span><span>વિષય: વિજ્ઞાન</span><span>સેમેસ્ટર: ૧</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (ક્ષમતા C 1.1 : દ્રવ્યનું વર્ગીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): [૫ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી કયો પદાર્થ ચળકાટ ધરાવે છે? (A) તાંબાનો વાયર (B) કોલસો (C) લાકડું (D) રબર બેન્ડ</li>
+                    <li>પાણીમાં અદ્રાવ્ય ઘન પદાર્થ કયો છે? (A) રેતી (B) મીઠું (C) ખાંડ (D) ફટકડી</li>
+                    <li>જે પદાર્થમાંથી પ્રકાશ જરાય પસાર ન થઈ શકે તેને શું કહેવાય? (A) અપારદર્શક (B) પારદર્શક (C) અર્ધપારદર્શક (D) નિર્વાત</li>
+                    <li>નીચેનામાંથી કઈ વસ્તુ પાણીમાં ડૂબી જાય છે? (A) લોખંડની ચાવી (B) બૂચ (C) પ્લાસ્ટિકનો દડો (D) સૂકું પાંદડું</li>
+                    <li>બરડ પદાર્થ પર હથોડી મારતાં શું થાય? (A) ટુકડા થઈ જાય (B) ચપટું થાય (C) ખેંચાય (D) ઓગળે</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ધાતુઓ પર હવા અને ભેજની અસરથી ચળકાટ ઓછો થાય છે. (ખરું/ખોટું)</li>
+                    <li>દૂધ એ પાણીમાં ________ પ્રવાહી છે. (દ્રાવ્ય / અદ્રાવ્ય)</li>
+                    <li>હાથ વડે દબાવી શકાય તેવા એક પદાર્થનું નામ આપો.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>અપારદર્શક અને અર્ધપારદર્શક પદાર્થો વચ્ચેના બે તફાવત આપો. (૨ ગુણ)</li>
+                    <li>રસોડામાં મસાલાઓ રાખવા કાચ કે પારદર્શક પ્લાસ્ટિકની બરણી કેમ પસંદ કરાય છે? (૨ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પદાર્થોનું વર્ગીકરણ કયા કયા ભૌતિક ગુણધર્મોના આધારે કરી શકાય? ઉદાહરણ સાથે સમજાવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. વિવિધ પ્રવાહીઓની પાણીમાં દ્રાવ્યતા ચકાસતો પ્રયોગ સાધનો અને તારણ સાથે લખો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (ક્ષમતા C 1.3 : માપનનું મહત્વ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1 કિલોગ્રામ = કેટલા ગ્રામ થાય? (A) 100 (B) 1000 (C) 10000 (D) 10</li>
+                    <li>પુસ્તકની જાડાઈ માપવા માટે કયો એકમ સૌથી સારો ગણાય? (A) મિલીમીટર (B) મીટર (C) કિલોમીટર (D) ડગલું</li>
+                    <li>પ્રાચીન ભારતમાં નાનું અંતર માપવા કયો એકમ વપરાતો? (A) આંગળ (B) મીટર (C) ફૂટ (D) કિલોમીટર</li>
+                    <li>પ્રવાહીનું કદ માપવા સામાન્ય રીતે કયો એકમ વપરાય છે? (A) લિટર (B) મીટર (C) કિલોગ્રામ (D) સેકન્ડ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>માપપટ્ટીનો છેડો ઘસાયેલો હોય તો માપન ________ થી શરૂ કરવું જોઈએ.</li>
+                    <li>દરેક વ્યક્તિના હાથની લંબાઈ એકસરખી હોય છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>માપનમાં એકમ શા માટે અનિવાર્ય છે? જો એકમ ન લખીએ તો શું મુશ્કેલી થાય? (૩ ગુણ)</li>
+                    <li>મીટર સ્કેલની મદદથી પાતળા તારનો વ્યાસ કેવી રીતે માપી શકાય? (૩ ગુણ)</li>
+                    <li>ડિજિટલ માપન સાધનો પરંપરાગત સાધનો કરતાં વધુ સારા કેમ ગણાય છે? (૩ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. વક્રરેખાની લંબાઈ દોરો અને માપપટ્ટીની મદદથી માપવાની રીત આકૃતિ સાથે સમજાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (ક્ષમતા C 2.3 : ચુંબકના ગુણધર્મો) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>હોકાયંત્રમાં વપરાતી સોય કેવા પ્રકારનું ચુંબક હોય છે? (A) સોયાકાર ચુંબક (B) નળાકાર (C) નાળ ચુંબક (D) કંકણાકાર</li>
+                    <li>નીચેનામાંથી કયો બિનચુંબકીય પદાર્થ છે? (A) લોખંડ (B) નિકલ (C) પ્લાસ્ટિક (D) કોબાલ્ટ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબકને મુક્ત રીતે લટકાવતાં તેનો ઉત્તર ધ્રુવ પૃથ્વીના ________ તરફ રહે છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. ગજિયા ચુંબકના ધ્રુવો વચ્ચે આકર્ષણ અને અપાકર્ષણ ક્યારે થાય છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ચુંબકત્વની સાચી કસોટી આકર્ષણ નથી પરંતુ અપાકર્ષણ છે - સમજાવો. (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ચુંબકને પછાડવાથી કે ઊંચાઈ પરથી ફેંકવાથી શું થાય? કાળજીના નિયમો જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. ગજિયા ચુંબક પર લોખંડની રજકણો પાથરી ચુંબકીય ધ્રુવો શોધવાની પ્રવૃત્તિ આકૃતિ સાથે વર્ણવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. દરિયાઈ જહાજોમાં દિશા શોધવા હોકાયંત્રનું મહત્વ અને કાર્યપદ્ધતિ સવિસ્તાર લખો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (ક્ષમતા C 3.1 : સજીવોનું વૈવિધ્ય અને અનુકૂલન) [૧૫ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>રણમાં વનસ્પતિમાં પ્રકાશસંશ્લેષણ કયા અંગ દ્વારા થાય છે? (A) લીલા પ્રકાંડ (B) કાંટા (C) મૂળ (D) છાલ</li>
+                    <li>જલીય વનસ્પતિના પ્રકાંડ કેવા હોય છે? (A) પોલા અને હલકા (B) જાડા અને કઠણ (C) કાંટાળા (D) પથરાયેલા</li>
+                    <li>ઊંટના પગના તળિયા કેવા હોય છે? (A) પહોળા અને ગાદીવાળા (B) પાતળા અને તીક્ષ્ણ (C) જાળીદાર (D) નહોરવાળા</li>
+                    <li>પર્વતીય પ્રદેશમાં રહેતા હિમચિત્તાના શરીર પર ઠંડીથી બચવા શું હોય છે? (A) જાડી રૂંવાટી (B) ભીંગડાં (C) પીંછા (D) કાંટા</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>સજીવો જે ચોક્કસ વાતાવરણમાં સફળતાપૂર્વક જીવી શકે તેને તેનું ________ કહેવાય.</li>
+                    <li>માછલી ફેફસાં દ્વારા શ્વસન કરે છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. ઘાસના મેદાનમાં હરણના લાંબા કાન તેને કેવી રીતે મદદરૂપ થાય છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. રણના ઉંદરો પાણી પીધા વગર કેવી રીતે ટકી રહે છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. કમળ જેવી જળચર વનસ્પતિના અનુકૂલનો ત્રણ મુદ્દામાં જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. રણ નિવાસસ્થાન અને જલીય નિવાસસ્થાન વચ્ચે રહેલા સજીવો અને વનસ્પતિઓની તુલના કરો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૫. (ક્ષમતા C 4.1 : આહારના ઘટકો અને પોષણ) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ઈંડાં, કઠોળ અને સોયાબીનમાંથી વિપુલ પ્રમાણમાં શું મળે છે? (A) પ્રોટીન (B) ચરબી (C) સ્ટાર્ચ (D) શર્કરા</li>
+                    <li>આહારમાં લોહતત્વ (Iron) નો મુખ્ય સ્ત્રોત કયો છે? (A) લીલાં પાંદડાંવાળા શાકભાજી (B) ચોખા (C) ખાંડ (D) તેલ</li>
+                    <li>આહારમાં રુક્ષાંશ (રેસાઓ) નું મુખ્ય કાર્ય શું છે? (A) અપાચિત ખોરાકને બહાર કાઢવો (B) ઉર્જા આપવી (C) વૃદ્ધિ કરવી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિટામિન-B ની ઊણપથી ________ રોગ થાય છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. બાળકોના આહારમાં પ્રોટીન કેમ ખૂબ જ જરૂરી છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. સમતોલ આહાર ન લેવાથી થતાં બે નુકસાન જણાવો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. વિટામિન-C ધરાવતા ત્રણ ફળોના નામ આપી તેનાથી શરીરને થતા ફાયદા જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. વિવિધ વિટામિનો (A, B, C, D) ના નામ, તેમની ઊણપથી થતા રોગો અને સ્ત્રોતોનું સવિસ્તાર કોષ્ટક બનાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (ક્ષમતા C 4.2 : ખોરાકનાં વૈવિધ્યના પરિમાણો) [૮ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>પંજાબ રાજ્યનો જાણીતો પરંપરાગત ખોરાક કયો છે? (A) મકાઈની રોટલી અને સરસવનું શાક (B) ઢોંસા (C) રસગુલ્લા (D) ઢોકળાં</li>
+                    <li>બટાટા અને ડુંગળી એ વનસ્પતિનો કયો ભાગ છે? (A) પ્રકાંડ (B) મૂળ (C) ફળ (D) પર્ણ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>મધમાખી દ્વારા તૈયાર થતું મધ એ ________ સ્ત્રોત છે. (પ્રાણીજ / વનસ્પતિજ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. ખોરાક રાંધવાથી તેમાં શો ફેરફાર થાય છે? બે ફાયદા જણાવો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ઋતુઓ પ્રમાણે આપણા આહારમાં કેવો બદલાવ આવે છે? શિયાળા અને ઉનાળાના ઉદાહરણથી સમજાવો. (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. તૃણાહારી અને માંસાહારી પ્રાણીઓના દાંતની રચનામાં તેમના ખોરાક મુજબ કેવો તફાવત હોય છે? (૩ ગુણ)</p>
+            </div>
+        </article>
+
+        <!-- ==================== PAPER 5 ==================== -->
+        <article id="block-5" class="content-block bg-white p-5 sm:p-7 rounded-2xl shadow-lg border border-slate-200 mb-8 hidden">
+            <div class="border-b-2 border-slate-800 pb-3 mb-4 text-center">
+                <h2 class="text-base sm:text-lg font-extrabold text-slate-900">પ્રથમ સત્રાંત મૂલ્યાંકન કસોટી - ૨૦૨૬-૨૭ (પ્રશ્નપત્ર - ૫)</h2>
+                <div class="flex flex-wrap justify-between text-xs font-semibold mt-2 text-slate-700 bg-slate-100 p-2 rounded">
+                    <span>ધોરણ: ૬ (કુતૂહલ)</span><span>વિષય: વિજ્ઞાન</span><span>સેમેસ્ટર: ૧</span><span>કુલ ગુણ: ૮૦</span><span>સમય: ૩ કલાક</span>
+                </div>
+            </div>
+
+            <div class="space-y-4 text-xs sm:text-sm text-slate-800">
+                <h3 class="font-bold text-emerald-900 bg-emerald-50 p-2 rounded border-l-4 border-emerald-600">પ્રશ્ન ૧. (ક્ષમતા C 1.1 : દ્રવ્યનું વર્ગીકરણ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો (MCQ): [૫ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>નીચેનામાંથી કયો પદાર્થ પાણીમાં ઓગળી જાય છે? (A) ગ્લુકોઝ પાઉડર (B) પથ્થર (C) પ્લાસ્ટિક (D) રેતી</li>
+                    <li>તેલવાળા કાગળમાંથી પ્રકાશ કેવો પસાર થાય છે? (A) અંશતઃ (B) સંપૂર્ણ (C) જરાય નહીં (D) ઊંધો</li>
+                    <li>લોખંડ પર કાટ લાગતાં તેની ચમક કેવી બને છે? (A) ઝાંખી (B) તેજસ્વી (C) સોનેરી (D) પારદર્શક</li>
+                    <li>લાકડાનું બ્લોક પાણી પર કેમ તરે છે? (A) વજનમાં પાણી કરતાં હલકું હોવાથી (B) સખત હોવાથી (C) મોટું હોવાથી</li>
+                    <li>નીચેનામાંથી કઠોર પદાર્થ કયો છે? (A) લોખંડની ખીલી (B) રૂ (કપાસ) (C) માખણ (D) સાબુ</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કાચ એ અપારદર્શક પદાર્થ છે. (ખરું/ખોટું)</li>
+                    <li>પાણીમાં ઓગળતા ન હોય તેવા પદાર્થોને ________ કહેવાય.</li>
+                    <li>ચળકાટ ધરાવતી કોઈપણ બે ધાતુના નામ આપો.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>દ્રાવ્ય પદાર્થો અને અદ્રાવ્ય પદાર્થો વચ્ચેના બે તફાવત આપો. (૨ ગુણ)</li>
+                    <li>આપણી આસપાસની વસ્તુઓને જૂથમાં ગોઠવવાની બે પદ્ધતિઓ જણાવો. (૨ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. પારદર્શક, અપારદર્શક અને અર્ધપારદર્શક પદાર્થોની વ્યાખ્યા આપી દરેકના બે-બે ઉદાહરણો સાથે તુલના કરો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. વિવિધ પદાર્થોનું પાણીમાં તરણ અને ડૂબણ દર્શાવતી પ્રવૃત્તિનું સવિસ્તાર વર્ણન કરો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-blue-900 bg-blue-50 p-2 rounded border-l-4 border-blue-600">પ્રશ્ન ૨. (ક્ષમતા C 1.3 : માપનનું મહત્વ) [૧૬ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>લંબાઈનો પ્રમાણભૂત SI એકમ કયો? (A) મીટર (B) કિલોમીટર (C) સેન્ટીમીટર (D) વેંત</li>
+                    <li>1 મીટરના 100મા ભાગને શું કહેવાય? (A) સેન્ટીમીટર (B) મિલીમીટર (C) કિલોમીટર (D) ઈંચ</li>
+                    <li>વૃક્ષના થડનો ઘેરાવો માપવા માટે શું સૌથી યોગ્ય છે? (A) માપપટ્ટી (મેઝરિંગ ટેપ) (B) પ્લાસ્ટિક સ્કેલ (C) પેન્સિલ (D) કાગળ</li>
+                    <li>પગલાં વડે માપન કેમ અપ્રમાણભૂત કહેવાય? (A) બધાના પગનું માપ સરખું ન હોવાથી (B) પગ વાંકા હોવાથી (C) રસ્તા ખરાબ હોવાથી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>1 કિલોમીટર = ________ સેન્ટીમીટર થાય.</li>
+                    <li>ચોક્કસ માપન માટે પ્રમાણભૂત એકમો જરૂરી છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકા પ્રશ્નો: (૩ માંથી ૨) [૬ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>કોઈપણ વસ્તુનું માપ લેતી વખતે થતી બે સામાન્ય ભૂલો અને તેનો ઉકેલ જણાવો. (૩ ગુણ)</li>
+                    <li>મીટર, સેન્ટીમીટર અને મિલીમીટર વચ્ચેનો તફાવત ઉદાહરણ આપી સમજાવો. (૩ ગુણ)</li>
+                    <li>અપ્રમાણભૂત એકમોથી થતા વિવાદોનું નિવારણ SI પદ્ધતિએ કેવી રીતે કર્યું? (૩ ગુણ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ડ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. તમારા ઘરના ઓરડાની લંબાઈ અને પહોળાઈ માપવા તમે કયા સાધનો અને એકમ વાપરશો? પદ્ધતિ વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૩. (ક્ષમતા C 2.3 : ચુંબકના ગુણધર્મો) [૧૨ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબક નીચેનામાંથી કઈ વસ્તુને આકર્ષશે નહીં? (A) પ્લાસ્ટિકની પેન (B) લોખંડનો બોલ્ટ (C) સ્ટીલની ચમચી (D) સેફ્ટી પિન</li>
+                    <li>ગજિયા ચુંબકના મધ્ય ભાગમાં ચુંબકત્વ કેવું હોય છે? (A) નહિવત (ખૂબ ઓછું) (B) સૌથી વધુ (C) ધ્રુવો જેટલું (D) અનંત</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ચુંબકને મુક્ત રીતે લટકાવતાં તે હંમેશાં ________ દિશામાં સ્થિર થાય છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. ચુંબકના બે છેડાને શું કહેવાય અને તેમની સંજ્ઞાઓ લખો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ચુંબકને સુરક્ષિત રાખવા માટે કીપર (રક્ષક) નો ઉપયોગ કેવી રીતે થાય છે? (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. ચુંબકના ઉપયોગથી ચાલતા રોજિંદા જીવનના ત્રણ ઉપકરણોના નામ આપો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. ચુંબકના ચાર મૂળભૂત ગુણધર્મો ઉદાહરણ આપી સવિસ્તાર સમજાવો. (૪ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. હોકાયંત્રની રચના અને દિશા જાણવા માટેની કાર્યપદ્ધતિ આકૃતિ સાથે વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-amber-900 bg-amber-50 p-2 rounded border-l-4 border-amber-600">પ્રશ્ન ૪. (ક્ષમતા C 3.1 : સજીવોનું વૈવિધ્ય અને અનુકૂલન) [૧૫ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૪ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>માછલીને દિશા બદલવા અને સમતોલન જાળવવા કયું અંગ ઉપયોગી છે? (A) મીનપક્ષ અને પૂંછડી (B) ચૂઈ (C) આંખો (D) ભીંગડાં</li>
+                    <li>ઊંટ લાંબા સમય સુધી પાણી વગર કેમ રહી શકે છે? (A) ખૂબ ઓછો પરસેવો અને પેશાબ કરતો હોવાથી (B) દોડતો હોવાથી (C) ખૂંધમાં પાણી હોવાથી</li>
+                    <li>રણમાં વસતી વનસ્પતિના મૂળ કેવા હોય છે? (A) ઊંડા અને ફેલાયેલા (B) ટૂંકા (C) પાણી પર તરતા (D) હવાઈ</li>
+                    <li>યાકના શરીર પર લાંબા વાળ શા માટે હોય છે? (A) ઠંડી સામે રક્ષણ મેળવવા (B) શિકારીથી બચવા (C) સુંદર દેખાવા</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વનસ્પતિ સૂર્યપ્રકાશની હાજરીમાં ખોરાક બનાવે છે તેને ________ પ્રક્રિયા કહે છે.</li>
+                    <li>રણમાં રાત્રે તાપમાન ખૂબ ઊંચું રહે છે. (ખરું/ખોટું)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. પર્વતીય પ્રદેશના વૃક્ષોની ડાળીઓ ઢળતી કેમ હોય છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. જળચર પ્રાણીઓ અને ભૂચર પ્રાણીઓ વચ્ચેનો મુખ્ય ભેદ લખો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. માછલીના શરીરમાં પાણીમાં અનુકૂલન માટે થયેલા ત્રણ શારીરિક ફેરફારો જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. રણમાં રહેવા માટે ઊંટના શરીરમાં કુદરતે કરેલા ચાર મુખ્ય અનુકૂલનો આકૃતિ સહ વર્ણવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૫. (ક્ષમતા C 4.1 : આહારના ઘટકો અને પોષણ) [૧૩ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૩ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>વિટામિન-C નો શ્રેષ્ઠ સ્ત્રોત કયો છે? (A) આમળાં અને લીંબુ (B) દૂધ (C) ઘઉં (D) ચોખા</li>
+                    <li>કાર્બોદિત પદાર્થો શરીરમાં કયા સ્વરૂપે જોવા મળે છે? (A) સ્ટાર્ચ અને શર્કરા (B) પ્રોટીન (C) ચરબી (D) ખનીજક્ષાર</li>
+                    <li>આહારમાં કેલ્શિયમની ઊણપથી કયું અંગ નબળું પડે છે? (A) હાડકાં અને દાંત (B) આંખો (C) વાળ (D) ચામડી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>આયોડિનવાળું મીઠું ખાવાથી ________ રોગથી બચી શકાય છે.</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. આપણને દૈનિક ખોરાકમાં ચરબી કરતાં કાર્બોદિત વધુ માત્રામાં કેમ જોઈએ છે? (૨ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. સમતોલ આહારનું એક મોડેલ થાળીનું વર્ણન કરો. (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ત્રુટિજન્ય રોગો અટકાવવાના ત્રણ ઉપાયો જણાવો. (૩ ગુણ)</p>
+                <p class="font-bold pt-1">(ઈ) વર્ણનાત્મક પ્રશ્ન: [૪ ગુણ]</p>
+                <p class="pl-2">૧. વિવિધ વિટામિનો (A, B, C, D) ના નામ, તેમની ઊણપથી થતા રોગો અને સ્ત્રોતોનું સવિસ્તાર કોષ્ટક બનાવો. (૪ ગુણ)</p>
+
+                <h3 class="font-bold text-teal-900 bg-teal-50 p-2 rounded border-l-4 border-teal-600">પ્રશ્ન ૬. (ક્ષમતા C 4.2 : ખોરાકનાં વૈવિધ્યના પરિમાણો) [૮ ગુણ]</h3>
+                <p class="font-bold">(અ) બહુવિકલ્પ પ્રશ્નો: [૨ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>ગુજરાતમાં શિયાળામાં કયો પારંપરિક પૌષ્ટિક આહાર વધુ ખવાય છે? (A) ઊંધિયું અને રોટલો (B) ઢોંસા (C) દાળ-બાટી (D) મોમોઝ</li>
+                    <li>ઈંડાં આપતાં બે મુખ્ય પક્ષીઓ કયાં છે? (A) મરઘી અને બતક (B) પોપટ અને મોર (C) કાગડો અને ચકલી</li>
+                </ol>
+                <p class="font-bold pt-1">(બ) હેતુલક્ષી પ્રશ્ન: [૧ ગુણ]</p>
+                <ol class="list-decimal list-inside space-y-1 pl-2">
+                    <li>બટાટા એ વનસ્પતિનો ________ વાળો ભાગ છે. (મૂળ / પ્રકાંડ)</li>
+                </ol>
+                <p class="font-bold pt-1">(ક) ટૂંકો પ્રશ્ન: [૨ ગુણ]</p>
+                <p class="pl-2">૧. મધમાખીઓ મધ કઈ રીતે બનાવે છે અને તેનો સંગ્રહ ક્યાં કરે છે? (૨ ગુણ)</p>
+                <p class="font-bold pt-1">(ડ) ટૂંકો પ્રશ્ન: [૩ ગુણ]</p>
+                <p class="pl-2">૧. ખોરાકનો બગાડ અટકાવવા માટે ઘરમાં અને સામાજિક પ્રસંગોમાં કયા પગલાં લઈ શકાય? (૩ ગુણ)</p>
+                <p class="pl-4 text-slate-500 font-semibold">અથવા</p>
+                <p class="pl-2">૧. અનાજ, કઠોળ, તેલીબિયાં અને શાકભાજીનું માનવ આહારમાં મહત્વ સ્પષ્ટ કરો. (૩ ગુણ)</p>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- 15-SECOND BLOG FOLLOW POP-UP MODAL -->
+    <div id="blogFollowModal" class="fixed inset-0 bg-slate-900/60 modal-blur z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 text-center transform transition-all scale-95 border-2 border-amber-400 relative">
+            <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-slate-600 bg-slate-100 p-1.5 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-3xl">🧡</span>
+            </div>
+            <span class="bg-orange-100 text-orange-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">શૈક્ષણિક અપડેટ્સ</span>
+            <h3 class="text-xl font-extrabold text-slate-900 mt-2">ARUNOGYAN Blog ને Follow કરો!</h3>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+                ધોરણ ૬ થી ૮ ના વિજ્ઞાન અને ગણિતના અદ્યતન પરિરૂપ (બ્લૂપ્રિન્ટ), મોડેલ પ્રશ્નપત્રો અને એકમ કસોટીઓ સૌથી પહેલાં મેળવવા માટે અમારા બ્લોગને આજે જ Follow કરો.
+            </p>
+            <div class="mt-6 flex flex-col gap-2.5">
+                <a href="https://www.blogger.com/follow.g?blogID=7874056882573718914" target="_blank" rel="noopener noreferrer" onclick="closeModal()" class="gradient-blog text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:opacity-95 transition transform hover:scale-105 flex items-center justify-center gap-2 text-sm">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                    👉 Follow Blog Now (અહીં ક્લિક કરો)
+                </a>
+                <button onclick="closeModal()" class="text-slate-500 hover:text-slate-800 font-semibold text-xs py-2">
+                    પછી કરીશ (Close)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Switching Scripts -->
+    <script>
+        function switchTab(tabId) {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.classList.remove('bg-emerald-700', 'text-white', 'shadow-md', 'bg-purple-600');
+                btn.classList.add('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+            });
+
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-700', 'hover:bg-slate-100');
+                if (tabId === 'all') {
+                    activeBtn.classList.add('bg-purple-600', 'text-white', 'shadow-md');
+                } else {
+                    activeBtn.classList.add('bg-emerald-700', 'text-white', 'shadow-md');
+                }
+            }
+
+            const blocks = document.querySelectorAll('.content-block');
+            blocks.forEach(block => block.classList.add('hidden'));
+
+            if (tabId === 'all') {
+                blocks.forEach(block => {
+                    if (block.id !== 'block-notes') {
+                        block.classList.remove('hidden');
+                    }
+                });
+            } else {
+                const targetBlock = document.getElementById('block-' + tabId);
+                if (targetBlock) {
+                    targetBlock.classList.remove('hidden');
+                }
+            }
+        }
+
+        // 15-second pop-up modal timer
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const modal = document.getElementById('blogFollowModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+            }, 15000);
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('blogFollowModal');
+            if (modal) {
+                modal.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
