@@ -12,19 +12,25 @@
         .dev-name { color: #e67e22; font-weight: bold; font-size: 16px; display: block; margin-top: 5px; }
         .form-group { text-align: left; margin-bottom: 16px; }
         label { font-weight: bold; color: #0c2461; display: block; margin-bottom: 8px; font-size: 14.5px; }
-        select, input { width: 100%; padding: 13px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 15px; box-sizing: border-box; outline: none; transition: 0.3s; }
+        select, input { width: 100%; padding: 13px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 15px; box-sizing: border-box; outline: none; transition: 0.3s; background: #fff; }
         select:focus, input:focus { border-color: #1e3799; }
         
         .btn-start { width: 100%; padding: 16px; background: #f1c40f; color: #0c2461; border: none; border-radius: 50px; font-size: 20px; font-weight: bold; cursor: pointer; margin-top: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); transition: 0.3s; }
         .btn-start:hover { background: #e67e22; color: white; transform: scale(1.02); }
 
-        /* નવીન શૈક્ષણિક મટીરીયલ અને બ્લોગ સેક્શન */
+        /* navin shaixanik material ane blog section */
         .study-box { margin-top: 22px; padding: 15px; background: #eef2f7; border-radius: 18px; border: 2px dashed #1e3799; }
-        .study-title { font-weight: bold; color: #0c2461; font-size: 15px; margin-bottom: 10px; display: block; }
-        .btn-swadhyay { display: block; width: 100%; padding: 13px; background: #27ae60; color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: bold; box-sizing: border-box; box-shadow: 0 4px 10px rgba(39,174,96,0.3); transition: 0.3s; margin-bottom: 10px; }
+        .study-title { font-weight: bold; color: #0c2461; font-size: 15px; margin-bottom: 10px; display: block; text-align: left; }
+        .btn-swadhyay { display: block; width: 100%; padding: 13px; background: #27ae60; color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: bold; box-sizing: border-box; box-shadow: 0 4px 10px rgba(39,174,96,0.3); transition: 0.3s; margin-bottom: 10px; text-align: center; }
         .btn-swadhyay:hover { background: #219150; }
         
-        .btn-blog-link { display: block; width: 100%; padding: 11px; background: #ffffff; color: #d35400; text-decoration: none; border-radius: 12px; font-size: 14.5px; font-weight: bold; border: 2px solid #e67e22; box-sizing: border-box; transition: 0.3s; }
+        /* 6 Model Papers Section (Rangin ane Aakarshak Style) */
+        .model-paper-card { background: linear-gradient(135deg, #e056fd 0%, #686de0 100%); padding: 12px; border-radius: 14px; margin-bottom: 10px; text-align: left; box-shadow: 0 4px 10px rgba(104,109,224,0.3); }
+        .model-paper-card label { color: #fff; font-size: 14px; margin-bottom: 5px; }
+        .btn-open-paper { display: block; width: 100%; padding: 11px; background: #fbc531; color: #2f3640; border: none; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 8px; transition: 0.3s; text-align: center; }
+        .btn-open-paper:hover { background: #e84118; color: #fff; }
+
+        .btn-blog-link { display: block; width: 100%; padding: 11px; background: #ffffff; color: #d35400; text-decoration: none; border-radius: 12px; font-size: 14.5px; font-weight: bold; border: 2px solid #e67e22; box-sizing: border-box; transition: 0.3s; text-align: center; }
         .btn-blog-link:hover { background: #e67e22; color: white; }
 
         .footer { margin-top: 22px; padding: 12px; background: #f8f9fa; border-radius: 18px; border: 1px solid #dee2e6; }
@@ -82,11 +88,26 @@
 
     <button class="btn-start" onclick="go()">ક્વિઝ શરૂ કરો ➔</button>
 
-    <!-- નવીન શૈક્ષણિક સાહિત્ય સેક્શન -->
+    <!-- navin shaixanik sahitya section -->
     <div class="study-box">
         <span class="study-title">📚 વિશેષ શૈક્ષણિક સાહિત્ય</span>
         <a href="swadhyay.html" class="btn-swadhyay">📖 ધોરણ ૮ વિજ્ઞાન સંપૂર્ણ સ્વાધ્યાય</a>
         <a href="std7.html" class="btn-swadhyay" style="background: #2980b9;">📖 ધોરણ ૭ વિજ્ઞાન સ્વાધ્યાય (માર્ગદર્શિકા)</a>
+        
+        <!-- Aa 6 files mate nu aakarshak rangin section (Dhoran 7 swadhyay ni niche) -->
+        <div class="model-paper-card">
+            <label>📜 પ્રથમ સત્રાંત મોડેલ પેપર્સ (૬ થી ૮):</label>
+            <select id="selModelFile">
+                <option value="std 6 science.html">ધોરણ ૬ - વિજ્ઞાન (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 6 maths.html">ધોરણ ૬ - ગણિત (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 7 science.html">ધોરણ ૭ - વિજ્ઞાન (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 7 maths.html">ધોરણ ૭ - ગણિત (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 8 sci.html">ધોરણ ૮ - વિજ્ઞાન (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 8 maths.html">ધોરણ ૮ - ગણિત (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+            </select>
+            <button class="btn-open-paper" onclick="openModelPaper()">મોડેલ પેપર ખોલો ➔</button>
+        </div>
+
         <a href="https://arunogyan.blogspot.com" target="_blank" class="btn-blog-link">🌐 અરુનોજ્ઞાન બ્લોગની મુલાકાત લો</a>
     </div>
 
@@ -115,6 +136,11 @@
             url = document.getElementById("selFile").value;
         }
         window.location.href = url;
+    }
+
+    function openModelPaper() {
+        let paperUrl = document.getElementById("selModelFile").value;
+        window.location.href = paperUrl;
     }
 
     window.onload = function() {
