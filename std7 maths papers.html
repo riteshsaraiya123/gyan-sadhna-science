@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
-                <button onclick="window.print()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
+                <button onclick="downloadPDF()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     પ્રિન્ટ / PDF ડાઉનલોડ
                 </button>
@@ -871,8 +871,56 @@
         </div>
     </div>
 
+    <!-- PDF Download Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
     <!-- Tab Switching Scripts -->
     <script>
+        async function downloadPDF() {
+            if (typeof html2pdf === 'undefined') {
+                alert('PDF library load થઈ નથી. કૃપા કરીને internet ચાલુ રાખીને ફરી પ્રયાસ કરો.');
+                return;
+            }
+
+            const visibleBlocks = Array.from(document.querySelectorAll('.content-block')).filter(block => !block.classList.contains('hidden'));
+            if (!visibleBlocks.length) {
+                alert('ડાઉનલોડ કરવા માટે પેપર પસંદ કરો.');
+                return;
+            }
+
+            const wrapper = document.createElement('div');
+            wrapper.style.background = '#ffffff';
+            wrapper.style.width = '794px';
+            visibleBlocks.forEach(block => {
+                const clone = block.cloneNode(true);
+                clone.classList.remove('hidden');
+                clone.style.boxShadow = 'none';
+                clone.style.marginBottom = '20px';
+                wrapper.appendChild(clone);
+            });
+            document.body.appendChild(wrapper);
+
+            const activeBtn = document.querySelector('.tab-btn.bg-blue-600, .tab-btn.bg-purple-600');
+            const label = activeBtn ? activeBtn.textContent.trim().replace(/[^0-9A-Za-zÀ-žઅ-હ0-9]+/g, '-') : 'paper';
+            const options = {
+                margin: [8, 10, 8, 10],
+                filename: 'Std-7-Maths-' + (label || 'Paper') + '.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, backgroundColor: '#ffffff' },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['css', 'legacy'] }
+            };
+
+            try {
+                await html2pdf().set(options).from(wrapper).save();
+            } catch (error) {
+                console.error(error);
+                alert('PDF બનાવવામાં સમસ્યા આવી. ફરી પ્રયાસ કરો.');
+            } finally {
+                wrapper.remove();
+            }
+        }
+
         function switchTab(tabId) {
             const tabBtns = document.querySelectorAll('.tab-btn');
             tabBtns.forEach(btn => {
