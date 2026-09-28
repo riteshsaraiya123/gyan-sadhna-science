@@ -25,6 +25,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- PDF Download Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
     <style>
         body {
             font-family: 'Noto Sans Gujarati', sans-serif;
@@ -108,7 +111,7 @@
                 </div>
             </div>
             <div class="mt-3 sm:mt-0 flex flex-wrap gap-2">
-                <button onclick="downloadPDF()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95">
+                <button onclick="downloadPDF()" class="bg-amber-400 hover:bg-amber-300 text-slate-900 font-bold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-lg flex items-center gap-1.5 transition transform active:scale-95 cursor-pointer">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     પ્રિન્ટ / PDF ડાઉનલોડ
                 </button>
@@ -431,9 +434,9 @@
                 </ol>
                 <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>એક ઝાડ જમીન પરથી ૫ મીટર ઊંચાઈએથી તૂટી પડે છે અને તેની ટોચ ઝાડના થડથી ૧૨ મીટર દૂર જમીનને અડે છે. ઝાડની મૂળ ઊંચાઈ શોધો.</li>
-                    <li>એક નિસરણી દીવાલ સાથે એવી રીતે ગોઠવી છે કે તેનો નીચેનો છેડો દીવાલથી ૬ મીટર દૂર રહે અને ઉપરનો છેડો ૮ મીટર ઊંચી બારીને અડે. નિસરણીની લંબાઈ શોધો.</li>
-                    <li>એક લંબચોરસની લંબાઈ ૪૦ સેમી અને તેના એક વિકર્ણની લંબાઈ ૪૧ સેમી છે. આ લંબચોરસની પરિમિતિ શોધો.</li>
+                    <li>એક કાટકોણ ત્રિકોણ ABC માં ∠C કાટખૂણો છે. જો AB = 25 cm અને AC = 7 cm હોય તો BC શોધો.</li>
+                    <li>એક 10 મીટર લાંબી નિસરણી દીવાલ સાથે 8 મીટર ઊંચાઈએ અડે છે, તો નિસરણીના પાયાનું દીવાલથી અંતર શોધો.</li>
+                    <li>ચકાસો કે 6 cm, 8 cm અને 10 cm બાજુવાળો ત્રિકોણ કાટકોણ ત્રિકોણ છે? કારણ સહિત ગણતરી દર્શાવો.</li>
                 </ol>
             </div>
         </article>
@@ -561,13 +564,13 @@
                 <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : પાયથાગોરસ અને ત્રિકોણ ગુણધર્મો) [૯ ગુણ]</h3>
                 <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>કાટકોણ ત્રિકોણમાં સૌથી મોટી બાજુ કઈ હોય? (A) કર્ણ (B) પાયો (C) વેધ (D) મધ્યગા</li>
-                    <li>પાયથાગોરિયન ત્રિપુટી કઈ છે? (A) 5, 12, 13 (B) 2, 3, 5 (C) 4, 5, 6 (D) 1, 2, 3</li>
+                    <li>કાટકોણ ત્રિકોણમાં કર્ણની લંબાઈ અન્ય બાજુઓ કરતાં હંમેશાં _____ હોય છે. (A) મોટી (B) નાની (C) સમાન (D) અડધી</li>
+                    <li>નીચેના પૈકી કઈ પાયથાગોરિયન ત્રિપુટી છે? (A) 8, 15, 17 (B) 3, 4, 6 (C) 1, 2, 4 (D) 5, 6, 7</li>
                     <li>ત્રિકોણમાં શિરોબિંદુમાંથી સામેની બાજુના મધ્યબિંદુને જોડતા રેખાખંડને શું કહેવાય? (A) મધ્યગા (B) વેધ (C) કર્ણ (D) પાયો</li>
                 </ol>
                 <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>એક કાટકોણ ત્રિકોણ ABC માં ∠C કાટખૂણો છે. જો AB = 25 cm અને AC = 7 cm હોય તો BC શોધો.</li>
+                    <li>એક કાટકોણ ત્રિકોણ ABC માં ∠B = 90° છે. જો AB = 9 cm અને BC = 12 cm હોય તો કર્ણ AC શોધો.</li>
                     <li>એક 10 મીટર લાંબી નિસરણી દીવાલ સાથે 8 મીટર ઊંચાઈએ અડે છે, તો નિસરણીના પાયાનું દીવાલથી અંતર શોધો.</li>
                     <li>ચકાસો કે 6 cm, 8 cm અને 10 cm બાજુવાળો ત્રિકોણ કાટકોણ ત્રિકોણ છે? કારણ સહિત ગણતરી દર્શાવો.</li>
                 </ol>
@@ -648,7 +651,7 @@
                 <ol class="list-decimal list-inside space-y-1 pl-2">
                     <li>x ના ત્રીજા ભાગમાં 2 ઉમેરતાં 8 મળે: (A) x/3 + 2 = 8 (B) 3x + 2 = 8 (C) x + 2/3 = 8</li>
                     <li>જો y - 7 = 3 હોય તો y = _____ (A) 10 (B) 4 (C) -4 (D) 21</li>
-                    <li>સમીકરણમાં અજ્ઞાત સંખ્યાને _____ કહે છે. (ચલ / અચલ)</li>
+                    <li>સમીકરણમાં અજ્ઞાત સંખ્યાને _____ કહે છે. (ચલ / અચल)</li>
                     <li>4x = 20 માં x ની કિંમત 5 છે. (ખરું/ખોટું)</li>
                 </ol>
                 <p class="font-bold pt-1">(B) સમીકરણ ઉકેલો: (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
@@ -667,45 +670,45 @@
                 <h3 class="font-bold text-purple-900 bg-purple-50 p-2 rounded border-l-4 border-purple-600">પ્રશ્ન ૬. (LO-M712 : રેખા અને ખૂણા) [૧૦ ગુણ]</h3>
                 <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૪ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>50° ના ખૂણાના કોટિકોણનું માપ: (A) 40° (B) 130° (C) 90° (D) 50°</li>
-                    <li>120° ના ખૂણાના પૂરકકોણનું માપ: (A) 60° (B) 90° (C) 180° (D) 30°</li>
-                    <li>પરસ્પર છેદતી બે રેખાઓથી કેટલા ખૂણા બને? (A) 2 (B) 4 (C) 6 (D) 8</li>
-                    <li>સમાંતર રેખાઓ વચ્ચેનું લંબ અંતર હંમેશાં _____ રહે છે. (A) સમાન (B) બદલાતું (C) શૂન્ય (D) બમણું</li>
+                    <li>20° ના ખૂણાના કોટિકોણનું માપ: (A) 70° (B) 160° (C) 90° (D) 20°</li>
+                    <li>135° ના ખૂણાના પૂરકકોણનું માપ: (A) 45° (B) 90° (C) 180° (D) 135°</li>
+                    <li>બે સમાંતર રેખાઓ વચ્ચે લંબ અંતર હંમેશાં _____ રહે છે. (A) અચળ (B) વધતું (C) ઘટતું (D) શૂન્ય</li>
+                    <li>જો બે રેખાઓ છેદે તો રૈખિક જોડના ખૂણા કેવા હોય? (A) પૂરકકોણ (B) કોટિકોણ (C) સમાન (D) કાટખૂણા</li>
                 </ol>
                 <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ ત્રણ) (દરેકના ૨ ગુણ) [૬ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>જો બે પૂરકકોણ પૈકી મોટો ખૂણો નાના ખૂણા કરતાં 44° મોટો હોય તો બંને ખૂણા શોધો.</li>
-                    <li>આકૃતિ પરથી જો બે રેખાઓ સમાંતર હોય અને અનુકોણ 115° હોય તો બીજો અનુકોણ શોધો.</li>
-                    <li>એક રેખા પર આવેલા આસન્નકોણ પૈકી એક ખૂણો 75° હોય તો બીજો ખૂણો શોધો.</li>
-                    <li>શું બે ગુરુકોણ એકબીજાના પૂરકકોણ હોઈ શકે? કારણ આપો.</li>
+                    <li>એવો ખૂણો શોધો જે તેના પૂરકકોણના માપ કરતાં બમણો હોય.</li>
+                    <li>આકૃતિ પરથી જો બે સમાંતર રેખાઓને છેદિકા છેદે અને એક અનુકોણ 80° હોય તો તેના અંતઃયુગ્મકોણનું માપ શોધો.</li>
+                    <li>રૈખિક જોડના બે ખૂણા 3x અને 2x હોય તો બંને ખૂણા શોધો.</li>
+                    <li>બે સમાંતર રેખાઓને છેદિકા છેદતાં બનતા છેદિકાની એક જ બાજુના અંતઃકોણ પૈકી એક 110° હોય તો બીજો ખૂણો શોધો.</li>
                 </ol>
 
                 <h3 class="font-bold text-rose-900 bg-rose-50 p-2 rounded border-l-4 border-rose-600">પ્રશ્ન ૭. (LO-M713 : ત્રિકોણના ખૂણા) [૭ ગુણ]</h3>
                 <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>ત્રિકોણમાં વધુમાં વધુ કેટલા લઘુકોણ હોઈ શકે? (A) 1 (B) 2 (C) 3 (D) 0</li>
-                    <li>ત્રિકોણની ત્રણેય બાજુઓ અસમાન હોય તો તે કેવો ત્રિકોણ કહેવાય? (A) વિષમબાજુ (B) સમબાજુ (C) સમદ્વિબાજુ</li>
-                    <li>ત્રિકોણનો બહિષ્કોણ અને તેની સાથે રૈખિક જોડ રચતો અંતઃકોણ કેવા હોય? (A) પૂરકકોણ (B) કોટિકોણ (C) સમાન</li>
+                    <li>ત્રિકોણના ત્રણેય ખૂણાઓનો સરવાળો કેટલા કાટખૂણા બરાબર થાય? (A) 2 (B) 1 (C) 3 (D) 4</li>
+                    <li>સમબાજુ ત્રિકોણનો દરેક ખૂણો કેવો હોય? (A) લઘુકોણ (B) કાટકોણ (C) ગુરુકોણ (D) સરળકોણ</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 115° હોય તો તેની સાથે રૈખિક જોડ રચતો અંતઃકોણ કેટલો થાય? (A) 65° (B) 75° (C) 90° (D) 180°</li>
                 </ol>
                 <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૨ ગુણ) [૪ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>ત્રિકોણના બે ખૂણા 40° અને 70° છે, ત્રીજો ખૂણો x શોધો.</li>
-                    <li>એક કાટકોણ ત્રિકોણમાં એક લઘુકોણ 45° હોય તો બીજો લઘુકોણ x શોધો.</li>
-                    <li>ત્રિકોણનો બહિષ્કોણ 125° છે અને એક અંતઃસંમુખકોણ 60° હોય તો બીજો ખૂણો x શોધો.</li>
+                    <li>ત્રિકોણ XYZ માં ∠X = 60° અને ∠Y = 70° હોય તો ∠Z (x) શોધો.</li>
+                    <li>ત્રિકોણનો બહિષ્કોણ 130° છે અને એક અંતઃસંમુખકોણ 70° હોય તો બીજો ખૂણો x શોધો.</li>
+                    <li>એક ત્રિકોણના બે ખૂણા 50° અને 50° હોય તો ત્રીજો ખૂણો x શોધો.</li>
                 </ol>
 
                 <h3 class="font-bold text-cyan-900 bg-cyan-50 p-2 rounded border-l-4 border-cyan-600">પ્રશ્ન ૮. (LO-M724 : પાયથાગોરસ અને ત્રિકોણ ગુણધર્મો) [૯ ગુણ]</h3>
                 <p class="font-bold">(A) યોગ્ય વિકલ્પ પસંદ કરો: (દરેકનો ૧ ગુણ) [૩ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>કાટકોણ ત્રિકોણમાં કર્ણનો વર્ગ બાકીની બે બાજુઓના વર્ગોના _____ બરાબર હોય. (A) સરવાળા (B) બાદબાકી (C) ગુણાકાર (D) ભાગાકાર</li>
-                    <li>જો બાજુઓ 9 cm, 12 cm હોય તો કાટકોણ ત્રિકોણનો કર્ણ: (A) 15 cm (B) 21 cm (C) 18 cm (D) 20 cm</li>
-                    <li>ત્રિકોણમાં શિરોબિંદુમાંથી સામેની બાજુ પર દોરેલા લંબને શું કહેવાય? (A) વેધ (B) મધ્યગા (C) કર્ણ (D) પાયો</li>
+                    <li>કાટકોણ ત્રિકોણમાં કર્ણની લંબાઈ અન્ય બાજુઓ કરતાં હંમેશાં _____ હોય છે. (A) મોટી (B) નાની (C) સમાન (D) અડધી</li>
+                    <li>નીચેના પૈકી કઈ પાયથાગોરિયન ત્રિપુટી છે? (A) 8, 15, 17 (B) 3, 4, 6 (C) 1, 2, 4 (D) 5, 6, 7</li>
+                    <li>ત્રિકોણમાં શિરોબિંદુમાંથી સામેની બાજુના મધ્યબિંદુને જોડતા રેખાખંડને શું કહેવાય? (A) મધ્યગા (B) વેધ (C) કર્ણ (D) પાયો</li>
                 </ol>
                 <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>એક લંબચોરસની લંબાઈ 15 cm અને પહોળાઈ 8 cm છે. તેના વિકર્ણની લંબાઈ શોધો.</li>
-                    <li>એક 10 મીટર લાંબી નિસરણી દીવાલ સાથે 8 મીટર ઊંચાઈએ અડે છે, તો નિસરણીના પાયાનું દીવાલથી અંતર શોધો.</li>
-                    <li>ચકાસો કે 7 cm, 24 cm અને 25 cm કાટકોણ ત્રિકોણની બાજુઓ હોઈ શકે કે નહીં?</li>
+                    <li>એક કાટકોણ ત્રિકોણ ABC માં ∠B = 90° છે. જો AB = 9 cm અને BC = 12 cm હોય તો કર્ણ AC શોધો.</li>
+                    <li>એક 20 મીટર લાંબો વાંસ દીવાલ સાથે 12 મીટર અંતરે જમીન પર ગોઠવેલ છે. દીવાલ પર વાંસ કેટલી ઊંચાઈએ પહોંચશે?</li>
+                    <li>એક લંબચોરસની લંબાઈ 24 cm અને પહોળાઈ 7 cm છે, તો તેના વિકર્ણની લંબાઈ શોધો.</li>
                 </ol>
             </div>
         </article>
@@ -835,11 +838,11 @@
                 <ol class="list-decimal list-inside space-y-1 pl-2">
                     <li>કાટકોણ ત્રિકોણમાં કર્ણની લંબાઈ અન્ય બાજુઓ કરતાં હંમેશાં _____ હોય છે. (A) મોટી (B) નાની (C) સમાન (D) અડધી</li>
                     <li>નીચેના પૈકી કઈ પાયથાગોરિયન ત્રિપુટી છે? (A) 8, 15, 17 (B) 3, 4, 6 (C) 1, 2, 4 (D) 5, 6, 7</li>
-                    <li>ત્રિકોણની બે બાજુ 4 cm અને 6 cm હોય તો ત્રીજી બાજુનું માપ કઈ બે સંખ્યા વચ્ચે હોય? (A) 2 અને 10 (B) 4 અને 6 (C) 0 અને 4</li>
+                    <li>ત્રિકોણમાં શિરોબિંદુમાંથી સામેની બાજુના મધ્યબિંદુને જોડતા રેખાખંડને શું કહેવાય? (A) મધ્યગા (B) વેધ (C) કર્ણ (D) પાયો</li>
                 </ol>
                 <p class="font-bold pt-1">(B) દાખલા ગણો: (કોઈપણ બે) (દરેકના ૩ ગુણ) [૬ ગુણ]</p>
                 <ol class="list-decimal list-inside space-y-1 pl-2">
-                    <li>કાટકોણ ત્રિકોણ ABC માં ∠B = 90° છે. જો AB = 9 cm અને BC = 12 cm હોય તો કર્ણ AC શોધો.</li>
+                    <li>એક કાટકોણ ત્રિકોણ ABC માં ∠B = 90° છે. જો AB = 9 cm અને BC = 12 cm હોય તો કર્ણ AC શોધો.</li>
                     <li>એક 20 મીટર લાંબો વાંસ દીવાલ સાથે 12 મીટર અંતરે જમીન પર ગોઠવેલ છે. દીવાલ પર વાંસ કેટલી ઊંચાઈએ પહોંચશે?</li>
                     <li>એક લંબચોરસની લંબાઈ 24 cm અને પહોળાઈ 7 cm છે, તો તેના વિકર્ણની લંબાઈ શોધો.</li>
                 </ol>
@@ -874,10 +877,7 @@
         </div>
     </div>
 
-    <!-- PDF Download Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
-    <!-- Mobile-friendly PDF Download -->
+    <!-- Tab Switching Scripts -->
     <script>
         async function downloadPDF() {
             if (typeof html2pdf === 'undefined') {
@@ -894,7 +894,6 @@
             const wrapper = document.createElement('div');
             wrapper.style.background = '#ffffff';
             wrapper.style.width = '794px';
-
             visibleBlocks.forEach(block => {
                 const clone = block.cloneNode(true);
                 clone.classList.remove('hidden');
@@ -905,9 +904,9 @@
             document.body.appendChild(wrapper);
 
             const activeBtn = document.querySelector('.tab-btn.bg-blue-600, .tab-btn.bg-purple-600');
-            const label = activeBtn ? activeBtn.textContent.trim().replace(/[^0-9A-Za-zÀ-žઅ-હ0-9]+/g, '-') : 'Paper';
+            const label = activeBtn ? activeBtn.textContent.trim().replace(/[^0-9A-Za-zÀ-žઅ-હ0-9]+/g, '-') : 'paper';
             const filename = 'Std-7-Maths-' + (label || 'Paper') + '.pdf';
-
+            
             const options = {
                 margin: [8, 10, 8, 10],
                 filename: filename,
