@@ -4,12 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gyan Sadhna Science Quiz - By Ritesh Saraiya</title>
+    
+    <!-- ગૂગલ એડસેન્સ સ્ક્રિપ્ટ (તમારી Publisher ID ca-pub-XXXXXXXXXXXXXXXX મૂકવી) -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%); margin: 0; padding: 20px 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
         .container { background: white; width: 100%; max-width: 450px; border-radius: 30px; padding: 25px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.4); border: 4px solid #f1c40f; box-sizing: border-box; }
-        .header-box { background: #f1f2f6; padding: 15px; border-radius: 20px; margin-bottom: 22px; border-bottom: 5px solid #f1c40f; }
+        .header-box { background: #f1f2f6; padding: 15px; border-radius: 20px; margin-bottom: 18px; border-bottom: 5px solid #f1c40f; }
         h1 { color: #1e3799; margin: 0; font-size: 23px; }
         .dev-name { color: #e67e22; font-weight: bold; font-size: 16px; display: block; margin-top: 5px; }
+
+        /* ૧. દૈનિક પ્રાર્થના સંમેલન સાહિત્ય કાર્ડ (નવું અને આકર્ષક) */
+        .prathna-card {
+            background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(255, 94, 98, 0.35);
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            text-align: center;
+            animation: pulse-border 2s infinite alternate;
+        }
+        @keyframes pulse-border {
+            0% { transform: scale(1); box-shadow: 0 6px 15px rgba(255, 94, 98, 0.3); }
+            100% { transform: scale(1.02); box-shadow: 0 10px 25px rgba(255, 94, 98, 0.55); }
+        }
+        .prathna-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #d63031;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 6px;
+        }
+        .prathna-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 4px 0 6px 0;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .prathna-sub {
+            font-size: 13px;
+            margin: 0 0 12px 0;
+            color: #fff9e6;
+            line-height: 1.4;
+        }
+        .btn-prathna {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #ffffff;
+            color: #c0392b;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 15.5px;
+            font-weight: 800;
+            box-sizing: border-box;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: 0.3s;
+        }
+        .btn-prathna:hover {
+            background: #f1c40f;
+            color: #0c2461;
+        }
+
         .form-group { text-align: left; margin-bottom: 16px; }
         label { font-weight: bold; color: #0c2461; display: block; margin-bottom: 8px; font-size: 14.5px; }
         select, input { width: 100%; padding: 13px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 15px; box-sizing: border-box; outline: none; transition: 0.3s; background: #fff; }
@@ -19,7 +84,7 @@
         .btn-start:hover { background: #e67e22; color: white; transform: scale(1.02); }
 
         /* navin shaixanik material ane blog section */
-        .study-box { margin-top: 22px; padding: 15px; background: #eef2f7; border-radius: 18px; border: 2px dashed #1e3799; }
+        .study-box { margin-top: 22px; padding: 15px; background: #eef2f7; border-radius: 18px; border: 2px dashed #1e3c72; }
         .study-title { font-weight: bold; color: #0c2461; font-size: 15px; margin-bottom: 10px; display: block; text-align: left; }
         .btn-swadhyay { display: block; width: 100%; padding: 13px; background: #27ae60; color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: bold; box-sizing: border-box; box-shadow: 0 4px 10px rgba(39,174,96,0.3); transition: 0.3s; margin-bottom: 10px; text-align: center; }
         .btn-swadhyay:hover { background: #219150; }
@@ -44,6 +109,15 @@
     <div class="header-box">
         <h1>જ્ઞાન સાધના વિજ્ઞાન ક્વિઝ</h1>
         <span class="dev-name">Developed by: Ritesh Saraiya</span>
+    </div>
+
+    <!-- 🔥 દૈનિક શાળા પ્રાર્થના સંમેલન સાહિત્ય સેક્શન (Direct Home Screen Feature) -->
+    <div class="prathna-card">
+        <span class="prathna-badge">✨ દરરોજ સવારે નવું અપડેટ</span>
+        <div class="prathna-title">🔔 શાળા પ્રાર્થના સંમેલન સાહિત્ય</div>
+        <p class="prathna-sub">આજનું પંચાંગ • સુવિચાર • ૧૦-શબ્દ સમાચાર • વિજ્ઞાન રહસ્ય • સ્પેલિંગ • દિન વિશેષ</p>
+        <!-- તમે GitHub માં રાખેલી ફાઇલનું નામ (દા.ત. prathna.html) અહીં href માં લખવું -->
+        <a href="prathna.html" class="btn-prathna">📖 આજનું સાહિત્ય વાંચો ➔</a>
     </div>
 
     <div class="form-group">
@@ -94,10 +168,10 @@
         <a href="swadhyay.html" class="btn-swadhyay">📖 ધોરણ ૮ વિજ્ઞાન સંપૂર્ણ સ્વાધ્યાય</a>
         <a href="std7.html" class="btn-swadhyay" style="background: #2980b9;">📖 ધોરણ ૭ વિજ્ઞાન સ્વાધ્યાય (માર્ગદર્શિકા)</a>
         
-        <!-- Aa 6 files mate nu aakarshak rangin section (Dhoran 7 swadhyay ni niche) -->
+        <!-- Aa 6 files mate nu aakarshak rangin section -->
         <div class="model-paper-card">
             <label>📜 પ્રથમ સત્રાંત મોડેલ પેપર્સ (૬ થી ૮):</label>
-         <select id="selModelFile">
+            <select id="selModelFile">
                 <option value="std 6 sci papers.html">ધોરણ ૬ - વિજ્ઞાન (૫ આદર્શ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
                 <option value="std 6 maths papers.html">ધોરણ ૬ - ગણિત (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
                 <option value="std 7 sci papers.html">ધોરણ ૭ - વિજ્ઞાન (૫ આદર્શ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
