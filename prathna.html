@@ -85,6 +85,28 @@
       line-height: 1.6;
     }
 
+    /* 100% Live Visual Banners */
+    .live-hero-banner {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #0f2027 100%);
+      border-radius: 16px;
+      padding: 24px 15px;
+      color: #ffffff;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(30, 60, 114, 0.25);
+      border-top: 5px solid #f5af19;
+      margin-bottom: 25px;
+    }
+
+    .live-feature-banner {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-radius: 14px;
+      padding: 20px 15px;
+      text-align: center;
+      border: 2px solid #16a34a;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.12);
+      margin-top: 20px;
+    }
+
     .section-box {
       border-radius: 14px;
       padding: 18px;
@@ -167,7 +189,6 @@
       <p style="color: #4a5568; font-size: 15.5px; line-height: 1.5; margin: 12px 0 24px;">
         આવું જ શૈક્ષણિક, રસપ્રદ અને ઉપયોગી શાળા પ્રાર્થના સભા સાહિત્ય દરરોજ નિયમિત તમારા મોબાઈલ પર સૌથી પહેલાં મેળવવા માટે અમારા બ્લોગને અત્યારે જ ફોલો કરો.
       </p>
-      <!-- ફોલો ગેજેટ લિંક માટેની જગ્યા -->
       <a href="https://www.blogger.com/follow.g?blogID=7874056882573718914" onclick="setFollowedStatus()" target="_blank" class="btn-follow">🔔 Follow ARUNOGYAN Blog</a>
     </div>
   </div>
@@ -175,9 +196,17 @@
   <!-- ૨. મુખ્ય સાહિત્ય કન્ટેનર -->
   <div class="main-card">
 
-    <!-- ૨.૧ ૧૦૦% લાઈવ Base64 SVG હેડર બેનર (૧) -->
-    <div style="text-align: center; margin-bottom: 25px;">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3MjAgMjAwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSJhdXRvIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdIIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlM2M3MiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzJhNTI5OCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjIwMjciLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdvbGRUIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNmNmQzNjUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZmRhMDg1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnb2xkQiIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZjVhZjE5Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2UxNzA1NSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNiZ0gpIiByeD0iMTYiLz4KICA8Y2lyY2xlIGN4PSI2NzAiIGN5PSIzNSIgcj0iNzUiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDYiLz4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjE2NSIgcj0iOTUiIGZpbGw9IiNmZmZmZmYiIG9wYWNpdHk9IjAuMDUiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSI3IiBmaWxsPSJ1cmwoI2dvbGRCKSIgcng9IjMiLz4KICA8dGV4dCB4PSIzNjAiIHk9IjY1IiBmb250LWZhbWlseT0iJ1NlZ29lIFVJJywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSJ1cmwoI2dvbGRUKSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjEuNSI+QVJVTk9HWUFOIEVEVUNBVElPTkFMIFBPUlRBTDwvdGV4dD4KICA8dGV4dCB4PSIzNjAiIHk9IjExNSIgZm9udC1mYW1pbHk9J1NlZ29lIFVJJywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4mIzEyODI3NjsgJiMyNzQyOyYjMjc1MDsmIzI3MjM7JiMyNzUwOyAmIzI3MTQ7JiMyNzY1OyYjMjczNjsmIzI3NTA7JiMyNzM2OyYjMjc2NTsmIzI3MjU7JiMyNzI4OyYjMjc1MDsgJiMyNzQ0OyYjMjcwNjsmIzI3NjU7JiMyNzM0OyYjMjc1MzsmIzI3Mzg7JiMyNzI4OyAmIzI3NDI7JiMyNzYwOyYjMjcxMzsmIzI3NjU7JiMyNzQzOyYjMjcwNzsmIzI3MTM7ICYjMjc0NDsmIzI3NTA7JiMyNzM3OyYjMjc1MTsmIzI3MjQ7JiMyNzY1OyYjMjczNTsgJiMxMjgyNzY7PC90ZXh0PgogIDxyZWN0IHg9IjE2MCIgeT0iMTQwIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjM2IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTgpIiByeD0iMTgiLz4KICA8dGV4dCB4PSIzNjAiIHk9IjE2NCIgZm9udC1mYW1pbHk9J1NlZ29lIFVJJywgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4mIzI3NDI7JiMyNzUxOyYjMjcxMzsmIzI3NjU7JiMyNzQzOyYjMjcwNywsICYjMjcxNjsmIzI3NjU7JiMyNzE4OyYjMjc1MDsmIzI3Mjg7LCAmIzI3NDQ7JiMyNzA2OyYjMjc0NDsmIzI3NjU7JiMyNzEzOyYjMjc1MDsmIzI3MzY7ICYjMjc0MTsmIzI3Mjg7JiMyNzUzOyAmIzI3MTQ7JiMyNzY1OyYjMjczNjsmIzI3NTM7JiMyNzM2OyYjMjcwNzsmIzI3NTA7JiMyNzI4OyYjMjc2NTsgJiMyNzQ0OyYjMjcwNjsmIzI3MTE7JiMyNzM0OzwvdGV4dD4KPC9zdmc+" alt="ARUNOGYAN Educational Banner" style="width: 100%; height: auto; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12);" />
+    <!-- ૨.૧ ૧૦૦% લાઈવ વિઝ્યુઅલ હેડર બેનર (૧) -->
+    <div class="live-hero-banner">
+      <div style="font-size: 22px; font-weight: 800; letter-spacing: 1.5px; color: #f6d365; text-transform: uppercase;">
+        ARUNOGYAN EDUCATIONAL PORTAL
+      </div>
+      <div style="font-size: 24px; font-weight: 700; margin: 8px 0; color: #ffffff;">
+        🔔 શાળા પ્રાર્થના સંમેલન શૈક્ષણિક સાહિત્ય 🔔
+      </div>
+      <div style="display: inline-block; background: rgba(255, 255, 255, 0.15); padding: 6px 18px; border-radius: 20px; font-size: 14.5px; font-weight: 600; color: #ffffff; margin-top: 4px;">
+        ✨ શિક્ષણ, જ્ઞાન, સંસ્કાર અને પ્રેરણાનો ત્રિવેણી સંગમ ✨
+      </div>
     </div>
 
     <!-- ૨.૨ શિક્ષક આવકાર અને કાયમી ફોલો સંદેશ -->
@@ -188,15 +217,15 @@
     <!-- ૨.૩ હેડર વિભાગ (આપમેળે બદલાતી તારીખ અને વાર) -->
     <div style="text-align: center; background: linear-gradient(135deg, #1e3c72, #2a5298); padding: 18px; border-radius: 14px; color: white; margin-bottom: 25px;">
       <h2 style="margin: 0; font-size: 24px; font-weight: 700;">📅 શાળા પ્રાર્થના સંમેલન શૈક્ષણિક સાહિત્ય</h2>
-      <p id="current-date-day" style="margin: 6px 0 0 0; font-size: 17px; font-weight: bold; color: #facc15;">તારીખ: ૨૯ સપ્ટેમ્બર, ૨૦૨૬ | વાર: મંગળવાર</p>
+      <p id="current-date-day" style="margin: 6px 0 0 0; font-size: 17px; font-weight: bold; color: #facc15;">તારીખ અને વાર લોડ થઈ રહ્યા છે...</p>
     </div>
 
-    <!-- ૨.૪ પંચાંગ વિભાગ -->
+    <!-- ૨.૪ પંચાંગ વિભાગ (મેષ રાશિ) -->
     <div class="section-box" style="background: #fff5f5; border: 1px solid #fed7d7; border-left: 6px solid #e53e3e;">
-      <h3 style="margin: 0 0 10px 0; color: #9b2c2c; font-size: 19px; font-weight: bold;">🕉️ આજનું પંચાંગ (૨૯ સપ્ટેમ્બર ૨૦૨૬)</h3>
+      <h3 style="margin: 0 0 10px 0; color: #9b2c2c; font-size: 19px; font-weight: bold;">🕉️ આજનું પંચાંગ (૩૦ સપ્ટેમ્બર ૨૦૨૬)</h3>
       <div style="font-size: 15.5px; color: #2d3748;">
         <p style="margin: 0 0 6px 0;">🚩 <b>વિક્રમ સંવત:</b> ૨૦૮૨</p>
-        <p style="margin: 0 0 6px 0;">🌙 <b>માસ &amp; તિથિ:</b> ભાદરવા વદ ત્રીજ (શ્રાદ્ધ પક્ષ - ત્રીજનું શ્રાદ્ધ)</p>
+        <p style="margin: 0 0 6px 0;">🌙 <b>માસ &amp; તિથિ:</b> ભાદરવા વદ ચોથ (શ્રાદ્ધ પક્ષ - ચોથનું શ્રાદ્ધ / સંકષ્ટ ચતુર્થી)</p>
         <p style="margin: 0; font-weight: bold; color: #c53030;">✨ રાશિ: મેષ (અ, લ, ઈ)</p>
       </div>
     </div>
@@ -205,60 +234,56 @@
     <div class="section-box" style="background: #fffdf5; border: 1px solid #fef3c7; border-left: 6px solid #d97706;">
       <h3 style="margin: 0 0 12px 0; color: #b45309; font-size: 19px; font-weight: bold;">💡 આજનો પ્રેરણાદાયી સુવિચાર</h3>
       <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 17px; color: #1a202c; font-style: italic;">
-        "સ્વસ્થ હૃદય અને નિર્મળ મન એ જ સુખી અને દીર્ઘાયુ જીવનની સૌથી મોટી મૂડી છે."
+        "દૃઢ સંકલ્પ અને અડગ આત્મવિશ્વાસ હોય તો વિશાળ સમુદ્ર પણ એક નાની ચકલી સામે નમન કરે છે."
       </p>
       <p style="margin: 0; font-size: 15px; color: #4a5568; border-top: 1px dashed #fcd34d; padding-top: 8px;">
-        <b>અર્થ:</b> શારીરિક કસરત અને સારો આહાર હૃદયને તંદુરસ્ત રાખે છે, જ્યારે ઉત્તમ અને સકારાત્મક વિચારો જીવનમાં શાંતિ લાવે છે.
+        <b>અર્થ:</b> મુશ્કેલી ગમે તેટલી મોટી હોય, અવિરત પ્રયાસ અને અતૂટ ધૈર્યથી અશક્ય કામ પણ શક્ય બને છે.
       </p>
     </div>
 
     <!-- ૨.૬ સમાચાર વિભાગ -->
     <div class="section-box" style="background: #f8f9fa; border-left: 6px solid #718096; border: 1px solid #e2e8f0;">
-      <h3 style="margin: 0 0 14px 0; color: #2d3748; font-size: 19px; font-weight: bold;">📰 આજના મુખ્ય સમાચાર (૨૯-૦૯-૨૦૨૬)</h3>
+      <h3 style="margin: 0 0 14px 0; color: #2d3748; font-size: 19px; font-weight: bold;">📰 આજના મુખ્ય સમાચાર (૩૦-૦૯-૨૦૨૬)</h3>
       
-      <!-- ૧. ગુજરાતના સમાચાર -->
       <div class="news-category" style="border-left: 4px solid #3182ce;">
         <span style="font-weight: bold; color: #2b6cb0; display: block; margin-bottom: 6px; font-size: 16px;">📍 ૧. ગુજરાતના સમાચાર (Gujarat News):</span>
         <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li><b>સરકારી નિમણૂક:</b> ગુજરાત સરકારે વરિષ્ઠ આઇએએસ Ajay Bhadooને GMDCના નવા મેનેજિંગ ડિરેક્ટર બનાવ્યા.</li>
-          <li><b>રમત પ્રોત્સાહન:</b> રાજ્ય સરકારે શૂટર એલાવેનિલ વાલારિવનને 1.33 કરોડની સહાય આપી.</li>
+          <li><b>વરસાદની આગાહી:</b> ગુજરાતમાં લો પ્રેશર સક્રિય થતાં ત્રણ દિવસ ભારે વરસાદની આગાહી છે.</li>
+          <li><b>વકીલોની હડતાળ:</b> નવા ભાડા વિધેયકના વિરોધમાં વકીલોએ બે દિવસની હડતાળની જાહેરાત કરી.</li>
         </ul>
       </div>
 
-      <!-- ૨. દેશના સમાચાર -->
       <div class="news-category" style="border-left: 4px solid #38a169;">
         <span style="font-weight: bold; color: #2f855a; display: block; margin-bottom: 6px; font-size: 16px;">🇮🇳 ૨. દેશના સમાચાર (National News):</span>
         <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li><b>બેંક હડતાળ:</b> દેશભરમાં 28 થી 30 સપ્ટેમ્બરની બેંક હડતાળ મોકૂફ રખાઈ.</li>
-          <li><b>તમિલનાડુ યોજના:</b> સરકારી હોસ્પિટલોમાં નવજાત શિશુઓને એક ગ્રામ સોનાની વીંટી અપાશે.</li>
+          <li><b>UPI ચાર્જ ચુકાદો:</b> સુપ્રીમ કોર્ટે ૨૦૦૦થી વધુના UPI ટ્રાન્ઝેક્શન પરના MDR ચાર્જને મંજૂરી આપી.</li>
+          <li><b>એશિયન ગેમ્સ સિદ્ધિ:</b> એશિયન ગેમ્સમાં ભારતીય મહિલા 4x400 મીટર રિલે ટીમે ગોલ્ડ મેડલ જીત્યો.</li>
         </ul>
       </div>
 
-      <!-- ૩. વિદેશના સમાચાર -->
       <div class="news-category" style="border-left: 4px solid #805ad5;">
         <span style="font-weight: bold; color: #6b46c1; display: block; margin-bottom: 6px; font-size: 16px;">🌐 ૩. વિદેશના સમાચાર (International News):</span>
         <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li><b>યુએન સંબોધન:</b> ભારતે યુએન મહાસભામાં વૈશ્વિક વિકાસ અને એઆઈ પર ભાર મૂક્યો.</li>
-          <li><b>પશ્ચિમ એશિયા:</b> તણાવ વધતાં આંતરરાષ્ટ્રીય બજારોમાં સોનાના ભાવમાં મોટો ઉછાળો નોંધાયો.</li>
+          <li><b>તેલ પુરવઠો:</b> અમેરિકાએ કટોકટીને પહોંચી વળવા સ્ટ્રેટેજિક રિઝર્વમાંથી તેલ મુક્ત કરવાનો નિર્ણય કર્યો.</li>
+          <li><b>ક્રૂડ ઓઈલ ઉછાળો:</b> યુએસ-ઈરાન તણાવ વચ્ચે આંતરરાષ્ટ્રીય બજારમાં ક્રૂડ ઓઈલના ભાવમાં મોટો ઉછાળો આવ્યો.</li>
         </ul>
       </div>
 
-      <!-- ૪. રમતગમત સમાચાર -->
       <div class="news-category" style="border-left: 4px solid #d97706; margin-bottom: 0;">
         <span style="font-weight: bold; color: #b45309; display: block; margin-bottom: 6px; font-size: 16px;">🏏 ૪. રમતગમત સમાચાર (Sports News):</span>
         <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li><b>ક્રિકેટ વિજય:</b> ભારતે પ્રથમ વનડેમાં વેસ્ટ ઈન્ડિઝને આઠ વિકેટે હરાવ્યું.</li>
-          <li><b>એશિયન ગેમ્સ:</b> જેવલિન થ્રોમાં યશવીર સિંહે સિલ્વર અને રોહિત યાદવે બ્રોન્ઝ જીત્યો.</li>
+          <li><b>ફૂટબોલ વિવાદ:</b> પ્રીમિયર લીગના નાણાકીય નિયમોના ગંભીર ઉલ્લંઘનમાં માન્ચેસ્ટર સિટી ક્લબ દોષિત ઠરી.</li>
+          <li><b>બોક્સિંગ ઈતિહાસ:</b> એશિયન ગેમ્સમાં બોક્સર અંકુશે ફાઇનલમાં પહોંચીને નવો ઇતિહાસ રચ્યો છે.</li>
         </ul>
       </div>
     </div>
 
-    <!-- ૨.૭ અવનવું જાણવા જેવું (વૈજ્ઞાનિક રહસ્ય) -->
+    <!-- ૨.૭ અવનવું જાણવા જેવું -->
     <div class="section-box" style="background: #f0fdf4; border: 1px solid #dcfce7; border-left: 6px solid #16a34a;">
-      <h3 style="margin: 0 0 10px 0; color: #15803d; font-size: 19px; font-weight: bold;">🔬 અવનવું જાણવા જેવું (વૈજ્ઞાનિક રહસ્ય)</h3>
-      <p style="margin: 0 0 8px 0; font-weight: bold; color: #1a202c; font-size: 15.5px;">પ્રશ્ન: આપણું હૃદય ૨૪ કલાક અટક્યા વગર સતત કેમ ધબકી શકે છે?</p>
+      <h3 style="margin: 0 0 10px 0; color: #15803d; font-size: 19px; font-weight: bold;">🔬 અવનવું જાણવા જેવું (નવું વૈજ્ઞાનિક રહસ્ય)</h3>
+      <p style="margin: 0 0 8px 0; font-weight: bold; color: #1a202c; font-size: 15.5px;">પ્રશ્ન: કાચંડો પોતાની ત્વચાનો રંગ ક્ષણવારમાં કેવી રીતે બદલે છે?</p>
       <p style="margin: 0; font-size: 15px; color: #4a5568; text-align: justify; line-height: 1.8;">
-        <b>જવાબ:</b> માનવ શરીરના સામાન્ય સ્નાયુઓ થોડું કામ કર્યા પછી થાકી જાય છે, પરંતુ હૃદય વિશિષ્ટ <b>'કાર્ડિયાક મસલ્સ' (Cardiac Muscles)</b> થી બનેલું છે. આ સ્નાયુઓના કોષોમાં વિપુલ પ્રમાણમાં 'માઇટોકોન્ડ્રિયા' (કોષનું શક્તિઘર) આવેલા હોય છે, જે હૃદયને અવિરત ઊર્જા પૂરી પાડે છે. ઉપરાંત, હૃદયના દરેક ધબકારા (સંકોચન) પછી તેને તરત જ ક્ષણિક આરામ મળે છે, જેથી તેમાં થાક માટે જવાબદાર લેક્ટિક એસિડ જમા થતો નથી.
+        <b>જવાબ:</b> ઘણા લોકો માને છે કે કાચંડો રંગદ્રવ્ય બદલે છે, પરંતુ વાસ્તવમાં તે નેનો-સાયન્સનો ચમત્કાર છે! કાચંડાની ત્વચા નીચે <b>'ઇરિડોફોર્સ' (Iridophores)</b> નામના કોષો હોય છે, જેમાં નેનો કદના <b>ગ્વાનાઇન સ્ફટિકો</b> આવેલા હોય છે. કાચંડો જ્યારે ઉત્તેજિત કે શાંત થાય ત્યારે આ સ્ફટિકો વચ્ચેનું અંતર બદલે છે. જેથી તેના પરથી પરાવર્તિત થતા પ્રકાશની તરંગલંબાઈ બદલાય છે અને આપણને તે અલગ-અલગ રંગનો દેખાય છે.
       </p>
     </div>
 
@@ -277,83 +302,96 @@
           </thead>
           <tbody>
             <tr>
-              <td style="text-align: center;">❤️</td>
-              <td>હાર્ટ</td>
-              <td style="font-weight: bold; color: #3182ce;">HEART</td>
-              <td>હૃદય</td>
+              <td style="text-align: center;">🦎</td>
+              <td>કેમિલિયન</td>
+              <td style="font-weight: bold; color: #3182ce;">CHAMELEON</td>
+              <td>કાચંડો</td>
             </tr>
             <tr style="background-color: #f7fafc;">
-              <td style="text-align: center;">💓</td>
-              <td>પલ્સ</td>
-              <td style="font-weight: bold; color: #3182ce;">PULSE</td>
-              <td>નાડીના ધબકારા</td>
+              <td style="text-align: center;">💎</td>
+              <td>ક્રિસ્ટલ</td>
+              <td style="font-weight: bold; color: #3182ce;">CRYSTAL</td>
+              <td>સ્ફટિક / પારદર્શક કણ</td>
             </tr>
             <tr>
-              <td style="text-align: center;">🩸</td>
-              <td>બ્લડ</td>
-              <td style="font-weight: bold; color: #3182ce;">BLOOD</td>
-              <td>લોહી / રક્ત</td>
+              <td style="text-align: center;">🌈</td>
+              <td>રિફ્લેક્શન</td>
+              <td style="font-weight: bold; color: #3182ce;">REFLECTION</td>
+              <td>પરાવર્તન / પ્રતિબિંબ</td>
             </tr>
             <tr style="background-color: #f7fafc;">
-              <td style="text-align: center;">🫀</td>
-              <td>આર્ટરી</td>
-              <td style="font-weight: bold; color: #3182ce;">ARTERY</td>
-              <td>ધમની (શુદ્ધ રક્તવાહિની)</td>
+              <td style="text-align: center;">🌊</td>
+              <td>ટાઈડ</td>
+              <td style="font-weight: bold; color: #3182ce;">TIDE</td>
+              <td>દરિયાઈ ભરતી-ઓટ</td>
             </tr>
             <tr>
-              <td style="text-align: center;">🩺</td>
-              <td>વાલ્વ</td>
-              <td style="font-weight: bold; color: #3182ce;">VALVE</td>
-              <td>વાલ્વ / ઢાંકણ</td>
+              <td style="text-align: center;">🥇</td>
+              <td>વિક્ટરી</td>
+              <td style="font-weight: bold; color: #3182ce;">VICTORY</td>
+              <td>વિજય / સફળતા</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ૨.૯ વિસ્તૃત દિન વિશેષ (૨૯ સપ્ટેમ્બર) -->
-    <div class="section-box" style="background: #fff1f2; border: 1px solid #fecdd3; border-left: 6px solid #e11d48;">
-      <h3 style="margin: 0 0 15px 0; color: #9f1239; font-size: 19px; font-weight: bold;">📢 આજનું વિસ્તૃત દિન વિશેષ (૨૯ સપ્ટેમ્બર)</h3>
+    <!-- ૨.૯ વિસ્તૃત દિન વિશેષ -->
+    <div class="section-box" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 6px solid #16a34a;">
+      <h3 style="margin: 0 0 15px 0; color: #15803d; font-size: 19px; font-weight: bold;">📢 આજનું વિસ્તૃત દિન વિશેષ (૩૦ સપ્ટેમ્બર)</h3>
       
-      <!-- દિન વિશેષ ૧: વિશ્વ હૃદય દિવસ -->
-      <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #fda4af; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <h4 style="margin: 0 0 10px 0; color: #be123c; font-size: 18px; border-bottom: 2px solid #ffe4e6; padding-bottom: 6px;">❤️ ૧. વિશ્વ હૃદય દિવસ (World Heart Day - 29 September)</h4>
+      <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #86efac; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🌍 ૧. આંતરરાષ્ટ્રીય અનુવાદ દિવસ (International Translation Day)</h4>
         <p style="margin: 0 0 8px 0; font-size: 15px; color: #4a5568; line-height: 1.8; text-align: justify;">
-          • વર્લ્ડ હાર્ટ ફેડરેશન (WHF) દ્વારા સમગ્ર વિશ્વમાં હૃદયરોગ અને સ્ટ્રોક સામે જાગૃતિ લાવવાના ઉદ્દેશથી દર વર્ષે ૨૯ સપ્ટેમ્બરે વિશ્વ હૃદય દિવસ મનાવવામાં આવે છે.<br>
-          • સંતુલિત આહાર, નિયમિત વ્યાયામ, પૂરતી ઊંઘ અને તણાવમુક્ત જીવન હૃદયને આજીવન ધબકતું અને સ્વસ્થ રાખવાની ચાવી છે.
+          • <b>ઇતિહાસ:</b> બાઇબલનો હીબ્રુમાંથી લેટિનમાં અનુવાદ કરનાર વિદ્વાન <b>સેન્ટ જેરોમ</b> ની પુણ્યતિથિ નિમિત્તે દર વર્ષે ૩૦ સપ્ટેમ્બરે વિશ્વભરમાં આ દિવસ ઉજવાય છે.<br>
+          • <b>યુએન માન્યતા:</b> સંયુક્ત રાષ્ટ્ર (UN) ની સામાન્ય સભાએ ૨૦૧૭માં ઠરાવ પસાર કરીને વિશ્વ શાંતિ, સંવાદ અને સંસ્કૃતિઓના જોડાણમાં અનુવાદકોની ભૂમિકાને સન્માન આપ્યું હતું.<br>
+          • <b>મહત્ત્વ:</b> અનુવાદ માત્ર ભાષાંતર નથી, પરંતુ દુનિયાભરના સાહિત્ય અને વિજ્ઞાનને સામાન્ય લોકો સુધી પહોંચાડતો સેતુ છે.
         </p>
       </div>
 
-      <!-- દિન વિશેષ ૨: ભાદરવા વદ ત્રીજ શ્રાદ્ધ -->
-      <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #fda4af;">
-        <h4 style="margin: 0 0 10px 0; color: #be123c; font-size: 18px; border-bottom: 2px solid #ffe4e6; padding-bottom: 6px;">🚩 ૨. ભાદરવા વદ ત્રીજ - શ્રાદ્ધ પક્ષ (ત્રીજનું શ્રાદ્ધ)</h4>
+      <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #86efac; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🚩 ૨. ભાદરવા વદ ચોથ - શ્રાદ્ધ પક્ષ &amp; સંકષ્ટ ચતુર્થી</h4>
         <p style="margin: 0 0 8px 0; font-size: 15px; color: #4a5568; line-height: 1.8; text-align: justify;">
-          • શ્રાદ્ધ પક્ષ અંતર્ગત તૃતીયા તિથિએ અવસાન પામેલા પિતૃઓનું સ્મરણ કરી તર્પણ અને દાન-પુણ્ય કરવામાં આવે છે.<br>
-          • આ પવિત્ર અવસરે ગૌસેવા અને પક્ષીઓને ચણ નાખી કૃતજ્ઞતા વ્યક્ત કરવામાં આવે છે.
+          • <b>ચોથનું શ્રાદ્ધ:</b> પિતૃપક્ષ દરમિયાન ચતુર્થી તિથિએ અવસાન પામેલા પૂર્વજોની શાંતિ માટે તર્પણ અને પિંડદાન કરવામાં આવે છે.<br>
+          • <b>સંકષ્ટ ગણેશ ચતુર્થી:</b> આજના પાવન દિવસે ભગવાન શ્રી ગણેશની આરાધના કરી સંકટો દૂર કરવા પ્રાર્થના કરાય છે.
         </p>
       </div>
 
-      <!-- ૧૦૦% લાઈવ Base64 SVG ફીચર બેનર (૨) -->
-      <div style="text-align: center; margin-top: 20px;">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTYwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSJhdXRvIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdGIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZjFmMiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmU0ZTYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYmdGKSIgcng9IjE0IiBzdHJva2U9IiNlMTFkNDgiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjY1IiByPSI0NiIgZmlsbD0iI2UxMWQ0OCIgb3BhY2l0eT0iMC4xNSIvPgogIDxwYXRoIGQ9Ik0zMDAgNDggQzI5MCAzNSwgMjcwIDM1LCAyNjAgNDggQzI0NSA2NSwgMjY1IDg1LCAzMDAgMTAyIEMzMzUgODUsIDM1NSA2NSwgMzQwIDQ4IEMzMzAgMzUsIDMxMCAzNSwgMzAwIDQ4IFoiIGZpbGw9IiNlMTFkNDgiIG9wYWNpdHk9IjAuODUiLz4KICA8dGV4dCB4PSIzMDAiIHk9IjEyMCIgZm9udC1mYW1pbHk9IidTZWdvZSBVSScsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE5IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzlmMTIzOSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+V29ybGQgSGVhcnQgRGF5IC0gMjkgU2VwdGVtYmVyPC90ZXh0PgogIDx0ZXh0IHg9IjMwMCIgeT0iMTQyIiBmb250LWZhbWlseT0nU2Vnb2UgVUknLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC1zdHlsZT0iaXRhbGljIiBmaWxsPSIjODgxMzM3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BUlVOT0dZQU4gRWR1Y2F0aW9uYWwgUG9ydGFsIC0gSGVhbHRoeSBIZWFydCwgSGVhbHRoeSBMaWZlPC90ZXh0Pgo8L3N2Zz4=" alt="World Heart Day Banner" style="width: 100%; height: auto; border-radius: 10px; border: 2px solid #e11d48;" />
+      <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #86efac; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🎬 ૩. સુપ્રસિદ્ધ નિર્દેશક હૃષીકેશ મુખર્જી જન્મજયંતી (૧૯૨૨)</h4>
+        <p style="margin: 0; font-size: 15px; color: #4a5568; line-height: 1.8; text-align: justify;">
+          • ભારતીય સિનેમાના અગ્રણી ફિલ્મ દિગ્દર્શક હૃષીકેશ મુખર્જીનો જન્મ ૩૦ સપ્ટેમ્બર ૧૯૨૨ના રોજ થયો હતો. તેમણે <i>'આનંદ'</i>, <i>'ગોલમાલ'</i> અને <i>'ચુપકે ચુપકે'</i> જેવી ક્લાસિક ફિલ્મો દ્વારા સામાજિક મૂલ્યો સ્થાપિત કર્યા હતા.
+        </p>
+      </div>
+
+      <!-- ૨.૯.૧ ૧૦૦% લાઈવ વિઝ્યુઅલ ફીચર બેનર (૨) -->
+      <div class="live-feature-banner">
+        <div style="font-size: 19px; font-weight: 800; color: #15803d;">
+          🌐 International Translation Day &amp; Bhadarva Vad Choth
+        </div>
+        <div style="font-size: 14.5px; font-weight: 700; color: #1e293b; margin: 6px 0;">
+          ૩૦ સપ્ટેમ્બર - વિશ્વ શાંતિ, સંસ્કૃતિઓનું જોડાણ અને પિતૃ વંદના
+        </div>
+        <div style="border-top: 1px dashed #16a34a; margin-top: 8px; padding-top: 6px; font-size: 12.5px; font-style: italic; color: #475569;">
+          ARUNOGYAN Educational Portal • Daily School Assembly
+        </div>
       </div>
     </div>
 
     <!-- ૨.૧૦ બાળવાર્તા -->
     <div class="section-box" style="background: #e6fffa; border: 1px solid #b2f5ea; border-left: 6px solid #319795;">
-      <h3 style="margin: 0 0 8px 0; color: #234e52; font-size: 19px; font-weight: bold;">📖 આજની પ્રેરણાદાયી બાળવાર્તા: અજયની સાયકલ અને ધબકતું હૃદય</h3>
+      <h3 style="margin: 0 0 8px 0; color: #234e52; font-size: 19px; font-weight: bold;">📖 આજની પ્રેરણાદાયી બાળવાર્તા: ટીટોડી અને સમુદ્ર (અખૂટ સંકલ્પ)</h3>
       <p style="margin: 0 0 10px 0; font-size: 15px; color: #2d3748; text-align: justify; line-height: 1.8;">
-        અજય આખો દિવસ મોબાઈલમાં ગેમ રમતો અને જંકફૂડ ખાતો હતો. થોડા જ પગથિયાં ચડતાં તેનો શ્વાસ ફૂલી જતો. એક દિવસ તેના દાદાજીએ તેને પ્રેમથી સમજાવ્યો કે આપણું હૃદય એ શરીરનું સૌથી મૂલ્યવાન એન્જિન છે. દાદાજીએ તેને એક નવી સાયકલ ભેટ આપી અને રોજ સવારે સાથે બગીચે લઈ જવા લાગ્યા. અજયે તાજી હવામાં સાયકલ ચલાવવાનું અને દોડવાનું શરૂ કર્યું. માત્ર એક જ મહિનામાં તેનો થાક દૂર થઈ ગયો અને તે વર્ગમાં સૌથી ચપળ અને ઊર્જાવાન વિદ્યાર્થી બની ગયો.
+        એક વાર સમુદ્રના કિનારે ટીટોડીના જોડાએ ઈંડાં મૂક્યાં. સમુદ્રએ પોતાના મોજાંથી ઘમંડમાં આવીને તે ઈંડાંને તાણી લીધાં. ટીટોડી રડવાને બદલે અડગ બની ગઈ. તેણે પોતાની નાની ચાંચમાં સમુદ્રનું પાણી ભરી ભરીને બહાર ફેંકવાનું શરૂ કર્યું જેથી આખો સમુદ્ર સુકાઈ જાય! અન્ય પક્ષીઓ તેની મજાક ઉડાવવા લાગ્યા, પરંતુ ટીટોડીએ કહ્યું: "હું થાકીશ નહીં, મારો પ્રયાસ ચાલુ રાખીશ." ટીટોડીના આ અડગ નિશ્ચય અને અખૂટ આત્મવિશ્વાસને જોઈને પક્ષીરાજ ગરુડજી મદદે આવ્યા. ગરુડજીને જોઈ સમુદ્ર ડરી ગયો અને તેણે તરત જ ટીટોડીના ઈંડાં સુરક્ષિત પાછા આપી દીધા.
       </p>
       <p style="margin: 0; font-size: 14.5px; color: #2c7a7b; font-weight: bold;">
-        💡 બોધ: નિયમિત વ્યાયામ અને શુદ્ધ ખોરાક જ આપણા હૃદયને સ્વસ્થ અને મજબૂત રાખે છે.
+        💡 બોધ: સાધન ભલે નાનું હોય, પણ સંકલ્પ હિમાલય જેવો મજબૂત હોય તો ઈશ્વર પણ મદદ કરવા આવે છે.
       </p>
     </div>
 
     <!-- ૨.૧૧ દરરોજ બ્લોગ ફોલો કરવા માટે કાયમી સેક્શન -->
     <div class="section-box" style="background-color: #fffaf0; border: 1px solid #feebc8; text-align: center; border-left: 6px solid #dd6b20;">
       <p style="margin: 0 0 12px 0; font-weight: bold; color: #dd6b20; font-size: 16px;">📢 દરરોજ આવું જ શૈક્ષણિક અને જ્ઞાનવર્ધક સાહિત્ય ફ્રી મેળવવા માટે ARUNOGYAN blog ને follow કરો:</p>
-      <!-- ફોલો ગેજેટ લિંક માટેની જગ્યા -->
       <a href="https://www.blogger.com/follow.g?blogID=7874056882573718914" onclick="setFollowedStatus()" target="_blank" style="display: inline-block; background-color: #dd6b20; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 15px;">🧡 Click Here to Follow ARUNOGYAN Blog</a>
     </div>
 
