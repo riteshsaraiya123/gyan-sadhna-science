@@ -89,11 +89,15 @@
         .btn-swadhyay { display: block; width: 100%; padding: 13px; background: #27ae60; color: white; text-decoration: none; border-radius: 12px; font-size: 16px; font-weight: bold; box-sizing: border-box; box-shadow: 0 4px 10px rgba(39,174,96,0.3); transition: 0.3s; margin-bottom: 10px; text-align: center; }
         .btn-swadhyay:hover { background: #219150; }
         
-        /* 6 Model Papers Section */
-        .model-paper-card { background: linear-gradient(135deg, #e056fd 0%, #686de0 100%); padding: 14px; border-radius: 14px; margin-bottom: 12px; text-align: left; box-shadow: 0 4px 10px rgba(104,109,224,0.3); }
-        .model-paper-card label { color: #fff; font-size: 13.5px; margin-bottom: 6px; line-height: 1.4; font-weight: bold; }
+        /* Model Papers Sections */
+        .model-paper-card { background: linear-gradient(135deg, #e056fd 0%, #686de0 100%); padding: 12px; border-radius: 14px; margin-bottom: 10px; text-align: left; box-shadow: 0 4px 10px rgba(104,109,224,0.3); }
+        .model-paper-card label { color: #fff; font-size: 14px; margin-bottom: 5px; font-weight: bold; }
         .btn-open-paper { display: block; width: 100%; padding: 11px; background: #fbc531; color: #2f3640; border: none; border-radius: 10px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 8px; transition: 0.3s; text-align: center; }
         .btn-open-paper:hover { background: #e84118; color: #fff; }
+
+        /* Patrak A 25 Marks Card Style */
+        .patrak-card { background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); padding: 14px; border-radius: 14px; margin-bottom: 10px; text-align: left; box-shadow: 0 4px 10px rgba(0,184,148,0.3); }
+        .patrak-card label { color: #fff; font-size: 13.5px; margin-bottom: 6px; line-height: 1.4; font-weight: bold; display: block; }
 
         .btn-blog-link { display: block; width: 100%; padding: 11px; background: #ffffff; color: #d35400; text-decoration: none; border-radius: 12px; font-size: 14.5px; font-weight: bold; border: 2px solid #e67e22; box-sizing: border-box; transition: 0.3s; text-align: center; }
         .btn-blog-link:hover { background: #e67e22; color: white; }
@@ -168,9 +172,9 @@
         <a href="std7.html" class="btn-swadhyay" style="background: #2980b9;">📖 ધોરણ ૭ વિજ્ઞાન સ્વાધ્યાય (માર્ગદર્શિકા)</a>
         
         <!-- ધોરણ 6, 7, 8 ના 25 ગુણના પેપર્સ (પત્રક 'અ' માટે ઉપયોગી) સેક્શન -->
-        <div class="model-paper-card">
+        <div class="patrak-card">
             <label>📜 ધોરણ ૬, ૭, ૮ ના ગણિત-વિજ્ઞાનની અધ્યયન નિષ્પત્તિ મુજબના ૨૫ ગુણના પેપર્સ (પત્રક 'અ' માટે ઉપયોગી):</label>
-            <select id="selModelFile">
+            <select id="selPatrakFile">
                 <option value="std6_science_unit_test.html">ધોરણ ૬ - વિજ્ઞાન (૨૫ ગુણ એકમ કસોટી)</option>
                 <option value="std6_maths_unit_test.html">ધોરણ ૬ - ગણિત (૨૫ ગુણ એકમ કસોટી)</option>
                 <option value="std7_science_unit_test_2.html">ધોરણ ૭ - વિજ્ઞાન (૨૫ ગુણ એકમ કસોટી)</option>
@@ -178,7 +182,21 @@
                 <option value="std8_science_unit_test.html">ધોરણ ૮ - વિજ્ઞાન (૨૫ ગુણ એકમ કસોટી)</option>
                 <option value="std8_maths_unit_test.html">ધોરણ ૮ - ગણિત (૨૫ ગુણ એકમ કસોટી)</option>
             </select>
-            <button class="btn-open-paper" onclick="openModelPaper()">પેપર ખોલો / પ્રિન્ટ કરો ➔</button>
+            <button class="btn-open-paper" onclick="openPatrakPaper()" style="background: #00cec9; color: #fff;">૨૫ ગુણનું પેપર ખોલો ➔</button>
+        </div>
+
+        <!-- 80 Gunana Model Papers Card -->
+        <div class="model-paper-card">
+            <label>📜 પ્રથમ સત્રાંત મોડેલ પેપર્સ (૬ થી ૮):</label>
+            <select id="selModelFile">
+                <option value="std 6 sci papers.html">ધોરણ ૬ - વિજ્ઞાન (૫ આદર્શ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 6 maths papers.html">ધોરણ ૬ - ગણિત (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 7 sci papers.html">ધોરણ ૭ - વિજ્ઞાન (૫ આદર્શ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std7 maths papers.html">ધોરણ ૭ - ગણિત (૫ આદર્શ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std8 sci papers.html">ધોરણ ૮ - વિજ્ઞાન (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+                <option value="std 8 maths papers.html">ધોરણ ૮ - ગણિત (૫ પેપર્સ + બ્લૂપ્રિન્ટ)</option>
+            </select>
+            <button class="btn-open-paper" onclick="openModelPaper()">મોડેલ પેપર ખોલો ➔</button>
         </div>
 
         <a href="https://arunogyan.blogspot.com" target="_blank" class="btn-blog-link">🌐 અરુનોજ્ઞાન બ્લોગની મુલાકાત લો</a>
@@ -214,6 +232,11 @@
     function openModelPaper() {
         let paperUrl = document.getElementById("selModelFile").value;
         window.location.href = paperUrl;
+    }
+
+    function openPatrakPaper() {
+        let patrakUrl = document.getElementById("selPatrakFile").value;
+        window.location.href = patrakUrl;
     }
 
     window.onload = function() {
