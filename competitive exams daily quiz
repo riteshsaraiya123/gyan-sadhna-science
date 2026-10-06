@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTAT Special Quiz: RTE Act 2009 (20 Questions)</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f3f4; margin: 0; padding: 20px; }
+        .quiz-container { max-width: 700px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 6px solid #27ae60; }
+        h2 { color: #2c3e50; text-align: center; margin-bottom: 20px; font-size: 22px; }
+        .question-box { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #2980b9; }
+        .question-title { font-weight: bold; color: #333; margin-bottom: 10px; font-size: 15.5px; }
+        .options label { display: block; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; color: #444; }
+        .btn-submit { display: block; width: 100%; background: #27ae60; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .btn-submit:hover { background: #219653; }
+        #result-box { display: none; margin-top: 20px; padding: 15px; background: #e8f8f5; border: 2px solid #27ae60; border-radius: 8px; text-align: center; font-size: 18px; font-weight: bold; color: #0e6655; }
+        .btn-back { display: block; text-align: center; margin-top: 15px; color: #2980b9; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h2>🎯 HTAT પરીક્ષા વિશેષ ક્વિઝ (૨૦ પ્રશ્નો)<br><span style="font-size: 15px; color: #e67e22;">વિષય: બાળકોને મફત અને ફરજિયાત શિક્ષણનો અધિકાર અધિનિયમ (RTE - 2009)</span></h2>
+
+    <form id="quizForm">
+        <!-- Q1 -->
+        <div class="question-box">
+            <div class="question-title">૧. RTE Act 2009 સમગ્ર ભારતમાં કઈ તારીખથી અમલમાં આવ્યો?</div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A) 1 એપ્રિલ 2009</label>
+                <label><input type="radio" name="q1" value="B" data-correct="true"> B) 1 એપ્રિલ 2010</label>
+                <label><input type="radio" name="q1" value="C"> C) 26 જાન્યુઆરી 2010</label>
+                <label><input type="radio" name="q1" value="D"> D) 4 ઓગસ્ટ 2009</label>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-box">
+            <div class="question-title">૨. RTE-2009 અંતર્ગત ધોરણ ૧ થી ૫ માટે શૈક્ષણિક વર્ષમાં ઓછામાં ઓછા કેટલા શૈક્ષણિક દિવસો હોવા જરૂરી છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A) 200 દિવસ</label>
+                <label><input type="radio" name="q2" value="B" data-correct="true"> B) 220 દિવસ</label>
+                <label><input type="radio" name="q2" value="C"> C) 250 દિવસ</label>
+                <label><input type="radio" name="q2" value="D"> D) 180 દિવસ</label>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-box">
+            <div class="question-title">૩. RTE-2009 ના નિયમ મુજબ ધોરણ ૬ થી ૮ માટે શૈક્ષણિક વર્ષમાં ઓછામાં ઓછા કેટલા કલાકનું શિક્ષણ કાર્ય હોવું જોઈએ?</div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A) 800 કલાક</label>
+                <label><input type="radio" name="q3" value="B"> B) 900 કલાક</label>
+                <label><input type="radio" name="q3" value="C" data-correct="true"> C) 1000 કલાક</label>
+                <label><input type="radio" name="q3" value="D"> D) 1200 કલાક</label>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-box">
+            <div class="question-title">૪. RTE-2009 ના કયા પ્રકરણમાં 'શાળા અને શિક્ષકોની જવાબદારીઓ' વિશે ઉલ્લેખ કરવામાં આવ્યો છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A) પ્રકરણ - ૨</label>
+                <label><input type="radio" name="q4" value="B"> B) પ્રકરણ - ૩</label>
+                <label><input type="radio" name="q4" value="C" data-correct="true"> C) પ્રકરણ - ૪</label>
+                <label><input type="radio" name="q4" value="D"> D) પ્રકરણ - ૫</label>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-box">
+            <div class="question-title">૫. RTE અધિનિયમ ૨૦૦૯ મુજબ પ્રાથમિક શાળામાં ધોરણ ૬ થી ૮ માટે વિદ્યાર્થી અને શિક્ષકનું પ્રમાણ કેટલું હોવું જોઈએ?</div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A"> A) 30 : 1</label>
+                <label><input type="radio" name="q5" value="B" data-correct="true"> B) 35 : 1</label>
+                <label><input type="radio" name="q5" value="C"> C) 40 : 1</label>
+                <label><input type="radio" name="q5" value="D"> D) 50 : 1</label>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-box">
+            <div class="question-title">૬. RTE-2009 અંતર્ગત શિક્ષકે સપ્તાહ દરમિયાન તૈયારીના કલાકો સહિત કુલ કેટલા કલાક કામ કરવાનું રહે છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A"> A) 40 કલાક</label>
+                <label><input type="radio" name="q6" value="B" data-correct="true"> B) 45 કલાક</label>
+                <label><input type="radio" name="q6" value="C"> C) 48 કલાક</label>
+                <label><input type="radio" name="q6" value="D"> D) 35 કલાક</label>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-box">
+            <div class="question-title">૭. RTE-2009 ની કઈ કલમ હેઠળ કોઈપણ શાળામાં પ્રવેશ આપતી વખતે દાન (Capitation Fee) લેવા પર પ્રતિબંધ છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A"> A) કલમ - 11</label>
+                <label><input type="radio" name="q7" value="B" data-correct="true"> B) કલમ - 13</label>
+                <label><input type="radio" name="q7" value="C"> C) કલમ - 17</label>
+                <label><input type="radio" name="q7" value="D"> D) કલમ - 24</label>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-box">
+            <div class="question-title">૮. RTE અધિનિયમની કઈ કલમ હેઠળ વિદ્યાર્થીઓને શારીરિક શિક્ષા કે માનસિક ત્રાસ આપવા પર પ્રતિબંધ ફરમાવવામાં આવ્યો છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A"> A) કલમ - 15</label>
+                <label><input type="radio" name="q8" value="B"> B) કલમ - 16</label>
+                <label><input type="radio" name="q8" value="C" data-correct="true"> C) કલમ - 17</label>
+                <label><input type="radio" name="q8" value="D"> D) કલમ - 21</label>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-box">
+            <div class="question-title">૯. RTE-2009 મુજબ શૈક્ષણિક વર્ષમાં ધોરણ ૧ થી ૫ માટે ઓછામાં ઓછા કેટલા કલાકનું શિક્ષણ કાર્ય હોવું જોઈએ?</div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A" data-correct="true"> A) 800 કલાક</label>
+                <label><input type="radio" name="q9" value="B"> B) 900 કલાક</label>
+                <label><input type="radio" name="q9" value="C"> C) 1000 કલાક</label>
+                <label><input type="radio" name="q9" value="D"> D) 720 કલાક</label>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-box">
+            <div class="question-title">૧૦. RTE-2009 ની કઈ કલમ હેઠળ શાળા વ્યવસ્થાપન સમિતિ (SMC) ની રચના કરવાની જોગવાઈ છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A"> A) કલમ - 19</label>
+                <label><input type="radio" name="q10" value="B" data-correct="true"> B) કલમ - 21</label>
+                <label><input type="radio" name="q10" value="C"> C) કલમ - 22</label>
+                <label><input type="radio" name="q10" value="D"> D) કલમ - 28</label>
+            </div>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question-box">
+            <div class="question-title">૧૧. શાળા વ્યવસ્થાપન સમિતિ (SMC) માં ઓછામાં ઓછા કેટલા ટકા સભ્યો વાલીઓ હોવા જરૂરી છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q11" value="A"> A) 50 ટકા</label>
+                <label><input type="radio" name="q11" value="B"> B) 60 ટકા</label>
+                <label><input type="radio" name="q11" value="C" data-correct="true"> C) 75 ટકા</label>
+                <label><input type="radio" name="q11" value="D"> D) 51 ટકા</label>
+            </div>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question-box">
+            <div class="question-title">૧૨. RTE-2009 મુજબ પ્રાથમિક શાળામાં ધોરણ ૧ થી ૫ માટે વિદ્યાર્થી અને શિક્ષકનું પ્રમાણ કેટલું હોવું જોઈએ?</div>
+            <div class="options">
+                <label><input type="radio" name="q12" value="A" data-correct="true"> A) 30 : 1</label>
+                <label><input type="radio" name="q12" value="B"> B) 35 : 1</label>
+                <label><input type="radio" name="q12" value="C"> C) 40 : 1</label>
+                <label><input type="radio" name="q12" value="D"> D) 25 : 1</label>
+            </div>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question-box">
+            <div class="question-title">૧૩. RTE અધિનિયમ ૨૦૦૯ અંતર્ગત કઈ વયમર્યાદાના બાળકો માટે પ્રાથમિક શિક્ષણ મફત અને ફરજિયાત બનાવવામાં આવ્યું છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q13" value="A"> A) 5 થી 12 વર્ષ</label>
+                <label><input type="radio" name="q13" value="B" data-correct="true"> B) 6 થી 14 વર્ષ</label>
+                <label><input type="radio" name="q13" value="C"> C) 6 થી 16 વર્ષ</label>
+                <label><input type="radio" name="q13" value="D"> D) 3 થી 14 વર્ષ</label>
+            </div>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question-box">
+            <div class="question-title">૧૪. RTE-2009 ના કયા પ્રકરણમાં 'બાળકોના હકો' વિશે ચર્ચા કરવામાં આવી છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q14" value="A" data-correct="true"> A) પ્રકરણ - ૩</label>
+                <label><input type="radio" name="q14" value="B"> B) પ્રકરણ - ૨</label>
+                <label><input type="radio" name="q14" value="C"> C) પ્રકરણ - ૪</label>
+                <label><input type="radio" name="q14" value="D"> D) પ્રકરણ - ૫</label>
+            </div>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question-box">
+            <div class="question-title">૧૫. RTE-2009 મુજબ કોઈપણ શૈક્ષણિક સંસ્થા કે શાળામાં પ્રવેશ માટે કઈ પદ્ધતિ અપનાવવી પરવાનગી નથી?</div>
+            <div class="options">
+                <label><input type="radio" name="q15" value="A"> A) વયકાળ ચકાસણી</label>
+                <label><input type="radio" name="q15" value="B" data-correct="true"> B) પ્રવેશ પરીક્ષા કે ઇન્ટરવ્યુ (Screening Procedure)</label>
+                <label><input type="radio" name="q15" value="C"> C) રહેઠાણનો પુરાવો</label>
+                <label><input type="radio" name="q15" value="D"> D) જન્મ પ્રમાણપત્ર</label>
+            </div>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question-box">
+            <div class="question-title">૧૬. RTE-2009 ની કલમ ૨૮ મુજબ શિક્ષકો પર કઈ બાબત પર પ્રતિબંધ મૂકવામાં આવ્યો છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q16" value="A" data-correct="true"> A) ખાનગી ટ્યુશન (Private Tuition) કરવા પર</label>
+                <label><input type="radio" name="q16" value="B"> B) સહ અભ્યાસકીય પ્રવૃત્તિઓ કરવા પર</label>
+                <label><input type="radio" name="q16" value="C"> C) શૈક્ષણિક પ્રવાસો ગોઠવવા પર</label>
+                <label><input type="radio" name="q16" value="D"> D) શાળાના સમય બાદ રમવા પર</label>
+            </div>
+        </div>
+
+        <!-- Q17 -->
+        <div class="question-box">
+            <div class="question-title">૧૭. RTE અધિનિયમ ૨૦૦૯ મુજબ શિક્ષકે કયા પ્રકારની બિનશૈક્ષણિક કામગીરીમાં જોડવાનું નથી? (વસ્તી ગણતરી સિવાય)</div>
+            <div class="options">
+                <label><input type="radio" name="q17" value="A"> A) આપત્તિ રાહત કામગીરી</label>
+                <label><input type="radio" name="q17" value="B"> B) સંસદ અને વિધાનસભાની ચૂંટણી કામગીરી</label>
+                <label><input type="radio" name="q17" value="C" data-correct="true"> C) વસ્તી ગણતરી, આપત્તિ રાહત અને ચૂંટણી સિવાયની અન્ય કામગીરી</label>
+                <label><input type="radio" name="q17" value="D"> D) કોઈપણ સરકારી કામગીરી નહીં</label>
+            </div>
+        </div>
+
+        <!-- Q18 -->
+        <div class="question-box">
+            <div class="question-title">૧૮. RTE-2009 મુજબ પ્રાથમિક શાળામાં ધોરણ ૬ થી ૮ માં જો ૨૦૦ કરતા વધુ વિદ્યાર્થીઓ હોય તો શિક્ષક-વિદ્યાર્થીનું પ્રમાણ કેટલું થાય?</div>
+            <div class="options">
+                <label><input type="radio" name="q18" value="A"> A) 30 : 1</label>
+                <label><input type="radio" name="q18" value="B" data-correct="true"> B) 40 : 1 (આચાર્ય સિવાય)</label>
+                <label><input type="radio" name="q18" value="C"> C) 50 : 1</label>
+                <label><input type="radio" name="q18" value="D"> D) 35 : 1</label>
+            </div>
+        </div>
+
+        <!-- Q19 -->
+        <div class="question-box">
+            <div class="question-title">૧૯. RTE-2009 ના અમલીકરણ માટે રાષ્ટ્રીય સ્તરે કઈ સંસ્થા સલાહકાર તરીકે કાર્ય કરે છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q19" value="A" data-correct="true"> A) રાષ્ટ્રીય સલાહકાર પરિષદ (National Advisory Council)</label>
+                <label><input type="radio" name="q19" value="B"> B) NCERT</label>
+                <label><input type="radio" name="q19" value="C"> C) GCERT</label>
+                <label><input type="radio" name="q19" value="D"> D) NCTE</label>
+            </div>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question-box">
+            <div class="question-title">૨૦. RTE-2009 ના નિયમો અનુસાર શાળામાં બાળકના પ્રવેશ માટે વય સાબિત કરવા માટે કયા દસ્તાવેજને માન્ય રાખવામાં આવે છે?</div>
+            <div class="options">
+                <label><input type="radio" name="q20" value="A"> A) હોસ્પિટલનું જન્મ પ્રમાણપત્ર</label>
+                <label><input type="radio" name="q20" value="B"> B) ગ્રામ પંચાયત કે મ્યુનિસિપાલિટીનું જન્મ પ્રમાણપત્ર</label>
+                <label><input type="radio" name="q20" value="C"> C) આંગણવાડી રેકોર્ડ અથવા સોગંદનામું</label>
+                <label><input type="radio" name="q20" value="D" data-correct="true"> D) આપેલ તમામ (Demanded/Valid Documents)</label>
+            </div>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="checkScore()">પરિણામ તપાસો (Submit Quiz)</button>
+    </form>
+
+    <div id="result-box"></div>
+    <a href="index.html" class="btn-back">🏠 મુખ્ય પેજ પર પાછા જાઓ</a>
+</div>
+
+<script>
+    function checkScore() {
+        let score = 0;
+        let total = 20;
+        
+        let form = document.getElementById('quizForm');
+        let inputs = form.querySelectorAll('input[type="radio"]:checked');
+        
+        inputs.forEach((input) => {
+            if(input.getAttribute('data-correct') === 'true') {
+                score++;
+            }
+        });
+
+        let resBox = document.getElementById('result-box');
+        resBox.style.display = 'block';
+        resBox.innerHTML = `🎉 અભિનંદન! તમારો સ્કોર: ${score} / ${total} સાચા પડ્યા છે!`;
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
