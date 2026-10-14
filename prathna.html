@@ -129,13 +129,21 @@
       transform: translateY(-2px);
     }
 
-    /* News Category Styles */
-    .news-category {
+    .news-item {
       background: #ffffff;
-      padding: 14px 16px;
+      padding: 12px 16px;
       border-radius: 10px;
-      margin-bottom: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      margin-bottom: 10px;
+      border-left: 4px solid #1e3c72;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .svg-banner {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      display: block;
     }
 
     @media print {
@@ -175,9 +183,34 @@
   <!-- ૨. મુખ્ય સાહિત્ય કન્ટેનર -->
   <div class="main-card">
 
-    <!-- ૨.૧ ૧૦૦% સ્પષ્ટ અને શાર્પ Base64 SVG હેડર બેનર (૧) -->
+    <!-- ૨.૧ ૧૦૦% શાર્પ અને સ્પષ્ટ ઇનલાઇન SVG હેડર બેનર (૧) -->
     <div style="text-align: center; margin-bottom: 25px;">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMjMwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSJhdXRvIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZzEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGExOTJmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTcyYTQ1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzIwM2E0MyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ29sZCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRkZFMDAwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc5OUYwQyIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYWNjZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNGRjQxNkMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRkY0QjJCIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0ic2hhZG93IiB4PSItNSUiIHk9Ii01JSIgd2lkdGg9IjExMCUiIGhlaWdodD0iMTEwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjQiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjQiLz4KICAgIDwvZmlsdGVyPgogIDwvZGVmcz4KICAKICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2cxKSIgcng9IjIwIi8+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iOCIgZmlsbD0idXJsKCNhY2NlbnQpIiByeD0iNCIvPgogIDxjaXJjbGUgY3g9Ijc0MCIgY3k9IjQ1IiByPSI4MCIgZmlsbD0iI2ZmZmZmZiIgb3BhY2l0PSIwLjA0Ii8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSIxODAiIHI9IjkwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjAzIi8+CiAgPHJlY3QgeD0iMjUiIHk9IjI1IiB3aWR0aD0iNzUwIiBoZWlnaHQ9IjE4MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjRmZmRhIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iOCw2IiByeD0iMTQiIG9wYWNpdHk9IjAuMyIvPgogIAogIDx0ZXh0IHg9IjQwMCIgeT0iNjUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIFJvYm90bywgSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIzMiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0ZGRTAwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjIiIGZpbHRlcj0idXJsKCNzaGFkb3cpIj5BUlVOT0dZQU4gRWR1Y2F0aW9uYWwgUG9ydGFsPC90ZXh0PgogIAogIDxyZWN0IHg9IjE2MCIgeT0iODgiIHdpZHRoPSI0ODAiIGhlaWdodD0iNDIiIGZpbGw9InVybCgjYWNjZW50KSIgcng9IjIxIiBmaWx0ZXI9InVybCgjc2hhZG93KSIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMTE2IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMSI+4piFIERBSUxZIFNDSE9PTCBQUkFZRVIgQVNTRU1CTFkg4piFPC90ZXh0PgogIAogIDxyZWN0IHg9IjE4MCIgeT0iMTQ4IiB3aWR0aD0iNDQwIiBoZWlnaHQ9IjM4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMTIpIiByeD0iMTkiIHN0cm9rZT0iIzY0ZmZkYSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8dGV4dCB4PSI0MDAiIHk9IjE3MyIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjNjRmZmRhIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7inIQgS05PV0xFREdFIOKAoiBTQ0lFTkNFIOKAoiBWQUxVRVMg4oCiIElOU1BJUkFUSU9OIOKchDwvdGV4dD4KPC9zdmc+" alt="ARUNOGYAN Educational Banner" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);" />
+      <svg class="svg-banner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 230">
+        <defs>
+          <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0a192f"/>
+            <stop offset="50%" stop-color="#172a45"/>
+            <stop offset="100%" stop-color="#203a43"/>
+          </linearGradient>
+          <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FF416C"/>
+            <stop offset="100%" stop-color="#FF4B2B"/>
+          </linearGradient>
+          <filter id="sdw1" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.4"/>
+          </filter>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#bg1)" rx="20"/>
+        <rect x="0" y="0" width="100%" height="8" fill="url(#accent1)" rx="4"/>
+        <circle cx="740" cy="45" r="80" fill="#ffffff" opacity="0.04"/>
+        <circle cx="60" cy="180" r="90" fill="#ffffff" opacity="0.03"/>
+        <rect x="25" y="25" width="750" height="180" fill="none" stroke="#64ffda" stroke-width="1.5" stroke-dasharray="8,6" rx="14" opacity="0.3"/>
+        <text x="400" y="65" font-family="'Segoe UI', Roboto, sans-serif" font-size="32" font-weight="900" fill="#FFE000" text-anchor="middle" letter-spacing="2" filter="url(#sdw1)">ARUNOGYAN Educational Portal</text>
+        <rect x="160" y="88" width="480" height="42" fill="url(#accent1)" rx="21" filter="url(#sdw1)"/>
+        <text x="400" y="116" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">✨ DAILY SCHOOL PRAYER ASSEMBLY ✨</text>
+        <rect x="180" y="148" width="440" height="38" fill="rgba(255,255,255,0.12)" rx="19" stroke="#64ffda" stroke-width="1.2"/>
+        <text x="400" y="173" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#64ffda" text-anchor="middle">✔ KNOWLEDGE • SCIENCE • VALUES • INSPIRATION ✔</text>
+      </svg>
     </div>
 
     <!-- ૨.૨ શિક્ષક આવકાર અને કાયમી ફોલો સંદેશ -->
@@ -193,10 +226,10 @@
 
     <!-- ૨.૪ પંચાંગ વિભાગ -->
     <div class="section-box" style="background: #fff5f5; border: 1px solid #fed7d7; border-left: 6px solid #e53e3e;">
-      <h3 style="margin: 0 0 10px 0; color: #9b2c2c; font-size: 19px; font-weight: bold;">🕉️ આજનું પંચાંગ (૧૩ ઓક્ટોબર ૨૦૨૬)</h3>
+      <h3 style="margin: 0 0 10px 0; color: #9b2c2c; font-size: 19px; font-weight: bold;">🕉️ આજનું પંચાંગ (૧૪ ઓક્ટોબર ૨૦૨૬)</h3>
       <div style="font-size: 15.5px; color: #2d3748;">
         <p style="margin: 0 0 6px 0;">🚩 <b>વિક્રમ સંવત:</b> ૨૦૮૨</p>
-        <p style="margin: 0 0 6px 0;">🌙 <b>માસ &amp; તિથિ:</b> આસો સુદ ત્રીજ (નવરાત્રી તૃતીય નોરતું - મા ચંદ્રઘંટા પૂજન - સાહસ અને શાંતિ પર્વ)</p>
+        <p style="margin: 0 0 6px 0;">🌙 <b>માસ &amp; તિથિ:</b> આસો સુદ ચોથ (નવરાત્રી ચતુર્થ નોરતું - મા કુષ્માંડા પૂજન - સૃષ્ટિ સર્જન પર્વ)</p>
         <p style="margin: 0; font-weight: bold; color: #c53030;">✨ રાશિ: વૃશ્ચિક (ન, ય)</p>
       </div>
     </div>
@@ -205,60 +238,45 @@
     <div class="section-box" style="background: #fffdf5; border: 1px solid #fef3c7; border-left: 6px solid #d97706;">
       <h3 style="margin: 0 0 12px 0; color: #b45309; font-size: 19px; font-weight: bold;">💡 આજનો પ્રેરણાદાયી સુવિચાર</h3>
       <p style="margin: 0 0 10px 0; font-weight: bold; font-size: 17px; color: #1a202c; font-style: italic;">
-        "સાહસ, ધૈર્ય અને સંયમ મુશ્કેલ પરિસ્થિતિને પણ અનુકૂળ બનાવી દે છે; અડગ મનોબળ આગળ કોઈ પણ આપત્તિ ટકી શકતી નથી."
+        "સદ્ગુણ અને વિદ્યા જ માનવ જીવનના સાચા અલંકાર છે; સતત શીખવાની વૃત્તિ જ સફળતા તરફ દોરી જાય છે."
       </p>
       <p style="margin: 0; font-size: 15px; color: #4a5568; border-top: 1px dashed #fcd34d; padding-top: 8px;">
-        <b>અર્થ:</b> જીવનમાં અણધારી મુશ્કેલીઓ આવે ત્યારે ગભરાયા વગર ધીરજ અને હિંમતથી કામ લેવું એ જ સાચી બુદ્ધિમાની છે.
+        <b>અર્થ:</b> બાહ્ય સુંદરતા કરતાં મનના સારા વિચારો અને જ્ઞાન વધારે કિંમતી છે.
       </p>
     </div>
 
-    <!-- ૨.૬ સમાચાર વિભાગ (આપેલા તાજા સમાચાર સાથે) -->
+    <!-- ૨.૬ સમાચાર વિભાગ -->
     <div class="section-box" style="background: #f8f9fa; border-left: 6px solid #718096; border: 1px solid #e2e8f0;">
       <h3 style="margin: 0 0 14px 0; color: #2d3748; font-size: 19px; font-weight: bold;">📰 આજના મુખ્ય સમાચાર</h3>
       
-      <!-- ૧. ગુજરાતના સમાચાર -->
-      <div class="news-category" style="border-left: 4px solid #3182ce;">
-        <span style="font-weight: bold; color: #2b6cb0; display: block; margin-bottom: 6px; font-size: 16px;">📢 ૧. ગુજરાતના સમાચાર (Gujarat News):</span>
-        <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li>નવરાત્રિના બીજા દિવસે ગુજરાતના તમામ માઈ મંદિરોમાં ભક્તોની ભારે ભીડ ઉમટી.</li>
-          <li>ગુજરાત સરકારે આદિવાસી વિસ્તારોના વિકાસ માટે 'મિશન ટ્રાઈબ' શરૂ કર્યું.</li>
-        </ul>
+      <!-- ગુજરાત સમાચાર -->
+      <div class="news-item" style="border-left-color: #3182ce;">
+        <span style="font-weight: bold; color: #2b6cb0; display: block; margin-bottom: 4px;">📌 ગુજરાતના મુખ્ય સમાચાર:</span>
+        <p style="margin: 0 0 4px 0; font-size: 15px; color: #2d3748;">૧. ગાંધીનગર મહાનગરપાલિકા અને સ્થાનિક ચૂંટણીના પરિણામો આજે જાહેર થયા.</p>
+        <p style="margin: 0; font-size: 15px; color: #2d3748;">૨. અમદાવાદમાં આર્ટિફિશિયલ ઇન્ટેલિજન્સ સ્માર્ટ પોલીસિંગ હેકાથોન સફળતાપૂર્વક સંપન્ન થઈ.</p>
       </div>
 
-      <!-- ૨. દેશના સમાચાર -->
-      <div class="news-category" style="border-left: 4px solid #38a169;">
-        <span style="font-weight: bold; color: #2f855a; display: block; margin-bottom: 6px; font-size: 16px;">🇮🇳 ૨. દેશના સમાચાર (National News):</span>
-        <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li>દિલ્હીમાં ચૂંટણી કમિશનરના રાજીનામાની માંગ સાથે વિપક્ષી નેતાઓએ મોટો મોરચો કાઢ્યો.</li>
-          <li>રાહુલ ગાંધીએ મતદાર યાદી મામલે સુપ્રીમ કોર્ટમાં સ્વતંત્ર તપાસની અરજી કરી.</li>
-        </ul>
+      <!-- દેશ અને વિદેશ સમાચાર -->
+      <div class="news-item" style="border-left-color: #38a169;">
+        <span style="font-weight: bold; color: #2f855a; display: block; margin-bottom: 4px;">🌍 દેશ અને વિદેશના મુખ્ય સમાચાર:</span>
+        <p style="margin: 0 0 4px 0; font-size: 15px; color: #2d3748;">૧. ભારતમાં બ્રિક્સ (BRICS) દેશોની પરંપરાગત રમતોનું ભવ્ય આયોજન થયું.</p>
+        <p style="margin: 0; font-size: 15px; color: #2d3748;">૨. અમેરિકાની મિડટર્મ ચૂંટણી માટે રાજકીય ગરમાવો ચરમસીમાએ પહોંચ્યો.</p>
       </div>
 
-      <!-- ૩. વિદેશના સમાચાર -->
-      <div class="news-category" style="border-left: 4px solid #805ad5;">
-        <span style="font-weight: bold; color: #6b46c1; display: block; margin-bottom: 6px; font-size: 16px;">🌐 ૩. વિદેશના સમાચાર (International News):</span>
-        <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li>યમનના હુથી બળવાખોરોએ સાઉદી અરેબિયાના રિયાધ એરપોર્ટ પર ફરી હુમલો કર્યો.</li>
-          <li>બાર્સિલોના ફૂટબોલ ક્લબે લીગ મેચ જીતીને સર્વશ્રેષ્ઠ શરૂઆતનો રેકોર્ડ બરાબર કર્યો.</li>
-        </ul>
-      </div>
-
-      <!-- ૪. રમતગમત સમાચાર -->
-      <div class="news-category" style="border-left: 4px solid #d97706; margin-bottom: 0;">
-        <span style="font-weight: bold; color: #b45309; display: block; margin-bottom: 6px; font-size: 16px;">🏆 ૪. રમતગમત સમાચાર (Sports News):</span>
-        <ul style="margin: 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.8;">
-          <li>રણજી ટ્રોફી ક્રિકેટમાં મુંબઈના બોલર તુષાર દેશપાંડેએ શાનદાર હેટ્રિક ઝડપી.</li>
-          <li>રમતગમત મંત્રાલયે એશિયન ગેમ્સમાં ભારતીય ખેલાડીઓના પ્રદર્શનની સમીક્ષા બેઠક યોજી.</li>
-        </ul>
+      <!-- રમતગમત સમાચાર -->
+      <div class="news-item" style="border-left-color: #d97706; margin-bottom: 0;">
+        <span style="font-weight: bold; color: #b45309; display: block; margin-bottom: 4px;">🏆 રમતગમતના મુખ્ય સમાચાર:</span>
+        <p style="margin: 0 0 4px 0; font-size: 15px; color: #2d3748;">૧. કોમનવેલ્થ કયૂ સ્પોર્ટ્સમાં ૧૩ મેડલ જીતી ભારત સમગ્ર સ્પર્ધામાં મોખરે રહ્યું.</p>
+        <p style="margin: 0; font-size: 15px; color: #2d3748;">૨. અમદાવાદમાં બ્રિક્સ રમતોમાં ભારતીય મલ્લખંભ અને યોગાસનનું આકર્ષક પ્રદર્શન છવાયું.</p>
       </div>
     </div>
 
     <!-- ૨.૭ અવનવું જાણવા જેવું (વૈજ્ઞાનિક રહસ્ય) -->
     <div class="section-box" style="background: #f0fdf4; border: 1px solid #dcfce7; border-left: 6px solid #16a34a;">
       <h3 style="margin: 0 0 10px 0; color: #15803d; font-size: 19px; font-weight: bold;">🔬 અવનવું જાણવા જેવું (વૈજ્ઞાનિક રહસ્ય)</h3>
-      <p style="margin: 0 0 8px 0; font-weight: bold; color: #1a202c; font-size: 15.5px;">પ્રશ્ન: માછલીઓ પાણીની અંદર ડૂબ્યા વગર શ્વાસ કેવી રીતે લે છે?</p>
+      <p style="margin: 0 0 8px 0; font-weight: bold; color: #1a202c; font-size: 15.5px;">પ્રશ્ન: ચોકલેટ કૂતરાઓ માટે ઝેરી (ખતરનાક) કેમ ગણાય છે?</p>
       <p style="margin: 0; font-size: 15px; color: #4a5568; text-align: justify; line-height: 1.8;">
-        <b>જવાબ:</b> માછલીઓ પાસે મનુષ્યની જેમ ફેફસાં હોતા નથી, પરંતુ શ્વસન માટે કુદરતે તેમને <b>ઝાલર (Gills)</b> આપ્યા છે! માછલી જ્યારે મોં દ્વારા પાણી અંદર લે છે ત્યારે તે પાણી ઝાલર પરથી પસાર થાય છે. ઝાલરમાં રહેલી અત્યંત પાતળી અને અસંખ્ય રક્તવાહિનીઓ પાણીમાં ઓગળેલા ઓક્સિજન (Dissolved Oxygen) ને શોષીને લોહીમાં ભેળવી દે છે અને લોહીનો કાર્બન ડાયોક્સાઇડ બહાર કાઢી નાખે છે. આ અદ્ભુત તંત્રને કારણે માછલી પાણીમાં સરળતાથી જીવી શકે છે!
+        <b>જવાબ:</b> ચોકલેટમાં <b>'થિયોબ્રોમાઈન' (Theobromine)</b> નામનું કુદરતી રસાયણ હોય છે. મનુષ્ય આ રસાયણને સરળતાથી પચાવી લે છે, પરંતુ કૂતરાઓના પાચનતંત્ર અને લીવરમાં આ રસાયણ ખૂબ જ ધીમેથી પચે છે. કૂતરા માટે થિયોબ્રોમાઈનની થોડી માત્રા પણ ઝેરી સાબિત થઈ શકે છે, જેનાથી તેના હૃદય અને ચેતાતંત્ર પર ગંભીર અસર થાય છે!
       </p>
     </div>
 
@@ -277,84 +295,99 @@
           </thead>
           <tbody>
             <tr>
-              <td style="text-align: center;">🐟</td>
-              <td>ગિલ્સ</td>
-              <td style="font-weight: bold; color: #3182ce;">GILLS</td>
-              <td>ઝાલર / માછલીનું શ્વસનાંગ</td>
+              <td style="text-align: center;">🍫</td>
+              <td>થિયોબ્રોમાઈન</td>
+              <td style="font-weight: bold; color: #3182ce;">THEOBROMINE</td>
+              <td>ચોકલેટમાં રહેલું એક રસાયણ</td>
             </tr>
             <tr style="background-color: #f7fafc;">
-              <td style="text-align: center;">💧</td>
-              <td>ડિઝોલ્વ</td>
-              <td style="font-weight: bold; color: #3182ce;">DISSOLVE</td>
-              <td>ઓગળવું / દ્રાવ્ય થવું</td>
+              <td style="text-align: center;">📏</td>
+              <td>સ્ટેન્ડર્ડ</td>
+              <td style="font-weight: bold; color: #3182ce;">STANDARD</td>
+              <td>પ્રમાણભૂત / માનક / સ્તર</td>
             </tr>
             <tr>
-              <td style="text-align: center;">🛡️</td>
-              <td>કરેજ</td>
-              <td style="font-weight: bold; color: #3182ce;">COURAGE</td>
-              <td>હિંમત / સાહસ / બહાદુરી</td>
+              <td style="text-align: center;">☀️</td>
+              <td>સ્પેક્ટ્રમ</td>
+              <td style="font-weight: bold; color: #3182ce;">SPECTRUM</td>
+              <td>વર્ણપટ / સાત રંગોનો સમૂહ</td>
             </tr>
             <tr style="background-color: #f7fafc;">
-              <td style="text-align: center;">🌪️</td>
-              <td>ડિઝાસ્ટર</td>
-              <td style="font-weight: bold; color: #3182ce;">DISASTER</td>
-              <td>આપત્તિ / હોનારત / સંકટ</td>
+              <td style="text-align: center;">🛡️</td>
+              <td>ક્વોલિટી</td>
+              <td style="font-weight: bold; color: #3182ce;">QUALITY</td>
+              <td>ગુણવત્તા / શ્રેષ્ઠતા</td>
             </tr>
             <tr>
               <td style="text-align: center;">🎯</td>
-              <td>રેઝિલિયન્સ</td>
-              <td style="font-weight: bold; color: #3182ce;">RESILIENCE</td>
-              <td>સામનો કરવાની શક્તિ / સ્થિતિસ્થાપકતા</td>
+              <td>પ્રિસિઝન</td>
+              <td style="font-weight: bold; color: #3182ce;">PRECISION</td>
+              <td>ચોકસાઈ / સચોટતા</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ૨.૯ આજનું વિસ્તૃત દિન વિશેષ (૧૩ ઓક્ટોબર) -->
+    <!-- ૨.૯ આજનું વિસ્તૃત દિન વિશેષ (૧૪ ઓક્ટોબર) -->
     <div class="section-box" style="background: #f0fdf4; border: 1px solid #bbf7d0; border-left: 6px solid #16a34a;">
-      <h3 style="margin: 0 0 15px 0; color: #15803d; font-size: 19px; font-weight: bold;">📢 આજનું વિસ્તૃત દિન વિશેષ (૧૩ ઓક્ટોબર)</h3>
+      <h3 style="margin: 0 0 15px 0; color: #15803d; font-size: 19px; font-weight: bold;">📢 આજનું વિસ્તૃત દિન વિશેષ (૧૪ ઓક્ટોબર)</h3>
       
-      <!-- દિન વિશેષ ૧: આંતરરાષ્ટ્રીય કુદરતી આપત્તિ નિવારણ દિવસ -->
+      <!-- દિન વિશેષ ૧: વિશ્વ માનક દિવસ -->
       <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #86efac; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🌪️ ૧. આંતરરાષ્ટ્રીય કુદરતી આપત્તિ નિવારણ દિવસ (International Day for Disaster Risk Reduction)</h4>
+        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">📏 ૧. વિશ્વ માનક દિવસ (World Standards Day)</h4>
         <p style="margin: 0; font-size: 15px; color: #4a5568; line-height: 1.8; text-align: justify;">
-          • <b>સ્થાપના અને હેતુ:</b> સંયુક્ત રાષ્ટ્ર (UN) દ્વારા દર વર્ષે ૧૩ ઓક્ટોબરે આ દિવસ ઉજવાય છે. પૂર, વાવાઝોડું, ભૂકંપ જેવી કુદરતી આપત્તિઓ સામે પૂર્વસજ્જતા કેળવવા અને જાનમાલનું નુકસાન ઘટાડવા જાગૃતિ લાવવામાં આવે છે.<br>
-          • <b>શાળા સ્તરે જાગૃતિ:</b> શાળાઓમાં મોકડ્રીલ અને આપત્તિ વ્યવસ્થાપનની તાલીમ આપી બાળકોને સુરક્ષિત રહેવાના નિયમો શીખવવામાં આવે છે.
+          • <b>હેતુ અને મહત્વ:</b> દર વર્ષે ૧૪ ઓક્ટોબરે વિશ્વભરમાં ઉત્પાદનોની ગુણવત્તા અને સુરક્ષા માટે માનકીકરણ (Standardization) ના મહત્વ પ્રત્યે જાગૃતિ લાવવા આ દિવસ ઉજવાય છે. ISO અને BIS જેવી સંસ્થાઓ આ માટે ચોક્કસ ધોરણો નક્કી કરે છે.
         </p>
       </div>
 
-      <!-- દિન વિશેષ ૨: નવરાત્રી તૃતીય નોરતું -->
-      <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #86efac; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🚩 ૨. આસો સુદ ત્રીજ - નવરાત્રી તૃતીય નોરતું (મા ચંદ્રઘંટા પૂજન)</h4>
-        <p style="margin: 0; font-size: 15px; color: #4a5568; line-height: 1.8; text-align: justify;">
-          • <b>આધ્યાત્મિક મહત્વ:</b> નવરાત્રીના ત્રીજા દિવસે મા દુર્ગાના ત્રીજા સ્વરૂપ 'મા ચંદ્રઘંટા'ની પૂજા થાય છે. તેમના મસ્તક પર ઘંટના આકારનો અર્ધચંદ્ર શોભે છે.<br>
-          • <b>જીવન સંદેશ:</b> માતાજીનું આ સ્વરૂપ સાધકને વીરતા અને નિર્ભયતા પ્રદાન કરે છે તેમજ મનને પરમ શાંતિ આપે છે.
-        </p>
-      </div>
-
-      <!-- દિન વિશેષ ૩: ભૂલાભાઈ દેસાઈ જન્મજયંતી -->
+      <!-- દિન વિશેષ ૨: નવરાત્રી ચતુર્થ નોરતું -->
       <div style="background: #ffffff; padding: 18px; border-radius: 12px; border: 1px solid #86efac; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🇮🇳 ૩. પ્રખર ધારાશાસ્ત્રી અને સ્વાતંત્ર્ય સેનાની ભૂલાભાઈ દેસાઈ જન્મજયંતી</h4>
+        <h4 style="margin: 0 0 10px 0; color: #166534; font-size: 18px; border-bottom: 2px solid #dcfce7; padding-bottom: 6px;">🚩 ૨. આસો સુદ ચોથ - નવરાત્રી ચતુર્થ નોરતું (મા કુષ્માંડા પૂજન)</h4>
         <p style="margin: 0; font-size: 15px; color: #4a5568; line-height: 1.8; text-align: justify;">
-          • ૧૩ ઓક્ટોબર, ૧૮૭૭ના રોજ ગુજરાતના વલસાડમાં જન્મેલા ભૂલાભાઈ દેસાઈ ભારતના અગ્રણી ધારાશાસ્ત્રી હતા. તેમણે લાલ કિલ્લાના ઐતિહાસિક મુકદ્દમામાં આઝાદ હિન્દ ફોજ (INA) ના સૈનિકોનો પ્રભાવશાળી બચાવ કરી દેશસેવાનું ઉત્તમ ઉદાહરણ પૂરું પાડ્યું હતું.
+          • <b>આધ્યાત્મિક મહત્વ:</b> નવરાત્રીના ચોથા દિવસે 'મા કુષ્માંડા'ની આરાધના થાય છે. માન્યતા મુજબ પોતાની મંદ મુસ્કુરાહટથી બ્રહ્માંડની રચના કરનાર આદિશક્તિ મા કુષ્માંડા સાધકને આરોગ્ય અને તેજ પ્રદાન કરે છે.
         </p>
       </div>
 
-      <!-- ૨.૯.૧ ૧૦૦% સ્પષ્ટ અને શાર્પ Base64 SVG ફીચર બેનર (૨) -->
+      <!-- ૨.૯.૧ ૧૦૦% શાર્પ અને સ્પષ્ટ ઇનલાઇન SVG ફીચર બેનર (૨) -->
       <div style="text-align: center; margin-top: 20px;">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMjEwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSJhdXRvIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmcyIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBiM2E0MiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzE0NTM2MSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwZjc2NmUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJhZGdlRyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmJjZjI0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2Y1OWUwYiIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDxmaWx0ZXIgaWQ9ImRyb3AyIiB4PSItNSUiIHk9Ii01JSIgd2lkdGg9IjExMCUiIGhlaWdodD0iMTEwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSIzIiBzdGREZXZpYXRpb249IjQiIGZsb29kLWNvbG9yPSIjMDAwIiBmbG9vZC1vcGFjaXR5PSIwLjM1Ii8+CiAgICA8L2ZpbHRlcj4KICA8L2RlZnM+CiAgCiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNiZzIpIiByeD0iMjAiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSI4IiBmaWxsPSJ1cmwoI2JhZGdlRykiIHJ4PSI0Ii8+CiAgPGNpcmNsZSBjeD0iNzMwIiBjeT0iNTAiIHI9IjcwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA4Ii8+CiAgPGNpcmNsZSBjeD0iNzAiIGN5PSIxNjAiIHI9IjgwIiBmaWxsPSIjZmZmZmZmIiBvcGFjaXR5PSIwLjA2Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjI0IiB3aWR0aD0iNzUwIiBoZWlnaHQ9IjE2MiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOWJlYmYwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNyw1IiByeD0iMTQiIG9wYWNpdHk9IjAuNCIvPgogIAogIDxyZWN0IHg9IjE4MCIgeT0iMzIiIHdpZHRoPSI0NDAiIGhlaWdodD0iMzIiIGZpbGw9InVybCgjYmFkZ2VHKSIgcng9IjE2IiBmaWx0ZXI9InVybCgjZHJvcDIpIj48L3JlY3Q+CiAgPHRleHQgeD0iNDAwIiB5PSI1NCIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCBIZWx2ZXRpY2EsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMGIzYTQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMS41Ij7inIQgMTMgT0NUT0JFUiDigKIgU1BFQ0lBTCBEQVkgUkVDT0dOSVRJT04g4pyEPC90ZXh0PgogIAogIDx0ZXh0IHg9IjQwMCIgeT0iMTA1IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjUiIGZvbnQtd2VpZ2h0PSI5MDAiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIxIiBmaWx0ZXI9InVybCgjZHJvcDIpIj5ESVNBU1RFUiBSRURVQ1RJT04gREFZICYgTkFWUkFUUkkgVFJVVElZQTwvdGV4dD4KIAogIDx0ZXh0IHg9IjQwMCIgeT0iMTQwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZGUwNDciIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJlc2lsaWVuY2UsIFNhZmV0eSAmIERldm90aW9uIHRvIE1hYSBDaGFuZHJhZ2hhbnRhPC90ZXh0PgogIAogIDx0ZXh0IHg9IjQwMCIgeT0iMTcwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAnU2Vnb2UgVUknLCBSb2JvdG8sIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiM5YmViZjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKchCBBUlVOT0dZQU4gRWR1Y2F0aW9uYWwgUG9ydGFsIOKAoiBSaXRlc2ggU2FyYWl5YSDinIQ8L3RleHQ+Cjwvc3ZnPg==" alt="Disaster Reduction Day & Navratri Trutiya Banner" style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);" />
+        <svg class="svg-banner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 210">
+          <defs>
+            <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0b3a42"/>
+              <stop offset="50%" stop-color="#145361"/>
+              <stop offset="100%" stop-color="#0f766e"/>
+            </linearGradient>
+            <linearGradient id="badgeG2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#fbcf24"/>
+              <stop offset="100%" stop-color="#f59e0b"/>
+            </linearGradient>
+            <filter id="drp2" x="-5%" y="-5%" width="110%" height="110%">
+              <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000" flood-opacity="0.35"/>
+            </filter>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#bg2)" rx="20"/>
+          <rect x="0" y="0" width="100%" height="8" fill="url(#badgeG2)" rx="4"/>
+          <circle cx="730" cy="50" r="70" fill="#ffffff" opacity="0.08"/>
+          <circle cx="70" cy="160" r="80" fill="#ffffff" opacity="0.06"/>
+          <rect x="25" y="24" width="750" height="162" fill="none" stroke="#9befb0" stroke-width="1.5" stroke-dasharray="7,5" rx="14" opacity="0.4"/>
+          <rect x="180" y="32" width="440" height="32" fill="url(#badgeG2)" rx="16" filter="url(#drp2)"/>
+          <text x="400" y="54" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="900" fill="#0b3a42" text-anchor="middle" letter-spacing="1.5">✔ 14 OCTOBER • SPECIAL DAY RECOGNITION ✔</text>
+          <text x="400" y="105" font-family="'Segoe UI', Roboto, sans-serif" font-size="25" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1" filter="url(#drp2)">WORLD STANDARDS DAY &amp; NAVRATRI CHATURTHA</text>
+          <text x="400" y="140" font-family="'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#fde047" text-anchor="middle">Quality, Precision &amp; Devotion to Maa Kushmanda</text>
+          <text x="400" y="170" font-family="'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#39bef0" text-anchor="middle">✔ ARUNOGYAN Educational Portal • Ritesh Saraiya ✔</text>
+        </svg>
       </div>
     </div>
 
     <!-- ૨.૧૦ બાળવાર્તા -->
     <div class="section-box" style="background: #e6fffa; border: 1px solid #b2f5ea; border-left: 6px solid #319795;">
-      <h3 style="margin: 0 0 8px 0; color: #234e52; font-size: 19px; font-weight: bold;">📖 આજની પ્રેરણાદાયી બાળવાર્તા: નાનકડી કીડી અને સાહસ</h3>
+      <h3 style="margin: 0 0 8px 0; color: #234e52; font-size: 19px; font-weight: bold;">📖 આજની પ્રેરણાદાયી બાળવાર્તા: ચતુર ચકલી અને એકતા</h3>
       <p style="margin: 0 0 10px 0; font-size: 15px; color: #2d3748; text-align: justify; line-height: 1.8;">
-        એક નાનકડી કીડી પાણી પીવા ગઈ ત્યારે નદીના તેજ પ્રવાહમાં તણાઈ ગઈ. તે ગભરાઈ નહીં, પણ ચારેતરફ નજર દોડાવી. નજીકમાંથી એક સૂકું પાંદડું વહી રહ્યું હતું. કીડીએ પૂરી તાકાત લગાવી પાંદડા પર ચડી ગઈ. તે શાંતિથી પાંદડા પર બેસી રહી જ્યાં સુધી પવન તેને નદીના કિનારે ન લઈ ગયો! કિનારે પહોંચતાં જ તે સુરક્ષિત બહાર આવી ગઈ.
+        એક શિકારીની જાળમાં કબૂતરોનું ટોળું ફસાઈ ગયું. બધાં ગભરાઈ ગયાં. ત્યાં એક ચતુર ચકલી આવી અને તેણે બુદ્ધિપૂર્વક સલાહ આપી: "જો બધાં એકસાથે જોર કરીને એક જ દિશામાં ઊડશો તો જાળ સાથે ઊડી શકશો." બધાં પક્ષીઓએ ચકલીની વાત માની એકસાથે જોર કર્યું અને જાળ સાથે ઊડીને પોતાના મિત્ર ઉંદર પાસે જઈને મુક્ત થયાં.
       </p>
       <p style="margin: 0; font-size: 14.5px; color: #2c7a7b; font-weight: bold;">
-        💡 બોધ: જીવનમાં ગમે તેવી અણધારી આફત કે સંકટ આવે, ગભરાયા વગર ધીરજ અને સાહસથી રસ્તો શોધવામાં આવે તો સુરક્ષિત બહાર નીકળી શકાય છે.
+        💡 બોધ: એકતા અને બુદ્ધિપૂર્વકની યોજના આગળ ગમે તેવું મોટું સંકટ નિષ્ફળ જાય છે.
       </p>
     </div>
 
