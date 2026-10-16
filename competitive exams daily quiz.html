@@ -3,244 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEP 2020 Special Quiz - Part 3: Top 20 Questions</title>
+    <title>NEP 2020 Special Quiz - Part 4: Top 20 Questions</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f3f4; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 750px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 6px solid #2980b9; }
+        .quiz-container { max-width: 750px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 6px solid #d35400; }
         h2 { color: #1a237e; text-align: center; margin-bottom: 20px; font-size: 22px; }
-        .question-box { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #2980b9; }
+        .question-box { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #d35400; }
         .question-title { font-weight: bold; color: #333; margin-bottom: 10px; font-size: 15.5px; }
         .options label { display: block; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; color: #444; }
         .btn-submit { display: block; width: 100%; background: #27ae60; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
         .btn-submit:hover { background: #219653; }
-        #result-box { display: none; margin-top: 20px; padding: 15px; background: #e8f8f5; border: 2px solid #27ae60; border-radius: 8px; text-align: center; font-size: 18px; font-weight: bold; color: #0e6655; }
+        #result-box { display: none; margin-top: 20px; padding: 15px; background: #e8f8f5; border: 2px solid #27ae60; border-radius: 8px; font-size: 16px; color: #0e6655; }
+        .summary-item { margin-top: 10px; padding: 8px; background: #fff; border-left: 3px solid #c0392b; font-size: 14px; }
         .credit-box { background-color: #efebe9; border: 1px dashed #5d4037; padding: 10px; text-align: center; font-weight: bold; margin: 20px 0; border-radius: 4px; font-size: 14px; }
+        .whatsapp-btn { display: inline-block; background-color: #25D366; color: white; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; margin-top: 15px; }
+        .whatsapp-container { text-align: center; margin-top: 25px; }
         .btn-back { display: block; text-align: center; margin-top: 15px; color: #2980b9; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <h2>🎯 રાષ્ટ્રીય શિક્ષણ નીતિ 2020 (NEP 2020) ક્વિઝ - ભાગ ૩ (૨૦ પ્રશ્નો)<br><span style="font-size: 15px; color: #e67e22;">વિષય: સ્પર્ધાત્મક પરીક્ષાઓ માટે મોસ્ટ ઈમ્પોર્ટન્ટ પ્રશ્નોત્તરી</span></h2>
+    <h2>🎯 રાષ્ટ્રીય શિક્ષણ નીતિ 2020 (NEP 2020) ક્વિઝ - ભાગ ૪ (૨૦ પ્રશ્નો)<br><span style="font-size: 15px; color: #e67e22;">વિષય: સ્પર્ધાત્મક પરીક્ષાઓ માટે મોસ્ટ ઈમ્પોર્ટન્ટ પ્રશ્નોત્તરી</span></h2>
 
     <form id="quizForm">
         <!-- Q1 -->
-        <div class="question-box">
-            <div class="question-title">૧. NEP 2020 મુજબ શાળાકીય શિક્ષણમાં કયા વયજૂથના બાળકોને મુખ્ય પ્રવાહમાં લાવવા પર ભાર મૂકાયો છે?</div>
+        <div class="question-box" data-qname="q1" data-correct-ans="રમતગમત અને પ્રવૃત્તિ આધારિત શિક્ષણ">
+            <div class="question-title">૧. NEP 2020 મુજબ પાયાના તબક્કે (Foundational Stage) શિક્ષણનો મુખ્ય ભાર શેના પર છે?</div>
             <div class="options">
-                <label><input type="radio" name="q1" value="A"> A) ૬ થી ૧૪ વર્ષ</label>
-                <label><input type="radio" name="q1" value="B"> B) ૩ થી ૧૪ વર્ષ</label>
-                <label><input type="radio" name="q1" value="C" data-correct="true"> C) ૩ થી ૧૮ વર્ષ</label>
-                <label><input type="radio" name="q1" value="D"> D) ૬ થી ૧૮ વર્ષ</label>
+                <label><input type="radio" name="q1" value="રમતગમત અને પ્રવૃત્તિ આધારિત શિક્ષણ"> A) રમતગમત અને પ્રવૃત્તિ આધારિત શિક્ષણ</label>
+                <label><input type="radio" name="q1" value="માત્ર પુસ્તકીય લેખન"> B) માત્ર પુસ્તકીય લેખન</label>
+                <label><input type="radio" name="q1" value="ગણિત અને વિજ્ઞાન ગોખણ"> C) ગણિત અને વિજ્ઞાન ગોખણ</label>
+                <label><input type="radio" name="q1" value="માત્ર ભાષા વ્યાકરણ"> D) માત્ર ભાષા વ્યાકરણ</label>
             </div>
         </div>
 
         <!-- Q2 -->
-        <div class="question-box">
-            <div class="question-title">૨. 'નેશનલ એસેસમેન્ટ સેન્ટર' તરીકે મૂલ્યાંકન માટે કઈ સંસ્થા કાર્ય કરશે?</div>
+        <div class="question-box" data-qname="q2" data-correct-ans="૩ થી ૬ વર્ષ">
+            <div class="question-title">૨. કઈ વય સુધીના બાળકો માટે 'અર્લી ચાઈલ્ડહુડ કેર એન્ડ એજ્યુકેશન' (ECCE) છે?</div>
             <div class="options">
-                <label><input type="radio" name="q2" value="A" data-correct="true"> A) પરખ (PARAKH)</label>
-                <label><input type="radio" name="q2" value="B"> B) NCERT</label>
-                <label><input type="radio" name="q2" value="C"> C) NRF</label>
-                <label><input type="radio" name="q2" value="D"> D) HECI</label>
+                <label><input type="radio" name="q2" value="૩ થી ૬ વર્ષ"> A) ૩ થી ૬ વર્ષ</label>
+                <label><input type="radio" name="q2" value="૬ થી ૧૪ વર્ષ"> B) ૬ થી ૧૪ વર્ષ</label>
+                <label><input type="radio" name="q2" value="૩ થી ૮ વર્ષ"> C) ૩ થી ૮ વર્ષ</label>
+                <label><input type="radio" name="q2" value="૫ થી ૧૦ વર્ષ"> D) ૫ થી ૧૦ વર્ષ</label>
             </div>
         </div>
 
         <!-- Q3 -->
-        <div class="question-box">
-            <div class="question-title">૩. શાળા શિક્ષણમાં પ્રિ-પ્રાઇમરી શિક્ષણ માટે કયું માળખું સૂચવવામાં આવ્યું છે?</div>
+        <div class="question-box" data-qname="q3" data-correct-ans="પ્રિપેરેટરી સ્ટેજ">
+            <div class="question-title">૩. ધોરણ ૧ થી ૫ ના તબક્કાને NEP 2020 માં શું કહેવામાં આવ્યું છે?</div>
             <div class="options">
-                <label><input type="radio" name="q3" value="A"> A) Anganwadi 2.0</label>
-                <label><input type="radio" name="q3" value="B" data-correct="true"> B) ECCCE (Early Childhood Care and Education)</label>
-                <label><input type="radio" name="q3" value="C"> C) Bal Vatika Program</label>
-                <label><input type="radio" name="q3" value="D"> D) Pre-School Foundation</label>
+                <label><input type="radio" name="q3" value="ફાઉન્ડેશનલ સ્ટેજ"> A) ફાઉન્ડેશનલ સ્ટેજ</label>
+                <label><input type="radio" name="q3" value="પ્રિપેરેટરી સ્ટેજ"> B) પ્રિપેરેટરી સ્ટેજ</label>
+                <label><input type="radio" name="q3" value="મિડલ સ્ટેજ"> C) મિડલ સ્ટેજ</label>
+                <label><input type="radio" name="q3" value="સેકન્ડરી સ્ટેજ"> D) સેકન્ડરી સ્ટેજ</label>
             </div>
         </div>
 
         <!-- Q4 -->
-        <div class="question-box">
-            <div class="question-title">૪. ઉચ્ચ શિક્ષણમાં ગ્રેજ્યુએશન પછી સંશોધન (Research) માટે કેટલા વર્ષની ડિગ્રી જરૂરી છે?</div>
+        <div class="question-box" data-qname="q4" data-correct-ans="૪ વર્ષ">
+            <div class="question-title">૪. શિક્ષક શિક્ષણ (B.Ed.) માં કેટલા વર્ષના ઇન્ટિગ્રેટેડ પ્રોગ્રામ પર ભાર મુકાયો છે?</div>
             <div class="options">
-                <label><input type="radio" name="q4" value="A"> A) ૧ વર્ષ</label>
-                <label><input type="radio" name="q4" value="B"> B) ૨ વર્ષ</label>
-                <label><input type="radio" name="q4" value="C"> C) ૩ વર્ષ</label>
-                <label><input type="radio" name="q4" value="D" data-correct="true"> D) ૪ વર્ષ (Research-based)</label>
+                <label><input type="radio" name="q4" value="૧ વર્ષ"> A) ૧ વર્ષ</label>
+                <label><input type="radio" name="q4" value="૨ વર્ષ"> B) ૨ વર્ષ</label>
+                <label><input type="radio" name="q4" value="૩ વર્ષ"> C) ૩ વર્ષ</label>
+                <label><input type="radio" name="q4" value="૪ વર્ષ"> D) ૪ વર્ષ</label>
             </div>
         </div>
 
         <!-- Q5 -->
-        <div class="question-box">
-            <div class="question-title">૫. શિક્ષક શિક્ષણ (Teacher Education) માં બદલાવ માટે કઈ નવી નીતિ કે માળખું આવશે?</div>
+        <div class="question-box" data-qname="q5" data-correct-ans="સામાજિક અને શૈક્ષણિક સંસાધનોની વહેંચણી">
+            <div class="question-title">૫. 'સ્કૂલ કોમ્પ્લેક્સ' વ્યવસ્થાથી શાળાઓમાં કઈ સુવિધા વધશે?</div>
             <div class="options">
-                <label><input type="radio" name="q5" value="A" data-correct="true"> A) NCFTE</label>
-                <label><input type="radio" name="q5" value="B"> B) NPST</label>
-                <label><input type="radio" name="q5" value="C"> C) NCF</label>
-                <label><input type="radio" name="q5" value="D"> D) NETF</label>
+                <label><input type="radio" name="q5" value="સામાજિક અને શૈક્ષણિક સંસાધનોની વહેંચણી"> A) સામાજિક અને શૈક્ષણિક સંસાધનોની વહેંચણી</label>
+                <label><input type="radio" name="q5" value="શાળાની ફી માં વધારો"> B) શાળાની ફી માં વધારો</label>
+                <label><input type="radio" name="q5" value="વિદ્યાર્થીઓની સંખ્યા ઘટાડો"> C) વિદ્યાર્થીઓની સંખ્યા ઘટાડો</label>
+                <label><input type="radio" name="q5" value="શિક્ષકોની બદલી દરરોજ કરવી"> D) શિક્ષકોની બદલી દરરોજ કરવી</label>
             </div>
         </div>
 
         <!-- Q6 -->
-        <div class="question-box">
-            <div class="question-title">૬. NEP 2020 મુજબ સામાજિક અને શૈક્ષણિક રીતે પછાત વિસ્તારોને શું નામ આપવામાં આવ્યું છે?</div>
+        <div class="question-box" data-qname="q6" data-correct-ans="૩૬૦-ડિગ્રી હોલિસ્ટિક પ્રોગ્રેસ કાર્ડ">
+            <div class="question-title">૬. વિદ્યાર્થીઓના સર્વાંગી મૂલ્યાંકન માટે કયા પ્રકારનું રિપોર્ટ કાર્ડ બનાવવામાં આવશે?</div>
             <div class="options">
-                <label><input type="radio" name="q6" value="A" data-correct="true"> A) SEDGs (Special Education Zones)</label>
-                <label><input type="radio" name="q6" value="B"> B) Backward Education Zones</label>
-                <label><input type="radio" name="q6" value="C"> C) Tribal Study Areas</label>
-                <label><input type="radio" name="q6" value="D"> D) Special Development Hubs</label>
+                <label><input type="radio" name="q6" value="માત્ર માર્ક્સવાળું કાર્ડ"> A) માત્ર માર્ક્સવાળું કાર્ડ</label>
+                <label><input type="radio" name="q6" value="૩૬૦-ડિગ્રી હોલિસ્ટિક પ્રોગ્રેસ કાર્ડ"> B) ૩૬૦-ડિગ્રી હોલિસ્ટિક પ્રોગ્રેસ કાર્ડ</label>
+                <label><input type="radio" name="q6" value="ગ્રેડ માત્ર પ્રોગ્રેસ કાર્ડ"> C) ગ્રેડ માત્ર પ્રોગ્રેસ કાર્ડ</label>
+                <label><input type="radio" name="q6" value="વાર્ષિક ગુણ પત્રક"> D) વાર્ષિક ગુણ પત્રક</label>
             </div>
         </div>
 
         <!-- Q7 -->
-        <div class="question-box">
-            <div class="question-title">૭. ધોરણ ૧ થી ૩ ના બાળકો માટે કઈ બાબત પર વિશેષ ભાર મૂકવામાં આવ્યો છે?</div>
+        <div class="question-box" data-qname="q7" data-correct-ans="CIIL (Central Institute of Indian Languages)">
+            <div class="question-title">૭. NEP 2020 માં ભાષાના વિકાસ માટે કઈ સંસ્થાની મદદ લેવામાં આવશે?</div>
             <div class="options">
-                <label><input type="radio" name="q7" value="A"> A) વિજ્ઞાન અને ગણિત</label>
-                <label><input type="radio" name="q7" value="B" data-correct="true"> B) પાયાની સાક્ષરતા અને અંકજ્ઞાન (FLN)</label>
-                <label><input type="radio" name="q7" value="C"> C) કમ્પ્યુટર કોડિંગ</label>
-                <label><input type="radio" name="q7" value="D"> D) અંગ્રેજી ભાષા પ્રભુત્વ</label>
+                <label><input type="radio" name="q7" value="CIIL (Central Institute of Indian Languages)"> A) CIIL (Central Institute of Indian Languages)</label>
+                <label><input type="radio" name="q7" value="NCERT માત્ર"> B) NCERT માત્ર</label>
+                <label><input type="radio" name="q7" value="UGC માત્ર"> C) UGC માત્ર</label>
+                <label><input type="radio" name="q7" value="AICTE"> D) AICTE</label>
             </div>
         </div>
 
         <!-- Q8 -->
-        <div class="question-box">
-            <div class="question-title">૮. વ્યાવસાયિક શિક્ષણ (Vocational Education) માટે શાળાઓનું જોડાણ કોની સાથે થશે?</div>
+        <div class="question-box" data-qname="q8" data-correct-ans="SSSA (State School Standards Authority)">
+            <div class="question-title">૮. શિક્ષણમાં ખાનગી અને સરકારી શાળાઓ માટેના ધોરણો કોણ નક્કી કરશે?</div>
             <div class="options">
-                <label><input type="radio" name="q8" value="A"> A) માત્ર સરકારી સંસ્થાઓ</label>
-                <label><input type="radio" name="q8" value="B" data-correct="true"> B) સ્થાનિક ઉદ્યોગો અને કૌશલ્ય વિકાસ કેન્દ્રો</label>
-                <label><input type="radio" name="q8" value="C"> C) વિદેશી યુનિવર્સિટીઓ</label>
-                <label><input type="radio" name="q8" value="D"> D) માત્ર આઈ.ટી.આઈ.</label>
+                <label><input type="radio" name="q8" value="SSSA (State School Standards Authority)"> A) SSSA (State School Standards Authority)</label>
+                <label><input type="radio" name="q8" value="માત્ર શિક્ષણ મંત્રી"> B) માત્ર શિક્ષણ મંત્રી</label>
+                <label><input type="radio" name="q8" value="સ્થાનિક પંચાયત"> C) સ્થાનિક પંચાયત</label>
+                <label><input type="radio" name="q8" value="માત્ર શાળાના આચાર્ય"> D) માત્ર શાળાના આચાર્ય</label>
             </div>
         </div>
 
         <!-- Q9 -->
-        <div class="question-box">
-            <div class="question-title">૯. NEP 2020 માં ઓપન સ્કૂલિંગનો લાભ મુખ્યત્વે કોને મળશે?</div>
+        <div class="question-box" data-qname="q9" data-correct-ans="DIKSHA અને SWAYAM">
+            <div class="question-title">૯. NEP 2020 મુજબ 'ડિજિટલ સાક્ષરતા' માટેના મુખ્ય પ્લેટફોર્મ કયા છે?</div>
             <div class="options">
-                <label><input type="radio" name="q9" value="A"> A) માત્ર મેધાavi વિદ્યાર્થીઓને</label>
-                <label><input type="radio" name="q9" value="B" data-correct="true"> B) જેઓ નિયમિત શાળાએ જઈ શકતા નથી</label>
-                <label><input type="radio" name="q9" value="C"> C) માત્ર કોલેજના વિદ્યાર્થીઓને</label>
-                <label><input type="radio" name="q9" value="D"> D) શિક્ષકોને</label>
+                <label><input type="radio" name="q9" value="DIKSHA અને SWAYAM"> A) DIKSHA અને SWAYAM</label>
+                <label><input type="radio" name="q9" value="YouTube અને Google"> B) YouTube અને Google</label>
+                <label><input type="radio" name="q9" value="Zoom અને Teams"> C) Zoom અને Teams</label>
+                <label><input type="radio" name="q9" value="Facebook અને Instagram"> D) Facebook અને Instagram</label>
             </div>
         </div>
 
         <!-- Q10 -->
-        <div class="question-box">
-            <div class="question-title">૧૦. શું NEP 2020 માં પરીક્ષાનું સ્વરૂપ બદલાશે? હા તો કયા પ્રકારે?</div>
+        <div class="question-box" data-qname="q10" data-correct-ans="દર વર્ષે ૫૦ કલાક">
+            <div class="question-title">૧૦. શિક્ષકોના 'પ્રોફેશનલ ડેવલપમેન્ટ' માટે કેટલા કલાકની તાલીમ દર વર્ષે ફરજિયાત છે?</div>
             <div class="options">
-                <label><input type="radio" name="q10" value="A"> A) પરીક્ષાઓ બિલકુલ નહીં લેવાય</label>
-                <label><input type="radio" name="q10" value="B" data-correct="true"> B) તે ગોખણપટ્ટીના બદલે સમજણ પર આધારિત હશે</label>
-                <label><input type="radio" name="q10" value="C"> C) માત્ર મૌખિક પરીક્ષાઓ થશે</label>
-                <label><input type="radio" name="q10" value="D"> D) માત્ર ઓબ્જેક્ટિવ પ્રશ્નો જ હશે</label>
+                <label><input type="radio" name="q10" value="દર વર્ષે ૧૦ કલાક"> A) દર વર્ષે ૧૦ કલાક</label>
+                <label><input type="radio" name="q10" value="દર વર્ષે ૨૫ કલાક"> B) દર વર્ષે ૨૫ કલાક</label>
+                <label><input type="radio" name="q10" value="દર વર્ષે ૫૦ કલાક"> C) દર વર્ષે ૫૦ કલાક</label>
+                <label><input type="radio" name="q10" value="દર વર્ષે ૧૦૦ કલાક"> D) દર વર્ષે ૧૦૦ કલાક</label>
             </div>
         </div>
 
         <!-- Q11 -->
-        <div class="question-box">
-            <div class="question-title">૧૧. ઉચ્ચ શિક્ષણમાં 'એકેડેમિક બેંક ઓફ ક્રેડિટ્સ' (ABC) નો મુખ્ય ફાયદો શું છે?</div>
+        <div class="question-box" data-qname="q11" data-correct-ans="પુસ્તકોની ઉપલબ્ધતા વધારવા">
+            <div class="question-title">૧૧. નેશનલ બુક પ્રોમોશન પોલિસી કયા મુખ્ય લક્ષ્ય સાથે છે?</div>
             <div class="options">
-                <label><input type="radio" name="q11" value="A" data-correct="true"> A) ક્રેડિટ ટ્રાન્સફરની સુવિધા</label>
-                <label><input type="radio" name="q11" value="B"> B) ફી ઓછી ભરવાની સગવડ</label>
-                <label><input type="radio" name="q11" value="C"> C) સ્કોલરશીપ જમા થવી</label>
-                <label><input type="radio" name="q11" value="D"> D) લોન માફી</label>
+                <label><input type="radio" name="q11" value="પુસ્તકોની ઉપલબ્ધતા વધારવા"> A) પુસ્તકોની ઉપલબ્ધતા વધારવા</label>
+                <label><input type="radio" name="q11" value="પુસ્તકો છાપવાનું બંધ કરવા"> B) પુસ્તકો છાપવાનું બંધ કરવા</label>
+                <label><input type="radio" name="q11" value="માત્ર ડિજિટલ બુક્સ રાખવા"> C) માત્ર ડિજિટલ બુક્સ રાખવા</label>
+                <label><input type="radio" name="q11" value="નોવેલ જ વંચાવવા"> D) નોવેલ જ વંચાવવા</label>
             </div>
         </div>
 
         <!-- Q12 -->
-        <div class="question-box">
-            <div class="question-title">૧૨. શૈક્ષણિક સંશોધન માટે સર્વોચ્ચ નોડલ એજન્સી તરીકે કઈ સંસ્થા કાર્ય કરશે?</div>
+        <div class="question-box" data-qname="q12" data-correct-ans="SEDGs (Special Education Zones)">
+            <div class="question-title">૧૨. NEP 2020 માં 'સમાવેશી શિક્ષણ' માટે કયા ખાસ ગ્રુપ્સ પર ધ્યાન આપવામાં આવ્યું છે?</div>
             <div class="options">
-                <label><input type="radio" name="q12" value="A"> A) UGC</label>
-                <label><input type="radio" name="q12" value="B" data-correct="true"> B) NRF (National Research Foundation)</label>
-                <label><input type="radio" name="q12" value="C"> C) NCERT</label>
-                <label><input type="radio" name="q12" value="D"> D) AICTE</label>
+                <label><input type="radio" name="q12" value="SEDGs (Special Education Zones)"> A) SEDGs (Special Education Zones)</label>
+                <label><input type="radio" name="q12" value="માત્ર વિદેશી વિદ્યાર્થીઓ"> B) માત્ર વિદેશી વિદ્યાર્થીઓ</label>
+                <label><input type="radio" name="q12" value="માત્ર ઉચ્ચ વર્ગના બાળકો"> C) માત્ર ઉચ્ચ વર્ગના બાળકો</label>
+                <label><input type="radio" name="q12" value="ખેલકૂદના ખેલાડીઓ"> D) ખેલકૂદના ખેલાડીઓ</label>
             </div>
         </div>
 
         <!-- Q13 -->
-        <div class="question-box">
-            <div class="question-title">૧૩. માતૃભાષા કે પ્રાદેશિક ભાષામાં શિક્ષણ આપવાનું મુખ્ય મનોવૈજ્ઞાનિક કારણ શું છે?</div>
+        <div class="question-box" data-qname="q13" data-correct-ans="નવી શોધ અને જ્ઞાન માટે">
+            <div class="question-title">૧૩. NEP 2020 મુજબ ઉચ્ચ શિક્ષણમાં સંશોધન (Research) નું મહત્વ કેમ વધારે છે?</div>
             <div class="options">
-                <label><input type="radio" name="q13" value="A" data-correct="true"> A) વિષયની સરળ અને ઊંડી સમજ</label>
-                <label><input type="radio" name="q13" value="B"> B) અંગ્રેજી ભાષાનો વિરોધ</label>
-                <label><input type="radio" name="q13" value="C"> C) પરીક્ષામાં માર્ક્સ વધારવા</label>
-                <label><input type="radio" name="q13" value="D"> D) માત્ર સંસ્કૃતિ જાળવવી</label>
+                <label><input type="radio" name="q13" value="ડિગ્રી મેળવવા ખાતર"> A) ડિગ્રી મેળવવા ખાતર</label>
+                <label><input type="radio" name="q13" value="નવી શોધ અને જ્ઞાન માટે"> B) નવી શોધ અને જ્ઞાન માટે</label>
+                <label><input type="radio" name="q13" value="સમય પસાર કરવા માટે"> C) સમય પસાર કરવા માટે</label>
+                <label><input type="radio" name="q13" value="માત્ર નોકરી બદલવા"> D) માત્ર નોકરી બદલવા</label>
             </div>
         </div>
 
         <!-- Q14 -->
-        <div class="question-box">
-            <div class="question-title">૧૪. શાળા વ્યવસ્થાપન સમિતિ (SMC) ની ભૂમિકા NEP 2020 માં કેવી બનાવવામાં આવી છે?</div>
+        <div class="question-box" data-qname="q14" data-correct-ans="કોઈપણ ઉંમરે શિક્ષણ">
+            <div class="question-title">૧૪. NEP 2020 માં આજીવન શિક્ષણ (Lifelong Learning) નો અર્થ શું છે?</div>
             <div class="options">
-                <label><input type="radio" name="q14" value="A"> A) મર્યાદિત અને ઓછી સત્તાવાળી</label>
-                <label><input type="radio" name="q14" value="B" data-correct="true"> B) વધુ સક્રિય અને જવાબદાર</label>
-                <label><input type="radio" name="q14" value="C"> C) નાણાકીય કામ પૂરતી મર્યાદિત</label>
-                <label><input type="radio" name="q14" value="D"> D) બિનજરૂરી જાહેર કરાઈ</label>
+                <label><input type="radio" name="q14" value="કોઈપણ ઉંમરે શિક્ષણ"> A) કોઈપણ ઉંમરે શિક્ષણ</label>
+                <label><input type="radio" name="q14" value="માત્ર ૨૫ વર્ષ સુધી અભ્યાસ"> B) માત્ર ૨૫ વર્ષ સુધી અભ્યાસ</label>
+                <label><input type="radio" name="q14" value="માત્ર શાળાના વર્ષોમાં જ શીખવું"> C) માત્ર શાળાના વર્ષોમાં જ શીખવું</label>
+                <label><input type="radio" name="q14" value="નિવૃત્તિ પછી ભણવાનું બંધ"> D) નિવૃત્તિ પછી ભણવાનું બંધ</label>
             </div>
         </div>
 
         <!-- Q15 -->
-        <div class="question-box">
-            <div class="question-title">૧૫. NEP 2020 નું મુખ્ય અને સર્વોચ્ચ સૂત્ર અથવા ધ્યેય શું છે?</div>
+        <div class="question-box" data-qname="q15" data-correct-ans="હા, તે સમજણ પર આધારિત હશે">
+            <div class="question-title">૧૫. શું NEP 2020 માં પરીક્ષાનું સ્વરૂપ બદલાશે?</div>
             <div class="options">
-                <label><input type="radio" name="q15" value="A" data-correct="true"> A) સર્વગ્રાહી શિક્ષણ (Holistic Education)</label>
-                <label><input type="radio" name="q15" value="B"> B) માત્ર ડિજિટલ શિક્ષણ</label>
-                <label><input type="radio" name="q15" value="C"> C) રોજગારીલક્ષી તાલીમ</label>
-                <label><input type="radio" name="q15" value="D"> D) ઝડપી સાક્ષરતા</label>
+                <label><input type="radio" name="q15" value="ના, જૂની પદ્ધતિ જ રહેશે"> A) ના, જૂની પદ્ધતિ જ રહેશે</label>
+                <label><input type="radio" name="q15" value="હા, તે સમજણ પર આધારિત હશે"> B) હા, તે સમજણ પર આધારિત હશે</label>
+                <label><input type="radio" name="q15" value="પરીક્ષાઓ રદ જ કરી દેવાશે"> C) પરીક્ષાઓ રદ જ કરી દેવાશે</label>
+                <label><input type="radio" name="q15" value="માત્ર મૌખિક જ પરીક્ષા થશે"> D) માત્ર મૌખિક જ પરીક્ષા થશે</label>
             </div>
         </div>
 
         <!-- Q16 -->
-        <div class="question-box">
-            <div class="question-title">૧૬. શાળામાં કલા શિક્ષણ (Art Education) શા માટે ફરજિયાત કરવામાં આવ્યું છે?</div>
+        <div class="question-box" data-qname="q16" data-correct-ans="ભારતમાં કેમ્પસ ખોલી શકશે">
+            <div class="question-title">૧૬. NEP 2020 માં વિદેશી યુનિવર્સિટીઓ માટે શું જોગવાઈ કરવામાં આવી છે?</div>
             <div class="options">
-                <label><input type="radio" name="q16" value="A" data-correct="true"> A) સર્જનાત્મકતા અને સાંસ્કૃતિક સમજ વિકસાવવા</label>
-                <label><input type="radio" name="q16" value="B"> B) માત્ર મનોરંજન માટે</label>
-                <label><input type="radio" name="q16" value="C"> C) સમય પસાર કરવા માટે</label>
-                <label><input type="radio" name="q16" value="D"> D) ચિત્રકાર બનવા માટે</label>
+                <label><input type="radio" name="q16" value="ભારતમાં પ્રવેશ પર પ્રતિબંધ"> A) ભારતમાં પ્રવેશ પર પ્રતિબંધ</label>
+                <label><input type="radio" name="q16" value="ભારતમાં કેમ્પસ ખોલી શકશે"> B) ભારતમાં કેમ્પસ ખોલી શકશે</label>
+                <label><input type="radio" name="q16" value="માત્ર ઓનલાઇન જ ભણાવી શકશે"> C) માત્ર ઓનલાઇન જ ભણાવી શકશે</label>
+                <label><input type="radio" name="q16" value="કોઈ જોગવાઈ નથી"> D) કોઈ જોગવાઈ નથી</label>
             </div>
         </div>
 
         <!-- Q17 -->
-        <div class="question-box">
-            <div class="question-title">૧૭. ટેકનોલોજી આધારિત પૂરક શિક્ષણ માટે કયા ઓનલાઇન પ્લેટફોર્મ્સનો મુખ્ય ઉપયોગ થશે?</div>
+        <div class="question-box" data-qname="q17" data-correct-ans="સલામત અને પ્રોત્સાહક">
+            <div class="question-title">૧૭. NEP 2020 મુજબ શાળાનું વાતાવરણ કેવું હોવું જોઈએ?</div>
             <div class="options">
-                <label><input type="radio" name="q17" value="A" data-correct="true"> A) SWAYAM અને DIKSHA</label>
-                <label><input type="radio" name="q17" value="B"> B) YouTube અને Google</label>
-                <label><input type="radio" name="q17" value="C"> C) Zoom અને Teams</label>
-                <label><input type="radio" name="q17" value="D"> D) Byju's અને Unacademy</label>
+                <label><input type="radio" name="q17" value="સલામત અને પ્રોત્સાહક"> A) સલામત અને પ્રોત્સાહક</label>
+                <label><input type="radio" name="q17" value="શાંત અને સખત નિયમોવાળું"> B) શાંત અને સખત નિયમોવાળું</label>
+                <label><input type="radio" name="q17" value="માત્ર ઔપચારિક વહીવટી"> C) માત્ર ઔપચારિક વહીવટી</label>
+                <label><input type="radio" name="q17" value="સ્પર્ધાત્મક અને તણાવપૂર્ણ"> D) સ્પર્ધાત્મક અને તણાવપૂર્ણ</label>
             </div>
         </div>
 
         <!-- Q18 -->
-        <div class="question-box">
-            <div class="question-title">૧૮. શાળાઓમાં વિદ્યાર્થીઓ પરનો માનસિક બોજ ઘટાડવા માટે મુખ્યત્વે શામાં ફેરફાર કરાશે?</div>
+        <div class="question-box" data-qname="q18" data-correct-ans="સક્રિય સહયોગી">
+            <div class="question-title">૧૮. NEP 2020 મુજબ શૈક્ષણિક પ્રક્રિયામાં વાલીઓની ભૂમિકા કેવી રહેશે?</div>
             <div class="options">
-                <label><input type="radio" name="q18" value="A"> A) શાળાના ગણવેશમાં</label>
-                <label><input type="radio" name="q18" value="B" data-correct="true"> B) શાળાના સમયપત્રક અને અભ્યાસના ભારણમાં</label>
-                <label><input type="radio" name="q18" value="C"> C) વેકેશનના દિવસોમાં</label>
-                <label><input type="radio" name="q18" value="D"> D) પ્રાર્થનાના સમયમાં</label>
+                <label><input type="radio" name="q18" value="માત્ર ફી ભરનાર પૂરતી"> A) માત્ર ફી ભરનાર પૂરતી</label>
+                <label><input type="radio" name="q18" value="સક્રિય સહયોગી"> B) સક્રિય સહયોગી</label>
+                <label><input type="radio" name="q18" value="કોઈ ભૂમિકા નહીં"> C) કોઈ ભૂમિકા નહીં</label>
+                <label><input type="radio" name="q18" value="માત્ર વાર્ષિક મીટિંગ પૂરતી"> D) માત્ર વાર્ષિક મીટિંગ પૂરતી</label>
             </div>
         </div>
 
         <!-- Q19 -->
-        <div class="question-box">
-            <div class="question-title">૧૯. ઉચ્ચ શિક્ષણમાં વિષયોની પસંદગી અંગેની વ્યવસ્થા કેવી રહેશે?</div>
+        <div class="question-box" data-qname="q19" data-correct-ans="લવચીક (Flexible)">
+            <div class="question-title">૧૯. NEP 2020 મુજબ શાળાનો અભ્યાસક્રમ (Curriculum) કેવો હોવો જોઈએ?</div>
             <div class="options">
-                <label><input type="radio" name="q19" value="A"> A) મર્યાદિત અને કઠોર</label>
-                <label><input type="radio" name="q19" value="B" data-correct="true"> B) સંપૂર્ણપણે લવચીક (Flexible - Stream boundaries removed)</label>
-                <label><input type="radio" name="q19" value="C"> C) માત્ર વિજ્ઞાન પૂરતી મર્યાદિત</label>
-                <label><input type="radio" name="q19" value="D"> D) કોલેજ નક્કી કરે તે જ વિષયો</label>
+                <label><input type="radio" name="q19" value="સખત અને કઠોર"> A) સખત અને કઠોર</label>
+                <label><input type="radio" name="q19" value="લવચીક (Flexible)"> B) લવચીક (Flexible)</label>
+                <label><input type="radio" name="q19" value="માત્ર પુસ્તક કેન્દ્રીય"> C) માત્ર પુસ્તક કેન્દ્રીય</label>
+                <label><input type="radio" name="q19" value="મર્યાદિત વિષયોવાળો"> D) મર્યાદિત વિષયોવાળો</label>
             </div>
         </div>
 
         <!-- Q20 -->
-        <div class="question-box">
-            <div class="question-title">૨૦. NEP 2020 મુજબ શિક્ષકોને કાર્યક્ષમતા માટે કેવું વાતાવરણ પૂરું પાડવામાં આવશે?</div>
+        <div class="question-box" data-qname="q20" data-correct-ans="ગ્લોબલ નોલેજ સુપરપાવર">
+            <div class="question-title">૨૦. આ નવી શિક્ષણ નીતિ (NEP 2020) નું અંતિમ લક્ષ્ય શું છે?</div>
             <div class="options">
-                <label><input type="radio" name="q20" value="A" data-correct="true"> A) સ્વાયત્તતા (Autonomy) અને સંશોધન લક્ષી</label>
-                <label><input type="radio" name="q20" value="B"> B) નિયંત્રણ અને દેખરેખવાળું</label>
-                <label><input type="radio" name="q20" value="C"> C) માત્ર ક્લાસરૂમ પૂરતું મર્યાદિત</label>
-                <label><input type="radio" name="q20" value="D"> D) વહીવટી દબાણવાળું</label>
+                <label><input type="radio" name="q20" value="ગ્લોબલ નોલેજ સુપરપાવર"> A) ગ્લોબલ નોલેજ સુપરપાવર</label>
+                <label><input type="radio" name="q20" value="માત્ર પ્રાદેશિક વિકાસ"> B) માત્ર પ્રાદેશિક વિકાસ</label>
+                <label><input type="radio" name="q20" value="ઔદ્યોગિક દેશ બનવું"> C) ઔદ્યોગિક દેશ બનવું</label>
+                <label><input type="radio" name="q20" value="માત્ર ડિજિટલ વેપાર"> D) માત્ર ડિજિટલ વેપાર</label>
             </div>
         </div>
 
@@ -249,6 +252,12 @@
 
     <div id="result-box"></div>
     
+    <div class="whatsapp-container">
+        <a href="https://chat.whatsapp.com/KNwEcT49Q6I1r5dKxM6J3n" target="_blank" class="whatsapp-btn">
+            📱 WhatsApp ગ્રુપમાં જોડાવવા અહીં ક્લિક કરો
+        </a>
+    </div>
+
     <div class="credit-box">
         Material Created By: RITESH SARAIYA
     </div>
@@ -260,19 +269,42 @@
     function checkScore() {
         let score = 0;
         let total = 20;
+        let incorrectSummary = "";
         
-        let form = document.getElementById('quizForm');
-        let inputs = form.querySelectorAll('input[type="radio"]:checked');
+        let boxes = document.querySelectorAll('.question-box');
         
-        inputs.forEach((input) => {
-            if(input.getAttribute('data-correct') === 'true') {
-                score++;
+        boxes.forEach((box, index) => {
+            let qNum = index + 1;
+            let qName = box.getAttribute('data-qname');
+            let correctAns = box.getAttribute('data-correct-ans');
+            let selectedInput = box.querySelector('input[type="radio"]:checked');
+            
+            let titleText = box.querySelector('.question-title').innerText;
+
+            if (selectedInput) {
+                let userAns = selectedInput.value;
+                if (userAns === correctAns) {
+                    score++;
+                } else {
+                    incorrectSummary += `<div class="summary-item"><strong>પ્રશ્ન ${qNum}:</strong> ${titleText}<br>❌ તમારો જવાબ: ${userAns}<br>✅ <b>સાચો જવાબ:</b> ${correctAns}</div>`;
+                }
+            } else {
+                incorrectSummary += `<div class="summary-item"><strong>પ્રશ્ન ${qNum}:</strong> ${titleText}<br>❌ તમે જવાબ આપ્યો નથી.<br>✅ <b>સાચો જવાબ:</b> ${correctAns}</div>`;
             }
         });
 
         let resBox = document.getElementById('result-box');
         resBox.style.display = 'block';
-        resBox.innerHTML = `🎉 અભિનંદન! તમારો સ્કોર: ${score} / ${total} સાચા પડ્યા છે!`;
+        
+        let htmlContent = `🎉 <b>અભિનંદન! તમારો સ્કોર: ${score} / ${total} સાચા પડ્યા છે!</b>`;
+        
+        if (score < total) {
+            htmlContent += `<hr style="margin: 15px 0; border: 0; border-top: 1px solid #b2dfdb;"><b style="color: #c0392b;">💡 તમારા ખોટા પડેલા પ્રશ્નોના સાચા જવાબો અહીં તપાસો:</b>` + incorrectSummary;
+        } else {
+            htmlContent += `<br><br>🌟 અતિ ઉત્તમ! તમારા બધા જ પ્રશ્નો સાચા છે!`;
+        }
+        
+        resBox.innerHTML = htmlContent;
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 </script>
