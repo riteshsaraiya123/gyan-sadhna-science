@@ -26,11 +26,11 @@
 
     <form id="quizForm">
         <!-- Q1 -->
-        <div class="question-box" data-qname="q1" data-correct-ans="લેક્ટോબેસિલસ">
-            <div class="question-title">1. દૂધનું દહીમાં રૂપાંતર કરતા બેક્ટેરિયાનું નામ શું છે?</div>
+        <div class="question-box" data-qname="q1" data-correct-ans="લેક્ટોબેસિલસ">
+            <div class="question-title">1. દૂધનું દહીંમાં રૂપાંતર કરતા બેક્ટેરિયાનું નામ શું છે?</div>
             <div class="options">
                 <label><input type="radio" name="q1" value="રાઈઝોબિયમ"> A) રાઈઝોબિયમ</label>
-                <label><input type="radio" name="q1" value="લેક્ટોબેસિલસ"> B) લેક્ટૉબેસિલસ</label>
+                <label><input type="radio" name="q1" value="લેક્ટોબેસિલસ"> B) લેક્ટોબેસિલસ</label>
                 <label><input type="radio" name="q1" value="પેનિસિલીયમ"> C) પેનિસિલીયમ</label>
                 <label><input type="radio" name="q1" value="અમીબા"> D) અમીબા</label>
             </div>
@@ -104,7 +104,7 @@
 
         <!-- Q8 -->
         <div class="question-box" data-qname="q8" data-correct-ans="રાઈઝોબિયમ">
-            <div class="question-title">8. શિંગોડા (કઠોળ) વનસ્પતિના મૂળની ગંઠિકાઓમાં કયા બેક્ટેરિયા નાઈટ્રોજન સ્થાપન કરે છે?</div>
+            <div class="question-title">8. કઠોળ વર્ગની વનસ્પતિના મૂળની ગંઠિકાઓમાં કયા બેક્ટેરિયા નાઈટ્રોજન સ્થાપન કરે છે?</div>
             <div class="options">
                 <label><input type="radio" name="q8" value="લેક્ટોબેસિલસ"> A) લેક્ટોબેસિલસ</label>
                 <label><input type="radio" name="q8" value="રાઈઝોબિયમ"> B) રાઈઝોબિયમ</label>
@@ -169,11 +169,11 @@
         </div>
 
         <!-- Q14 -->
-        <div class="question-box" data-qname="q14" data-correct-ans="રીઢા (ખાસરા)">
+        <div class="question-box" data-qname="q14" data-correct-ans="ખાસરા">
             <div class="question-title">14. નીચેનામાંથી કયો રોગ બેક્ટેરિયાથી થતો નથી?</div>
             <div class="options">
                 <label><input type="radio" name="q14" value="ટીબી (Tuberculosis)"> A) ટીબી (Tuberculosis)</label>
-                <label><input type="radio" name="q14" value="રીઢા (ખાસરા)"> B) રીઢા (ખાસરા)</label>
+                <label><input type="radio" name="q14" value="ખાસરા"> B) ખાસરા</label>
                 <label><input type="radio" name="q14" value="કોલેરા"> C) કોલેરા</label>
                 <label><input type="radio" name="q14" value="ટાઈફોઈડ"> D) ટાઈફોઈડ</label>
             </div>
@@ -267,13 +267,13 @@
         
         boxes.forEach((box, index) => {
             let qNum = index + 1;
-            let correctAns = box.getAttribute('data-correct-ans');
+            let correctAns = box.getAttribute('data-correct-ans').trim();
             let selectedInput = box.querySelector('input[type="radio"]:checked');
             
             let titleText = box.querySelector('.question-title').innerText;
 
             if (selectedInput) {
-                let userAns = selectedInput.value;
+                let userAns = selectedInput.value.trim();
                 if (userAns === correctAns) {
                     score++;
                 } else {
