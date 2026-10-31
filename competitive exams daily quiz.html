@@ -3,252 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTAT - 2017 Exam Quiz - Vahivati & Kaydakiy Prashno</title>
+    <title>HTAT Mega Quiz - 100 Most Important Questions</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f3f4; margin: 0; padding: 20px; }
-        .quiz-container { max-width: 750px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 6px solid #1a5276; }
-        h2 { color: #1a5276; text-align: center; margin-bottom: 20px; font-size: 22px; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 6px solid #1a5276; }
+        h2 { color: #1a5276; text-align: center; margin-bottom: 5px; font-size: 24px; }
+        .subtitle { text-align: center; color: #e67e22; font-size: 16px; margin-bottom: 25px; font-weight: bold; }
         .question-box { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border-radius: 8px; border-left: 4px solid #1a5276; }
-        .question-title { font-weight: bold; color: #333; margin-bottom: 10px; font-size: 15.5px; }
-        .options label { display: block; margin-bottom: 8px; cursor: pointer; font-size: 14.5px; color: #444; }
-        .btn-submit { display: block; width: 100%; background: #27ae60; color: white; padding: 14px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
+        .question-title { font-weight: bold; color: #333; margin-bottom: 12px; font-size: 16px; }
+        .options label { display: block; margin-bottom: 10px; cursor: pointer; font-size: 15px; color: #444; padding: 8px; background: #fff; border: 1px solid #ddd; border-radius: 5px; transition: 0.2s; }
+        .options label:hover { background: #f1f8ff; border-color: #3498db; }
+        .options input[type="radio"] { margin-right: 10px; }
+        .btn-submit { display: block; width: 100%; background: #27ae60; color: white; padding: 15px; border: none; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
         .btn-submit:hover { background: #219653; }
         #result-box { display: none; margin-top: 20px; padding: 15px; background: #e8f8f5; border: 2px solid #27ae60; border-radius: 8px; font-size: 16px; color: #0e6655; }
-        .summary-item { margin-top: 10px; padding: 8px; background: #fff; border-left: 3px solid #c0392b; font-size: 14px; }
-        .credit-box { background-color: #efebe9; border: 1px dashed #5d4037; padding: 10px; text-align: center; font-weight: bold; margin: 20px 0; border-radius: 4px; font-size: 14px; }
-        .action-btn { display: inline-block; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 15px; margin: 5px; color: white; }
-        .app-btn { background-color: #3498db; }
+        .summary-item { margin-top: 12px; padding: 10px; background: #fff; border-left: 4px solid #c0392b; font-size: 14.5px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .credit-box { background-color: #efebe9; border: 1px dashed #5d4037; padding: 12px; text-align: center; font-weight: bold; margin: 25px 0; border-radius: 4px; font-size: 15px; color: #5d4037; }
         .app-container { text-align: center; margin-top: 25px; padding: 20px; background: #f0f9f4; border: 2px dashed #27ae60; border-radius: 10px; }
+        .app-btn { background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block; margin-top: 10px; }
+        .app-btn:hover { background-color: #2980b9; }
         .btn-back { display: block; text-align: center; margin-top: 15px; color: #2980b9; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="quiz-container">
-    <h2>🎯 HTAT - 2017 Exam Quiz (Vahivati & Kaydakiy Prashno)<br><span style="font-size: 15px; color: #e67e22;">વહીવટી અને કાયદાકીય વિશેષ પ્રશ્નોત્તરી (૨૦ પ્રશ્નો)</span></h2>
+    <h2>🎯 HTAT મેગા ક્વિઝ - આવતીકાલની પરીક્ષા માટે</h2>
+    <div class="subtitle">૧૦૦ મોસ્ટ ઈમ્પોર્ટન્ટ પ્રશ્નો (વહીવટ, કાયદો અને શિક્ષણ)</div>
 
     <form id="quizForm">
-        <!-- Q1 -->
-        <div class="question-box" data-qname="q1" data-correct-ans="ખાનગી ઉમેદવાર માટે ધોરણ-10 તથા ધોરણ-12 પરીક્ષા લેતી સંસ્થા છે.">
-            <div class="question-title">૧. 'ગુજરાત સ્ટેટ ઓપન સ્કુલ' કઈ બાબત સાથે સંકળાયેલી સંસ્થા છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q1" value="ખાનગી ઉમેદવાર માટે ધોરણ-10 તથા ધોરણ-12 પરીક્ષા લેતી સંસ્થા છે."> A) ખાનગી ઉમેદવાર માટે ધોરણ-10 તથા ધોરણ-12 પરીક્ષા લેતી સંસ્થા છે.</label>
-                <label><input type="radio" name="q1" value="શિક્ષકોના એક્સટર્નલ અભ્યાસક્રમ ચલાવતી સંખ્યા છે."> B) શિક્ષકોના એક્સટર્નલ અભ્યાસક્રમ ચલાવતી સંખ્યા છે.</label>
-                <label><input type="radio" name="q1" value="માત્ર ધો.10 અને ધોરણ-12 માં નાપાસ થયેલ ઉમેદવારોની પૂરક પરીક્ષા લેતી સંસ્થા છે."> C) માત્ર ધો.10 અને ધોરણ-12 માં નાપાસ થયેલ ઉમેદવારોની પૂરક પરીક્ષા લેતી સંસ્થા છે.</label>
-                <label><input type="radio" name="q1" value="ધોરણ-10 તથા ધોરણ-12 માં નિયમિત અભ્યાસ કરતા બાળકોની પરીક્ષા લેતી સંસ્થા છે."> D) ધોરણ-10 તથા ધોરણ-12 માં નિયમિત અભ્યાસ કરતા બાળકોની પરીક્ષા લેતી સંસ્થા છે.</label>
-            </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="question-box" data-qname="q2" data-correct-ans="પહેલી અનુસૂચિ">
-            <div class="question-title">૨. ભારતના રાજ્યોનાં નામ અને સંઘ રાજ્ય ક્ષેત્રોના નામોની યાદી બંધારણની કઈ અનુસૂચિમાં આપવામાં આવેલ હોય છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q2" value="બીજી અનુસૂચિ"> A) બીજી અનુસૂચિ</label>
-                <label><input type="radio" name="q2" value="પહેલી અનુસૂચિ"> B) પહેલી અનુસૂચિ</label>
-                <label><input type="radio" name="q2" value="ત્રીજી અનુસૂચિ"> C) ત્રીજી અનુસૂચિ</label>
-                <label><input type="radio" name="q2" value="ચોથી અનુસૂચિ"> D) ચોથી અનુસૂચિ</label>
-            </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="question-box" data-qname="q3" data-correct-ans="કોમ્પ્યુટરની મદદથી વિષય શિક્ષણ કરાવવું">
-            <div class="question-title">૩. CAL કાર્યક્રમનો મુખ્ય આશય ક્યો છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q3" value="ધો.1 થી 8 નાં બાળકોને કોમ્પ્યુટરનું જ્ઞાન આપવું"> A) ધો.1 થી 8 નાં બાળકોને કોમ્પ્યુટરનું જ્ઞાન આપવું</label>
-                <label><input type="radio" name="q3" value="કોમ્પ્યુટરની મદદથી વિષય શિક્ષણ કરાવવું"> B) કોમ્પ્યુટરની મદદથી વિષય શિક્ષણ કરાવવું</label>
-                <label><input type="radio" name="q3" value="ધો.6 થી 8 નાં બાળકોને કોમ્પ્યુટરનું જ્ઞાન આપવું"> C) ધો.6 થી 8 નાં બાળકોને કોમ્પ્યુટરનું જ્ઞાન આપવું</label>
-                <label><input type="radio" name="q3" value="ધો.6 થી 8 ના શિક્ષકોને કોમ્પ્યુટરનો ઉપયોગ શીખવવો."> D) ધો.6 થી 8 ના શિક્ષકોને કોમ્પ્યુટરનો ઉપયોગ શીખવવો.</label>
-            </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="question-box" data-qname="q4" data-correct-ans="સમસ્યા ક્ષેત્ર">
-            <div class="question-title">૪. ક્રિયાત્મક સંશોધનનું સૌથી પહેલું સોપન ક્યું છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q4" value="સમસ્યા ક્ષેત્ર"> A) સમસ્યા ક્ષેત્ર</label>
-                <label><input type="radio" name="q4" value="સમસ્યા - પસંદગી"> B) સમસ્યા - પસંદગી</label>
-                <label><input type="radio" name="q4" value="ઉત્કલ્પનાઓ બાંધવી"> C) ઉત્કલ્પનાઓ બાંધવી</label>
-                <label><input type="radio" name="q4" value="પ્રયોગ કાર્યની રૂપરેખા"> D) પ્રયોગ કાર્યની રૂપરેખા</label>
-            </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="question-box" data-qname="q5" data-correct-ans="માઇક્રો પાઠ">
-            <div class="question-title">૫. અધ્યાપન કૌશલ્યના વિકાસ માટે ઉપયોગી સોપાનો "શિક્ષણ-પ્રતિપોષણ-પુનઃઆયોજન-પુનઃશિક્ષણ-પુનઃ પ્રતિપોષણ" સાથે સૌથી વધુ શું સુસંગત છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q5" value="માઇક્રો પાઠ"> A) માઇક્રો પાઠ</label>
-                <label><input type="radio" name="q5" value="પ્રવૃત્તિ પાઠ"> B) પ્રવૃત્તિ પાઠ</label>
-                <label><input type="radio" name="q5" value="સમવાય પાઠ"> C) સમવાય પાઠ</label>
-                <label><input type="radio" name="q5" value="સંયુક્ત પાઠ"> D) સંયુક્ત પાઠ</label>
-            </div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="question-box" data-qname="q6" data-correct-ans="પ્રેષક - માધ્યમ - સંદેશો મેળવનાર">
-            <div class="question-title">૬. પ્રત્યાયનનાં મુખ્ય ત્રણ ઘટકો ક્યા છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q6" value="વિષયવસ્તુ - પ્રવૃત્તિ - મૂલ્યાંકન"> A) વિષયવસ્તુ - પ્રવૃત્તિ - મૂલ્યાંકન</label>
-                <label><input type="radio" name="q6" value="પ્રેષક - માધ્યમ - સંદેશો મેળવનાર"> B) પ્રેષક - માધ્યમ - સંદેશો મેળવનાર</label>
-                <label><input type="radio" name="q6" value="પ્રેષક - સંદેશો -સંદેશો મેળવનાર"> C) પ્રેષક - સંદેશો - સંદેશો મેળવનાર</label>
-                <label><input type="radio" name="q6" value="સંદેશો - માધ્યમ - સંદેશો મેળવનાર"> D) સંદેશો - માધ્યમ - સંદેશો મેળવનાર</label>
-            </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="question-box" data-qname="q7" data-correct-ans="જ્ઞાનનું સર્જન">
-            <div class="question-title">૭. NCF 2005 માં નીચેના પૈકી કઇ બાબત પર સૌથી વધુ ભાર મૂકવામાં આવ્યો છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q7" value="જ્ઞાનનો ઉપયોગ"> A) જ્ઞાનનો ઉપયોગ</label>
-                <label><input type="radio" name="q7" value="જ્ઞાનની સમજણ"> B) જ્ઞાનની સમજણ</label>
-                <label><input type="radio" name="q7" value="જ્ઞાનનું સર્જન"> C) જ્ઞાનનું સર્જન</label>
-                <label><input type="radio" name="q7" value="જ્ઞાનની પ્રવિધિઓ"> D) જ્ઞાનની પ્રવિધિઓ</label>
-            </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="question-box" data-qname="q8" data-correct-ans="બહુલક">
-            <div class="question-title">૮. મધ્યવર્તી સ્થિતિનાં માપ સંદર્ભે પ્રાપ્તાંકોની શ્રેણીમાં જે પ્રાપ્તાંક સૌથી વધુ વખત આવતો હોય તેને શું કહેવાય?</div>
-            <div class="options">
-                <label><input type="radio" name="q8" value="બહુલક"> A) બહુલક</label>
-                <label><input type="radio" name="q8" value="મધ્યસ્થ"> B) મધ્યસ્થ</label>
-                <label><input type="radio" name="q8" value="મધ્યક"> C) મધ્યક</label>
-                <label><input type="radio" name="q8" value="ભારાંક મધ્યક"> D) ભારાંક મધ્યક</label>
-            </div>
-        </div>
-
-        <!-- Q9 -->
-        <div class="question-box" data-qname="q9" data-correct-ans="48 કલાકમાં">
-            <div class="question-title">૯. RTI - 2005 ની કલમ - 9(1) મુજબ કોઈ વ્યક્તિની જિંદગી અથવા સ્વતંત્રતા સાથે સંબંધિત હોઈ તેવી માહિતી મેળવવા વિનંતી કરે છે, તો તેને કેટલા સમયમાં માહિતી પૂરી પાડવાની હોય છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q9" value="24 કલાકમાં"> A) 24 કલાકમાં</label>
-                <label><input type="radio" name="q9" value="72 કલાકમાં"> B) 72 કલાકમાં</label>
-                <label><input type="radio" name="q9" value="48 કલાકમાં"> C) 48 કલાકમાં</label>
-                <label><input type="radio" name="q9" value="720 કલાકમાં"> D) 720 કલાકમાં</label>
-            </div>
-        </div>
-
-        <!-- Q10 -->
-        <div class="question-box" data-qname="q10" data-correct-ans="પત્રક - A">
-            <div class="question-title">૧૦. શાળાકીય સર્વગ્રાહી મૂલ્યાંકન (SCE) અંતર્ગતના મૂલ્યાંકન પત્રકો પૈકી ક્યા એક પત્રકમાં વિદ્યાર્થીના શાળા પ્રવેશથી પ્રારંભિક શિક્ષણ પુરું થાય ત્યાં સુધીની નોંધ રખાય છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q10" value="પત્રક - A"> A) પત્રક - A</label>
-                <label><input type="radio" name="q10" value="પત્રક - E"> B) પત્રક - E</label>
-                <label><input type="radio" name="q10" value="પત્રક - C"> C) પત્રક - C</label>
-                <label><input type="radio" name="q10" value="પત્રક - B"> D) પત્રક - B</label>
-            </div>
-        </div>
-
-        <!-- Q11 -->
-        <div class="question-box" data-qname="q11" data-correct-ans="નિદાન કસોટી">
-            <div class="question-title">૧૧. બાળકોને શું નથી આવડતું એ ચકાસવા માટે નીચેના પૈકી કઈ કસોટીનું આયોજન કરવું જોઈએ?</div>
-            <div class="options">
-                <label><input type="radio" name="q11" value="નિદાન કસોટી"> A) નિદાન કસોટી</label>
-                <label><input type="radio" name="q11" value="ઉપચાર કસોટી"> B) ઉપચાર કસોટી</label>
-                <label><input type="radio" name="q11" value="સિદ્ધિ કસોટી"> C) સિદ્ધિ કસોટી</label>
-                <label><input type="radio" name="q11" value="સમેટીવ ટેસ્ટ"> D) સમેટીવ ટેસ્ટ</label>
-            </div>
-        </div>
-
-        <!-- Q12 -->
-        <div class="question-box" data-qname="q12" data-correct-ans="થોર્નડાઇક">
-            <div class="question-title">૧૨. 'પ્રયત્ન અને ભૂલ સુધાર' ને અધ્યયનના સિદ્ધાંત તરીકે સ્થાપિત કરનાર મનોવૈજ્ઞાનિકનું નામ શું છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q12" value="વેબર"> A) વેબર</label>
-                <label><input type="radio" name="q12" value="પાવલોવ"> B) પાવલોવ</label>
-                <label><input type="radio" name="q12" value="થોર્નડાઇક"> C) થોર્નડાઇક</label>
-                <label><input type="radio" name="q12" value="વોરસન"> D) વોરસન</label>
-            </div>
-        </div>
-
-        <!-- Q13 -->
-        <div class="question-box" data-qname="q13" data-correct-ans="મનુભાઇ પંચોળી">
-            <div class="question-title">૧૩. 'ઘડતર અને ચણતર' ક્યા કેળવણીકારની આત્મકથા છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q13" value="મનુભાઇ પંચોળી"> A) મનુભાઇ પંચોળી</label>
-                <label><input type="radio" name="q13" value="તારાબહેન મોડક"> B) તારાબહેન મોડક</label>
-                <label><input type="radio" name="q13" value="નાનાભાઇ ભટ્ટ"> C) નાનાભાઇ ભટ્ટ</label>
-                <label><input type="radio" name="q13" value="પ્ર.ત્રિવેદી"> D) પ્ર.ત્રિવેદી</label>
-            </div>
-        </div>
-
-        <!-- Q14 -->
-        <div class="question-box" data-qname="q14" data-correct-ans="15 થી 35">
-            <div class="question-title">૧૪. પ્રૌઢ શિક્ષણ માટે આપણા દેશમાં કઈ ઉંમર સ્વીકારવામાં આવી છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q14" value="15 થી 35"> A) 15 થી 35</label>
-                <label><input type="radio" name="q14" value="18 થી 35"> B) 18 થી 35</label>
-                <label><input type="radio" name="q14" value="18 થી 45"> C) 18 થી 45</label>
-                <label><input type="radio" name="q14" value="45 થી ઉપર"> D) 45 થી ઉપર</label>
-            </div>
-        </div>
-
-        <!-- Q15 -->
-        <div class="question-box" data-qname="q15" data-correct-ans="યુનેસ્કો (UNESCO)">
-            <div class="question-title">૧૫. 'શિક્ષણ - ભીતરનો ખજાનો' એ પુસ્તક માટે નીચેના પૈકી ક્યું બંધબેસતું છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q15" value="યુનિસેફ (Unicef)"> A) યુનિસેફ (Unicef)</label>
-                <label><input type="radio" name="q15" value="NCTE"> B) NCTE</label>
-                <label><input type="radio" name="q15" value="NCERT"> C) NCERT</label>
-                <label><input type="radio" name="q15" value="યુનેસ્કો (UNESCO)"> D) યુનેસ્કો (UNESCO)</label>
-            </div>
-        </div>
-
-        <!-- Q16 -->
-        <div class="question-box" data-qname="q16" data-correct-ans="બાલસૃષ્ટિ">
-            <div class="question-title">૧૬. ચિલ્ડ્રન યુનિવર્સિટી દ્વારા પ્રકાશિત થતું સામયિક કયું છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q16" value="જીવન શિક્ષણ"> A) જીવન શિક્ષણ</label>
-                <label><input type="radio" name="q16" value="બાલસૃષ્ટિ"> B) બાલસૃષ્ટિ</label>
-                <label><input type="radio" name="q16" value="બાળ વિશ્વ"> C) બાળ વિશ્વ</label>
-                <label><input type="radio" name="q16" value="જ્ઞાનશક્તિ"> D) જ્ઞાનશક્તિ</label>
-            </div>
-        </div>
-
-        <!-- Q17 -->
-        <div class="question-box" data-qname="q17" data-correct-ans="સણોસરા">
-            <div class="question-title">૧૭. બુનિયાદી શિક્ષણની નમૂનારૂપ એવી ગ્રામ દક્ષિણામૂર્તિ શૈક્ષણિક સંસ્થા ક્યા સ્થળે આવેલી છે?</div>
-            <div class="options">
-                <label><input type="radio" name="q17" value="સણોસરા"> A) સણોસરા</label>
-                <label><input type="radio" name="q17" value="આંબલા"> B) આંબલા</label>
-                <label><input type="radio" name="q17" value="ભાવનગર"> C) ભાવનગર</label>
-                <label><input type="radio" name="q17" value="શારદાગ્રામ"> D) શારદાગ્રામ</label>
-            </div>
-        </div>
-
-        <!-- Q18 -->
-        <div class="question-box" data-qname="q18" data-correct-ans="ધોરણ-8">
-            <div class="question-title">૧૮. આપની શાળામાં અભ્યાસ કરતાં ક્યા ધોરણનાં બાળકોને રાજ્ય પરીક્ષા બોર્ડ દ્વારા લેવાતી NMMS પરીક્ષા અપાવશો?</div>
-            <div class="options">
-                <label><input type="radio" name="q18" value="ધોરણ-5"> A) ધોરણ-5</label>
-                <label><input type="radio" name="q18" value="ધોરણ-8"> B) ધોરણ-8</label>
-                <label><input type="radio" name="q18" value="ધોરણ-7"> C) ધોરણ-7</label>
-                <label><input type="radio" name="q18" value="ધોરણ-6"> D) ધોરણ-6</label>
-            </div>
-        </div>
-
-        <!-- Q19 -->
-        <div class="question-box" data-qname="q19" data-correct-ans="35 કલાક">
-            <div class="question-title">૧૯. RTE 2009 મુજબ શાળાના શિક્ષણ કાર્ય (તૈયારી સહિત) માટે દર અઠવાડિયે કેટલા કલાક કામ થવું જોઇએ?</div>
-            <div class="options">
-                <label><input type="radio" name="q19" value="30 કલાક"> A) 30 કલાક</label>
-                <label><input type="radio" name="q19" value="45 કલાક"> B) 45 કલાક</label>
-                <label><input type="radio" name="q19" value="40 કલાક"> C) 40 કલાક</label>
-                <label><input type="radio" name="q19" value="35 કલાક"> D) 35 કલાક</label>
-            </div>
-        </div>
-
-        <!-- Q20 -->
-        <div class="question-box" data-qname="q20" data-correct-ans="દસ">
-            <div class="question-title">૨૦. સર્વોચ્ચ અદાલતનાં ન્યાયાધીશ તરીકેની નિમણૂક માટે વડી અદાલતમાં વકિલાતનો ઓછામાં ઓછો કેટલા વર્ષનો અનુભવ હોવો જોઈએ?</div>
-            <div class="options">
-                <label><input type="radio" name="q20" value="સાત"> A) સાત</label>
-                <label><input type="radio" name="q20" value="બાર"> B) બાર</label>
-                <label><input type="radio" name="q20" value="પાંચ"> C) પાંચ</label>
-                <label><input type="radio" name="q20" value="દસ"> D) દસ</label>
-            </div>
-        </div>
-
-        <button type="button" class="btn-submit" onclick="checkScore()">પરિણામ તપાસો (Submit Quiz)</button>
+        <div id="questions-container"></div>
+        <button type="button" class="btn-submit" onclick="checkScore()">મારું પરિણામ તપાસો (Submit Quiz)</button>
     </form>
 
     <div id="result-box"></div>
@@ -256,7 +41,7 @@
     <div class="app-container">
         <h3 style="color: #155724; margin-bottom: 10px;">HTAT પરીક્ષાની વધુ તૈયારી માટે</h3>
         <p style="color: #555; margin-bottom: 15px;">આપણી એન્ડ્રોઇડ એપ્લિકેશન ડાઉનલોડ કરો અને રોજ નવી ક્વિઝ મેળવો.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.riteshsaraiya.gyaansadhnascience" target="_blank" class="action-btn app-btn">
+        <a href="https://play.google.com/store/apps/details?id=com.riteshsaraiya.gyaansadhnascience" target="_blank" class="app-btn">
             📱 App Download કરો
         </a>
     </div>
@@ -264,14 +49,139 @@
     <div class="credit-box">
         Material Created By: Ritesh Saraiya
     </div>
-
+    
+    <!-- Home Page Button -->
     <a href="index.html" class="btn-back">🏠 મુખ્ય પેજ પર પાછા જાઓ</a>
 </div>
 
 <script>
+    // 100 Most Important HTAT Questions
+    const quizData = [
+        { q: "RTE 2009 મુજબ ધોરણ ૧ થી ૫ માં જો ૬૦ થી ઓછી સંખ્યા હોય તો કેટલા શિક્ષકો મળવાપાત્ર છે?", opts: ["૧", "૨", "૩", "૪"], ans: "૨" },
+        { q: "મુંબઈ પ્રાથમિક શિક્ષણ અધિનિયમ કયા વર્ષમાં ઘડવામાં આવ્યો?", opts: ["૧૯૪૭", "૧૯૪૯", "૨૦૦૯", "૧૯૬૧"], ans: "૧૯૪૭" },
+        { q: "પ્રાથમિક શાળાના શિક્ષકને પ્રાસંગિક રજા (CL) કોણ મંજૂર કરે છે?", opts: ["તાલુકા વિકાસ અધિકારી", "મુખ્ય શિક્ષક (HT)", "શાસનાધિકારી", "TPEO"], ans: "મુખ્ય શિક્ષક (HT)" },
+        { q: "RTE 2009 અંતર્ગત ખાનગી શાળાઓમાં નબળા વર્ગના બાળકો માટે કેટલા ટકા અનામત બેઠકોની જોગવાઈ છે?", opts: ["૨૦%", "૨૫%", "૩૦%", "૧૫%"], ans: "૨૫%" },
+        { q: "SMC (શાળા વ્યવસ્થાપન સમિતિ) માં ઓછામાં ઓછી કેટલી ટકાવારી વાલીઓની હોવી જોઈએ?", opts: ["૫૦%", "૭૫%", "૩૩%", "૧૦૦%"], ans: "૭૫%" },
+        { q: "SMC ના કુલ સભ્યોમાંથી કેટલી મહિલા સભ્યો હોવી ફરજિયાત છે?", opts: ["૨૫%", "૩૩%", "૫૦%", "૭૫%"], ans: "૫૦%" },
+        { q: "બાળકોના મફત અને ફરજિયાત શિક્ષણનો અધિકાર નિયમો (ગુજરાત) કયા વર્ષથી અમલમાં આવ્યા?", opts: ["૨૦૦૯", "૨૦૧૦", "૨૦૧૨", "૨૦૧૧"], ans: "૨૦૧૨" },
+        { q: "પ્રાથમિક શાળાના સમયપત્રક (Time Table) તૈયાર કરવાની મુખ્ય જવાબદારી કોની છે?", opts: ["શિક્ષકોની", "મુખ્ય શિક્ષકની (HT)", "SMC ની", "TPEO ની"], ans: "મુખ્ય શિક્ષકની (HT)" },
+        { q: "RTE 2009 મુજબ ધોરણ ૬ થી ૮ માં એક શૈક્ષણિક વર્ષમાં કામકાજના દિવસો કેટલા હોવા જોઈએ?", opts: ["૨૦૦", "૨૨૦", "૨૧૦", "૨૪૦"], ans: "૨૨૦" },
+        { q: "RTE 2009 મુજબ ધોરણ ૧ થી ૫ માટે શૈક્ષણિક કલાકો કેટલા હોવા જોઈએ?", opts: ["૮૦૦", "૧૦૦૦", "૧૨૦૦", "૭૦૦"], ans: "૮૦૦" },
+        { q: "ગુજરાત માધ્યમિક અને ઉચ્ચતર માધ્યમિક શિક્ષણ બોર્ડ (GSEB) ની સ્થાપના ક્યારે થઈ?", opts: ["૧૯૬૦", "૧૯૭૨", "૧૯૯૮", "૨૦૦૫"], ans: "૧૯૭૨" },
+        { q: "ગુજરાત કાઉન્સિલ ઓફ એજ્યુકેશનલ રિસર્ચ એન્ડ ટ્રેનિંગ (GCERT) ક્યાં આવેલી છે?", opts: ["અમદાવાદ", "ગાંધીનગર", "વડોદરા", "રાજકોટ"], ans: "ગાંધીનગર" },
+        { q: "DIET નું પૂરું નામ શું છે?", opts: ["District Institute of Education and Training", "District Institution of English Teachers", "Department of Indian Educational Training", "District Indian Education Team"], ans: "District Institute of Education and Training" },
+        { q: "CRC નું પૂરું નામ જણાવો.", opts: ["Cluster Resource Centre", "Block Resource Centre", "City Resource Centre", "Central Resource Council"], ans: "Cluster Resource Centre" },
+        { q: "RTE ની કલમ ૧૭ શેની સાથે સંબંધિત છે?", opts: ["પ્રવેશ માટે કેપિટેશન ફી પર પ્રતિબંધ", "શારીરિક શિક્ષા અને માનસિક ત્રાસ પર પ્રતિબંધ", "શિક્ષકોની લાયકાત", "શાળા વ્યવસ્થાપન સમિતિ"], ans: "શારીરિક શિક્ષા અને માનસિક ત્રાસ પર પ્રતિબંધ" },
+        { q: "શિક્ષકને અડધા પગારની રજા (HPL) દર વર્ષે કેટલી જમા થાય છે?", opts: ["૧૦", "૧૫", "૨૦", "૩૦"], ans: "૨૦" },
+        { q: "SMC ની રચના દર કેટલા વર્ષે કરવાની હોય છે?", opts: ["દર વર્ષે", "દર બે વર્ષે", "દર ત્રણ વર્ષે", "દર પાંચ વર્ષે"], ans: "દર બે વર્ષે" },
+        { q: "આચાર્ય તરીકે કોઈ શિક્ષકની બદલી કરવાની સત્તા કોની છે?", opts: ["DPEO", "TPEO", "રાજ્ય સરકાર", "શિક્ષણ મંત્રી"], ans: "DPEO" },
+        { q: "RTE કાયદા મુજબ કેટલા વર્ષના બાળકોને મફત અને ફરજિયાત શિક્ષણ આપવાનું છે?", opts: ["૬ થી ૧૪", "૫ થી ૧૫", "૬ થી ૧૮", "૩ થી ૧૪"], ans: "૬ થી ૧૪" },
+        { q: "પ્રાથમિક શાળામાં મધ્યાહન ભોજન યોજના કયા વર્ષથી શરૂ થઈ?", opts: ["૧૯૮૪", "૧૯૯૫", "૨૦૦૦", "૨૦૦૫"], ans: "૧૯૯૫" },
+        { q: "પ્રસૂતિની રજા (Maternity Leave) મહિલા શિક્ષકને કેટલી મળે છે?", opts: ["૧૩૫ દિવસ", "૧૮૦ દિવસ", "૯૦ દિવસ", "૬૦ દિવસ"], ans: "૧૮૦ દિવસ" },
+        { q: "પિતૃત્વની રજા (Paternity Leave) પુરુષ શિક્ષકને કેટલી મળે છે?", opts: ["૧૦ દિવસ", "૧૫ દિવસ", "૨૦ દિવસ", "મળતી નથી"], ans: "૧૫ દિવસ" },
+        { q: "કલમ ૨૧ (RTE) શેના વિશે છે?", opts: ["SMC ની રચના", "શિક્ષકોની ફરજો", "શાળાના ધોરણો", "ફી માફી"], ans: "SMC ની રચના" },
+        { q: "ગુણોત્સવ કાર્યક્રમનો મુખ્ય હેતુ શું છે?", opts: ["શાળાની સફાઈ", "શિક્ષણની ગુણવત્તામાં સુધારો", "માત્ર શિક્ષકોનું મૂલ્યાંકન", "મધ્યાહન ભોજનની ચકાસણી"], ans: "શિક્ષણની ગુણવત્તામાં સુધારો" },
+        { q: "SSA (સર્વ શિક્ષા અભિયાન) કયા વર્ષમાં શરૂ થયું?", opts: ["૧૯૯૮-૯૯", "૨૦૦૦-૦૧", "૨૦૦૫-૦૬", "૨૦૦૯-૧૦"], ans: "૨૦૦૦-૦૧" },
+        { q: "ધોરણ ૧ માં પ્રવેશ માટે બાળકની ઉંમર કેટલી હોવી જોઈએ? (નવા નિયમ મુજબ)", opts: ["૫ વર્ષ પૂરા", "૬ વર્ષ પૂરા", "૫.૫ વર્ષ", "૭ વર્ષ"], ans: "૬ વર્ષ પૂરા" },
+        { q: "પ્રાથમિક શિક્ષકને વર્ષમાં કેટલી પ્રાસંગિક રજા (CL) મળે છે?", opts: ["૧૨", "૧૪", "૧૫", "૨૦"], ans: "૧૫" },
+        { q: "RTI (માહિતી અધિકાર) કાયદો ક્યારથી અમલમાં આવ્યો?", opts: ["૧૨ ઓક્ટોબર ૨૦૦૫", "૧૫ ઓગસ્ટ ૨૦૦૫", "૧ એપ્રિલ ૨૦૧૦", "૨૬ જાન્યુઆરી ૨૦૦૬"], ans: "૧૨ ઓક્ટોબર ૨૦૦૫" },
+        { q: "RTI હેઠળ જીવન અને સ્વાતંત્ર્યને લગતી માહિતી કેટલા સમયમાં આપવાની હોય છે?", opts: ["૩૦ દિવસ", "૪૮ કલાક", "૨૪ કલાક", "૧૫ દિવસ"], ans: "૪૮ કલાક" },
+        { q: "પ્રાથમિક શાળાના રેકોર્ડ (દા.ત. જનરલ રજીસ્ટર) કોની કસ્ટડીમાં રહે છે?", opts: ["SMC અધ્યક્ષ", "વર્ગ શિક્ષક", "મુખ્ય શિક્ષક", "CRC"], ans: "મુખ્ય શિક્ષક" },
+        { q: "જિલ્લા પ્રાથમિક શિક્ષણ સમિતિના વહીવટી વડા કોણ હોય છે?", opts: ["DDO", "DPEO", "TPEO", "કલેક્ટર"], ans: "DPEO" },
+        { q: "બાળકને શાળામાંથી કાઢી ન મૂકવા અને નાપાસ ન કરવા અંગેની જોગવાઈ RTE ની કઈ કલમમાં હતી? (હાલ સુધારો થયેલ છે)", opts: ["કલમ ૧૫", "કલમ ૧૬", "કલમ ૧૭", "કલમ ૩૦"], ans: "કલમ ૧૬" },
+        { q: "NPE 2020 મુજબ શાળાકીય શિક્ષણનું નવું માળખું કયું છે?", opts: ["૧૦+૨", "૫+૩+૩+૪", "૮+૪+૨", "૫+૪+૩+૩"], ans: "૫+૩+૩+૪" },
+        { q: "ગુજરાતમાં વિદ્યા સમીક્ષા કેન્દ્ર (VSK) ક્યાં આવેલું છે?", opts: ["અમદાવાદ", "વડોદરા", "ગાંધીનગર", "સુરત"], ans: "ગાંધીનગર" },
+        { q: "શિક્ષક અભિરુચિ કસોટી (TAT) કોના દ્વારા લેવાય છે?", opts: ["GSEB", "SEB (રાજ્ય પરીક્ષા બોર્ડ)", "GCERT", "GPSC"], ans: "SEB (રાજ્ય પરીક્ષા બોર્ડ)" },
+        { q: "વિદ્યાર્થીના સતત અને સર્વગ્રાહી મૂલ્યાંકન (CCE) માટે પ્રાથમિક શાળામાં કયું પત્રક રખાય છે?", opts: ["પત્રક અ", "પત્રક બ", "પત્રક ક", "પત્રક અ, બ, ક વગેરે"], ans: "પત્રક અ, બ, ક વગેરે" },
+        { q: "પ્રાથમિક શાળામાં વિદ્યાર્થીઓને વિનામૂલ્યે પાઠ્યપુસ્તકો પૂરા પાડવાની જવાબદારી કોની છે?", opts: ["SMC ની", "રાજ્ય સરકારની", "કેન્દ્ર સરકારની", "મુખ્ય શિક્ષકની"], ans: "રાજ્ય સરકારની" },
+        { q: "RTE 2009 મુજબ ખાનગી ટ્યુશન કરવા પર કઈ કલમ હેઠળ પ્રતિબંધ છે?", opts: ["કલમ ૨૬", "કલમ ૨૮", "કલમ ૩૦", "કલમ ૨૫"], ans: "કલમ ૨૮" },
+        { q: "શાળાના ફંડ (SMC ફંડ) ના હિસાબોની જાળવણીની જવાબદારી કોની છે?", opts: ["મુખ્ય શિક્ષક", "સરપંચ", "ક્લાર્ક", "TPEO"], ans: "મુખ્ય શિક્ષક" },
+        { q: "ગુજરાત પ્રાથમિક શિક્ષણ નિયમો કયા વર્ષમાં ઘડાયા?", opts: ["૧૯૪૭", "૧૯૪૯", "૧૯૬૦", "૧૯૯૧"], ans: "૧૯૪૯" },
+        { q: "DISE (હવે U-DISE) નું પૂરું નામ શું છે?", opts: ["District Information System for Education", "Data Index for School Education", "Digital Information of School Education", "District Index of Social Education"], ans: "District Information System for Education" },
+        { q: "પ્રાથમિક શાળાના શિક્ષકોની નોકરીની શરતો બાબતે કયા નિયમો લાગુ પડે છે?", opts: ["BCSR / GCSR", "માધ્યમિક શિક્ષણ અધિનિયમ", "પંચાયતી રાજ નિયમો", "ઉપરોક્ત પૈકી એક પણ નહિ"], ans: "BCSR / GCSR" },
+        { q: "શાળા પ્રવેશોત્સવનો કાર્યક્રમ ગુજરાતમાં કયા વર્ષથી શરૂ કરવામાં આવ્યો?", opts: ["૨૦૦૦", "૨૦૦૩", "૨૦૦૫", "૨૦૦૯"], ans: "૨૦૦૩" },
+        { q: "કન્યા કેળવણીને પ્રોત્સાહન આપવા કઈ યોજના અમલમાં છે?", opts: ["વિદ્યાદીપ", "વિદ્યાલક્ષ્મી બોન્ડ", "વિદ્યા સહાયક", "જ્ઞાનકુંજ"], ans: "વિદ્યાલક્ષ્મી બોન્ડ" },
+        { q: "શિક્ષકોના પ્રશિક્ષણ (Training) માટે જિલ્લા કક્ષાએ મુખ્ય સંસ્થા કઈ છે?", opts: ["BRC", "CRC", "DIET", "GCERT"], ans: "DIET" },
+        { q: "મુંબઈ પ્રાથમિક શિક્ષણ અધિનિયમની કઈ કલમ હેઠળ શિક્ષણ સમિતિની રચના થાય છે?", opts: ["કલમ ૫", "કલમ ૧૫", "કલમ ૨૦", "કલમ ૪૦"], ans: "કલમ ૧૫" },
+        { q: "BRC નું પૂરું નામ શું છે?", opts: ["Block Resource Centre", "Board of Resource Control", "Block Regional Centre", "Basic Resource Centre"], ans: "Block Resource Centre" },
+        { q: "RTE મુજબ શિક્ષકે અઠવાડિયામાં તૈયારીના કલાકો સહિત કેટલા કલાક કામ કરવાનું હોય છે?", opts: ["૪૦ કલાક", "૪૫ કલાક", "૫૦ કલાક", "૩૫ કલાક"], ans: "૪૫ કલાક" },
+        { q: "પ્રાથમિક શાળામાં ભણાવવા માટે શિક્ષકની લઘુત્તમ શૈક્ષણિક લાયકાત કોણ નક્કી કરે છે?", opts: ["GCERT", "NCTE", "UGC", "MHRD"], ans: "NCTE" },
+        { q: "NCTE નું પૂરું નામ જણાવો.", opts: ["National Council for Teacher Education", "National Centre for Teaching English", "National Council of Technical Education", "National Committee for Teachers"], ans: "National Council for Teacher Education" },
+        { q: "ગુજરાત શૈક્ષણિક ટેકનોલોજી ભવન (SIET) ક્યાં આવેલ છે?", opts: ["અમદાવાદ", "ગાંધીનગર", "રાજકોટ", "સુરત"], ans: "અમદાવાદ" },
+        { q: "શાળાના જનરલ રજીસ્ટર (GR) માં વિદ્યાર્થીની કઈ વિગત સૌથી મહત્વની ગણાય છે?", opts: ["જન્મ તારીખ", "વજન", "ઊંચાઈ", "આધાર નંબર"], ans: "જન્મ તારીખ" },
+        { q: "જો કોઈ શિક્ષક ફરજ પર ગંભીર ગેરરીતિ કરે, તો તેને કઈ સજા થઈ શકે?", opts: ["બદલી", "સસ્પેન્શન કે ડિસમિસ", "પગાર કાપ", "ઉપરોક્ત તમામ"], ans: "ઉપરોક્ત તમામ" },
+        { q: "શિક્ષકોની હાજરી કોના દ્વારા ચકાસવામાં આવે છે?", opts: ["મુખ્ય શિક્ષક (HT)", "SMC અધ્યક્ષ", "વિદ્યાર્થીઓ", "વાલીઓ"], ans: "મુખ્ય શિક્ષક (HT)" },
+        { q: "મુંબઈ પ્રાથમિક શિક્ષણ અધિનિયમ મુજબ 'બાળક' એટલે કોણ?", opts: ["૬ થી ૧૪ વર્ષની ઉંમરનું બાળક", "૩ થી ૬ વર્ષ", "૦ થી ૫ વર્ષ", "૧૪ થી ૧૮ વર્ષ"], ans: "૬ થી ૧૪ વર્ષની ઉંમરનું બાળક" },
+        { q: "GIET નું નવું નામ શું છે?", opts: ["GCERT", "GSEB", "SIET", "SIEMAT"], ans: "GCERT" },
+        { q: "શાળામાં કઈ સમિતિ દ્વારા શાળા વિકાસ યોજના (SDP) તૈયાર કરાય છે?", opts: ["ગ્રામ પંચાયત", "શાળા વ્યવસ્થાપન સમિતિ (SMC)", "તાલુકા પંચાયત", "શિક્ષક સંઘ"], ans: "શાળા વ્યવસ્થાપન સમિતિ (SMC)" },
+        { q: "RTE કાયદો જમ્મુ-કાશ્મીર સિવાય સમગ્ર ભારતમાં ક્યારથી લાગુ પડ્યો?", opts: ["૧ એપ્રિલ ૨૦૧૦", "૧ એપ્રિલ ૨૦૦૯", "૧૫ ઓગસ્ટ ૨૦૧૦", "૨૬ જાન્યુઆરી ૨૦૧૦"], ans: "૧ એપ્રિલ ૨૦૧૦" },
+        { q: "એક શાળામાં ૧૫૦ વિદ્યાર્થીઓ છે (ધોરણ ૧ થી ૫), તો RTE મુજબ મુખ્ય શિક્ષક સહિત કેટલા શિક્ષકો હોવા જોઈએ?", opts: ["૪ શિક્ષકો + ૧ HT", "૫ શિક્ષકો + ૧ HT", "૬ શિક્ષકો (HT વગર)", "૭ શિક્ષકો"], ans: "૫ શિક્ષકો + ૧ HT" },
+        { q: "પ્રજ્ઞા (PRAGNA) અભિગમ કયા ધોરણ માટે અમલમાં છે?", opts: ["ધોરણ ૧ અને ૨", "ધોરણ ૧ થી ૪", "ધોરણ ૫ થી ૮", "માત્ર ધોરણ ૧"], ans: "ધોરણ ૧ અને ૨" },
+        { q: "શિક્ષકને રૂપાંતરિત રજા (Commuted Leave - મેડિકલ રજા) ક્યારે મળી શકે?", opts: ["તબીબી પ્રમાણપત્રના આધારે", "લગ્ન પ્રસંગે", "પ્રવાસ માટે", "ગમે ત્યારે"], ans: "તબીબી પ્રમાણપત્રના આધારે" },
+        { q: "TPEO નું પૂરું નામ શું છે?", opts: ["Taluka Primary Education Officer", "Taluka Panchayat Education Office", "Town Primary Education Officer", "Teacher & Parent Education Officer"], ans: "Taluka Primary Education Officer" },
+        { q: "શાળામાં આકસ્મિક નિરીક્ષણ કરવાની સત્તા કોને છે?", opts: ["CRC / BRC કો-ઓર્ડિનેટર", "TPEO / DPEO", "શિક્ષણ નિરીક્ષક", "ઉપરોક્ત તમામ"], ans: "ઉપરોક્ત તમામ" },
+        { q: "પ્રાથમિક શાળાના શિક્ષક માટે વયનિવૃત્તિની ઉંમર કેટલી છે?", opts: ["૫૮ વર્ષ", "૬૦ વર્ષ", "૬૨ વર્ષ", "૬૫ વર્ષ"], ans: "૫૮ વર્ષ" },
+        { q: "સંવિધાનના કયા અનુચ્છેદ મુજબ ૬ થી ૧૪ વર્ષના બાળકોને મફત અને ફરજિયાત શિક્ષણનો મૂળભૂત અધિકાર અપાયો છે?", opts: ["અનુચ્છેદ ૪૫", "અનુચ્છેદ ૨૧(A)", "અનુચ્છેદ ૫૧(A)", "અનુચ્છેદ ૧૯"], ans: "અનુચ્છેદ ૨૧(A)" },
+        { q: "કસ્તુરબા ગાંધી બાલિકા વિદ્યાલય (KGBV) કોના માટે છે?", opts: ["માત્ર અનુસૂચિત જાતિના બાળકો", "ડ્રોપઆઉટ અને વંચિત જૂથની કન્યાઓ માટે", "માત્ર શહેરી કન્યાઓ", "તમામ બાળકો માટે"], ans: "ડ્રોપઆઉટ અને વંચિત જૂથની કન્યાઓ માટે" },
+        { q: "મધ્યાહન ભોજન યોજનાનું સંચાલન કોની દેખરેખ હેઠળ થાય છે?", opts: ["મુખ્ય શિક્ષક", "સરપંચ", "મામલતદાર / નાયબ કલેક્ટર", "DPEO"], ans: "મામલતદાર / નાયબ કલેક્ટર" },
+        { q: "ગુણોત્સવ 2.0 ક્યારથી શરૂ કરવામાં આવ્યો?", opts: ["૨૦૧૮-૧૯", "૨૦૧૯-૨૦", "૨૦૨૧-૨૨", "૨૦૧૦-૧૧"], ans: "૨૦૧૯-૨૦" },
+        { q: "શિક્ષણનો અધિકાર કાયદો કોના દ્વારા ઘડવામાં આવ્યો?", opts: ["રાજ્ય સરકાર", "કેન્દ્ર સરકાર (સંસદ)", "સુપ્રીમ કોર્ટ", "NCERT"], ans: "કેન્દ્ર સરકાર (સંસદ)" },
+        { q: "SMC ની બેઠક દર કેટલા મહિને મળવી જોઈએ?", opts: ["દર મહિને", "દર ત્રણ મહિને", "દર છ મહિને", "વર્ષમાં એકવાર"], ans: "દર મહિને" },
+        { q: "બાળકને શાળામાં પ્રવેશ આપતી વખતે કોઈ કસોટી (Screening test) ન લઈ શકાય, તે RTE ની કઈ કલમ છે?", opts: ["કલમ ૧૩", "કલમ ૧૪", "કલમ ૧૫", "કલમ ૨૦"], ans: "કલમ ૧૩" },
+        { q: "રાજ્ય પરીક્ષા બોર્ડ (SEB) ક્યાં આવેલું છે?", opts: ["અમદાવાદ", "ગાંધીનગર", "વડોદરા", "રાજકોટ"], ans: "ગાંધીનગર" },
+        { q: "NUEPA (હવે NIEPA) ક્યાં આવેલ છે?", opts: ["નવી દિલ્હી", "મુંબઈ", "ચેન્નઈ", "કોલકત્તા"], ans: "નવી દિલ્હી" },
+        { q: "શાળા સલામતી કાર્યક્રમ (School Safety Program) કોના દ્વારા ચલાવવામાં આવે છે?", opts: ["NDMA / GSDMA", "GSEB", "GCERT", "DIET"], ans: "NDMA / GSDMA" },
+        { q: "ગ્રાન્ટ-ઈન-એડ શાળાઓના શિક્ષકોની ભરતી કઈ સમિતિ દ્વારા થાય છે?", opts: ["રાજ્ય પસંદગી સમિતિ (TAT પાસ)", "SMC", "જિલ્લા પંચાયત", "TPEO"], ans: "રાજ્ય પસંદગી સમિતિ (TAT પાસ)" },
+        { q: "શાળાના રેકોર્ડ મુજબ બાળકના નામ કે જન્મતારીખમાં સુધારો કરવાની સત્તા કોને છે?", opts: ["ફર્સ્ટ ક્લાસ મેજિસ્ટ્રેટ", "મુખ્ય શિક્ષક", "TPEO", "SMC અધ્યક્ષ"], ans: "ફર્સ્ટ ક્લાસ મેજિસ્ટ્રેટ" },
+        { q: "એજ્યુકેશનલ ઇનોવેશન ફેસ્ટિવલ કોના દ્વારા યોજાય છે?", opts: ["GCERT", "GIET", "GSEB", "SEB"], ans: "GCERT" },
+        { q: "NIPUN ભારત મિશનનો મુખ્ય ઉદ્દેશ્ય શું છે?", opts: ["કોમ્પ્યુટર શિક્ષણ", "પાયાની સાક્ષરતા અને સંખ્યાજ્ઞાન (FLN)", "ઉચ્ચ શિક્ષણ", "રમતગમત"], ans: "પાયાની સાક્ષરતા અને સંખ્યાજ્ઞાન (FLN)" },
+        { q: "PM POSHAN યોજના કોનું નવું નામ છે?", opts: ["સર્વ શિક્ષા અભિયાન", "મધ્યાહન ભોજન યોજના (MDM)", "વિદ્યાલક્ષ્મી યોજના", "વિદ્યાદીપ યોજના"], ans: "મધ્યાહન ભોજન યોજના (MDM)" },
+        { q: "આચાર્યની મુખ્ય ફરજ કઈ છે?", opts: ["વહીવટી અને શૈક્ષણિક નેતૃત્વ", "માત્ર પત્રકો ભરવા", "માત્ર રજા મંજૂર કરવી", "શાળાની સફાઈ"], ans: "વહીવટી અને શૈક્ષણિક નેતૃત્વ" },
+        { q: "G-Shala એપ્લિકેશન કોના માટે છે?", opts: ["શિક્ષકોના પગાર માટે", "વિદ્યાર્થીઓ માટે ઇ-લર્નિંગ (e-Learning) માટે", "માત્ર હાજરી પૂરવા માટે", "વાલીઓના સંપર્ક માટે"], ans: "વિદ્યાર્થીઓ માટે ઇ-લર્નિંગ (e-Learning) માટે" },
+        { q: "જ્ઞાનકુંજ પ્રોજેક્ટ શેની સાથે સંકળાયેલ છે?", opts: ["સ્માર્ટ ક્લાસરૂમ", "મફત પુસ્તકો", "શાળા પ્રવેશોત્સવ", "રમતગમતનાં સાધનો"], ans: "સ્માર્ટ ક્લાસરૂમ" },
+        { q: "SMC ના અધ્યક્ષની વરણી કોણ કરે છે?", opts: ["મુખ્ય શિક્ષક", "સરપંચ", "SMC ના સભ્યો પોતાનામાંથી", "DPEO"], ans: "SMC ના સભ્યો પોતાનામાંથી" },
+        { q: "શાળા વ્યવસ્થાપન સમિતિ (SMC) ના સભ્ય સચિવ કોણ હોય છે?", opts: ["સરપંચ", "મુખ્ય શિક્ષક (આચાર્ય)", "વાલી", "CRC કો-ઓર્ડિનેટર"], ans: "મુખ્ય શિક્ષક (આચાર્ય)" },
+        { q: "સતત અને સર્વગ્રાહી મૂલ્યાંકન (CCE) કોના દ્વારા સૂચવવામાં આવ્યું છે?", opts: ["RTE 2009", "UGC", "AICTE", "NCTE"], ans: "RTE 2009" },
+        { q: "વિદ્યાર્થીઓને પ્રોત્સાહિત કરવા માટે ગુજરાત સરકારની કઈ શિષ્યવૃત્તિ પરીક્ષા લેવાય છે?", opts: ["NMMS", "PSE / SSE", "NTSE", "ઉપરોક્ત તમામ"], ans: "ઉપરોક્ત તમામ" },
+        { q: "ગુજરાતમાં શિક્ષક દિન નિમિત્તે શ્રેષ્ઠ શિક્ષક પારિતોષિક કોના દ્વારા અપાય છે?", opts: ["રાજ્ય સરકાર (શિક્ષણ વિભાગ)", "કેન્દ્ર સરકાર", "જિલ્લા પંચાયત", "મામલતદાર"], ans: "રાજ્ય સરકાર (શિક્ષણ વિભાગ)" },
+        { q: "શિક્ષક તરીકે નિયુક્તિ પામવા માટે TET પરીક્ષા ફરજિયાત કયા કાયદા અન્વયે કરાઈ છે?", opts: ["RTE 2009 કલમ ૨૩", "મુંબઈ પ્રાથમિક શિક્ષણ અધિનિયમ", "RTI એક્ટ", "માધ્યમિક શિક્ષણ અધિનિયમ"], ans: "RTE 2009 કલમ ૨૩" },
+        { q: "જો કોઈ શિક્ષક ટ્યુશન કરાવતો ઝડપાય તો કોણ પગલાં લઈ શકે?", opts: ["મુખ્ય શિક્ષક અને TPEO/DPEO", "માત્ર વાલી", "સરપંચ", "વિદ્યાર્થી"], ans: "મુખ્ય શિક્ષક અને TPEO/DPEO" },
+        { q: "બાળક માટે ભયમુક્ત અને ચિંતામુક્ત વાતાવરણ ઊભું કરવું, એ કોની પ્રાથમિક ફરજ છે?", opts: ["સરકાર", "શાળા અને શિક્ષક", "સમાજ", "કોર્ટ"], ans: "શાળા અને શિક્ષક" },
+        { q: "SSA નું નવું નામ શું રાખવામાં આવ્યું છે?", opts: ["સમગ્ર શિક્ષા અભિયાન", "નવી શિક્ષા અભિયાન", "ભારત શિક્ષા અભિયાન", "ગ્રીન શિક્ષા"], ans: "સમગ્ર શિક્ષા અભિયાન" },
+        { q: "પ્રાથમિક શાળામાં વાર્ષિક અંદાજપત્ર કોણ તૈયાર કરે છે?", opts: ["મુખ્ય શિક્ષક", "ક્લાર્ક", "પટાવાળો", "સરપંચ"], ans: "મુખ્ય શિક્ષક" },
+        { q: "જિલ્લા શિક્ષણ અને તાલીમ ભવન (DIET) ના વડા કોણ હોય છે?", opts: ["પ્રાચાર્ય (Principal)", "DPEO", "કલેક્ટર", "શાસનાધિકારી"], ans: "પ્રાચાર્ય (Principal)" },
+        { q: "HTAT પરીક્ષાનું પૂરું નામ શું છે?", opts: ["Head Teacher Aptitude Test", "Head Teacher Assessment Test", "High Teacher Aptitude Test", "Head Teacher Achievement Test"], ans: "Head Teacher Aptitude Test" },
+        { q: "TPEO ની નિમણૂક કોણ કરે છે?", opts: ["ગુજરાત જાહેર સેવા આયોગ (GPSC)", "જિલ્લા પંચાયત", "તાલુકા પંચાયત", "SMC"], ans: "ગુજરાત જાહેર સેવા આયોગ (GPSC)" },
+        { q: "કોઈ વિદ્યાર્થી લાંબો સમય ગેરહાજર રહે તો આચાર્યએ સૌ પ્રથમ શું કરવું જોઈએ?", opts: ["નામ કમી કરવું", "વાલીનો સંપર્ક કરવો", "પોલીસ ફરિયાદ કરવી", "દંડ વસૂલવો"], ans: "વાલીનો સંપર્ક કરવો" },
+        { q: "વિશેષ જરૂરિયાતવાળા બાળકો (CWSN) માટે કયો અભિગમ અપનાવાય છે?", opts: ["સમાવેશી શિક્ષણ (Inclusive Education)", "અલગ શિક્ષણ", "ગૃહ શિક્ષણ", "દૂરવર્તી શિક્ષણ"], ans: "સમાવેશી શિક્ષણ (Inclusive Education)" },
+        { q: "મુખ્ય શિક્ષકને શાળાની મરામત ગ્રાન્ટનો ઉપયોગ કરવા માટે કોની મંજૂરી લેવી પડે છે?", opts: ["SMC ની", "TPEO ની", "DPEO ની", "શિક્ષણ મંત્રીની"], ans: "SMC ની" },
+        { q: "ગુણોત્સવ અંતર્ગત શાળાઓને કયા સ્વરૂપે ગ્રેડ આપવામાં આવે છે?", opts: ["A, B, C, D", "A+, A, B, C, D", "૧, ૨, ૩, ૪", "સ્ટાર રેટિંગ"], ans: "A+, A, B, C, D" },
+        { q: "'શિક્ષણ એ ત્રિધ્રુવીય પ્રક્રિયા છે' - આ વિધાન કોણે આપ્યું છે?", opts: ["જ્હોન ડ્યુઇ", "એડમ્સ", "ગાંધીજી", "પ્લેટો"], ans: "જ્હોન ડ્યુઇ" }
+    ];
+
+    const formContainer = document.getElementById("questions-container");
+
+    // Render all questions
+    quizData.forEach((qObj, index) => {
+        const qNum = index + 1;
+        let optionsHTML = "";
+        
+        qObj.opts.forEach((opt) => {
+            optionsHTML += `<label><input type="radio" name="q${qNum}" value="${opt}"> ${opt}</label>`;
+        });
+
+        const qHTML = `
+            <div class="question-box" data-qname="q${qNum}" data-correct-ans="${qObj.ans}">
+                <div class="question-title">${qNum}. ${qObj.q}</div>
+                <div class="options">${optionsHTML}</div>
+            </div>
+        `;
+        formContainer.innerHTML += qHTML;
+    });
+
     function checkScore() {
         let score = 0;
-        let total = 20;
+        let total = quizData.length;
         let incorrectSummary = "";
         
         let boxes = document.querySelectorAll('.question-box');
@@ -279,7 +189,7 @@
         boxes.forEach((box, index) => {
             let qNum = index + 1;
             let correctAns = box.getAttribute('data-correct-ans');
-            let selectedInput = box.querySelector('input[type="radio"]:checked');
+            let selectedInput = box.querySelector(`input[name="q${qNum}"]:checked`);
             
             let titleText = box.querySelector('.question-title').innerText;
 
@@ -288,10 +198,10 @@
                 if (userAns === correctAns) {
                     score++;
                 } else {
-                    incorrectSummary += `<div class="summary-item"><strong>પ્રશ્ન ${qNum}:</strong> ${titleText}<br>❌ તમારો જવાબ: ${userAns}<br>✅ <b>સાચો જવાબ:</b> ${correctAns}</div>`;
+                    incorrectSummary += `<div class="summary-item"><strong>${titleText}</strong><br>❌ તમારો જવાબ: <span style="color:#c0392b;">${userAns}</span><br>✅ <b>સાચો જવાબ:</b> <span style="color:#27ae60;">${correctAns}</span></div>`;
                 }
             } else {
-                incorrectSummary += `<div class="summary-item"><strong>પ્રશ્ન ${qNum}:</strong> ${titleText}<br>❌ તમે જવાબ આપ્યો નથી.<br>✅ <b>સાચો જવાબ:</b> ${correctAns}</div>`;
+                incorrectSummary += `<div class="summary-item"><strong>${titleText}</strong><br>❌ તમે જવાબ આપ્યો નથી.<br>✅ <b>સાચો જવાબ:</b> <span style="color:#27ae60;">${correctAns}</span></div>`;
             }
         });
 
@@ -303,7 +213,7 @@
         if (score < total) {
             htmlContent += `<hr style="margin: 15px 0; border: 0; border-top: 1px solid #b2dfdb;"><b style="color: #c0392b;">💡 તમારા ખોટા પડેલા પ્રશ્નોના સાચા જવાબો અહીં તપાસો:</b>` + incorrectSummary;
         } else {
-            htmlContent += `<br><br>🌟 અતિ ઉત્તમ! તમારા બધા જ પ્રશ્નો સાચા છે!`;
+            htmlContent += `<br><br>🌟 અતિ ઉત્તમ! તમારી તૈયારી ખૂબ જ મજબૂત છે. પરીક્ષા માટે ઓલ ધ બેસ્ટ!`;
         }
         
         resBox.innerHTML = htmlContent;
